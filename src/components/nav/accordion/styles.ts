@@ -17,6 +17,12 @@ export const Header = styled.a`
   :hover {
     border-bottom: solid black 1px;
   }
+
+  &.check{
+    :hover{
+      border-bottom: solid white 1px;
+    }
+  }
 `;
 
 export const HeaderWrapper = styled.div`

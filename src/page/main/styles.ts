@@ -13,7 +13,7 @@ export const Main = styled.div`
     ". article ."
     ". . . "
     "footer footer footer";
-  grid-template-rows: 60px 700px 20px 500px auto 10px 60px;
+  grid-template-rows: 60px 700px 20px 500px auto 60px 50px;
   grid-template-columns: 1fr 4fr 1fr;
   min-height: 100vh;
   &.check {
@@ -21,7 +21,7 @@ export const Main = styled.div`
     background: black;
   }
   @media only screen and (max-width: 1200px) {
-    grid-template-rows: 60px auto 10px auto auto 10px 60px;
+    grid-template-rows: 60px auto 10px auto auto 60px 60px;
     grid-template-columns: 1fr 6fr 1fr;
     /* grid-template-areas:
       "header header "
@@ -55,6 +55,22 @@ export const Article = styled.article`
 
 export const Footer = styled.footer`
   grid-area: footer;
+  text-align: center;
+  background: rgb(240,240,240);
+  &.check{
+    background: grey;
+    color:white;
+  }
+`;
+
+export const FooterFont = styled.a`
+padding-top:20px;
+  color:black;
+  display: block;
+  font-size: 15px;
+  &.check{
+    color:white;
+  }
 `;
 
 ////////

@@ -51,8 +51,8 @@ const MainPage = () => {
             <MainPostContainer />
             <NavContainer />
           </S.Article>
-          <S.Ads />
-          <S.Footer></S.Footer>
+          <S.Footer>            <S.FooterFont>© 2021. AhnyoungJun all rights reserved.</S.FooterFont>
+</S.Footer>
         </S.Main>
       ) : (
         <S.Main className="check">
@@ -63,8 +63,8 @@ const MainPage = () => {
             <MainPostContainer check={true} />
             <NavContainer check={true} />
           </S.Article>
-          <S.Ads />
-          <S.Footer></S.Footer>
+          <S.Footer className= "check">            <S.FooterFont  className= "check">© 2021. AhnyoungJun all rights reserved.</S.FooterFont>
+          </S.Footer>
         </S.Main>
       )}
       <ScrollControlBtn scrollPosition={scrollPosition} check={true} />

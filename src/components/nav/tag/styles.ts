@@ -17,4 +17,9 @@ export const TagItem = styled.a`
   :hover {
     border-bottom: solid black 1px;
   }
+  &.check{
+    :hover{
+      border-bottom: solid white 1px;
+    }
+  }
 `;

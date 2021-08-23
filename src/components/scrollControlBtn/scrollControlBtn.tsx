@@ -23,7 +23,7 @@ const scrollControlBtn = (props: any) => {
             scroll={props.scrollPosition}
             color={props.scrollPosition == 0 ? "grey" : "white"}
           >
-            <S.Btn>ss</S.Btn>
+            <S.Btn>위</S.Btn>
           </S.BtnItemWrapper>
           <S.BtnItemWrapper
             className="check"
@@ -36,7 +36,7 @@ const scrollControlBtn = (props: any) => {
                 : "white"
             }
           >
-            <S.Btn>ss</S.Btn>
+            <S.Btn>아래</S.Btn>
           </S.BtnItemWrapper>
         </S.BtnWrapper>
       ) : (
@@ -46,7 +46,7 @@ const scrollControlBtn = (props: any) => {
             scroll={props.scrollPosition}
             color={props.scrollPosition == 0 ? "grey" : "white"}
           >
-            <S.Btn>ss</S.Btn>
+            <S.Btn>위</S.Btn>
           </S.BtnItemWrapper>
           <S.BtnItemWrapper
             onClick={onClickBottomBtn}
@@ -58,7 +58,7 @@ const scrollControlBtn = (props: any) => {
                 : "white"
             }
           >
-            <S.Btn>ss</S.Btn>
+            <S.Btn>아래</S.Btn>
           </S.BtnItemWrapper>
         </S.BtnWrapper>
       )}{" "}

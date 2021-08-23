@@ -7,22 +7,25 @@ export const ToggleItem = styled.div`
   height: 17px;
   cursor: pointer;
   position: relative;
-  background-color: #ccc;
+  background-color: grey;
+  border-radius: 20px;
   ::before {
     content: "";
     display: block;
     width: 13px;
     height: 13px;
     left: 4px;
-    bottom: 4px;
+    bottom: 2px;
     position: absolute;
-    background-color: #fff;
+    background-color: white;
     transition: all 0.4s ease;
+    border-radius: 20px;
+
   }
   &.check {
-    background-color: #2196f3;
+    background-color: grey;
     ::before {
-      background-color: white;
+      background-color: black;
       transform: translateX(30px);
     }
   }

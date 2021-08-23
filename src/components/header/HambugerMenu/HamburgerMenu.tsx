@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import Toggle from "../Toggle/Toggle";
 import * as S from "./styles";
 
 const HamburgerMenu = (props: any) => {
@@ -14,10 +15,13 @@ const HamburgerMenu = (props: any) => {
           <S.OpenWrapper>
             <S.Habuger_line className="active"></S.Habuger_line>
             <S.Menu scroll={props.scrollPosition} className="active">
+         
+              <S.Menu_list>     <S.Menu_Item>Menu_Item</S.Menu_Item>
               <S.Menu_Item>Menu_Item</S.Menu_Item>
               <S.Menu_Item>Menu_Item</S.Menu_Item>
               <S.Menu_Item>Menu_Item</S.Menu_Item>
-              <S.Menu_Item>Menu_Item</S.Menu_Item>
+              <S.Menu_Item>
+              <Toggle /></S.Menu_Item></S.Menu_list>
             </S.Menu>
           </S.OpenWrapper>
         ) : (

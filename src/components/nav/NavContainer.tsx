@@ -9,12 +9,12 @@ const NavContainer = (props: any) => {
         <S.NavWrapper className="check">
           <S.NavItemWrapper>
             <S.NavTitle className="check">Project</S.NavTitle>
-            <Accordion />
-            <Accordion />
+            <Accordion check = "true"/>
+            <Accordion check = "true"/>
           </S.NavItemWrapper>
           <S.NavItemWrapper>
             <S.TagTitle className="check">Tag</S.TagTitle>
-            <Tag tagCount={1} tagName={""} />
+            <Tag tagCount={1} tagName={""}  check = "true"/>
           </S.NavItemWrapper>
         </S.NavWrapper>
       ) : (

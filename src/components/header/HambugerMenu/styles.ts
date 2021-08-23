@@ -97,9 +97,10 @@ export const Menu = styled.div<{ scroll: number }>`
 export const Menu_list = styled.div`
   list-style: none;
   margin-top: 50px;
+  margin: 20px;
+
 `;
 export const Menu_Item = styled.div`
-  margin: 20px;
-  padding-bottom: 10px;
+  padding-top: 10px;
   border-bottom: solid 1px gray;
 `;
