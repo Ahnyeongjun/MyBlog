@@ -14,13 +14,19 @@ const router = new Router();
 
 router.use('', api.routes());
 
-app.use(helmet()).use(cors()).use(bodyparser()).use(logger()).use(router.routes()).use(router.allowedMethods());
+app
+  .use(helmet())
+  .use(cors())
+  .use(bodyparser())
+  .use(logger())
+  .use(router.routes())
+  .use(router.allowedMethods());
 
-let serverCallback = app.callback();
-let httpServer = http.createServer(serverCallback);
-//현대모터스
-db.then(() =>
-  httpServer.listen(process.env.SERVER_PORT || 8080, () => {
-    console.log('SUCESS 8080');
-  })
+const serverCallback = app.callback();
+const httpServer = http.createServer(serverCallback);
+// 현대모터스
+
+db.then(
+  () => httpServer.listen(process.env.SERVER_PORT || 8080, () => {})
+  // eslint-disable-next-line no-console
 ).catch(console.error);

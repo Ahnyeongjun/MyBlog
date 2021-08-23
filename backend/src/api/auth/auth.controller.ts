@@ -33,9 +33,9 @@ export class AuthController {
   public login = async (ctx: Context) => {
     const userData: CreateUserRequest = ctx.request.body;
     const user = await this.authService.login(userData);
-    const payload: Payload = userData;
     if (user !== undefined) {
-      ctx.set('Authorization', (await generateToken(payload)) as string);
+      const payload: Payload = { id: user.id, name: user.name };
+      ctx.body = { Authorization: await generateToken(payload) };
       ctx.status = 200;
     } else {
       ctx.status = 403;
@@ -44,7 +44,9 @@ export class AuthController {
   public check = async (ctx: Context) => {
     const token: string = ctx.get('Authorization');
     console.log(token);
-    if (await decodedToken(token)) {
+    const a = await decodedToken(token);
+    if (a) {
+      console.log(a);
       ctx.status = 200;
     } else {
       ctx.status = 400;
