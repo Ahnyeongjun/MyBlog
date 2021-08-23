@@ -43,10 +43,9 @@ export class AuthController {
   };
   public check = async (ctx: Context) => {
     const token: string = ctx.get('Authorization');
-    console.log(token);
     const a = await decodedToken(token);
+
     if (a) {
-      console.log(a);
       ctx.status = 200;
     } else {
       ctx.status = 400;

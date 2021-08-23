@@ -11,19 +11,19 @@ import { Tag } from '.';
 export class Post {
   @Index()
   @PrimaryGeneratedColumn('uuid')
-  uid: string;
+  uid!: string;
 
   @Column()
-  writer: string;
+  writer!: string;
 
   @Column()
-  createdAt: string;
+  createdAt!: string;
 
   @Column()
-  content: string;
+  content!: string;
 
   @Column()
-  title: string;
+  title!: string;
 
   @OneToMany(type => Tag, tag => tag.post)
   tag!: Tag[];

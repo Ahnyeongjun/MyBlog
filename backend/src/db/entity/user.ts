@@ -4,14 +4,14 @@ import { BaseEntity, Entity, PrimaryGeneratedColumn, Column, Index } from 'typeo
 export class User extends BaseEntity {
   @Index()
   @PrimaryGeneratedColumn('uuid')
-  uid: string;
+  uid!: string;
 
   @Column()
-  name: string;
+  name!: string;
 
   @Column()
-  id: string;
+  id!: string;
 
   @Column()
-  password: string;
+  password!: string;
 }

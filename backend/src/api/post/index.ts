@@ -2,10 +2,14 @@ import Router from '@koa/router';
 
 const router: Router = new Router();
 
-export const auth = (): Router => {
-  router.post('/post', async (ctx: any) => {
-    ctx.body = 'blog';
-  });
+import { PostController } from './post.controller';
+
+export const blog = (): Router => {
+  const postController: PostController = new PostController();
+
+  router.post('/', postController.createPost);
+  router.patch('/', postController.updatePost);
+
   router.get('/featured', async (ctx: any) => {
     ctx.body = 'blog';
   });

@@ -1,8 +1,14 @@
-import { TagRequest } from './tag';
+import { TagRequest, updateTagRequest } from './tag';
 
 export interface CreatePostRequest {
-  createdAt: string;
   content: string;
   title: string;
   tag: TagRequest[];
+}
+
+export interface UpdatePostRequest{
+  uid:string;
+  content?: string;
+  title?: string;
+  tag?: updateTagRequest[];
 }

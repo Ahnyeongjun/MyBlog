@@ -4,10 +4,10 @@ import { Post } from '.';
 export class Tag extends BaseEntity {
   @Index()
   @PrimaryGeneratedColumn('uuid')
-  uid: string;
+  uid!: string;
 
   @Column()
-  tagName: string;
+  tagName!: string;
 
   @ManyToOne((type) => Post, (post) => post.uid, { nullable: false, onDelete: 'CASCADE' })
   post!: Post;

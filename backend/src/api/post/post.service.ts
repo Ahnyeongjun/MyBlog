@@ -1,5 +1,5 @@
 import { PostRepository } from '../../db/repository';
-import { CreatePostRequest, CreateUserRequest } from '../../interface';
+import { CreatePostRequest, CreateUserRequest, UpdatePostRequest } from '../../interface';
 
 export class PostServie {
   constructor(private readonly postRepository: PostRepository) {}
@@ -16,6 +16,19 @@ export class PostServie {
   }
 
   public async createPost(request: CreatePostRequest, writer: string) {
-    await this.postRepository.createPost(writer, await this.createAt(), request.content, request.title, request.tag);
+    const post = await this.postRepository.createPost(writer, await this.createAt(), request.content, request.title);
+    
+    if(post){  
+      const set = new Set(request.tag);
+      await this.postRepository.createTag(set,post);
+    }
+  }
+
+  public async updatePost(request:UpdatePostRequest){
+    const post = await this.postRepository.updatePost(request);
+    if(post){  
+      const set = new Set(request.tag);
+      await this.postRepository.updateTag(set);
+    }
   }
 }
