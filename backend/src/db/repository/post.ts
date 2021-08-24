@@ -1,6 +1,6 @@
-import { EntityRepository, getRepository, Repository } from 'typeorm';
+import { EntityRepository, getConnection, getRepository, Repository } from 'typeorm';
 import connection from '..';
-import { PostDataRequest, TagRequest, UpdatePostRequest, updateTagRequest } from '../../interface';
+import { PostDataRequest, PostRequest, TagRequest, UpdatePostRequest, updateTagRequest } from '../../interface';
 
 import { Post, Tag } from '../entity';
 
@@ -28,6 +28,17 @@ export class PostRepository {
       console.log(e);
     }
   }
+  public async deleteByTag(
+    tagName:string
+  ) {
+    await getConnection()
+    .createQueryBuilder()
+    .delete()
+    .from(Tag)
+    .where("name = :name", { name: tagName })
+    .execute();
+  }
+  
   public async getAllPost(
     page:number,
     pageSize:number,
@@ -48,25 +59,35 @@ export class PostRepository {
 
 
   public async updatePost(
-    req:UpdatePostRequest
+    req:PostRequest
   ){
     const postRepository = (await connection).manager.getRepository(Post);
-    const post = await postRepository.findOne({
-      where:{uid:req.uid}
-    })
-    console.log(post);
+    const post = this.getOnePost(req.uid)
     return postRepository.save({
       ...post,
       ...req
     })
   }
+
+  public async getOnePost(
+    uid:string
+  ){
+    const postRepository = (await connection).manager.getRepository(Post);
+    const post = await postRepository.findOne({
+      where:{uid:uid},
+      relations:["tag"]
+    })
+    return post;
+  }
+
   public async createTag(
     tagName:string,
   ){
       const tag = new Tag();
       tag.name = tagName;
-
-      (await connection).manager.save(tag)
+      tag.count =1;
+      const tagRepository = (await connection).manager.getRepository(Tag);
+      tagRepository.save(tag)
   }
 
 
@@ -93,7 +114,7 @@ export class PostRepository {
     });
   }
 
-  public async getTag(
+  public async getOneTag(
     tagName:string
   ){
     const tagRepository = (await connection).manager.getRepository(Tag);

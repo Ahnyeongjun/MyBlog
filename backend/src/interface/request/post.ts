@@ -4,18 +4,23 @@ import { TagRequest, updateTagRequest } from './tag';
 export interface CreatePostRequest {
   content: string;
   title: string;
-  tag: Tag[];
+  tag: string[];
 }
 export interface DuplicatedTagRequest{
-  tag: TagRequest[];
+  tag: string[];
 }
 export interface UpdatePostRequest{
   uid:string;
   content?: string;
   title?: string;
+  tag?: string[];
+}
+export interface PostRequest{
+  uid:string;
+  content?: string;
+  title?: string;
   tag?: Tag[];
 }
-
 export interface PagenationPostRequest{
   page:number;
   pageSize:number;
