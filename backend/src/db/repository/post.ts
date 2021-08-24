@@ -11,13 +11,18 @@ export class PostRepository {
     createdAt: string,
     content: string,
     title: string,
+    tag:Tag[]
   ) {
     try {
-      const post = new Post();
+
+
+        const post = new Post();
+
       post.content = content;
       post.title = title;
       post.createdAt = createdAt;
       post.writer = writer;
+      post.tag = tag;
       //await getRepository(Post).createQueryBuilder().insert().into(Post).values({ writer, createdAt, content, title }).execute();
       await (await connection).manager.save(post);
 
@@ -59,40 +64,58 @@ export class PostRepository {
     })
   }
   public async createTag(
-    tag:Set<TagRequest>,
-    post:Post
+    tagName:string,
   ){
-    tag.forEach(async e => {
       const tag = new Tag();
-      tag.tagName = String(e);
-      tag.post = post;
-      console.log(tag);
+      tag.name = tagName;
+      tag.count = 1;
+
       (await connection).manager.save(tag)
-    });
   }
 
 
-  public async updateTag(
-    req:Set<updateTagRequest>,
-  ){
-    const tagRepository = (await connection).manager.getRepository(Tag);
-    req.forEach(async e => {
-      const tag = await tagRepository.findOne({
-        where:{uid:e.uid}
-      });
-      tagRepository.save({
-        ...tag,
-        ...req,
-      })
-    })
-  }
+  // public async updateTag(
+  //   req:Set<updateTagRequest>,
+  // ){
+  //   const tagRepository = (await connection).manager.getRepository(Tag);
+  //   req.forEach(async e => {
+  //     const tag = await tagRepository.findOne({
+  //       where:{uid:e.uid}
+  //     });
+  //     tagRepository.save({
+  //       ...tag,
+  //       ...req,
+  //     })
+  //   })
+  // }
   public async getAllTag(
-    uid:string
+    tagName:string
   ){
     const tagRepository = (await connection).manager.getRepository(Tag);
     return await tagRepository.findAndCount({
-      where:{post:uid}
+      where:{name:tagName}
     });
+  }
+
+  public async getTag(
+    tagName:string
+  ){
+    const tagRepository = (await connection).manager.getRepository(Tag);
+    return await tagRepository.findOne({
+      where:{name:tagName}
+    })
+  }
+  public async updateTag(
+    updateTag:updateTagRequest,
+  ){
+    const tagRepository = (await connection).manager.getRepository(Tag);
+    const tag = await tagRepository.findOne({
+      where:{name:updateTag.tagName}
+    })
+    tagRepository.save({
+      ...tag,
+      ...updateTag
+    })
   }
 }
 

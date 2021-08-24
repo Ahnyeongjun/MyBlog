@@ -4,7 +4,9 @@ import {
   PrimaryGeneratedColumn,
   Column,
   Index,
-  OneToMany
+  OneToMany,
+  ManyToMany,
+  JoinTable
 } from 'typeorm';
 import { Tag } from '.';
 @Entity()
@@ -25,6 +27,7 @@ export class Post {
   @Column()
   title!: string;
 
-  @OneToMany(type => Tag, tag => tag.post)
+  @ManyToMany(type => Tag)
+  @JoinTable()
   tag!: Tag[];
 }

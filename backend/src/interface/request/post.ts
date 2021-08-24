@@ -4,9 +4,11 @@ import { TagRequest, updateTagRequest } from './tag';
 export interface CreatePostRequest {
   content: string;
   title: string;
+  tag: Tag[];
+}
+export interface DuplicatedTagRequest{
   tag: TagRequest[];
 }
-
 export interface UpdatePostRequest{
   uid:string;
   content?: string;

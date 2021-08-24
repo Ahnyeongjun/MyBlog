@@ -3,5 +3,5 @@ export interface TagRequest {
 }
 export interface updateTagRequest{
   tagName:string,
-  uid:string,
+  count:number,
 }

@@ -7,7 +7,7 @@ import { PostController } from './post.controller';
 export const blog = (): Router => {
   const postController: PostController = new PostController();
 
-  router.post('/', postController.createPost);
+  router.post('/', postController.duplicatedByTag, postController.createPost);
   router.patch('/', postController.updatePost);
   router.get('/post',postController.getAllpost);
   router.get('/featured', async (ctx: any) => {
