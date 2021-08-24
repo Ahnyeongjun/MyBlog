@@ -57,16 +57,14 @@ export class PostController {
   public duplicatedByTag = async (ctx: Context, next: Next) => {
     try {
       const tagData:DuplicatedTagRequest = ctx.request.body; 
-      const set = new Set(tagData.tag)
-      set.forEach(async tag => {
+      const set = Array.from(new Set(tagData.tag))
+      
+      for(const tag  of set) {
         const originTag = await this.postService.duplicatedByTag(String(tag));
-        if(originTag){
-          await this.postService.updateTag({tagName:originTag.name,count:originTag.count + 1})
-        }
-        else {
+        if(!originTag){
           await this.postService.createTag(String(tag))
         }
-      });
+      };
       await next();
     } catch (error) {
       console.log(error);

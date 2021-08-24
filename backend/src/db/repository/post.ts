@@ -15,15 +15,12 @@ export class PostRepository {
   ) {
     try {
 
-
         const post = new Post();
-
       post.content = content;
       post.title = title;
       post.createdAt = createdAt;
       post.writer = writer;
       post.tag = tag;
-      //await getRepository(Post).createQueryBuilder().insert().into(Post).values({ writer, createdAt, content, title }).execute();
       await (await connection).manager.save(post);
 
       return post;
@@ -68,7 +65,6 @@ export class PostRepository {
   ){
       const tag = new Tag();
       tag.name = tagName;
-      tag.count = 1;
 
       (await connection).manager.save(tag)
   }

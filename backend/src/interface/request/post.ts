@@ -13,7 +13,7 @@ export interface UpdatePostRequest{
   uid:string;
   content?: string;
   title?: string;
-  tag?: updateTagRequest[];
+  tag?: Tag[];
 }
 
 export interface PagenationPostRequest{

@@ -8,7 +8,7 @@ export const blog = (): Router => {
   const postController: PostController = new PostController();
 
   router.post('/', postController.duplicatedByTag, postController.createPost);
-  router.patch('/', postController.updatePost);
+  router.patch('/',postController.duplicatedByTag, postController.updatePost);
   router.get('/post',postController.getAllpost);
   router.get('/featured', async (ctx: any) => {
     ctx.body = 'blog';

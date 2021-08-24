@@ -18,14 +18,25 @@ export class PostServie {
   }
 
   public async createPost(request: CreatePostRequest, writer: string) {
-    const set = await Array.from(new Set(request.tag))
  
-    const customTag = await this.customTag(set)
-
+    const customTag = await this.getAllTag(request.tag)
+    console.log(customTag)
     await this.postRepository.createPost(writer, await this.createAt(), request.content, request.title, customTag);
   }
 
-  public async customTag(set:Tag[]){
+  public async updatePost(request:UpdatePostRequest){
+    if(request.tag){    
+      request.tag = await this.getAllTag(request.tag)
+    }
+    console.log(request.tag);
+    await this.postRepository.updatePost(request);
+   
+  }
+
+
+  public async getAllTag(tag:Tag[]){
+    const set = await Array.from(new Set(tag))
+
     const saveTag:Tag[] = await[];
     for(let e of set){
       const tag = await this.postRepository.getTag(String(e));
@@ -35,14 +46,7 @@ export class PostServie {
     return saveTag
   }
 
-  public async updatePost(request:UpdatePostRequest){
-    const post = await this.postRepository.updatePost(request);
-    if(post){  
-      const set = new Set(request.tag);
-      // await this.postRepository.updateTag(set);
-    }
-  }
-
+ 
   public async getAllPost(page:number,pageSize:number){
    
    return this.postRepository.getAllPost(page,pageSize);
