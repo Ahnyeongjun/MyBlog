@@ -9,12 +9,8 @@ export const blog = (): Router => {
 
   router.post('/', postController.createPost);
   router.patch('/', postController.updatePost);
-
+  router.get('/post',postController.getAllpost);
   router.get('/featured', async (ctx: any) => {
-    ctx.body = 'blog';
-  });
-
-  router.get('/post', async (ctx: any) => {
     ctx.body = 'blog';
   });
   router.get('/post/:id', async (ctx: any) => {

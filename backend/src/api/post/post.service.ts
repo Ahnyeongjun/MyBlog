@@ -1,5 +1,6 @@
+import { writer } from 'repl';
 import { PostRepository } from '../../db/repository';
-import { CreatePostRequest, CreateUserRequest, UpdatePostRequest } from '../../interface';
+import { CreatePostRequest, CreateUserRequest, PostDataRequest, UpdatePostRequest } from '../../interface';
 
 export class PostServie {
   constructor(private readonly postRepository: PostRepository) {}
@@ -30,5 +31,11 @@ export class PostServie {
       const set = new Set(request.tag);
       await this.postRepository.updateTag(set);
     }
+  }
+
+  public async getAllPost(page:number,pageSize:number){
+   const post =  await this.postRepository.getAllPost(page,pageSize);
+   
+   return post;
   }
 }

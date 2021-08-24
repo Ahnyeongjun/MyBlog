@@ -1,6 +1,6 @@
 import { EntityRepository, getRepository, Repository } from 'typeorm';
 import connection from '..';
-import { TagRequest, UpdatePostRequest, updateTagRequest } from '../../interface';
+import { PostDataRequest, TagRequest, UpdatePostRequest, updateTagRequest } from '../../interface';
 
 import { Post, Tag } from '../entity';
 
@@ -26,19 +26,24 @@ export class PostRepository {
       console.log(e);
     }
   }
-
-  public async createTag(
-    tag:Set<TagRequest>,
-    post:Post
+  public async getAllPost(
+    page:number,
+    pageSize:number,
   ){
-    tag.forEach(async e => {
-      const tag = new Tag();
-      tag.tagName = String(e);
-      tag.post = post;
-      console.log(tag);
-      (await connection).manager.save(tag)
-    });
+    const postRepository = (await connection).manager.getRepository(Post);
+    const [result,total] =  await postRepository.findAndCount(
+      {
+        take:pageSize,
+        skip: (page-1)*pageSize,
+        relations:["tag"]
+      }
+    )
+    return{
+      data: result,
+      total:total,
+    }
   }
+
 
   public async updatePost(
     req:UpdatePostRequest
@@ -53,6 +58,19 @@ export class PostRepository {
       ...req
     })
   }
+  public async createTag(
+    tag:Set<TagRequest>,
+    post:Post
+  ){
+    tag.forEach(async e => {
+      const tag = new Tag();
+      tag.tagName = String(e);
+      tag.post = post;
+      console.log(tag);
+      (await connection).manager.save(tag)
+    });
+  }
+
 
   public async updateTag(
     req:Set<updateTagRequest>,
@@ -68,4 +86,13 @@ export class PostRepository {
       })
     })
   }
+  public async getAllTag(
+    uid:string
+  ){
+    const tagRepository = (await connection).manager.getRepository(Tag);
+    return await tagRepository.findAndCount({
+      where:{post:uid}
+    });
+  }
 }
+

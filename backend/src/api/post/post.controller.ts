@@ -2,7 +2,7 @@ import { PostServie } from './post.service';
 import { PostRepository } from '../../db/repository';
 import { Context, Next } from 'koa';
 
-import { CreatePostRequest, Payload, UpdatePostRequest } from '../../interface';
+import { CreatePostRequest, PagenationPostRequest, Payload, UpdatePostRequest } from '../../interface';
 import { decodedToken } from '../../lib';
 
 export class PostController {
@@ -36,6 +36,20 @@ export class PostController {
         ctx.status = 201;
       }
       else  ctx.status = 400;
+    } catch (error) {
+      console.log(error);
+      ctx.status = 400;
+    }
+  };
+  public getAllpost = async (ctx: Context) => {
+    try {
+      let {page,pageSize} = ctx.query;
+      const numPage = Number(page)||1
+      const numPageSize = Number(pageSize)||6
+      console.log(numPageSize)
+       ctx.body = await this.authService.getAllPost(numPage,numPageSize);        
+       ctx.status = 201;
+      
     } catch (error) {
       console.log(error);
       ctx.status = 400;
