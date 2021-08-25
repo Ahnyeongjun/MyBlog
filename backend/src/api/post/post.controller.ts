@@ -59,11 +59,12 @@ export class PostController {
     try {
       const tagData:DuplicatedTagRequest = ctx.request.body; 
       const set = Array.from(new Set(tagData.tag))
-      
+      console.log(set);
       for(const tag  of set) {
         const originTag = await this.postService.getOneByTag(tag);
         await this.postService.ifCreateChoiceDuplicatedByTag(tag,originTag);
       };
+      console.log("s" + await this.postService.getAllTag(set))
       await next();
     } catch (error) {
       console.log(error);
@@ -98,7 +99,9 @@ export class PostController {
           const addTag = setFinal.filter(x=>!tagName?.includes(x))
   
           for(const tag of addTag){
-            await this.postService.createTag(tag)
+            const newTag = await this.postService.getOneByTag(tag)
+            if(newTag)await this.postService.updateTag({tagName:tag,count:newTag.count+1 })
+            else await this.postService.createTag(tag)
           }
         }
     

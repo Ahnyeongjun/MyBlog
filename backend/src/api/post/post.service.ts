@@ -32,6 +32,7 @@ export class PostServie {
         title: request.title,
         tag: tag2, 
       }
+      console.log(res);
       await this.postRepository.updatePost(res);
 
     }    
@@ -56,10 +57,13 @@ export class PostServie {
 
     const saveTag:Tag[] = await[];
     for(let e of set){
-      const tag = await this.postRepository.getOneTag(String(e));
+
+      const tag = await this.postRepository.getOneTag(e);
+
       if(tag)
       saveTag.push(tag);
     }
+    console.log(saveTag)
     return saveTag
   }
 
@@ -87,14 +91,13 @@ export class PostServie {
       await this.updateTag({tagName: tag.name,count:tag.count + 1})
     }
     else {
-
-      await this.createTag(tagName)
+      await this.createTag(tagName).then(() => console.log("Created"))
     }
   }
+
   public minusCountTag = async(tagName:string) => {
     const tag = await this.getOneByTag(tagName);
     if(tag){
-    console.log(tag.name); 
     if(tag.count <= 1){
       await this.deleteByTag(tag.name)
     }
