@@ -105,16 +105,14 @@ export class PostRepository {
   //     })
   //   })
   // }
-  public async getAllTag(
-    tagName:string
+  public async selectAllByTag(
   ){
     const tagRepository = (await connection).manager.getRepository(Tag);
-    return await tagRepository.findAndCount({
-      where:{name:tagName}
+    return await tagRepository.find({
     });
   }
 
-  public async getOneTag(
+  public async selectNameAllByTag(
     tagName:string
   ){
     const tagRepository = (await connection).manager.getRepository(Tag);

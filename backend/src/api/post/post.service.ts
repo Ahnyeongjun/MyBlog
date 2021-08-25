@@ -19,8 +19,12 @@ export class PostServie {
 
   public async createPost(request: CreatePostRequest, writer: string) {
  
-    const customTag = await this.getAllTag(request.tag)
+    const customTag = await this.selectNameByMultiTag(request.tag)
     await this.postRepository.createPost(writer, await this.createAt(), request.content, request.title, customTag);
+  }
+
+  public async getAllTag(){
+    return await this.postRepository.selectAllByTag();
   }
 
   public async updatePost(request:PostRequest){
@@ -51,14 +55,14 @@ export class PostServie {
 
 
 
-  public async getAllTag(tag:string[]){
+  public async selectNameByMultiTag(tag:string[]){
     const set = await Array.from(new Set(tag))
 
     const saveTag:Tag[] = await[];
     console.log(set);
     for(let e of set){
 
-      const tag = await this.postRepository.getOneTag(e);
+      const tag = await this.postRepository.selectNameAllByTag(e);
 
       if(tag)
       saveTag.push(tag);
@@ -75,7 +79,7 @@ export class PostServie {
   }
 
   public async getOneByTag(tagName:string){
-    return this.postRepository.getOneTag(tagName);
+    return this.postRepository.selectNameAllByTag(tagName);
   }
   
   public async createTag(tagName:string){

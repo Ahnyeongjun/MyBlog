@@ -10,7 +10,7 @@ export const blog = (): Router => {
   router.post('/', postController.ifCreateDuplicatedByTag, postController.createPost);
   router.patch('/', postController.ifUpdateCountTag,  postController.updatePost);
   router.get('/post',postController.getAllpost);
-  // router.get('/tag',postController.getAllTag);
+  router.get('/tag',postController.getAllTag);
   
   router.get('/featured', async (ctx: any) => {
     ctx.body = 'blog';

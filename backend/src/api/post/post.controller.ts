@@ -25,7 +25,7 @@ export class PostController {
       ctx.status = 400;
     }
   };
- 
+  
   public updatePost = async (ctx: Context) => {
     try {
       const token: string = ctx.get('Authorization');
@@ -56,6 +56,18 @@ export class PostController {
       ctx.status = 400;
     }
   };
+
+  public getAllTag = async (ctx:Context) => {
+    try{
+      ctx.body = await this.postService.getAllTag();
+      ctx.status = 201;
+    }    
+    catch(e){
+      console.log(e);
+      ctx.status =400;
+    }
+  }
+
 
   public ifCreateDuplicatedByTag = async (ctx: Context, next: Next) => {
     try {
@@ -98,6 +110,7 @@ export class PostController {
           const duplicatedTag = setFinal.filter(x=>tagName?.includes(x))
 
           const arrayTag:Tag[] = [];
+
           for(const tag of addTag){
             const newTag = await this.postService.getOneByTag(tag)
             if(newTag)
