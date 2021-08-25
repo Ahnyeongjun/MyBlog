@@ -1,7 +1,7 @@
 export interface TagRequest {
-  tagName: string;
+  name: string;
 }
 export interface updateTagRequest{
-  tagName:string,
+  name:string,
   count:number,
 }

@@ -23,14 +23,13 @@ export class PostServie {
     await this.postRepository.createPost(writer, await this.createAt(), request.content, request.title, customTag);
   }
 
-  public async updatePost(request:UpdatePostRequest){
+  public async updatePost(request:PostRequest){
     if(request.tag){    
-      const tag2 = await this.getAllTag(request.tag) 
       const res:PostRequest = {
         uid: request.uid,
         content: request.content,
         title: request.title,
-        tag: tag2, 
+        tag: request.tag, 
       }
       console.log(res);
       await this.postRepository.updatePost(res);
@@ -56,6 +55,7 @@ export class PostServie {
     const set = await Array.from(new Set(tag))
 
     const saveTag:Tag[] = await[];
+    console.log(set);
     for(let e of set){
 
       const tag = await this.postRepository.getOneTag(e);
@@ -88,7 +88,7 @@ export class PostServie {
 
   public async ifCreateChoiceDuplicatedByTag(tagName:string,tag?:Tag, ){
     if(tag){
-      await this.updateTag({tagName: tag.name,count:tag.count + 1})
+      await this.updateTag({name: tag.name,count:tag.count + 1})
     }
     else {
       await this.createTag(tagName).then(() => console.log("Created"))
@@ -102,7 +102,7 @@ export class PostServie {
       await this.deleteByTag(tag.name)
     }
     else {
-      await this.updateTag({tagName: tag.name,count:tag.count - 1})
+      await this.updateTag({name: tag.name,count:tag.count - 1})
     }
     }
  

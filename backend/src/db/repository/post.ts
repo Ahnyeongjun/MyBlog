@@ -87,7 +87,7 @@ export class PostRepository {
       tag.name = tagName;
       tag.count =1;
       const tagRepository = (await connection).manager.getRepository(Tag);
-      tagRepository.save(tag)
+      return await tagRepository.save(tag)
   }
 
 
@@ -127,9 +127,9 @@ export class PostRepository {
   ){
     const tagRepository = (await connection).manager.getRepository(Tag);
     const tag = await tagRepository.findOne({
-      where:{name:updateTag.tagName}
+      where:{name:updateTag.name}
     })
-    tagRepository.save({
+    return await tagRepository.save({
       ...tag,
       ...updateTag
     })

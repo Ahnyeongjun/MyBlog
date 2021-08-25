@@ -2,7 +2,7 @@ import { PostServie } from './post.service';
 import { PostRepository } from '../../db/repository';
 import { Context, Next } from 'koa';
 
-import { CreatePostRequest, DuplicatedTagRequest, PagenationPostRequest, Payload, UpdatePostRequest } from '../../interface';
+import { CreatePostRequest, DuplicatedTagRequest, PagenationPostRequest, Payload, PostRequest, UpdatePostRequest } from '../../interface';
 import { decodedToken } from '../../lib';
 import { Tag } from '../../db/entity';
 
@@ -29,7 +29,9 @@ export class PostController {
   public updatePost = async (ctx: Context) => {
     try {
       const token: string = ctx.get('Authorization');
-      const userData: UpdatePostRequest = ctx.request.body;
+      const userData: PostRequest = ctx.request.body;
+      console.log(ctx.request.body)
+    
       const decoded = await decodedToken(token);
       if(decoded){
         await this.postService.updatePost(userData);        
@@ -59,12 +61,10 @@ export class PostController {
     try {
       const tagData:DuplicatedTagRequest = ctx.request.body; 
       const set = Array.from(new Set(tagData.tag))
-      console.log(set);
       for(const tag  of set) {
         const originTag = await this.postService.getOneByTag(tag);
         await this.postService.ifCreateChoiceDuplicatedByTag(tag,originTag);
       };
-      console.log("s" + await this.postService.getAllTag(set))
       await next();
     } catch (error) {
       console.log(error);
@@ -81,13 +81,11 @@ export class PostController {
         const promise = await post?.tag.map(e=>e.name);
         if(promise){
           const tagName = await Promise.all(promise);
-          console.log(tagName);
-          console.log(set);
+     
           if(post?.tag != null){
    
             const deadTag = tagName.filter(x=> !set.includes(x))
             
-          console.log(deadTag)
           if(deadTag&&deadTag.length !== 0)  {
             console.log("실행");
              for(const e of deadTag){
@@ -97,16 +95,22 @@ export class PostController {
           const setPromise = await set.map(e=>e)
           const setFinal = await Promise.all(setPromise)
           const addTag = setFinal.filter(x=>!tagName?.includes(x))
-  
+          const duplicatedTag = setFinal.filter(x=>tagName?.includes(x))
+
+          const arrayTag:Tag[] = [];
           for(const tag of addTag){
             const newTag = await this.postService.getOneByTag(tag)
-            if(newTag)await this.postService.updateTag({tagName:tag,count:newTag.count+1 })
-            else await this.postService.createTag(tag)
+            if(newTag)
+            arrayTag.push(await this.postService.updateTag({name:tag,count:newTag.count+1 }))
+            else arrayTag.push(await this.postService.createTag(tag))
           }
+          for(const tag of duplicatedTag){
+            const newtag = await this.postService.getOneByTag(tag)
+            if(newtag)arrayTag.push(newtag);
+          }
+          ctx.request.body.tag = arrayTag;
         }
-    
       }
-      
       await next();
     } catch (error) {
       console.log(error);
