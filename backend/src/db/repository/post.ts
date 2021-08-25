@@ -11,6 +11,7 @@ export class PostRepository {
     createdAt: string,
     content: string,
     title: string,
+    searchUrl:string,
     tag:Tag[]
   ) {
     try {
@@ -21,12 +22,36 @@ export class PostRepository {
       post.createdAt = createdAt;
       post.writer = writer;
       post.tag = tag;
+      post.searchUrl= searchUrl;
       await (await connection).manager.save(post);
 
       return post;
     } catch (e) {
       console.log(e);
     }
+  }
+  public async selectTagByAllPost(tag:Tag){
+    const postRepository = (await connection).manager.getRepository(Post);
+
+    const a = await postRepository.find({
+      where: {tag:tag.name}
+    })
+    console.log(a);
+    return a;
+  }
+  public async selectSearchUrlByPost(searchUrl:string){
+    const postRepository = (await connection).manager.getRepository(Post);
+
+    return await postRepository.findOne({
+      where: {searchUrl:searchUrl}
+    })
+  }
+  public async selectTitleByOneTag(title:string){
+    const postRepository = (await connection).manager.getRepository(Post);
+
+    return await postRepository.findOne({
+      where: {title:title}
+    })
   }
   public async deleteByTag(
     tagName:string
@@ -73,11 +98,10 @@ export class PostRepository {
     uid:string
   ){
     const postRepository = (await connection).manager.getRepository(Post);
-    const post = await postRepository.findOne({
+    return  await postRepository.findOne({
       where:{uid:uid},
       relations:["tag"]
     })
-    return post;
   }
 
   public async createTag(

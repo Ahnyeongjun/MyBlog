@@ -5,8 +5,8 @@ import {
   Column,
   Index,
   OneToMany,
-  ManyToMany,
-  JoinTable
+  JoinTable,
+  ManyToMany
 } from 'typeorm';
 import { Tag } from '.';
 @Entity()
@@ -26,8 +26,11 @@ export class Post {
 
   @Column()
   title!: string;
+  
+  @Column()
+  searchUrl!:string;
 
-  @ManyToMany(type => Tag)
+  @ManyToMany(type=>Tag)
   @JoinTable()
   tag!: Tag[];
 }

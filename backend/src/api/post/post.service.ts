@@ -2,7 +2,7 @@ import { writer } from 'repl';
 import { Tag } from '../../db/entity';
 import { PostRepository } from '../../db/repository';
 import { CreatePostRequest, CreateUserRequest, PostDataRequest, PostRequest, UpdatePostRequest, updateTagRequest } from '../../interface';
-
+import { v1, V1Options, v4, V4Options } from "uuid";
 export class PostServie {
   constructor(private readonly postRepository: PostRepository) {}
 
@@ -19,36 +19,40 @@ export class PostServie {
 
   public async createPost(request: CreatePostRequest, writer: string) {
  
-    const customTag = await this.selectNameByMultiTag(request.tag)
-    await this.postRepository.createPost(writer, await this.createAt(), request.content, request.title, customTag);
+    const customTag = await this.selectNameByMultiTag(request.tag);
+    const searchName = await this.selectTitleByOneTag(request.title);
+    let searchUrl = "";
+    if(searchName)  searchUrl = request.title +"-"+ v4().substring(0,8);
+    else  searchUrl = request.title;
+    await this.postRepository.createPost(writer, await this.createAt(), request.content, request.title, searchUrl,customTag);
   }
+  
+
 
   public async getAllTag(){
     return await this.postRepository.selectAllByTag();
   }
 
+  public async selectTitleByOneTag(title:string){
+    return await this.postRepository.selectTitleByOneTag(title);
+  }
+
   public async updatePost(request:PostRequest){
-    if(request.tag){    
+      let searchUrl =undefined;
+      if(request.title){
+        const searchName = await this.selectTitleByOneTag(request.title);
+        if(searchName)  searchUrl = request.title +"-"+ v4().substring(0,8);
+        else  searchUrl = request.title;
+      }    
       const res:PostRequest = {
         uid: request.uid,
         content: request.content,
         title: request.title,
         tag: request.tag, 
+        searchUrl: searchUrl,
       }
       console.log(res);
       await this.postRepository.updatePost(res);
-
-    }    
-    else{
-    const res:PostRequest = {
-      uid: request.uid,
-      content: request.content,
-      title: request.title,
-      tag: [], 
-    }
-
-    await this.postRepository.updatePost(res);
-  }
 
   }
     
@@ -118,4 +122,13 @@ export class PostServie {
   public async deleteByTag(tagName:string){
     this.postRepository.deleteByTag(tagName);
   }
+  public async getTagByAllPost(tagName:string){
+    const tag = await this.postRepository.selectNameAllByTag(tagName);
+    console.log(tag);
+    if(tag) return await this.postRepository.selectTagByAllPost(tag);
+  }
+  public async selectSearchUrlByPost(searchUrl:string){
+    return await this.postRepository.selectSearchUrlByPost(searchUrl)
+  }
+
 }

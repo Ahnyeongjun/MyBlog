@@ -43,7 +43,7 @@ export class PostController {
       ctx.status = 400;
     }
   };
-  public getAllpost = async (ctx: Context) => {
+  public getAllPost = async (ctx: Context) => {
     try {
       let {page,pageSize} = ctx.query;
       const numPage = Number(page)||1
@@ -68,6 +68,17 @@ export class PostController {
     }
   }
 
+  public getOnePost = async(ctx:Context) => {
+      const searchUrl = ctx.params.id;
+      const post = await this.postService.selectSearchUrlByPost(searchUrl);
+      if(post) {
+        ctx.body = post;
+        ctx.status = 200;
+      } 
+      else{
+        ctx.status = 400;
+      }
+    }
 
   public ifCreateDuplicatedByTag = async (ctx: Context, next: Next) => {
     try {
@@ -89,7 +100,7 @@ export class PostController {
       const set = Array.from(new Set(data.tag))
       
       if(set){
-        const post = await this.postRepository.getOnePost(data.uid)
+        const post = await this.postService.getOnePost(data.uid)
         const promise = await post?.tag.map(e=>e.name);
         if(promise){
           const tagName = await Promise.all(promise);
@@ -130,5 +141,16 @@ export class PostController {
       ctx.status = 400;
     }
   };
- 
+  public getTagByAllPost = async (ctx:Context) =>{
+    const tag:string = ctx.params.id;
+    console.log(tag)
+    const post = await this.postService.getTagByAllPost(tag);
+    if(post) {
+      ctx.body = post;
+      ctx.status = 200;
+    } 
+    else{
+      ctx.status = 400;
+    }
+  }
 }

@@ -20,6 +20,7 @@ export interface PostRequest{
   content?: string;
   title?: string;
   tag?: Tag[];
+  searchUrl?:string;
 }
 export interface PagenationPostRequest{
   page:number;
