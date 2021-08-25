@@ -30,14 +30,14 @@ export class PostRepository {
       console.log(e);
     }
   }
-  public async selectTagByAllPost(tag:Tag){
+  public async selectTagByAllPost(tagName:string){
     const postRepository = (await connection).manager.getRepository(Post);
 
-    const a = await postRepository.find({
-      where: {tag:tag.name}
-    })
-    console.log(a);
-    return a;
+    return postRepository
+      .createQueryBuilder('post')
+      .leftJoinAndSelect('post.tag', 'tag')
+      .where("tag.name = :name", { name: tagName })
+      .getMany();
   }
   public async selectSearchUrlByPost(searchUrl:string){
     const postRepository = (await connection).manager.getRepository(Post);

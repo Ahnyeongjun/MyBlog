@@ -123,9 +123,9 @@ export class PostServie {
     this.postRepository.deleteByTag(tagName);
   }
   public async getTagByAllPost(tagName:string){
-    const tag = await this.postRepository.selectNameAllByTag(tagName);
-    console.log(tag);
-    if(tag) return await this.postRepository.selectTagByAllPost(tag);
+  
+    return await this.postRepository.selectTagByAllPost(tagName);
+    
   }
   public async selectSearchUrlByPost(searchUrl:string){
     return await this.postRepository.selectSearchUrlByPost(searchUrl)
