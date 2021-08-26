@@ -19,6 +19,26 @@ export class AuthController {
       ctx.status = 400;
     }
   };
+  
+  public first_createUser = async (ctx: Context) => {
+    try {
+      const name  = process.env.name;
+      const password = process.env.passowrd;
+      const id = process.env.id;
+      
+      if(name&&password&&id){
+        const userData: CreateUserRequest = {name:name,password: password,id:id,}
+        await this.authService.createUser(userData);
+        ctx.status = 201;
+      }
+      else{
+        ctx.status = 400;
+      }
+    } catch (error) {
+      console.log(error);
+      ctx.status = 400;
+    }
+  };
   public duplicatedById = async (ctx: Context, next: Next) => {
     const userData: CreateUserRequest = ctx.request.body;
     const user = await this.authService.findOneById(userData.id);
