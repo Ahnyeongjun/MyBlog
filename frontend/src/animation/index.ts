@@ -1,4 +1,4 @@
-import { keyframes } from "styled-components";
+import { keyframes } from 'styled-components';
 
 export const BoxShaodw = keyframes`
     0% {
@@ -37,6 +37,20 @@ export const Bounse = keyframes`
   }
   50% {
     transform: translate3d(0px, -4px, 0);
+  }
+  100% {
+    transform: translate3d(0px, 0px, 0);
+  }
+`;
+export const RedBounse = keyframes`
+  0% {
+    transform: translate3d(0px, 0px, 0);
+    color:red;
+  }
+  50% {
+    transform: translate3d(0px, -4px, 0);
+    color:red;
+
   }
   100% {
     transform: translate3d(0px, 0px, 0);

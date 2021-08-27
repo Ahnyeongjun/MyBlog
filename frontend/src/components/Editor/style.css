@@ -1,0 +1,20 @@
+.ql-editor strong {
+    font-weight: bold;
+}
+.ql-editor underline {
+    border-bottom: solid black 1px;
+}
+.ql-editor em {
+    font-style: italic;
+}
+
+.ql-editor .ql-font-serif {
+    font-family: Georgia, Times New Roman, serif !important;
+}
+.ql-editor .ql-font-monospace {
+    font-family: Monaco, Courier New, monospace !important;
+}
+
+.white {
+    color: white;
+}

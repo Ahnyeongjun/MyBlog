@@ -5,14 +5,14 @@ import { AuthController } from './auth.controller';
 const router: Router = new Router();
 
 export const auth = (): Router => {
-  const authController: AuthController = new AuthController();
+    const authController: AuthController = new AuthController();
 
-  // router.post('/register', authController.duplicatedById, authController.createUser);
-  router.post('/first_register', authController.duplicatedById, authController.first_createUser);
-  router.post('/login', authController.login);
-  router.get('/check', authController.check);
-  router.get('/test', async (ctx: any) => {
-    ctx.body = 'test';
-  });
-  return router;
+    // router.post('/register', authController.duplicatedById, authController.createUser);
+    router.post('/first_register', authController.duplicatedById, authController.first_createUser);
+    router.post('/login', authController.login);
+    router.get('/check', authController.check);
+    router.get('/test', async (ctx: any) => {
+        ctx.body = 'test';
+    });
+    return router;
 };

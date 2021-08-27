@@ -1,26 +1,23 @@
-import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { StoreType } from "src/module/store";
-import { ThemeActionType, ThemeSliceInitialStateType } from "./themeType";
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { StoreType } from 'src/module/store';
+import { ThemeActionType, ThemeSliceInitialStateType } from './themeType';
 
 const initialState: ThemeSliceInitialStateType = {
-  themeData: "white",
+    themeData: 'white',
 };
-const sliceName = "theme";
+const sliceName = 'theme';
 
 const reducers = {
-  toggleTheme: (
-    state = initialState,
-    action: PayloadAction<ThemeActionType>
-  ) => {
-    state.themeData = action.payload.themeType;
-    localStorage.setItem("theme", action.payload.themeType);
-  },
+    toggleTheme: (state = initialState, action: PayloadAction<ThemeActionType>) => {
+        state.themeData = action.payload.themeType;
+        localStorage.setItem('theme', action.payload.themeType);
+    },
 };
 
 const themeSlice = createSlice({
-  name: sliceName,
-  initialState,
-  reducers,
+    name: sliceName,
+    initialState,
+    reducers,
 });
 
 const { actions, reducer } = themeSlice;
