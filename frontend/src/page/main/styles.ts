@@ -1,5 +1,4 @@
 import styled, { keyframes } from 'styled-components';
-import { ShakePostIt } from './animation';
 import { Route, Link } from 'react-router-dom';
 export const Main = styled.div`
     display: grid;

@@ -1,11 +1,5 @@
-import styled, { createGlobalStyle } from "styled-components";
-import {
-  NotoSansKRFont_Regular,
-  NotoSansKRFont_Thin,
-  SecularOneFont,
-  NotoSans,
-  NotoSans_Bold,
-} from "./fonts";
+import styled, { createGlobalStyle } from 'styled-components';
+import { NotoSansKRFont_Regular, NotoSansKRFont_Thin, SecularOneFont, NotoSans, NotoSans_Bold } from './fonts';
 export const GlobalStyle = createGlobalStyle`
 @font-face {
         font-family: NotoSansKR_Thin;
@@ -22,6 +16,7 @@ export const GlobalStyle = createGlobalStyle`
         font-family: NotoSans_Bold;
         src:url(${NotoSans_Bold})
     }
+    
       * {
     font-family:NotoSansKR !important;
     }
