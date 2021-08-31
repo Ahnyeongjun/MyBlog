@@ -1,12 +1,12 @@
 import React, { useMemo, useState } from 'react';
-import { editorState, getPost } from '../../../features/editor/editorSlice';
+import { editorState, getPagenationPost } from '../../../features/editor/editorSlice';
 import { useAppDispatch, useTypedSelector } from '../../../module/store';
 import * as S from '../styles';
 const Series = () => {
     const dispatch = useAppDispatch();
 
     useMemo(() => {
-        dispatch(getPost({ page: 1, pageSize: 3 }));
+        dispatch(getPagenationPost({ page: 1, pageSize: 3, type: 'main' }));
     }, []);
 
     const { postData } = useTypedSelector(editorState);

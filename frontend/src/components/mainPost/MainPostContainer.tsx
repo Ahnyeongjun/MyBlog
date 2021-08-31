@@ -10,7 +10,6 @@ const MainPostContainer = (props: any) => {
     const upadateProject = () => {
         setIsPost(false);
     };
-
     return (
         <>
             {props.check ? (
@@ -23,7 +22,7 @@ const MainPostContainer = (props: any) => {
                             Series
                         </S.PageFont>
                     </S.PageNationWrapper>
-                    {isPost ? <Post /> : <Series />}
+                    {isPost ? <Post check={true} scrollPosition={props.scrollPosition} /> : <Series />}
                 </S.MainPostWrapper>
             ) : (
                 <S.MainPostWrapper>
@@ -35,7 +34,7 @@ const MainPostContainer = (props: any) => {
                             Series
                         </S.PageFont>
                     </S.PageNationWrapper>
-                    {isPost ? <Post /> : <Series />}
+                    {isPost ? <Post check={false} scrollPosition={props.scrollPosition} /> : <Series />}
                 </S.MainPostWrapper>
             )}
         </>

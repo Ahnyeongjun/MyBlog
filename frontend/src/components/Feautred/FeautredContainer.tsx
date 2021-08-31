@@ -7,7 +7,7 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import { Virtual } from 'swiper';
 import SwiperCore, { Pagination, Navigation } from 'swiper/core';
 import { useDispatch } from 'react-redux';
-import { editorState, getPost } from '../../features/editor/editorSlice';
+import { editorState, getPagenationFeautredPost, getPagenationPost } from '../../features/editor/editorSlice';
 import { useTypedSelector } from '../../module/store';
 import 'swiper/swiper.scss';
 
@@ -28,22 +28,24 @@ const FeautredContainer = (props) => {
     const dispatch = useDispatch();
 
     useMemo(() => {
-        dispatch(getPost({ page: 1, pageSize: 9 }));
-        console.log('Sss');
+        dispatch(getPagenationFeautredPost({ page: 1, pageSize: 9, type: 'Feautred' }));
     }, []);
 
-    const { postData } = useTypedSelector(editorState);
+    const { FeautredPostData } = useTypedSelector(editorState);
 
     const slider = [];
     const darkSlider = [];
-    for (let i = 0; i < postData.length; i += 1) {
+    const onClick = (searchUrl: string) => {
+        location.href = `/post/${searchUrl}`;
+    };
+    for (let i = 0; i < FeautredPostData.length; i += 1) {
         slider.push(
-            <SwiperSlide key={`slide-${i}`}>
+            <SwiperSlide key={`slide-${FeautredPostData[i].uid}`} onClick={() => onClick(FeautredPostData[i].searchUrl)}>
                 <S.FeaturedItemWrapper>
                     <S.FeautredImg src="https://cdn.pixabay.com/photo/2021/08/10/09/41/lesser-sand-plover-6535531_960_720.jpg" />
                     <S.FeautredContentWrapper>
-                        <S.FeautredTitle>{postData[i].title}</S.FeautredTitle>
-                        <S.FeautredContent>{postData[i].text}</S.FeautredContent>
+                        <S.FeautredTitle>{FeautredPostData[i].title}</S.FeautredTitle>
+                        <S.FeautredContent>{FeautredPostData[i].text}</S.FeautredContent>
                     </S.FeautredContentWrapper>
                 </S.FeaturedItemWrapper>
             </SwiperSlide>
@@ -53,8 +55,8 @@ const FeautredContainer = (props) => {
                 <S.FeaturedItemWrapper className="check">
                     <S.FeautredImg src="https://cdn.pixabay.com/photo/2021/08/10/09/41/lesser-sand-plover-6535531_960_720.jpg" />
                     <S.FeautredContentWrapper>
-                        <S.FeautredTitle>{postData[i].title}</S.FeautredTitle>
-                        <S.FeautredContent>{postData[i].text}</S.FeautredContent>
+                        <S.FeautredTitle>{FeautredPostData[i].title}</S.FeautredTitle>
+                        <S.FeautredContent>{FeautredPostData[i].text}</S.FeautredContent>
                     </S.FeautredContentWrapper>
                 </S.FeaturedItemWrapper>
             </SwiperSlide>
@@ -77,8 +79,6 @@ const FeautredContainer = (props) => {
                         </S.PageNationWrapper>
 
                         <S.PageNationBtnWrapper>
-                            <S.PageNationBtn className="check">{'<'}</S.PageNationBtn>
-                            <S.PageNationBtn className="check">{'>'}</S.PageNationBtn>
                             {isExpend == true ? (
                                 <S.PageNationBtn onClick={updateIsExpend}>{'-'}</S.PageNationBtn>
                             ) : (
@@ -140,8 +140,6 @@ const FeautredContainer = (props) => {
                         </S.PageNationWrapper>
 
                         <S.PageNationBtnWrapper>
-                            <S.PageNationBtn> {'<'} </S.PageNationBtn>
-                            <S.PageNationBtn>{'>'}</S.PageNationBtn>
                             {isExpend == true ? (
                                 <S.PageNationBtn onClick={updateIsExpend}>{'-'}</S.PageNationBtn>
                             ) : (

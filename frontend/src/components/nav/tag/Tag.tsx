@@ -1,16 +1,40 @@
-import { TagType } from "components/type/Tag";
-import React, { useCallback, useRef, useState } from "react";
-import * as S from "./styles";
+import { TagType } from 'components/type/Tag';
+import React, { useCallback, useMemo, useRef, useState } from 'react';
+import { getTag, tagDateState } from '../../../features/tag/tagSlice';
+import { useAppDispatch, useTypedSelector } from '../../../module/store';
+import * as S from './styles';
 const Tag = (props: any) => {
-  return (
-    <S.TagWrapper>
-      <S.TagItemWrapper>
-        <S.TagItem className="check">
-          {props.tagName} ({props.tagCount} )
-        </S.TagItem>
-      </S.TagItemWrapper>
-    </S.TagWrapper>
-  );
+    const dispatch = useAppDispatch();
+    useMemo(() => {
+        dispatch(getTag({}));
+    }, []);
+
+    const { tag } = useTypedSelector(tagDateState);
+    return (
+        <>
+            {props.check ? (
+                <S.TagWrapper>
+                    {tag &&
+                        tag.map((e) => (
+                            <S.TagItemWrapper>
+                                <S.TagItem>{e.name}</S.TagItem>
+                                <S.TagCount> ({e.count})</S.TagCount>
+                            </S.TagItemWrapper>
+                        ))}
+                </S.TagWrapper>
+            ) : (
+                <S.TagWrapper>
+                    {tag &&
+                        tag.map((e) => (
+                            <S.TagItemWrapper>
+                                <S.TagItem>{e.name}</S.TagItem>
+                                <S.TagCount> ({e.count})</S.TagCount>
+                            </S.TagItemWrapper>
+                        ))}
+                </S.TagWrapper>
+            )}
+        </>
+    );
 };
 
 export default Tag;

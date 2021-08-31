@@ -39,4 +39,18 @@ export const BLOG_URL = {
 
         return resultURL;
     },
+    searchUrl: function (searchUrl: string): string {
+        const resultURL = `/blog/post/${searchUrl}`;
+        return resultURL;
+    },
+};
+
+export const TAG_URL = {
+    tag: function (): string {
+        return '/blog/tag';
+    },
+    searchTag: function (searchTag: string): string {
+        const resultURL = `/blog/post/${searchTag}`;
+        return resultURL;
+    },
 };

@@ -8,7 +8,6 @@ import React, { useEffect, useMemo, useReducer, useState } from 'react';
 import * as S from './styles';
 import { useAppDispatch, useTypedSelector } from '../../module/store';
 import { themeDataState, toggleTheme } from '../../features/theme/themeSlice';
-import { editorState, getPost } from '../../features/editor/editorSlice';
 
 const date = new Date();
 const MainPage = () => {
@@ -46,7 +45,7 @@ const MainPage = () => {
                     <IntroContainer />
                     <FeautredContainer />
                     <S.Article>
-                        <MainPostContainer />
+                        <MainPostContainer scrollPosition={scrollPosition} />
                         <NavContainer />
                     </S.Article>
                     <S.Footer>
@@ -59,7 +58,7 @@ const MainPage = () => {
                     <IntroContainer />
                     <FeautredContainer check={true} />
                     <S.Article className="check">
-                        <MainPostContainer check={true} />
+                        <MainPostContainer check={true} scrollPosition={scrollPosition} />
                         <NavContainer check={true} />
                     </S.Article>
                     <S.Footer className="check">

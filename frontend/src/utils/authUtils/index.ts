@@ -30,4 +30,5 @@ export const checkIsLogin = async () => {
 export const logout = () => {
     localStorage.removeItem('accessToken');
     alert('로그아웃 되었습니다.');
+    location.href = '/';
 };

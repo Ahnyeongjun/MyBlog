@@ -3,12 +3,15 @@ export type editorSliceInitialStateType = {
     title: string;
     tag: string[];
     postData: post[];
+    FeautredPostData: post[];
     total: number;
 };
 type post = {
     text: string;
     title: string;
     tag: string[];
+    uid: string;
+    searchUrl: string;
 };
 export type upLoadActionType = {
     text: string;
@@ -30,9 +33,11 @@ export type tagActioinType = {
 export type PageNationBlogType = {
     page: number;
     pageSize: number;
+    type: string;
 };
 
 export type successGetBlogType = {
+    type: string;
     postData: post[];
     total: number;
 };
