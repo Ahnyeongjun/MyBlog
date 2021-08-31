@@ -54,7 +54,7 @@ export class PostController {
 
     public getAllTag = async (ctx: Context) => {
         try {
-            ctx.body = await this.postService.getAllTag();
+            ctx.body = { tag: await this.postService.getAllTag() };
             ctx.status = 201;
         } catch (e) {
             console.log(e);
@@ -64,6 +64,7 @@ export class PostController {
 
     public getOnePost = async (ctx: Context) => {
         const searchUrl = ctx.params.id;
+        console.log(searchUrl);
         const post = await this.postService.selectSearchUrlByPost(searchUrl);
         if (post) {
             ctx.body = post;

@@ -35,6 +35,7 @@ export class PostRepository {
         const postRepository = (await connection).manager.getRepository(Post);
 
         return await postRepository.findOne({
+            relations: ['tag'],
             where: { searchUrl: searchUrl },
         });
     }

@@ -22,9 +22,9 @@ export class AuthController {
     public first_createUser = async (ctx: Context) => {
         try {
             const name = process.env.name;
-            const password = process.env.passowrd;
+            const password = process.env.password;
             const id = process.env.id;
-
+            console.log(password);
             if (name && password && id) {
                 const userData: CreateUserRequest = {
                     name: name,
