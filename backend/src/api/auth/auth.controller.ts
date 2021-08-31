@@ -57,7 +57,7 @@ export class AuthController {
         const user = await this.authService.login(userData);
         if (user !== undefined) {
             const payload: Payload = { id: user.id, name: user.name };
-            ctx.body = { Authorization: await generateToken(payload) };
+            ctx.body = { accessToken: await generateToken(payload) };
             ctx.status = 200;
         } else {
             ctx.status = 403;

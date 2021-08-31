@@ -31,7 +31,7 @@ export const FeaturedWrapper = styled.div`
 
 export const FeaturedItemWrapper = styled.div`
     background: rgb(240, 240, 240);
-    color: black;
+
     display: flex;
     flex-direction: column;
     width: 840px;

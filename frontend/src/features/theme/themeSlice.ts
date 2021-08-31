@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { StoreType } from 'src/module/store';
+import { StoreType } from '../../module/store';
 import { ThemeActionType, ThemeSliceInitialStateType } from './themeType';
 
 const initialState: ThemeSliceInitialStateType = {

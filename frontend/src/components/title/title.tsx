@@ -21,7 +21,7 @@ const Title = (props: any) => {
 
     return (
         <>
-            <S.Title>
+            <S.Title >
                 <S.Input placeholder="제목을 입력해주세요" rows={1} ref={ref} onChange={handleResizeHeight} value={title} />
                 <S.underLine />
             </S.Title>

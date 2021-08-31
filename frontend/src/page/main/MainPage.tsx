@@ -4,10 +4,11 @@ import FeautredContainer from '../../components/Feautred/FeautredContainer';
 import MainPostContainer from '../../components/mainPost/MainPostContainer';
 import NavContainer from '../../components/nav/NavContainer';
 import ScrollControlBtn from '../../components/scrollControlBtn/scrollControlBtn';
-import React, { useEffect, useReducer, useState } from 'react';
+import React, { useEffect, useMemo, useReducer, useState } from 'react';
 import * as S from './styles';
 import { useAppDispatch, useTypedSelector } from '../../module/store';
 import { themeDataState, toggleTheme } from '../../features/theme/themeSlice';
+import { editorState, getPost } from '../../features/editor/editorSlice';
 
 const date = new Date();
 const MainPage = () => {
@@ -32,11 +33,10 @@ const MainPage = () => {
     const theme = initTheme == 'white' ? 'white' : 'black';
 
     dispatch(toggleTheme({ themeType: theme }));
-    console.log(themeData);
 
-    useEffect(() => {
+    useMemo(() => {
         window.addEventListener('scroll', updateScroll);
-    });
+    }, []);
 
     return (
         <>
@@ -50,7 +50,6 @@ const MainPage = () => {
                         <NavContainer />
                     </S.Article>
                     <S.Footer>
-                        {' '}
                         <S.FooterFont>© 2021. AhnyoungJun all rights reserved.</S.FooterFont>
                     </S.Footer>
                 </S.Main>
@@ -64,7 +63,6 @@ const MainPage = () => {
                         <NavContainer check={true} />
                     </S.Article>
                     <S.Footer className="check">
-                        {' '}
                         <S.FooterFont className="check">© 2021. AhnyoungJun all rights reserved.</S.FooterFont>
                     </S.Footer>
                 </S.Main>

@@ -1,8 +1,8 @@
 export type ThemeSliceInitialStateType = {
-  themeData: string;
+    themeData: string;
 };
 
-type themeString = "black" | "white";
+type themeString = 'black' | 'white';
 export type ThemeActionType = {
-  themeType: themeString;
+    themeType: themeString;
 };
