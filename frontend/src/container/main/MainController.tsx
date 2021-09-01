@@ -30,25 +30,39 @@ const MainController = () => {
 
     return (
         <>
-            <>
-                <S.Main>
-                    <HeaderContainer scrollPosition={scrollPosition} />
-                    <IntroContainer />
-                    <FeautredContainer />
-                    <S.Article>
-                        <MainPostContainer scrollPosition={scrollPosition} />
-                        <NavContainer />
-                    </S.Article>
-                    <S.Footer>
-                        {themeData == 'white' ? (
+            {themeData == 'white' ? (
+                <>
+                    <S.Main>
+                        <HeaderContainer scrollPosition={scrollPosition} />
+                        <IntroContainer />
+                        <FeautredContainer />
+                        <S.Article>
+                            <MainPostContainer scrollPosition={scrollPosition} />
+                            <NavContainer />
+                        </S.Article>
+                        <S.Footer>
                             <S.FooterFont>© 2021. AhnyoungJun all rights reserved.</S.FooterFont>
-                        ) : (
+                        </S.Footer>
+                    </S.Main>
+                    <ScrollControlBtn scrollPosition={scrollPosition} />
+                </>
+            ) : (
+                <>
+                    <S.Main className="check">
+                        <HeaderContainer scrollPosition={scrollPosition} />
+                        <IntroContainer />
+                        <FeautredContainer />
+                        <S.Article>
+                            <MainPostContainer scrollPosition={scrollPosition} />
+                            <NavContainer />
+                        </S.Article>
+                        <S.Footer>
                             <S.FooterFont className="check">© 2021. AhnyoungJun all rights reserved.</S.FooterFont>
-                        )}
-                    </S.Footer>
-                </S.Main>
-                <ScrollControlBtn scrollPosition={scrollPosition} />
-            </>
+                        </S.Footer>
+                    </S.Main>
+                    <ScrollControlBtn scrollPosition={scrollPosition} />
+                </>
+            )}
         </>
     );
 };
