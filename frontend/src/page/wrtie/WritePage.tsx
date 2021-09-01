@@ -7,12 +7,14 @@ import Editor from '../../components/Editor/editor';
 import Title from '../../components/title/title';
 import Tag from '../../components/tag/Tag';
 import { checkIsLogin } from '../../utils/authUtils';
-import { editorState, uploadPost } from '../../features/editor/editorSlice';
+import { editorState, updateMainContent, updateMainImageUrl, uploadPost } from '../../features/editor/editorSlice';
+import axios from 'axios';
 
 const WritePage = () => {
     const [scrollPosition, setScrollPosition] = useState(0);
+    const [isLastSave, setIsLastSave] = useState(false);
     const { themeData } = useTypedSelector(themeDataState);
-    const { text, title, tag } = useTypedSelector(editorState);
+    const { text, title, tag, mainContent, mainImageURL } = useTypedSelector(editorState);
     useEffect(() => {
         checkIsLogin();
     }, []);
@@ -37,14 +39,74 @@ const WritePage = () => {
     dispatch(toggleTheme({ themeType: theme }));
     console.log(themeData);
 
-    const onClick = () => {
-        dispatch(uploadPost({ title: title, tag: tag, text: text }));
+    const onIsLastSaveClick = () => {
+        dispatch(updateMainContent({ mainContent: text }));
+        setIsLastSave(!isLastSave);
     };
+
+    const onSaveClick = () => {
+        dispatch(uploadPost({ title: title, tag: tag, text: text, mainContent: mainContent, mainImageURL: mainImageURL }));
+    };
+
+    const chooseFile = () => {
+        document.getElementById('fileInput').click();
+    };
+
+    const inputOnChange = async (e) => {
+        const img = e.target.files[0];
+        const formData = new FormData();
+        formData.append('image', img);
+
+        const res = (await axios.post(process.env.BASE_URL + '/upload/single', formData)).data;
+        const url = process.env.S3_URL + res.image;
+        setTimeout(() => dispatch(updateMainImageUrl({ mainImageURL: url })), 1000);
+    };
+
+    const mainContentOnChange = (e) => {
+        const { value } = e.target;
+        dispatch(updateMainContent({ mainContent: value }));
+    };
+
     return (
         <>
             {themeData == 'white' ? (
                 <S.WriteWrapper>
                     <HeaderContainer scrollPosition={scrollPosition} />
+                    {isLastSave ? (
+                        <S.LastSavePageWrapper>
+                            <S.LastSavePage>
+                                <S.PostPreview>포스트 미리보기</S.PostPreview>
+                                <div style={{ height: '0px', overflow: 'hidden', width: '0px' }}>
+                                    <input type="file" id="fileInput" name="fileInput" onChange={inputOnChange} />
+                                </div>
+                                {mainImageURL == '' ? (
+                                    <S.PostPreviewImageBtnWrapper>
+                                        <S.PostUploadBtn onClick={chooseFile}>업로드</S.PostUploadBtn>
+                                    </S.PostPreviewImageBtnWrapper>
+                                ) : (
+                                    <>
+                                        <S.PostPreviewImage src={mainImageURL} />
+                                        <S.PostPreviewImageOptionBtnWrapper>
+                                            <S.PostPreviewOptionbtn onClick={chooseFile}>재업로드</S.PostPreviewOptionbtn>
+                                            <S.PostPreviewOptionbtn onClick={() => dispatch(updateMainImageUrl({ mainImageURL: '' }))}>
+                                                삭제
+                                            </S.PostPreviewOptionbtn>
+                                        </S.PostPreviewImageOptionBtnWrapper>
+                                    </>
+                                )}
+                                <S.PostPreviewTitle>{title || '제목'}</S.PostPreviewTitle>
+                                <S.PostPreviewContent onChange={mainContentOnChange} value={mainContent}>
+                                    {text || '내용'}
+                                </S.PostPreviewContent>
+                                <S.LastBtnWrapper>
+                                    <S.Btn onClick={onIsLastSaveClick}>돌아가기</S.Btn>
+                                    <S.Btn onClick={onSaveClick}>저장하기</S.Btn>
+                                </S.LastBtnWrapper>
+                            </S.LastSavePage>
+                        </S.LastSavePageWrapper>
+                    ) : (
+                        <S.LastSavePageWrapper className="delete" />
+                    )}
                     <S.TitleWrapper>
                         <Title />
                     </S.TitleWrapper>
@@ -55,24 +117,58 @@ const WritePage = () => {
                         <Editor />
                     </S.EditorWrapper>
                     <S.Bottom>
-                        <S.Btn onClick={onClick}>저장하기</S.Btn>
+                        <S.Btn onClick={onIsLastSaveClick}>저장하기</S.Btn>
                     </S.Bottom>
                 </S.WriteWrapper>
             ) : (
                 <S.WriteWrapper className="check">
                     <HeaderContainer check={true} scrollPosition={scrollPosition} />
+                    {isLastSave ? (
+                        <S.LastSavePageWrapper>
+                            <S.LastSavePage>
+                                <S.PostPreview>포스트 미리보기</S.PostPreview>
+                                <div style={{ height: '0px', overflow: 'hidden', width: '0px' }}>
+                                    <input type="file" id="fileInput" name="fileInput" onChange={inputOnChange} />
+                                </div>
+                                {mainImageURL == '' ? (
+                                    <S.PostPreviewImageBtnWrapper>
+                                        <S.PostUploadBtn onClick={chooseFile}>업로드</S.PostUploadBtn>
+                                    </S.PostPreviewImageBtnWrapper>
+                                ) : (
+                                    <>
+                                        <S.PostPreviewImage src={mainImageURL} />
+                                        <S.PostPreviewImageOptionBtnWrapper>
+                                            <S.PostPreviewOptionbtn onClick={chooseFile}>재업로드</S.PostPreviewOptionbtn>
+                                            <S.PostPreviewOptionbtn onClick={() => dispatch(updateMainImageUrl({ mainImageURL: '' }))}>
+                                                삭제
+                                            </S.PostPreviewOptionbtn>
+                                        </S.PostPreviewImageOptionBtnWrapper>
+                                    </>
+                                )}
+                                <S.PostPreviewTitle>{title || '제목'}</S.PostPreviewTitle>
+                                <S.PostPreviewContent onChange={mainContentOnChange} value={mainContent}>
+                                    {text || '내용'}
+                                </S.PostPreviewContent>
+                                <S.LastBtnWrapper>
+                                    <S.Btn onClick={onIsLastSaveClick}>돌아가기</S.Btn>
+                                    <S.Btn onClick={onSaveClick}>저장하기</S.Btn>
+                                </S.LastBtnWrapper>
+                            </S.LastSavePage>
+                        </S.LastSavePageWrapper>
+                    ) : (
+                        <S.LastSavePageWrapper className="delete" />
+                    )}
                     <S.TitleWrapper>
                         <Title />
                     </S.TitleWrapper>
                     <S.TagWrapper>
                         <Tag />
                     </S.TagWrapper>
-
                     <S.EditorWrapper>
                         <Editor check={true} />
                     </S.EditorWrapper>
                     <S.Bottom>
-                        <S.Btn onClick={onClick}>저장하기</S.Btn>
+                        <S.Btn onClick={onIsLastSaveClick}>저장하기</S.Btn>
                     </S.Bottom>
                 </S.WriteWrapper>
             )}

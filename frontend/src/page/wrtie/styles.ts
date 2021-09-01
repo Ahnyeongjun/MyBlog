@@ -1,3 +1,4 @@
+import { slideTop, slideDown } from '../../animation';
 import styled, { keyframes } from 'styled-components';
 
 export const WriteWrapper = styled.div`
@@ -43,8 +44,85 @@ export const Btn = styled.button`
     width: 200px;
     height: 40px;
     border: gray solid 1px;
+    margin: 0 10px;
     :hover {
         color: white;
         background: black;
     }
+`;
+
+export const LastSavePageWrapper = styled.div`
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    z-index: 100;
+    height: 100vh;
+    width: 100vw;
+    background: rgb(220, 220, 220);
+    animation: ${slideTop} 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+    &.delete {
+        animation: ${slideDown} 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+    }
+`;
+export const PostPreview = styled.div`
+    font-size: 25px;
+    font-weight: 700;
+    margin-bottom: 10px;
+`;
+export const LastSavePage = styled.div`
+    display: flex;
+    flex-direction: column;
+    width: 60vw;
+    min-height: 600px;
+    max-width: 400px;
+`;
+export const PostPreviewImageBtnWrapper = styled.div`
+    margin-bottom: 10px;
+    height: 200px;
+    background: gray;
+    width: 400px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+`;
+export const PostPreviewImageOptionBtnWrapper = styled.div`
+    margin: 10px 0;
+    width: auto;
+    display: flex;
+    flex-direction: row-reverse;
+`;
+export const PostPreviewOptionbtn = styled.button`
+    font-size: 10px;
+    background: white;
+`;
+export const PostPreviewImage = styled.img`
+    height: 200px;
+    width: 400px;
+    object-fit: cover;
+`;
+
+export const PostUploadBtn = styled.button`
+    font-size: 15px;
+`;
+export const PostPreviewTitle = styled.div`
+    font-size: 18px;
+    font-weight: 800;
+    height: 15px;
+    margin-bottom: 10px;
+`;
+export const PostPreviewContent = styled.textarea`
+    text-align: start;
+    font-size: 12px;
+    min-height: 200px;
+    background: white;
+    margin-bottom: 20px;
+    padding: 15px;
+    border: none;
+    outline: none;
+    resize: none;
+`;
+export const LastBtnWrapper = styled.div`
+    display: flex;
+    justify-content: space-between;
 `;
