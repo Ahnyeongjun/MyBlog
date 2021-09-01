@@ -22,6 +22,7 @@ export interface PostRequest {
     title?: string;
     tag?: Tag[];
     searchUrl?: string;
+    mainImageURL: string;
 }
 export interface PagenationPostRequest {
     page: number;

@@ -35,7 +35,7 @@ export class PostServie {
                 await this.createAt(),
                 request.content,
                 request.title,
-                request.mainImageURL
+                request.mainImageURL,
                 searchUrl,
                 customTag,
                 views
@@ -63,6 +63,7 @@ export class PostServie {
             title: request.title,
             tag: request.tag,
             searchUrl: searchUrl,
+            mainImageURL: request.mainImageURL,
         };
         console.log(res);
         await this.postRepository.updatePost(res);
