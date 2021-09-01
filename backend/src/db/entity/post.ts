@@ -32,4 +32,7 @@ export class Post {
 
     @Column()
     mainImageURL!: string;
+
+    @Column()
+    mainContent!: string;
 }

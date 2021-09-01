@@ -6,6 +6,7 @@ export interface CreatePostRequest {
     title: string;
     tag: string[];
     mainImageURL: string;
+    mainContent: string;
 }
 export interface DuplicatedTagRequest {
     tag: string[];
@@ -23,6 +24,7 @@ export interface PostRequest {
     tag?: Tag[];
     searchUrl?: string;
     mainImageURL: string;
+    mainContent: string;
 }
 export interface PagenationPostRequest {
     page: number;

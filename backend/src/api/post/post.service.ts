@@ -36,6 +36,7 @@ export class PostServie {
                 request.content,
                 request.title,
                 request.mainImageURL,
+                request.mainContent,
                 searchUrl,
                 customTag,
                 views
@@ -64,6 +65,7 @@ export class PostServie {
             tag: request.tag,
             searchUrl: searchUrl,
             mainImageURL: request.mainImageURL,
+            mainContent: request.mainContent,
         };
         console.log(res);
         await this.postRepository.updatePost(res);

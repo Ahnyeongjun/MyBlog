@@ -12,6 +12,7 @@ export class PostRepository {
         content: string,
         title: string,
         mainImageURL: string,
+        mainContent: string,
         searchUrl: string,
         tag: Tag[],
         views: Views
@@ -24,6 +25,7 @@ export class PostRepository {
             post.writer = writer;
             post.tag = tag;
             post.mainImageURL = mainImageURL;
+            post.mainContent = mainContent;
             post.searchUrl = searchUrl;
             post.views = views;
             await (await connection).manager.save(post);
