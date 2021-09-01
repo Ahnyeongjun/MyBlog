@@ -42,10 +42,10 @@ const FeautredContainer = (props) => {
         slider.push(
             <SwiperSlide key={`slide-${FeautredPostData[i].uid}`} onClick={() => onClick(FeautredPostData[i].searchUrl)}>
                 <S.FeaturedItemWrapper>
-                    <S.FeautredImg src="https://cdn.pixabay.com/photo/2021/08/10/09/41/lesser-sand-plover-6535531_960_720.jpg" />
+                    <S.FeautredImg src={FeautredPostData[i].mainImageURL} />
                     <S.FeautredContentWrapper>
                         <S.FeautredTitle>{FeautredPostData[i].title}</S.FeautredTitle>
-                        <S.FeautredContent>{FeautredPostData[i].text}</S.FeautredContent>
+                        <S.FeautredContent>{FeautredPostData[i].mainContent}</S.FeautredContent>
                     </S.FeautredContentWrapper>
                 </S.FeaturedItemWrapper>
             </SwiperSlide>
@@ -53,10 +53,10 @@ const FeautredContainer = (props) => {
         darkSlider.push(
             <SwiperSlide key={`slide-${i}`}>
                 <S.FeaturedItemWrapper className="check">
-                    <S.FeautredImg src="https://cdn.pixabay.com/photo/2021/08/10/09/41/lesser-sand-plover-6535531_960_720.jpg" />
+                    <S.FeautredImg src={FeautredPostData[i].mainImageURL} />
                     <S.FeautredContentWrapper>
                         <S.FeautredTitle>{FeautredPostData[i].title}</S.FeautredTitle>
-                        <S.FeautredContent>{FeautredPostData[i].text}</S.FeautredContent>
+                        <S.FeautredContent>{FeautredPostData[i].mainContent}</S.FeautredContent>
                     </S.FeautredContentWrapper>
                 </S.FeaturedItemWrapper>
             </SwiperSlide>
