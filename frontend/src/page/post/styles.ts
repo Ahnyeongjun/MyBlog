@@ -69,3 +69,11 @@ export const TagItemWrapper = styled.div`
     margin-right: 0.75rem;
     cursor: pointer;
 `;
+
+export const PostBody = styled.div`
+    img {
+        object-fit: cover;
+
+        width: 50vw;
+    }
+`;
