@@ -2,11 +2,19 @@ import { EntityRepository, getConnection, getRepository, Repository } from 'type
 import connection from '..';
 import { PostDataRequest, PostRequest, TagRequest, UpdatePostRequest, updateTagRequest } from '../../interface';
 
-import { Post, Tag } from '../entity';
+import { Post, Tag, Views } from '../entity';
 
 @EntityRepository(Post)
 export class PostRepository {
-    public async createPost(writer: string, createdAt: string, content: string, title: string, searchUrl: string, tag: Tag[]) {
+    public async createPost(
+        writer: string,
+        createdAt: string,
+        content: string,
+        title: string,
+        searchUrl: string,
+        tag: Tag[],
+        views: Views
+    ) {
         try {
             const post = new Post();
             post.content = content;
@@ -15,6 +23,7 @@ export class PostRepository {
             post.writer = writer;
             post.tag = tag;
             post.searchUrl = searchUrl;
+            post.views = views;
             await (await connection).manager.save(post);
 
             return post;
