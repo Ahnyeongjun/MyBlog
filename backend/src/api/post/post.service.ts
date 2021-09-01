@@ -3,8 +3,13 @@ import { Tag } from '../../db/entity';
 import { PostRepository } from '../../db/repository';
 import { CreatePostRequest, CreateUserRequest, PostDataRequest, PostRequest, UpdatePostRequest, updateTagRequest } from '../../interface';
 import { v1, V1Options, v4, V4Options } from 'uuid';
+import { throws } from 'assert';
+import { ViewsRepository } from '../../db/repository/views';
+import { ViewsService } from '../views/views.service';
 export class PostServie {
     constructor(private readonly postRepository: PostRepository) {}
+    private viewsRepository: ViewsRepository = new ViewsRepository();
+    private viewsService: ViewsService = new ViewsService(this.viewsRepository);
 
     public async createAt() {
         const today = new Date();
@@ -20,10 +25,20 @@ export class PostServie {
     public async createPost(request: CreatePostRequest, writer: string) {
         const customTag = await this.selectNameByMultiTag(request.tag);
         const searchName = await this.selectTitleByOneTag(request.title);
+        const views = await this.viewsService.createViews();
         let searchUrl = '';
         if (searchName) searchUrl = request.title + '-' + v4().substring(0, 8);
         else searchUrl = request.title;
-        await this.postRepository.createPost(writer, await this.createAt(), request.content, request.title, searchUrl, customTag);
+        if (views)
+            await this.postRepository.createPost(
+                writer,
+                await this.createAt(),
+                request.content,
+                request.title,
+                searchUrl,
+                customTag,
+                views
+            );
     }
 
     public async getAllTag() {
