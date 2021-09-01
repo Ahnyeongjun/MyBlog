@@ -24,12 +24,12 @@ const Post = (props: any) => {
                     {' '}
                     {postData.map((e) => (
                         <S.MainPostItemWrapper className="check">
-                            <S.MainPostImg src="https://cdn.pixabay.com/photo/2021/08/10/09/41/lesser-sand-plover-6535531_960_720.jpg" />
+                            <S.MainPostImg src={e.mainImageURL} />
                             <S.ContentWrapper>
                                 <S.FeautredTitleWrapper>
                                     <S.FeautredTitle>{e.title}</S.FeautredTitle>
                                 </S.FeautredTitleWrapper>
-                                <S.FeautredContent>{e.text}</S.FeautredContent>
+                                <S.FeautredContent>{e.mainContent}</S.FeautredContent>
                             </S.ContentWrapper>
                         </S.MainPostItemWrapper>
                     ))}
@@ -39,12 +39,12 @@ const Post = (props: any) => {
                     {' '}
                     {postData.map((e) => (
                         <S.MainPostItemWrapper>
-                            <S.MainPostImg src="https://cdn.pixabay.com/photo/2021/08/10/09/41/lesser-sand-plover-6535531_960_720.jpg" />
+                            <S.MainPostImg src={e.mainImageURL} />
                             <S.ContentWrapper>
                                 <S.FeautredTitleWrapper>
                                     <S.FeautredTitle>{e.title}</S.FeautredTitle>
                                 </S.FeautredTitleWrapper>
-                                <S.FeautredContent>{e.text}</S.FeautredContent>
+                                <S.FeautredContent>{e.mainContent}</S.FeautredContent>
                             </S.ContentWrapper>
                         </S.MainPostItemWrapper>
                     ))}

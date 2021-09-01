@@ -3,20 +3,29 @@ import { all, call, fork, put, takeEvery, takeLatest } from '@redux-saga/core/ef
 import { editorSliceInitialStateType, PageNationBlogType } from './editorType';
 import { methodType, requestApi, requestApiWithBody } from '../../lib/requestLib';
 import { BLOG_URL } from '../../lib/apiUrlLib';
-import { getPagenationFeautredPost, getPagenationPost, successGetPagenationPost, uploadPost } from './editorSlice';
+import {
+    getPagenationFeautredPost,
+    getPagenationPost,
+    successGetPagenationPost,
+    successPostPagenationPost,
+    uploadPost,
+} from './editorSlice';
 function* editorPostSaga(action: PayloadAction<editorSliceInitialStateType>) {
     try {
         console.log(action.payload);
 
-        const { text, title, tag } = action.payload;
+        const { text, title, tag, mainContent, mainImageURL } = action.payload;
         const httpMethod = methodType.POST;
         const requestUrl = BLOG_URL.blog();
-        const body = { content: text, title, tag };
+        console.log(action.payload);
+        const body = { content: text, title, tag, mainContent: mainContent, mainImageURL: mainImageURL };
         const headers = {
             Authorization: localStorage.getItem('accessToken'),
         };
         const res = yield call(requestApiWithBody, { httpMethod, requestUrl, body, headers });
         if ('data' in res) {
+            yield put(successPostPagenationPost());
+
             alert('작성되었습니다.');
             location.href = '/';
         } else {

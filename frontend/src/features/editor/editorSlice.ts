@@ -4,6 +4,8 @@ import { StoreType } from 'src/module/store';
 import {
     editorActionType,
     editorSliceInitialStateType,
+    mainContentActionType,
+    mainImageURLActionType,
     PageNationBlogType,
     successGetBlogType,
     tagActioinType,
@@ -15,6 +17,8 @@ const initialState: editorSliceInitialStateType = {
     text: '',
     title: '',
     tag: [],
+    mainContent: '',
+    mainImageURL: '',
     postData: [
         {
             tag: [],
@@ -22,20 +26,26 @@ const initialState: editorSliceInitialStateType = {
             text: 'SSS',
             uid: 'random',
             searchUrl: 'random',
+            mainImageURL: '',
+            mainContent: '',
         },
         {
             tag: [],
             title: 'S',
             text: 'SSS',
-            uid: 'random2',
-            searchUrl: 'random2',
+            uid: 'random',
+            searchUrl: 'random',
+            mainImageURL: '',
+            mainContent: '',
         },
         {
             tag: [],
             title: 'S',
             text: 'SSS',
-            uid: 'random3',
-            searchUrl: 'random3',
+            uid: 'random',
+            searchUrl: 'random',
+            mainImageURL: '',
+            mainContent: '',
         },
     ],
     FeautredPostData: [
@@ -45,20 +55,26 @@ const initialState: editorSliceInitialStateType = {
             text: 'SSS',
             uid: 'random',
             searchUrl: 'random',
+            mainImageURL: '',
+            mainContent: '',
         },
         {
             tag: [],
             title: 'S',
             text: 'SSS',
-            uid: 'random2',
-            searchUrl: 'random2',
+            uid: 'random',
+            searchUrl: 'random',
+            mainImageURL: '',
+            mainContent: '',
         },
         {
             tag: [],
             title: 'S',
             text: 'SSS',
-            uid: 'random3',
-            searchUrl: 'random3',
+            uid: 'random',
+            searchUrl: 'random',
+            mainImageURL: '',
+            mainContent: '',
         },
     ],
 
@@ -73,17 +89,26 @@ const reducers = {
     updateTitle: (state = initialState, action: PayloadAction<titleActionType>) => {
         state.title = action.payload.title;
     },
+    updateMainImageUrl: (state = initialState, action: PayloadAction<mainImageURLActionType>) => {
+        state.mainImageURL = action.payload.mainImageURL;
+    },
+    updateMainContent: (state = initialState, action: PayloadAction<mainContentActionType>) => {
+        state.mainContent = action.payload.mainContent;
+    },
+    successPostPagenationPost: (state = initialState) => {
+        state.tag = [];
+        state.text = '';
+        state.title = '';
+        state.mainImageURL = '';
+        state.mainContent = '';
+    },
     pushTag: (state = initialState, action: PayloadAction<tagActioinType>) => {
         state.tag.push(action.payload.tag);
     },
     removeTag: (state = initialState, action: PayloadAction<tagActioinType>) => {
         state.tag = state.tag.filter((e) => e !== action.payload.tag);
     },
-    uploadPost: (state = initialState, action: PayloadAction<upLoadActionType>) => {
-        state.tag = [];
-        state.text = '';
-        state.title = '';
-    },
+    uploadPost: (state = initialState, action: PayloadAction<upLoadActionType>) => {},
     getPagenationPost: (state = initialState, action: PayloadAction<PageNationBlogType>) => {},
     successGetPagenationPost: (state = initialState, action: PayloadAction<successGetBlogType>) => {
         if (action.payload.type == 'Feautred') {
@@ -106,6 +131,8 @@ const editorSlice = createSlice({
 
 const { actions, reducer } = editorSlice;
 export const {
+    updateMainContent,
+    updateMainImageUrl,
     updateText,
     updateTitle,
     pushTag,
@@ -114,6 +141,7 @@ export const {
     getPagenationPost,
     successGetPagenationPost,
     getPagenationFeautredPost,
+    successPostPagenationPost,
 } = actions;
 export const editorState = (state: StoreType) => state.editor;
 

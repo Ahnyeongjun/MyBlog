@@ -2,11 +2,21 @@ import { EntityRepository, getConnection, getRepository, Repository } from 'type
 import connection from '..';
 import { PostDataRequest, PostRequest, TagRequest, UpdatePostRequest, updateTagRequest } from '../../interface';
 
-import { Post, Tag } from '../entity';
+import { Post, Tag, Views } from '../entity';
 
 @EntityRepository(Post)
 export class PostRepository {
-    public async createPost(writer: string, createdAt: string, content: string, title: string, searchUrl: string, tag: Tag[]) {
+    public async createPost(
+        writer: string,
+        createdAt: string,
+        content: string,
+        title: string,
+        mainImageURL: string,
+        mainContent: string,
+        searchUrl: string,
+        tag: Tag[],
+        views: Views
+    ) {
         try {
             const post = new Post();
             post.content = content;
@@ -14,7 +24,10 @@ export class PostRepository {
             post.createdAt = createdAt;
             post.writer = writer;
             post.tag = tag;
+            post.mainImageURL = mainImageURL;
+            post.mainContent = mainContent;
             post.searchUrl = searchUrl;
+            post.views = views;
             await (await connection).manager.save(post);
 
             return post;
@@ -65,7 +78,7 @@ export class PostRepository {
 
     public async updatePost(req: PostRequest) {
         const postRepository = (await connection).manager.getRepository(Post);
-        const post = this.getOnePost(req.uid);
+        const post = await this.getOnePost(req.uid);
         return postRepository.save({
             ...post,
             ...req,

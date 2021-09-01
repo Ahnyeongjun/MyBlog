@@ -36,7 +36,7 @@ const PostPage = ({ match }) => {
                 </S.TagWRapper>
             </S.HeadWrapper>
             <S.PostWrapper>
-                <div dangerouslySetInnerHTML={{ __html: postData.content }}></div>
+                <S.PostBody dangerouslySetInnerHTML={{ __html: postData.content }}></S.PostBody>
             </S.PostWrapper>
         </S.Post>
     );
