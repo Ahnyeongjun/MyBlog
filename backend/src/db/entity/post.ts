@@ -29,4 +29,7 @@ export class Post {
     @OneToOne((type) => Views, (views) => views.uid)
     @JoinColumn()
     views!: Views;
+
+    @Column()
+    mainImageURL!: string;
 }

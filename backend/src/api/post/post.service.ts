@@ -35,6 +35,7 @@ export class PostServie {
                 await this.createAt(),
                 request.content,
                 request.title,
+                request.mainImageURL
                 searchUrl,
                 customTag,
                 views
