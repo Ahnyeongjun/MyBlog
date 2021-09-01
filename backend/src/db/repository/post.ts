@@ -74,7 +74,7 @@ export class PostRepository {
 
     public async updatePost(req: PostRequest) {
         const postRepository = (await connection).manager.getRepository(Post);
-        const post = this.getOnePost(req.uid);
+        const post = await this.getOnePost(req.uid);
         return postRepository.save({
             ...post,
             ...req,
