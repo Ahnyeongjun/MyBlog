@@ -14,6 +14,8 @@ type post = {
     tag: string[];
     uid: string;
     searchUrl: string;
+    mainImageURL: string;
+    mainContent: string;
 };
 export type upLoadActionType = {
     text: string;
