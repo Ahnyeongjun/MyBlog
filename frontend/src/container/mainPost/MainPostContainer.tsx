@@ -1,8 +1,11 @@
 import React, { useState } from 'react';
-import Post from './Post/Post';
-import Series from './Series/Series';
+import { themeDataState } from '../../features/theme/themeSlice';
+import { useTypedSelector } from '../../module/store';
+import Post from '../../components/mainPost_Post/Post';
+import Series from '../../components/mainPost_Series/Series';
 import * as S from './styles';
 const MainPostContainer = (props: any) => {
+    const { themeData } = useTypedSelector(themeDataState);
     const [isPost, setIsPost] = useState(true);
     const upadatePost = () => {
         setIsPost(true);
@@ -12,7 +15,7 @@ const MainPostContainer = (props: any) => {
     };
     return (
         <>
-            {props.check ? (
+            {themeData != 'white' ? (
                 <S.MainPostWrapper className="check">
                     <S.PageNationWrapper>
                         <S.PageFont className="check" isPost={isPost} onClick={upadatePost}>

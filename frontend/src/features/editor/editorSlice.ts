@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { Featured } from 'components/Feautred/styles';
+import { Featured } from 'src/container/Feautred/styles';
 import { StoreType } from 'src/module/store';
 import {
     editorActionType,

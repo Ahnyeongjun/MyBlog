@@ -1,11 +1,15 @@
 import React, { useCallback, useRef, useState } from 'react';
-import Accordion from './accordion/Accordion';
-import Tag from './tag/Tag';
+import { themeDataState } from '../../features/theme/themeSlice';
+import { useTypedSelector } from '../../module/store';
+import Accordion from '../../components/accordion/Accordion';
+import Tag from '../../components/nav_tag/Tag';
 import * as S from './styles';
-const NavContainer = (props: any) => {
+const NavContainer = () => {
+    const { themeData } = useTypedSelector(themeDataState);
+
     return (
         <>
-            {props.check ? (
+            {themeData != 'white' ? (
                 <S.NavWrapper className="check">
                     <S.NavItemWrapper>
                         <S.NavTitle className="check">Project</S.NavTitle>

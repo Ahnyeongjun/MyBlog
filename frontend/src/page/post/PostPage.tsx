@@ -1,4 +1,4 @@
-import HeaderContainer from '../../components/header/HeaderContainer';
+import HeaderContainer from '../../container/header/HeaderContainer';
 import React, { useEffect, useMemo, useReducer, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { getOnePost, postDateState } from '../../features/post/postSlice';

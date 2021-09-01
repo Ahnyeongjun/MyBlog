@@ -1,7 +1,7 @@
 import React, { useEffect, useMemo, useState } from 'react';
-import { editorState, getPagenationPost } from '../../../features/editor/editorSlice';
-import { useAppDispatch, useTypedSelector } from '../../../module/store';
-import * as S from '../styles';
+import { editorState, getPagenationPost } from '../../features/editor/editorSlice';
+import { useAppDispatch, useTypedSelector } from '../../module/store';
+import * as S from '../../container/mainPost/styles';
 const Post = (props: any) => {
     const dispatch = useAppDispatch();
     const [page, setPage] = useState(1);

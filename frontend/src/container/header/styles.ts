@@ -17,7 +17,7 @@ export const Header = styled.header<{ scroll: number }>`
         width: 100vw;
     }
 `;
-export const Tech_Link = styled.a`
+export const Blog_Link = styled.a`
     cursor: pointer;
     padding: 21px 0 0 30px;
     width: 200px;
@@ -29,7 +29,7 @@ export const Tech_Link = styled.a`
     }
 `;
 
-export const Tech_Category = styled.ul`
+export const Blog_Category = styled.ul`
     margin-right: 100px;
     display: flex;
     justify-content: space-between;

@@ -10,21 +10,25 @@ import { useDispatch } from 'react-redux';
 import { editorState, getPagenationFeautredPost, getPagenationPost } from '../../features/editor/editorSlice';
 import { useTypedSelector } from '../../module/store';
 import 'swiper/swiper.scss';
+import { themeDataState } from '../../features/theme/themeSlice';
 
 SwiperCore.use([Pagination, Navigation]);
 
-const FeautredContainer = (props) => {
+const FeautredContainer = () => {
     const [isTrending, setIsTrending] = useState(false);
     const [isExpend, setIsExpend] = useState(false);
+
     const upadateIsTrending = () => {
         setIsTrending(true);
     };
     const upadateIsFeautred = () => {
         setIsTrending(false);
     };
+
     const updateIsExpend = () => {
         setIsExpend(!isExpend);
     };
+
     const dispatch = useDispatch();
 
     useMemo(() => {
@@ -32,40 +36,45 @@ const FeautredContainer = (props) => {
     }, []);
 
     const { FeautredPostData } = useTypedSelector(editorState);
+    const { themeData } = useTypedSelector(themeDataState);
 
-    const slider = [];
-    const darkSlider = [];
     const onClick = (searchUrl: string) => {
         location.href = `/post/${searchUrl}`;
     };
-    for (let i = 0; i < FeautredPostData.length; i += 1) {
-        slider.push(
-            <SwiperSlide key={`slide-${FeautredPostData[i].uid}`} onClick={() => onClick(FeautredPostData[i].searchUrl)}>
-                <S.FeaturedItemWrapper>
-                    <S.FeautredImg src={FeautredPostData[i].mainImageURL} />
-                    <S.FeautredContentWrapper>
-                        <S.FeautredTitle>{FeautredPostData[i].title}</S.FeautredTitle>
-                        <S.FeautredContent>{FeautredPostData[i].mainContent}</S.FeautredContent>
-                    </S.FeautredContentWrapper>
-                </S.FeaturedItemWrapper>
-            </SwiperSlide>
-        );
-        darkSlider.push(
-            <SwiperSlide key={`slide-${i}`}>
-                <S.FeaturedItemWrapper className="check">
-                    <S.FeautredImg src={FeautredPostData[i].mainImageURL} />
-                    <S.FeautredContentWrapper>
-                        <S.FeautredTitle>{FeautredPostData[i].title}</S.FeautredTitle>
-                        <S.FeautredContent>{FeautredPostData[i].mainContent}</S.FeautredContent>
-                    </S.FeautredContentWrapper>
-                </S.FeaturedItemWrapper>
-            </SwiperSlide>
-        );
-    }
+
+    const slider = [];
+
+    if (themeData == 'white')
+        for (let i = 0; i < FeautredPostData.length; i += 1)
+            slider.push(
+                <SwiperSlide key={`slide-${FeautredPostData[i].uid}`} onClick={() => onClick(FeautredPostData[i].searchUrl)}>
+                    <S.FeaturedItemWrapper>
+                        <S.FeautredImg src={FeautredPostData[i].mainImageURL} />
+                        <S.FeautredContentWrapper>
+                            <S.FeautredTitle>{FeautredPostData[i].title}</S.FeautredTitle>
+                            <S.FeautredContent>{FeautredPostData[i].mainContent}</S.FeautredContent>
+                        </S.FeautredContentWrapper>
+                    </S.FeaturedItemWrapper>
+                </SwiperSlide>
+            );
+    else
+        for (let i = 0; i < FeautredPostData.length; i += 1) {
+            slider.push(
+                <SwiperSlide key={`slide-${FeautredPostData[i].uid}`} onClick={() => onClick(FeautredPostData[i].searchUrl)}>
+                    <S.FeaturedItemWrapper className="check">
+                        <S.FeautredImg src={FeautredPostData[i].mainImageURL} />
+                        <S.FeautredContentWrapper>
+                            <S.FeautredTitle>{FeautredPostData[i].title}</S.FeautredTitle>
+                            <S.FeautredContent>{FeautredPostData[i].mainContent}</S.FeautredContent>
+                        </S.FeautredContentWrapper>
+                    </S.FeaturedItemWrapper>
+                </SwiperSlide>
+            );
+        }
 
     return (
         <>
-            {props.check ? (
+            {themeData != 'white' ? (
                 <S.Featured className="check">
                     <S.PageWrapper>
                         <S.PageNationWrapper>
@@ -121,7 +130,7 @@ const FeautredContainer = (props) => {
                                 navigation={true}
                                 className="mySwiper"
                             >
-                                {isTrending ? <div>개발 중</div> : darkSlider}
+                                {isTrending ? <div>개발 중</div> : slider}
                             </Swiper>
                         </S.FeaturedWrapper>
                     )}
@@ -187,7 +196,7 @@ const FeautredContainer = (props) => {
                         </S.FeaturedWrapper>
                     )}
                 </S.Featured>
-            )}{' '}
+            )}
         </>
     );
 };

@@ -1,7 +1,6 @@
-import { TagType } from 'components/type/Tag';
 import React, { useCallback, useMemo, useRef, useState } from 'react';
-import { getTag, tagDateState } from '../../../features/tag/tagSlice';
-import { useAppDispatch, useTypedSelector } from '../../../module/store';
+import { getTag, tagDateState } from '../../features/tag/tagSlice';
+import { useAppDispatch, useTypedSelector } from '../../module/store';
 import * as S from './styles';
 const Tag = (props: any) => {
     const dispatch = useAppDispatch();
