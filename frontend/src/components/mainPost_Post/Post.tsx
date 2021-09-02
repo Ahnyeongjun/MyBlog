@@ -16,38 +16,41 @@ const Post = (props: any) => {
         dispatch(getPagenationPost({ page: page, pageSize: 8, type: 'main' }));
     }, []);
 
-    const { postData } = useTypedSelector(editorState);
+    const onClick = (searchUrl: string) => {
+        location.href = `/post/${searchUrl}`;
+    };
+
     return (
         <>
             {props.check ? (
                 <>
-                    {' '}
-                    {postData.map((e) => (
-                        <S.MainPostItemWrapper className="check">
-                            <S.MainPostImg src={e.mainImageURL} />
-                            <S.ContentWrapper>
-                                <S.FeautredTitleWrapper>
-                                    <S.FeautredTitle>{e.title}</S.FeautredTitle>
-                                </S.FeautredTitleWrapper>
-                                <S.FeautredContent>{e.mainContent}</S.FeautredContent>
-                            </S.ContentWrapper>
-                        </S.MainPostItemWrapper>
-                    ))}
+                    {postData &&
+                        postData.map((e) => (
+                            <S.MainPostItemWrapper className="check" onClick={() => onClick(e.searchUrl)}>
+                                <S.MainPostImg src={e.mainImageURL} />
+                                <S.ContentWrapper>
+                                    <S.FeautredTitleWrapper>
+                                        <S.FeautredTitle>{e.title}</S.FeautredTitle>
+                                    </S.FeautredTitleWrapper>
+                                    <S.FeautredContent>{e.mainContent}</S.FeautredContent>
+                                </S.ContentWrapper>
+                            </S.MainPostItemWrapper>
+                        ))}
                 </>
             ) : (
                 <>
-                    {' '}
-                    {postData.map((e) => (
-                        <S.MainPostItemWrapper>
-                            <S.MainPostImg src={e.mainImageURL} />
-                            <S.ContentWrapper>
-                                <S.FeautredTitleWrapper>
-                                    <S.FeautredTitle>{e.title}</S.FeautredTitle>
-                                </S.FeautredTitleWrapper>
-                                <S.FeautredContent>{e.mainContent}</S.FeautredContent>
-                            </S.ContentWrapper>
-                        </S.MainPostItemWrapper>
-                    ))}
+                    {postData &&
+                        postData.map((e) => (
+                            <S.MainPostItemWrapper onClick={() => onClick(e.searchUrl)}>
+                                <S.MainPostImg src={e.mainImageURL} />
+                                <S.ContentWrapper>
+                                    <S.FeautredTitleWrapper>
+                                        <S.FeautredTitle>{e.title}</S.FeautredTitle>
+                                    </S.FeautredTitleWrapper>
+                                    <S.FeautredContent>{e.mainContent}</S.FeautredContent>
+                                </S.ContentWrapper>
+                            </S.MainPostItemWrapper>
+                        ))}
                 </>
             )}
         </>
