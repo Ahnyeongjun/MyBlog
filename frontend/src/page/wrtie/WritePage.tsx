@@ -1,11 +1,11 @@
-import HeaderContainer from '../../components/header/HeaderContainer';
+import HeaderContainer from '../../container/header/HeaderContainer';
 import React, { useEffect, useReducer, useState } from 'react';
 import * as S from './styles';
 import { themeDataState, toggleTheme } from '../../features/theme/themeSlice';
 import { useAppDispatch, useTypedSelector } from '../../module/store';
 import Editor from '../../components/Editor/editor';
-import Title from '../../components/title/title';
-import Tag from '../../components/tag/Tag';
+import Title from '../../components/writePage_title/title';
+import Tag from '../../components/writePage_tag/Tag';
 import { checkIsLogin } from '../../utils/authUtils';
 import { editorState, updateMainContent, updateMainImageUrl, uploadPost } from '../../features/editor/editorSlice';
 import axios from 'axios';

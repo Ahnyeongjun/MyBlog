@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const IntroduceWrapper = styled.div`
+export const MyInformationWrapper = styled.div`
     display: flex;
     align-items: center;
 `;
@@ -39,12 +39,20 @@ export const Intro = styled.div`
         /* width: 84vw; */
     }
 `;
-export const InformationWrapper = styled.div`
+export const IntroduceWrapper = styled.div`
     height: auto;
-    width: 100%;
+    width: 1300px;
+
     margin-left: 50px;
     @media only screen and (max-width: 600px) {
         margin-left: 20px;
+    }
+    @media screen and (max-width: 800px) {
+        display: flex;
+        align-items: center;
+    }
+    @media only screen and (max-width: 1200px) {
+        width: 100%;
     }
 `;
 
@@ -71,15 +79,5 @@ export const SwiperWrapper = styled.div`
     width: 55%;
     @media only screen and (max-width: 1200px) {
         display: none;
-    }
-`;
-export const Wrapper = styled.div`
-    width: 1300px;
-    @media only screen and (max-width: 1200px) {
-        width: 100%;
-    }
-    @media screen and (max-width: 800px) {
-        display: flex;
-        align-items: center;
     }
 `;

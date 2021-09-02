@@ -1,11 +1,12 @@
 import { writer } from 'repl';
-import { Tag } from '../../db/entity';
+import { Tag, Views } from '../../db/entity';
 import { PostRepository } from '../../db/repository';
 import { CreatePostRequest, CreateUserRequest, PostDataRequest, PostRequest, UpdatePostRequest, updateTagRequest } from '../../interface';
 import { v1, V1Options, v4, V4Options } from 'uuid';
 import { throws } from 'assert';
 import { ViewsRepository } from '../../db/repository/views';
 import { ViewsService } from '../views/views.service';
+import { updateViews } from '../../interface/request/views';
 export class PostServie {
     constructor(private readonly postRepository: PostRepository) {}
     private viewsRepository: ViewsRepository = new ViewsRepository();
@@ -130,5 +131,9 @@ export class PostServie {
     }
     public async selectSearchUrlByPost(searchUrl: string) {
         return await this.postRepository.selectSearchUrlByPost(searchUrl);
+    }
+    public async updateViews(views: Views) {
+        const req: updateViews = { uid: views.uid, viewsCount: views.viewsCount + 1 };
+        return await this.viewsRepository.updataView(req);
     }
 }

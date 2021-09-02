@@ -1,5 +1,5 @@
 import axios from 'axios';
-
+axios.defaults.withCredentials = true;
 export const methodType = {
     POST: 'post',
     PUT: 'put',
@@ -20,11 +20,16 @@ export const requestApiWithBody = async ({ httpMethod, requestUrl, body, headers
 };
 
 export const requestApi = async ({ httpMethod, requestUrl, headers }) => {
+    console.log(BASE_URL);
     try {
-        const res = await axios[httpMethod](BASE_URL + requestUrl, {
-            headers,
-        });
-
+        const res = await axios[httpMethod](
+            BASE_URL + requestUrl,
+            {
+                headers,
+                credentials: 'same-origin',
+            },
+            { withCredentials: true }
+        );
         return res;
     } catch (error) {
         throw error.response;

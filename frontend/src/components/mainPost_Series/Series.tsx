@@ -1,7 +1,6 @@
 import React, { useMemo, useState } from 'react';
-import { editorState, getPagenationPost } from '../../../features/editor/editorSlice';
-import { useAppDispatch, useTypedSelector } from '../../../module/store';
-import * as S from '../styles';
+import { editorState, getPagenationPost } from '../../features/editor/editorSlice';
+import { useAppDispatch, useTypedSelector } from '../../module/store';
 const Series = () => {
     const dispatch = useAppDispatch();
 

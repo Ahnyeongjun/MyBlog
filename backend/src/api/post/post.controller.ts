@@ -62,16 +62,44 @@ export class PostController {
         }
     };
 
-    public getOnePost = async (ctx: Context) => {
+    public getOnePost = async (ctx: Context, next: Next) => {
         const searchUrl = ctx.params.id;
         console.log(searchUrl);
         const post = await this.postService.selectSearchUrlByPost(searchUrl);
         if (post) {
-            ctx.body = post;
-            ctx.status = 200;
+            ctx.request.body.post = post;
+            ctx.set({
+                'Access-Control-Allow-Credentials': 'true',
+                'Access-Control-Allow-Methods': 'POST, GET, PUT, DELETE, OPTIONS',
+                credentials: 'same-origin',
+            });
+            await next();
+            // ctx.status = 200;
         } else {
             ctx.status = 400;
         }
+    };
+
+    public updateViews = async (ctx: Context) => {
+        const searchUrl = ctx.params.id;
+        const post = ctx.request.body.post;
+        console.log(post);
+        if (post) {
+            const cookie = ctx.cookies.get(`isVisited-${searchUrl}`);
+            if (!cookie) {
+                ctx.cookies.set(`isVisited-${searchUrl}`, `${searchUrl}`, {
+                    // maxAge: 1000,
+                    // httpOnly: false,
+                    sameSite: 'none',
+                    // sameSite: 'none',
+                    secure: true,
+                    // overwrite: true,
+                });
+                this.postService.updateViews(post.views);
+            }
+        }
+        ctx.body = post;
+        ctx.status = 200;
     };
 
     public ifCreateDuplicatedByTag = async (ctx: Context, next: Next) => {

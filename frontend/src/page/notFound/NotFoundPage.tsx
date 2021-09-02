@@ -1,4 +1,4 @@
-import HeaderContainer from '../../components/header/HeaderContainer';
+import HeaderContainer from '../../container/header/HeaderContainer';
 import React from 'react';
 import { Link } from 'react-router-dom';
 import * as S from './styles';
