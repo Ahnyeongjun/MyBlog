@@ -16,7 +16,6 @@ const PostPage = ({ match }) => {
     }, []);
     const { postData } = useTypedSelector(postDateState);
 
-    console.log(postData);
     return (
         <S.Post>
             <HeaderContainer scrollPosition={0} />
