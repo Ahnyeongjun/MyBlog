@@ -1,4 +1,4 @@
 node_modules
 .env
-publc.pem
+public.pem
 private.pem
