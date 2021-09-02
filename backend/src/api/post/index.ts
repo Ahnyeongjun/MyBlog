@@ -10,13 +10,15 @@ export const blog = (): Router => {
 
     //post 중심
     router.post('/', authMiddleware, postController.ifCreateDuplicatedByTag, postController.createPost);
-    router.patch('/',authMiddleware, postController.ifUpdateCountTag, postController.updatePost);
+    router.patch('/', authMiddleware, postController.ifUpdateCountTag, postController.updatePost);
     router.get('/post', postController.getAllPost);
     router.get('/featured', postController.getAllPost);
-    router.get('/post/:id', postController.getOnePost);
+    router.get('/post/:id', postController.getOnePost, postController.updateViews);
     //tag 중심
     router.get('/tag', postController.getAllTag);
     router.get('/tag/:id', postController.getTagByAllPost);
+    //views 중심(조회수) <- getOnePost에 합침
+    // router.post('/views/:searchUrl', postController.updateViews);
     //test api
     router.get('/test', async (ctx: any) => {
         ctx.body = 'blog';
