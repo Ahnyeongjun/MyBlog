@@ -14,9 +14,10 @@ export const blog = (): Router => {
     router.get('/post', postController.getAllPost);
     router.get('/featured', postController.getAllPost);
     router.get('/post/:id', postController.getOnePost, postController.updateViews);
+    router.get('/post/tag/:id', postController.getTagByAllPost);
+
     //tag 중심
     router.get('/tag', postController.getAllTag);
-    router.get('/tag/:id', postController.getTagByAllPost);
     //views 중심(조회수) <- getOnePost에 합침
     // router.post('/views/:searchUrl', postController.updateViews);
     //test api
