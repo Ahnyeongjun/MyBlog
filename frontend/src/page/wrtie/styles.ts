@@ -6,6 +6,7 @@ export const WriteWrapper = styled.div`
     grid-template-areas: 'header' '.' 'title' 'tag' 'editor' '.' 'bottom';
     grid-template-rows: 60px 20px auto auto auto 30px 80px;
     min-height: 100vh;
+    background: white;
     &.check {
         background: black;
         color: white;

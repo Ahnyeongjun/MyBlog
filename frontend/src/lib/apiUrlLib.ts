@@ -43,6 +43,13 @@ export const BLOG_URL = {
         const resultURL = `/blog/post/${searchUrl}`;
         return resultURL;
     },
+    searchTag: function (queryObject, tagName: string): string {
+        const defaultURL = `/blog/tag/${tagName}`;
+        const queryNameArr = ['page', 'pageSize'];
+        const resultURL = getUrlWithQuery({ queryObject, defaultURL, queryNameArr });
+
+        return resultURL;
+    },
 };
 
 export const TAG_URL = {
