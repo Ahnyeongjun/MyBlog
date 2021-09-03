@@ -1,14 +1,14 @@
 import React, { useMemo, useState } from 'react';
-import { editorState, getPagenationPost } from '../../features/editor/editorSlice';
+
 import { useAppDispatch, useTypedSelector } from '../../module/store';
 const Series = () => {
     const dispatch = useAppDispatch();
 
-    useMemo(() => {
-        dispatch(getPagenationPost({ page: 1, pageSize: 3, type: 'main' }));
-    }, []);
+    // useMemo(() => {
+    //     dispatch(getPagenationPost({ page: 1, pageSize: 3, type: 'main' }));
+    // }, []);
 
-    const { postData } = useTypedSelector(editorState);
+    // const { postData } = useTypedSelector(postListDateState);
     return (
         <>
             <div>개발중</div>
