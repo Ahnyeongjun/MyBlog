@@ -13,7 +13,7 @@ export type PostListInitialStateType = {
     total: number;
 };
 
-type PostListSaveType = 'main' | 'feautred';
+type PostListSaveType = 'main' | 'feautred' | 'searchTag';
 
 export type PageNationSearchPostListActionType = {
     page: number;
@@ -24,5 +24,12 @@ export type PageNationSearchPostListActionType = {
 export type SuccessGetPostListActionType = {
     type: string;
     postListData: PostListType[];
-    total: PostListSaveType;
+    total: number;
+};
+export type SearchTagOnPostListActionType = {
+    page: number;
+    type: PostListSaveType;
+    pageSize: number;
+    tagName: string;
+    total: number;
 };

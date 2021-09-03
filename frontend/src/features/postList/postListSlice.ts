@@ -1,6 +1,11 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { StoreType } from '../../module/store';
-import { PageNationSearchPostListActionType, PostListInitialStateType, SuccessGetPostListActionType } from './postListType';
+import {
+    PageNationSearchPostListActionType,
+    PostListInitialStateType,
+    SearchTagOnPostListActionType,
+    SuccessGetPostListActionType,
+} from './postListType';
 
 const initialState: PostListInitialStateType = {
     MainPostList: [
@@ -62,7 +67,7 @@ const sliceName = 'postList';
 const reducers = {
     getPagenationFeautredPostList: (state = initialState, action: PayloadAction<PageNationSearchPostListActionType>) => {},
     getPagenationMainPostList: (state = initialState, action: PayloadAction<PageNationSearchPostListActionType>) => {},
-
+    searchTagOnPageList: (state = initialState, action: PayloadAction<SearchTagOnPostListActionType>) => {},
     successGetPagenationFeautredPostList: (state = initialState, action: PayloadAction<SuccessGetPostListActionType>) => {
         state.FeautredPostList = action.payload.postListData;
     },
@@ -85,6 +90,7 @@ export const {
     getPagenationMainPostList,
     successGetPagenationFeautredPostList,
     successGetPagenationMainPostList,
+    searchTagOnPageList,
 } = actions;
 export const postListDateState = (state: StoreType) => state.postList;
 
