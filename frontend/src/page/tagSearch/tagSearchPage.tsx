@@ -29,7 +29,7 @@ const TagSearchPage = ({ match }) => {
         <>
             <S.TagSearch>
                 <HeaderContainer scrollPosition={scrollPosition} />
-                <TagNameContainer tagName={oneTag.name} tagTotal={oneTag.count} />
+                <TagNameContainer tagName={'Tag/' + oneTag.name} tagTotal={'#' + oneTag.count + '개의 게시물'} />
                 <S.Article>
                     <MainPostContainer scrollPosition={scrollPosition} tagName={tagName} tagTotal={oneTag.count} />
                     <NavContainer />

@@ -40,17 +40,23 @@ const HeaderContainer = (props: any) => {
                         <S.Category_item>
                             <S.Category_a href="/"> Blog</S.Category_a>
                         </S.Category_item>
-                        <S.Category_item onClick={incompleteOnClick}> Post</S.Category_item>
-                        {isLogin ? null : (
+                        <S.Category_item>
+                            <S.Category_a href="/post"> Post</S.Category_a>
+                        </S.Category_item>
+                        {isLogin ? (
+                            <>
+                                <S.Category_item>
+                                    <S.Category_a href="/write"> Write</S.Category_a>
+                                </S.Category_item>
+                                <S.Category_item onClick={LogOutOnClick}>LogOut</S.Category_item>
+                            </>
+                        ) : (
                             <>
                                 <S.Category_item onClick={incompleteOnClick}>ReSume</S.Category_item>{' '}
                                 <S.Category_item onClick={incompleteOnClick}>Portfolio</S.Category_item>
                             </>
                         )}
-                        <S.Category_item>
-                            <S.Category_a href="/write"> Write</S.Category_a>
-                        </S.Category_item>
-                        {isLogin ? <S.Category_item onClick={LogOutOnClick}>LogOut</S.Category_item> : null}
+
                         <Toggle />
                     </S.Blog_Category>
                     <HamburgerMenu scrollPosition={props.scrollPosition} />
@@ -62,17 +68,23 @@ const HeaderContainer = (props: any) => {
                         <S.Category_item>
                             <S.Category_a href="/"> Blog</S.Category_a>
                         </S.Category_item>
-                        <S.Category_item onClick={incompleteOnClick}> Post</S.Category_item>
-                        {isLogin ? null : (
+                        <S.Category_item>
+                            <S.Category_a href="/post"> Post</S.Category_a>
+                        </S.Category_item>
+                        {isLogin ? (
+                            <>
+                                <S.Category_item>
+                                    <S.Category_a href="/write"> Write</S.Category_a>
+                                </S.Category_item>
+                                <S.Category_item onClick={LogOutOnClick}>LogOut</S.Category_item>
+                            </>
+                        ) : (
                             <>
                                 <S.Category_item onClick={incompleteOnClick}>ReSume</S.Category_item>{' '}
                                 <S.Category_item onClick={incompleteOnClick}>Portfolio</S.Category_item>
                             </>
                         )}
-                        <S.Category_item>
-                            <S.Category_a href="/write"> Write</S.Category_a>
-                        </S.Category_item>
-                        {isLogin ? <S.Category_item onClick={LogOutOnClick}>LogOut</S.Category_item> : null}
+
                         <Toggle />
                     </S.Blog_Category>
                     <HamburgerMenu scrollPosition={props.scrollPosition} />

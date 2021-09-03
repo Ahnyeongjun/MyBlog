@@ -5,9 +5,9 @@ const TagNameContainer = (props: any) => {
     return (
         <S.TagNameWrapper>
             <S.MyInformationWrapper>
-                <S.TagTitle>Tag/{props.tagName}</S.TagTitle>
+                <S.TagTitle>{props.tagName}</S.TagTitle>
                 <S.TaggNameWrapper>
-                    <S.TagName>#{props.tagTotal}개의 게시물</S.TagName>
+                    <S.TagName>{props.tagTotal}</S.TagName>
                 </S.TaggNameWrapper>
             </S.MyInformationWrapper>
         </S.TagNameWrapper>
