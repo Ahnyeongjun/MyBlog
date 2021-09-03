@@ -1,19 +1,30 @@
 import React, { useEffect, useMemo, useState } from 'react';
 import { useAppDispatch, useTypedSelector } from '../../module/store';
 import * as S from '../../container/mainPost/styles';
-import { getPagenationMainPostList, postListDateState } from '../../features/postList/postListSlice';
+import { getPagenationMainPostList, postListDateState, searchTagOnPageList } from '../../features/postList/postListSlice';
 const Post = (props: any) => {
     const dispatch = useAppDispatch();
     const [page, setPage] = useState(1);
     useEffect(() => {
         if (props.scrollPosition >= 4800 * page) {
             setPage(page + 1);
-            dispatch(getPagenationMainPostList({ page: page + 1, pageSize: 8, type: 'main' }));
+            if (props.tagName) {
+                dispatch(
+                    searchTagOnPageList({ page: page + 1, pageSize: 8, tagName: props.tagName, type: 'searchTag', total: props.tagTotal })
+                );
+            } else {
+                dispatch(getPagenationMainPostList({ page: page + 1, pageSize: 8, type: 'main' }));
+            }
         }
     });
 
     useMemo(() => {
-        dispatch(getPagenationMainPostList({ page: page, pageSize: 8, type: 'main' }));
+        console.log(props.tagName);
+        if (props.tagName) {
+            dispatch(searchTagOnPageList({ page: page, pageSize: 8, tagName: props.tagName, type: 'searchTag', total: props.tagTotal }));
+        } else {
+            dispatch(getPagenationMainPostList({ page: page, pageSize: 8, type: 'main' }));
+        }
     }, []);
 
     const onClick = (searchUrl: string) => {
