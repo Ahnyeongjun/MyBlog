@@ -12,9 +12,10 @@ const BASE_URL = process.env.BASE_URL;
 export const requestApiWithBody = async ({ httpMethod, requestUrl, body, headers }) => {
     try {
         const res = await axios[httpMethod](BASE_URL + requestUrl, body, { headers });
-        console.log(res);
         return res;
     } catch (error) {
+        location.href = '/';
+
         throw error.response;
     }
 };

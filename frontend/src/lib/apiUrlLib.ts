@@ -44,7 +44,7 @@ export const BLOG_URL = {
         return resultURL;
     },
     searchTag: function (queryObject, tagName: string): string {
-        const defaultURL = `/blog/tag/${tagName}`;
+        const defaultURL = `/blog/post/tag/${tagName}`;
         const queryNameArr = ['page', 'pageSize'];
         const resultURL = getUrlWithQuery({ queryObject, defaultURL, queryNameArr });
 
@@ -56,8 +56,7 @@ export const TAG_URL = {
     tag: function (): string {
         return '/blog/tag';
     },
-    searchTag: function (searchTag: string): string {
-        const resultURL = `/blog/post/${searchTag}`;
-        return resultURL;
+    searchTagName: function (): string {
+        return '/blog/tag/count';
     },
 };
