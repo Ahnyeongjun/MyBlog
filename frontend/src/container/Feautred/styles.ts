@@ -53,8 +53,11 @@ export const FeaturedItemWrapper = styled.div`
     }
 `;
 export const FeautredContentWrapper = styled.div`
+    display: flex;
+    flex-direction: column;
     height: 40%;
     padding: 5%;
+    text-align: left;
 `;
 
 export const PageWrapper = styled.div`
@@ -79,11 +82,11 @@ export const FeautredImg = styled.img`
 export const FeautredTitle = styled.div`
     margin-top: 10px;
     grid-area: title;
-    font-size: 20px;
+    font-size: 1.5rem;
 `;
 export const FeautredContent = styled.div`
     margin-top: 10px;
-    font-size: 15px;
+    font-size: 1rem;
     grid-area: content;
 `;
 export const Featured = styled.div`
