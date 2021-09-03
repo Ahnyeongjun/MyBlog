@@ -68,7 +68,7 @@ const MainController = () => {
                             <MainPostContainer scrollPosition={scrollPosition} />
                             <NavContainer />
                         </S.Article>
-                        <S.Footer>
+                        <S.Footer className="check">
                             <S.FooterFont className="check">© 2021. AhnyoungJun all rights reserved.</S.FooterFont>
                         </S.Footer>
                     </S.Main>
