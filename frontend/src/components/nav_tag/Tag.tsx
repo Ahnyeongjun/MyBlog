@@ -9,13 +9,18 @@ const Tag = (props: any) => {
     }, []);
 
     const { tag } = useTypedSelector(tagDateState);
+
     return (
         <>
             {props.check ? (
                 <S.TagWrapper>
                     {tag &&
                         tag.map((e) => (
-                            <S.TagItemWrapper>
+                            <S.TagItemWrapper
+                                onClick={() => {
+                                    location.href = `/tag/${e.name}`;
+                                }}
+                            >
                                 <S.TagItem>{e.name}</S.TagItem>
                                 <S.TagCount> ({e.count})</S.TagCount>
                             </S.TagItemWrapper>
@@ -25,7 +30,11 @@ const Tag = (props: any) => {
                 <S.TagWrapper>
                     {tag &&
                         tag.map((e) => (
-                            <S.TagItemWrapper>
+                            <S.TagItemWrapper
+                                onClick={() => {
+                                    location.href = `/tag/${e.name}`;
+                                }}
+                            >
                                 <S.TagItem>{e.name}</S.TagItem>
                                 <S.TagCount> ({e.count})</S.TagCount>
                             </S.TagItemWrapper>

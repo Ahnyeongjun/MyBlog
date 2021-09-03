@@ -27,7 +27,11 @@ const PostPage = ({ match }) => {
                 <S.TagWRapper>
                     {postData.tag
                         ? postData.tag.map((e) => (
-                              <S.TagItemWrapper>
+                              <S.TagItemWrapper
+                                  onClick={() => {
+                                      location.href = `/tag/${e.name}`;
+                                  }}
+                              >
                                   <S.TagItem>{e.name}</S.TagItem>
                               </S.TagItemWrapper>
                           ))
