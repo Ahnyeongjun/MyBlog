@@ -8,14 +8,26 @@ import MainPostContainer from '../mainPost/MainPostContainer';
 import NavContainer from '../nav/NavContainer';
 import ScrollControlBtn from '../scrollControlBtn/scrollControlBtn';
 
-import { useTypedSelector } from '../../module/store';
-import { themeDataState } from '../../features/theme/themeSlice';
+import { useAppDispatch, useTypedSelector } from '../../module/store';
+import { themeDataState, toggleTheme } from '../../features/theme/themeSlice';
 import { setTheme } from '../../utils/setThemeUtils';
 
 const MainController = () => {
     //테마적용
-    setTheme;
+    const dispatch = useAppDispatch();
 
+    const isBrowserDarkMode = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+    let initTheme = isBrowserDarkMode ? 'black' : 'white';
+
+    const localSettingTheme = localStorage.getItem('theme');
+
+    if (localSettingTheme) {
+        initTheme = localSettingTheme;
+    }
+
+    const theme = initTheme == 'white' ? 'white' : 'black';
+
+    dispatch(toggleTheme({ themeType: theme }));
     //스크롤 위치
     const [scrollPosition, setScrollPosition] = useState(0);
     const { themeData } = useTypedSelector(themeDataState);
@@ -52,7 +64,7 @@ const MainController = () => {
                         <HeaderContainer scrollPosition={scrollPosition} />
                         <IntroContainer />
                         <FeautredContainer />
-                        <S.Article>
+                        <S.Article className="check">
                             <MainPostContainer scrollPosition={scrollPosition} />
                             <NavContainer />
                         </S.Article>

@@ -18,18 +18,18 @@ const MainPostContainer = (props: any) => {
             {themeData != 'white' ? (
                 <S.MainPostWrapper className="check">
                     {props.tagName ? (
-                        <Post check={false} scrollPosition={props.scrollPosition} tagName={props.tagName} tagTotal={props.tagTotal} />
+                        <Post check={true} scrollPosition={props.scrollPosition} tagName={props.tagName} tagTotal={props.tagTotal} />
                     ) : (
                         <>
                             <S.PageNationWrapper>
-                                <S.PageFont isPost={isPost} onClick={upadatePost}>
+                                <S.PageFont isPost={isPost} className="check" onClick={upadatePost}>
                                     Post
                                 </S.PageFont>
                                 <S.PageFont className="check" isPost={!isPost} onClick={upadateProject}>
                                     Series
                                 </S.PageFont>
                             </S.PageNationWrapper>
-                            {isPost ? <Post check={false} scrollPosition={props.scrollPosition} /> : <Series />}
+                            {isPost ? <Post check={true} scrollPosition={props.scrollPosition} /> : <Series />}
                         </>
                     )}
                 </S.MainPostWrapper>
@@ -43,7 +43,7 @@ const MainPostContainer = (props: any) => {
                                 <S.PageFont isPost={isPost} onClick={upadatePost}>
                                     Post
                                 </S.PageFont>
-                                <S.PageFont className="check" isPost={!isPost} onClick={upadateProject}>
+                                <S.PageFont isPost={!isPost} onClick={upadateProject}>
                                     Series
                                 </S.PageFont>
                             </S.PageNationWrapper>

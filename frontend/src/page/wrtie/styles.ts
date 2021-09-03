@@ -50,6 +50,14 @@ export const Btn = styled.button`
         color: white;
         background: black;
     }
+    &.check {
+        color: white;
+        background: black;
+        :hover {
+            color: black;
+            background: white;
+        }
+    }
 `;
 
 export const LastSavePageWrapper = styled.div`

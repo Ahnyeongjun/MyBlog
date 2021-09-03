@@ -10,6 +10,10 @@ export const Tag = styled.ul`
     display: flex;
     flex-wrap: wrap;
     font-size: 1rem;
+    &.check {
+        background: black;
+        color: white;
+    }
 `;
 
 export const TagItem = styled.div`
@@ -45,5 +49,9 @@ export const TagInput = styled.input`
     outline: none;
     &.error {
         animation: ${RedBounse} 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+    }
+    &.check {
+        background: black;
+        color: white;
     }
 `;

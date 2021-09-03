@@ -1,4 +1,5 @@
 import React, { useCallback, useEffect, useRef, useState } from 'react';
+import { themeDataState } from '../../features/theme/themeSlice';
 import { editorState, pushTag, removeTag } from '../../features/editor/editorSlice';
 import { useAppDispatch, useTypedSelector } from '../../module/store';
 import * as S from './styles';
@@ -32,24 +33,51 @@ const Tag = (props: any) => {
     const onClick = (e) => {
         dispatch(removeTag({ tag: e }));
     };
+    const { themeData } = useTypedSelector(themeDataState);
+
     return (
         <>
-            <S.Tag>
-                {tag.map((e) => (
-                    <TagItem onClick={() => onClick(e)} tag={e} />
-                ))}
-                {invalid ? (
-                    <S.TagInput placeholder="태그를 입력해주세요" onChange={onChange} value={oneTag} onKeyPress={onKeyPress} />
-                ) : (
-                    <S.TagInput
-                        placeholder="태그를 입력해주세요"
-                        onChange={onChange}
-                        value={oneTag}
-                        onKeyPress={onKeyPress}
-                        className="error"
-                    />
-                )}
-            </S.Tag>
+            {themeData == 'white' ? (
+                <S.Tag>
+                    {tag.map((e) => (
+                        <TagItem onClick={() => onClick(e)} tag={e} />
+                    ))}
+                    {invalid ? (
+                        <S.TagInput placeholder="태그를 입력해주세요" onChange={onChange} value={oneTag} onKeyPress={onKeyPress} />
+                    ) : (
+                        <S.TagInput
+                            placeholder="태그를 입력해주세요"
+                            onChange={onChange}
+                            value={oneTag}
+                            onKeyPress={onKeyPress}
+                            className="error"
+                        />
+                    )}
+                </S.Tag>
+            ) : (
+                <S.Tag className="check">
+                    {tag.map((e) => (
+                        <TagItem onClick={() => onClick(e)} tag={e} />
+                    ))}
+                    {invalid ? (
+                        <S.TagInput
+                            placeholder="태그를 입력해주세요"
+                            onChange={onChange}
+                            value={oneTag}
+                            onKeyPress={onKeyPress}
+                            className="check"
+                        />
+                    ) : (
+                        <S.TagInput
+                            placeholder="태그를 입력해주세요"
+                            onChange={onChange}
+                            value={oneTag}
+                            onKeyPress={onKeyPress}
+                            className="error check"
+                        />
+                    )}
+                </S.Tag>
+            )}
         </>
     );
 };

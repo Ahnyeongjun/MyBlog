@@ -3,6 +3,10 @@ import styled from 'styled-components';
 export const Title = styled.div`
     min-height: 100%;
     width: 100%;
+    &.check {
+        background: black;
+        color: white;
+    }
 `;
 
 export const Input = styled.textarea`
@@ -20,6 +24,10 @@ export const Input = styled.textarea`
     font-family: NotoSansKR !important;
     font-size: 3rem;
     font-weight: 1000;
+    &.check {
+        background: black;
+        color: white;
+    }
 `;
 
 export const underLine = styled.div`
@@ -28,4 +36,7 @@ export const underLine = styled.div`
     display: block;
     width: 80px;
     border-bottom: solid rgb(28, 27, 55) 0.5rem;
+    &.check {
+        border-bottom: solid rgb(240, 240, 240) 0.5rem;
+    }
 `;

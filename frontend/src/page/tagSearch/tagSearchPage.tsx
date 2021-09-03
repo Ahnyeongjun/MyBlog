@@ -9,6 +9,7 @@ import MainPostContainer from '../../container/mainPost/MainPostContainer';
 import NavContainer from '../../container/nav/NavContainer';
 import axios from 'axios';
 import { searchTag, tagDateState } from '../../features/tag/tagSlice';
+import { themeDataState, toggleTheme } from '../../features/theme/themeSlice';
 
 const TagSearchPage = ({ match }) => {
     console.log(match.params);
@@ -25,16 +26,41 @@ const TagSearchPage = ({ match }) => {
         dispatch(searchTag({ tagName: tagName }));
     }, []);
 
+    const isBrowserDarkMode = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+    let initTheme = isBrowserDarkMode ? 'black' : 'white';
+
+    const localSettingTheme = localStorage.getItem('theme');
+
+    if (localSettingTheme) {
+        initTheme = localSettingTheme;
+    }
+
+    const theme = initTheme == 'white' ? 'white' : 'black';
+
+    dispatch(toggleTheme({ themeType: theme }));
+    const { themeData } = useTypedSelector(themeDataState);
+
     return (
         <>
-            <S.TagSearch>
-                <HeaderContainer scrollPosition={scrollPosition} />
-                <TagNameContainer tagName={'Tag/' + oneTag.name} tagTotal={'#' + oneTag.count + '개의 게시물'} />
-                <S.Article>
-                    <MainPostContainer scrollPosition={scrollPosition} tagName={tagName} tagTotal={oneTag.count} />
-                    <NavContainer />
-                </S.Article>
-            </S.TagSearch>
+            {themeData == 'white' ? (
+                <S.TagSearch>
+                    <HeaderContainer scrollPosition={scrollPosition} />
+                    <TagNameContainer tagName={'Tag/' + oneTag.name} tagTotal={'#' + oneTag.count + '개의 게시물'} />
+                    <S.Article>
+                        <MainPostContainer scrollPosition={scrollPosition} tagName={tagName} tagTotal={oneTag.count} />
+                        <NavContainer />
+                    </S.Article>
+                </S.TagSearch>
+            ) : (
+                <S.TagSearch className="check">
+                    <HeaderContainer scrollPosition={scrollPosition} />
+                    <TagNameContainer tagName={'Tag/' + oneTag.name} tagTotal={'#' + oneTag.count + '개의 게시물'} />
+                    <S.Article className="check">
+                        <MainPostContainer scrollPosition={scrollPosition} tagName={tagName} tagTotal={oneTag.count} />
+                        <NavContainer />
+                    </S.Article>
+                </S.TagSearch>
+            )}
         </>
     );
 };

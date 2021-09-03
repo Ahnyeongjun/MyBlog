@@ -168,7 +168,9 @@ const WritePage = () => {
                         <Editor check={true} />
                     </S.EditorWrapper>
                     <S.Bottom>
-                        <S.Btn onClick={onIsLastSaveClick}>저장하기</S.Btn>
+                        <S.Btn onClick={onIsLastSaveClick} className="check">
+                            저장하기
+                        </S.Btn>
                     </S.Bottom>
                 </S.WriteWrapper>
             )}

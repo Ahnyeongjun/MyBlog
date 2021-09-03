@@ -9,8 +9,12 @@ export const TagSearch = styled.div`
         '. article .'
         '. . . '
         'footer footer footer';
-    grid-template-rows: 60px 400px 20px 500px auto 60px 50px;
+    grid-template-rows: 60px 400px 20px auto 60px 50px;
     grid-template-columns: 1fr 4fr 1fr;
+    &.check {
+        background: black;
+        color: white;
+    }
 `;
 export const Article = styled.article`
     grid-area: article;
