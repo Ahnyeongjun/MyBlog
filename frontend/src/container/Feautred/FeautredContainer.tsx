@@ -1,16 +1,15 @@
-import React, { useEffect, useLayoutEffect, useMemo, useState } from 'react';
+import React, { useMemo, useState } from 'react';
 import * as S from './styles';
 import 'swiper/swiper.min.css';
 import 'swiper/components/navigation/navigation.min.css';
 import './feautredStyles.css';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { Virtual } from 'swiper';
 import SwiperCore, { Pagination, Navigation } from 'swiper/core';
 import { useDispatch } from 'react-redux';
-import { editorState, getPagenationFeautredPost, getPagenationPost } from '../../features/editor/editorSlice';
 import { useTypedSelector } from '../../module/store';
 import 'swiper/swiper.scss';
 import { themeDataState } from '../../features/theme/themeSlice';
+import { getPagenationFeautredPostList, postListDateState } from '../../features/postList/postListSlice';
 
 SwiperCore.use([Pagination, Navigation]);
 
@@ -32,10 +31,11 @@ const FeautredContainer = () => {
     const dispatch = useDispatch();
 
     useMemo(() => {
-        dispatch(getPagenationFeautredPost({ page: 1, pageSize: 9, type: 'Feautred' }));
+        dispatch(getPagenationFeautredPostList({ page: 1, pageSize: 9, type: 'feautred' }));
     }, []);
 
-    const { FeautredPostData } = useTypedSelector(editorState);
+    const { FeautredPostList } = useTypedSelector(postListDateState);
+    console.log(FeautredPostList);
     const { themeData } = useTypedSelector(themeDataState);
 
     const onClick = (searchUrl: string) => {
@@ -45,27 +45,27 @@ const FeautredContainer = () => {
     const slider = [];
 
     if (themeData == 'white')
-        for (let i = 0; i < FeautredPostData.length; i += 1)
+        for (let i = 0; i < FeautredPostList.length; i += 1)
             slider.push(
-                <SwiperSlide key={`slide-${FeautredPostData[i].uid}`} onClick={() => onClick(FeautredPostData[i].searchUrl)}>
+                <SwiperSlide key={`slide-${FeautredPostList[i].uid}`} onClick={() => onClick(FeautredPostList[i].searchUrl)}>
                     <S.FeaturedItemWrapper>
-                        <S.FeautredImg src={FeautredPostData[i].mainImageURL} />
+                        <S.FeautredImg src={FeautredPostList[i].mainImageURL} />
                         <S.FeautredContentWrapper>
-                            <S.FeautredTitle>{FeautredPostData[i].title}</S.FeautredTitle>
-                            <S.FeautredContent>{FeautredPostData[i].mainContent}</S.FeautredContent>
+                            <S.FeautredTitle>{FeautredPostList[i].title}</S.FeautredTitle>
+                            <S.FeautredContent>{FeautredPostList[i].mainContent}</S.FeautredContent>
                         </S.FeautredContentWrapper>
                     </S.FeaturedItemWrapper>
                 </SwiperSlide>
             );
     else
-        for (let i = 0; i < FeautredPostData.length; i += 1) {
+        for (let i = 0; i < FeautredPostList.length; i += 1) {
             slider.push(
-                <SwiperSlide key={`slide-${FeautredPostData[i].uid}`} onClick={() => onClick(FeautredPostData[i].searchUrl)}>
+                <SwiperSlide key={`slide-${FeautredPostList[i].uid}`} onClick={() => onClick(FeautredPostList[i].searchUrl)}>
                     <S.FeaturedItemWrapper className="check">
-                        <S.FeautredImg src={FeautredPostData[i].mainImageURL} />
+                        <S.FeautredImg src={FeautredPostList[i].mainImageURL} />
                         <S.FeautredContentWrapper>
-                            <S.FeautredTitle>{FeautredPostData[i].title}</S.FeautredTitle>
-                            <S.FeautredContent>{FeautredPostData[i].mainContent}</S.FeautredContent>
+                            <S.FeautredTitle>{FeautredPostList[i].title}</S.FeautredTitle>
+                            <S.FeautredContent>{FeautredPostList[i].mainContent}</S.FeautredContent>
                         </S.FeautredContentWrapper>
                     </S.FeaturedItemWrapper>
                 </SwiperSlide>

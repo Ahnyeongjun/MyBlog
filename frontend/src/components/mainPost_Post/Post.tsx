@@ -1,31 +1,32 @@
 import React, { useEffect, useMemo, useState } from 'react';
-import { editorState, getPagenationPost } from '../../features/editor/editorSlice';
 import { useAppDispatch, useTypedSelector } from '../../module/store';
 import * as S from '../../container/mainPost/styles';
+import { getPagenationMainPostList, postListDateState } from '../../features/postList/postListSlice';
 const Post = (props: any) => {
     const dispatch = useAppDispatch();
     const [page, setPage] = useState(1);
     useEffect(() => {
         if (props.scrollPosition >= 4800 * page) {
             setPage(page + 1);
-            dispatch(getPagenationPost({ page: page + 1, pageSize: 8, type: 'main' }));
+            dispatch(getPagenationMainPostList({ page: page + 1, pageSize: 8, type: 'main' }));
         }
     });
 
     useMemo(() => {
-        dispatch(getPagenationPost({ page: page, pageSize: 8, type: 'main' }));
+        dispatch(getPagenationMainPostList({ page: page, pageSize: 8, type: 'main' }));
     }, []);
 
     const onClick = (searchUrl: string) => {
         location.href = `/post/${searchUrl}`;
     };
+    const { MainPostList } = useTypedSelector(postListDateState);
 
     return (
         <>
             {props.check ? (
                 <>
-                    {postData &&
-                        postData.map((e) => (
+                    {MainPostList &&
+                        MainPostList.map((e) => (
                             <S.MainPostItemWrapper className="check" onClick={() => onClick(e.searchUrl)}>
                                 <S.MainPostImg src={e.mainImageURL} />
                                 <S.ContentWrapper>
@@ -39,8 +40,8 @@ const Post = (props: any) => {
                 </>
             ) : (
                 <>
-                    {postData &&
-                        postData.map((e) => (
+                    {MainPostList &&
+                        MainPostList.map((e) => (
                             <S.MainPostItemWrapper onClick={() => onClick(e.searchUrl)}>
                                 <S.MainPostImg src={e.mainImageURL} />
                                 <S.ContentWrapper>
