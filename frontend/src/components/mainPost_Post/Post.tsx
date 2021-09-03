@@ -31,7 +31,6 @@ const Post = (props: any) => {
         location.href = `/post/${searchUrl}`;
     };
     const { MainPostList } = useTypedSelector(postListDateState);
-
     return (
         <>
             {props.check ? (
@@ -45,6 +44,18 @@ const Post = (props: any) => {
                                         <S.FeautredTitle>{e.title}</S.FeautredTitle>
                                     </S.FeautredTitleWrapper>
                                     <S.FeautredContent>{e.mainContent}</S.FeautredContent>
+                                    <S.TagList>
+                                        {e.tag &&
+                                            e.tag.map((e) => (
+                                                <S.TagItem
+                                                    onClick={() => {
+                                                        location.href = `/tag/${e.name}`;
+                                                    }}
+                                                >
+                                                    {e.name}
+                                                </S.TagItem>
+                                            ))}
+                                    </S.TagList>
                                 </S.ContentWrapper>
                             </S.MainPostItemWrapper>
                         ))}
@@ -58,8 +69,21 @@ const Post = (props: any) => {
                                 <S.ContentWrapper>
                                     <S.FeautredTitleWrapper>
                                         <S.FeautredTitle>{e.title}</S.FeautredTitle>
+                                        <S.createdAt>{e.createdAt}</S.createdAt>
                                     </S.FeautredTitleWrapper>
                                     <S.FeautredContent>{e.mainContent}</S.FeautredContent>
+                                    <S.TagList>
+                                        {e.tag &&
+                                            e.tag.map((e) => (
+                                                <S.TagItem
+                                                    onClick={() => {
+                                                        location.href = `/tag/${e.name}`;
+                                                    }}
+                                                >
+                                                    {e.name}
+                                                </S.TagItem>
+                                            ))}
+                                    </S.TagList>
                                 </S.ContentWrapper>
                             </S.MainPostItemWrapper>
                         ))}

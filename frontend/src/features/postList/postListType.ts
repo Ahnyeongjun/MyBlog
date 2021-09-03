@@ -2,9 +2,14 @@ type PostListType = {
     mainImageURL: string;
     mainContent: string;
     title: string;
-    tag: string[];
+    tag: tag[];
     uid: string;
     searchUrl: string;
+    createdAt: string;
+};
+type tag = {
+    name: string;
+    count: number;
 };
 
 export type PostListInitialStateType = {

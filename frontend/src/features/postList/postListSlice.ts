@@ -16,6 +16,7 @@ const initialState: PostListInitialStateType = {
             mainImageURL: '',
             mainContent: '',
             searchUrl: '',
+            createdAt: '',
         },
         {
             uid: '',
@@ -24,6 +25,7 @@ const initialState: PostListInitialStateType = {
             mainImageURL: '',
             mainContent: '',
             searchUrl: '',
+            createdAt: '',
         },
         {
             uid: '',
@@ -32,6 +34,7 @@ const initialState: PostListInitialStateType = {
             mainImageURL: '',
             mainContent: '',
             searchUrl: '',
+            createdAt: '',
         },
     ],
     FeautredPostList: [
@@ -42,6 +45,7 @@ const initialState: PostListInitialStateType = {
             mainImageURL: '',
             mainContent: '',
             searchUrl: '',
+            createdAt: '',
         },
         {
             uid: '',
@@ -50,6 +54,7 @@ const initialState: PostListInitialStateType = {
             mainImageURL: '',
             mainContent: '',
             searchUrl: '',
+            createdAt: '',
         },
         {
             uid: '',
@@ -58,6 +63,7 @@ const initialState: PostListInitialStateType = {
             mainImageURL: '',
             mainContent: '',
             searchUrl: '',
+            createdAt: '',
         },
     ],
     total: 0,
