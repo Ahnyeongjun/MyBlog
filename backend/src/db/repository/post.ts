@@ -35,13 +35,15 @@ export class PostRepository {
             console.log(e);
         }
     }
-    public async selectTagByAllPost(tagName: string) {
+    public async selectTagByAllPost(tagName: string, page: number, pageSize: number) {
         const postRepository = (await connection).manager.getRepository(Post);
 
         return postRepository
             .createQueryBuilder('post')
             .leftJoinAndSelect('post.tag', 'tag')
             .where('tag.name = :name', { name: tagName })
+            .take(pageSize)
+            .skip((page - 1) * pageSize)
             .getMany();
     }
     public async selectSearchUrlByPost(searchUrl: string) {
@@ -135,5 +137,16 @@ export class PostRepository {
             ...tag,
             ...updateTag,
         });
+    }
+    public async getOneTag(tagName: string) {
+        try {
+            const tagRepository = (await connection).manager.getRepository(Tag);
+
+            const tag = await tagRepository.findOne({ name: tagName });
+
+            return tag;
+        } catch (e) {
+            console.log(e);
+        }
     }
 }
