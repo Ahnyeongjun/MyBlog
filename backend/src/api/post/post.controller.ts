@@ -171,9 +171,24 @@ export class PostController {
     public getTagByAllPost = async (ctx: Context) => {
         const tag: string = ctx.params.id;
         console.log(tag);
-        const post = await this.postService.getTagByAllPost(tag);
+        let { page, pageSize } = ctx.query;
+        const numPage = Number(page) || 1;
+        const numPageSize = Number(pageSize) || 6;
+        const post = await this.postService.getTagByAllPost(tag, numPage, numPageSize);
         if (post) {
-            ctx.body = post;
+            ctx.body = { post: post };
+            ctx.status = 200;
+        } else {
+            ctx.status = 400;
+        }
+    };
+    public getOneTag = async (ctx: Context) => {
+        const { tagName } = ctx.request.body;
+        console.log('Xxsssss');
+        const tag = await this.postService.getOneTag(tagName);
+        console.log(tag);
+        if (tag) {
+            ctx.body = { tag: tag };
             ctx.status = 200;
         } else {
             ctx.status = 400;

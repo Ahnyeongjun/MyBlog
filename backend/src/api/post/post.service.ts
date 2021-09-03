@@ -126,8 +126,8 @@ export class PostServie {
     public async deleteByTag(tagName: string) {
         this.postRepository.deleteByTag(tagName);
     }
-    public async getTagByAllPost(tagName: string) {
-        return await this.postRepository.selectTagByAllPost(tagName);
+    public async getTagByAllPost(tagName: string, page: number, pageSize: number) {
+        return await this.postRepository.selectTagByAllPost(tagName, page, pageSize);
     }
     public async selectSearchUrlByPost(searchUrl: string) {
         return await this.postRepository.selectSearchUrlByPost(searchUrl);
@@ -135,5 +135,8 @@ export class PostServie {
     public async updateViews(views: Views) {
         const req: updateViews = { uid: views.uid, viewsCount: views.viewsCount + 1 };
         return await this.viewsRepository.updataView(req);
+    }
+    public async getOneTag(tagName: string) {
+        return await this.postRepository.getOneTag(tagName);
     }
 }
