@@ -60,7 +60,7 @@ export const LastSavePageWrapper = styled.div`
     z-index: 100;
     height: 100vh;
     width: 100vw;
-    background: rgb(220, 220, 220);
+    background: rgb(250, 250, 250);
     animation: ${slideTop} 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
     &.delete {
         animation: ${slideDown} 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
