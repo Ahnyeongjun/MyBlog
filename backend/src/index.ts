@@ -18,8 +18,13 @@ const app = new Koa();
 const router = new Router();
 
 router.use('/api', api.routes());
-
+const koaOptions = {
+    origin: 'http://localhost:8080',
+    credentials: true,
+};
 app.use(bodyparser())
+    .use(cors(koaOptions))
+
     .use(logger())
     .use(router.routes())
     .use(router.allowedMethods())

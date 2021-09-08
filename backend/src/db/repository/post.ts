@@ -69,13 +69,15 @@ export class PostRepository {
     public async findPostAllByViews(page: number, pageSize: number) {
         const postRepository = (await connection).manager.getRepository(Post);
 
-        return postRepository
+        const post = postRepository
             .createQueryBuilder('post')
             .leftJoinAndSelect('post.views', 'views')
+            .leftJoinAndSelect('post.tag', 'tag')
             .orderBy('views.viewsCount', 'DESC')
             .take(pageSize)
             .skip((page - 1) * pageSize)
             .getMany();
+        return post;
     }
     public async findPostByAllTagName(tagName: string, page: number, pageSize: number) {
         const postRepository = (await connection).manager.getRepository(Post);
