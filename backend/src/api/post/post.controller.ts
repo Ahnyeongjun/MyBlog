@@ -2,13 +2,24 @@ import { PostServie } from './post.service';
 import { PostRepository } from '../../db/repository';
 import { Context, Next } from 'koa';
 
-import { CreatePostRequest, DuplicatedTagRequest, PagenationPostRequest, Payload, PostRequest, UpdatePostRequest } from '../../interface';
+import {
+    CreatePostRequest,
+    DuplicatedTagRequest,
+    PagenationPostRequest,
+    Payload,
+    PostRequest,
+    SeriesRequest,
+    UpdatePostRequest,
+} from '../../interface';
 import { decodedToken } from '../../lib';
 import { Tag } from '../../db/entity';
+import { SeriesRepository } from '../../db/repository/series';
+import { Series } from '../../db/entity/series';
 
 export class PostController {
     private postRepository: PostRepository = new PostRepository();
-    private postService: PostServie = new PostServie(this.postRepository);
+    private seriesRepository: SeriesRepository = new SeriesRepository();
+    private postService: PostServie = new PostServie(this.postRepository, this.seriesRepository);
 
     public createPost = async (ctx: Context) => {
         try {
@@ -16,7 +27,7 @@ export class PostController {
             console.log(decoded);
             const postData: CreatePostRequest = ctx.request.body;
             if (decoded) {
-                await this.postService.createPost(postData, decoded.name);
+                const post = await this.postService.createPost(postData, decoded.name);
                 ctx.status = 201;
             } else ctx.status = 400;
         } catch (error) {
@@ -90,7 +101,7 @@ export class PostController {
                 ctx.cookies.set(`isVisited-${searchUrl}`, `${searchUrl}`, {
                     // maxAge: 1000,
                     // httpOnly: false,
-                    sameSite: 'none',
+                    sameSite: 'lax',
                     // sameSite: 'none',
                     secure: true,
                     // overwrite: true,
@@ -184,7 +195,6 @@ export class PostController {
     };
     public getOneTag = async (ctx: Context) => {
         const { tagName } = ctx.request.body;
-        console.log('Xxsssss');
         const tag = await this.postService.getOneTag(tagName);
         console.log(tag);
         if (tag) {

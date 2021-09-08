@@ -1,5 +1,19 @@
-import { BaseEntity, Entity, PrimaryGeneratedColumn, Column, Index, OneToMany, JoinTable, ManyToMany, OneToOne, JoinColumn } from 'typeorm';
+import {
+    BaseEntity,
+    Entity,
+    PrimaryGeneratedColumn,
+    Column,
+    Index,
+    OneToMany,
+    JoinTable,
+    ManyToMany,
+    OneToOne,
+    JoinColumn,
+    ManyToOne,
+} from 'typeorm';
+import { servicesVersion } from 'typescript';
 import { Tag } from '.';
+import { Series } from './series';
 import { Views } from './views';
 @Entity()
 export class Post {
@@ -35,4 +49,7 @@ export class Post {
 
     @Column()
     mainContent!: string;
+
+    @ManyToOne((type) => Series, (series) => series.post)
+    series!: Series;
 }

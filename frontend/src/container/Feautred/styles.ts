@@ -97,6 +97,7 @@ export const Featured = styled.div`
     padding: 40px 2vw;
 `;
 
+
 export const PageFont = styled.a<{ isTrending: boolean }>`
     text-align: center;
     display: block;

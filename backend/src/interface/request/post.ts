@@ -1,4 +1,5 @@
 import { Tag } from '../../db/entity';
+import { Series } from '../../db/entity/series';
 import { TagRequest, updateTagRequest } from './tag';
 
 export interface CreatePostRequest {
@@ -7,6 +8,7 @@ export interface CreatePostRequest {
     tag: string[];
     mainImageURL: string;
     mainContent: string;
+    series?: string;
 }
 export interface DuplicatedTagRequest {
     tag: string[];
@@ -22,6 +24,7 @@ export interface PostRequest {
     content?: string;
     title?: string;
     tag?: Tag[];
+    series?: Series;
     searchUrl?: string;
     mainImageURL: string;
     mainContent: string;
@@ -35,7 +38,9 @@ export interface PostDataRequest {
     data: Post[];
     total: number;
 }
-
+export interface SeriesRequest {
+    series?: Series;
+}
 interface Post {
     title: string;
     content: string;

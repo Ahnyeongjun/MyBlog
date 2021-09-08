@@ -41,6 +41,7 @@ export class AuthController {
             ctx.status = 400;
         }
     };
+
     public duplicatedById = async (ctx: Context, next: Next) => {
         const userData: CreateUserRequest = ctx.request.body;
         const user = await this.authService.findOneById(userData.id);
@@ -52,6 +53,7 @@ export class AuthController {
             ctx.status = 403;
         }
     };
+
     public login = async (ctx: Context) => {
         const userData: CreateUserRequest = ctx.request.body;
         const user = await this.authService.login(userData);
@@ -63,6 +65,7 @@ export class AuthController {
             ctx.status = 403;
         }
     };
+
     public check = async (ctx: Context) => {
         const token: string = ctx.get('Authorization');
         const a = await decodedToken(token);

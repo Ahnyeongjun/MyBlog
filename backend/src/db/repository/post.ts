@@ -3,6 +3,7 @@ import connection from '..';
 import { PostDataRequest, PostRequest, TagRequest, UpdatePostRequest, updateTagRequest } from '../../interface';
 
 import { Post, Tag, Views } from '../entity';
+import { Series } from '../entity/series';
 
 @EntityRepository(Post)
 export class PostRepository {
@@ -15,7 +16,8 @@ export class PostRepository {
         mainContent: string,
         searchUrl: string,
         tag: Tag[],
-        views: Views
+        views: Views,
+        series?: Series
     ) {
         try {
             const post = new Post();
@@ -28,6 +30,7 @@ export class PostRepository {
             post.mainContent = mainContent;
             post.searchUrl = searchUrl;
             post.views = views;
+            if (series) post.series = series;
             await (await connection).manager.save(post);
 
             return post;
@@ -91,7 +94,7 @@ export class PostRepository {
         const postRepository = (await connection).manager.getRepository(Post);
         return await postRepository.findOne({
             where: { uid: uid },
-            relations: ['tag'],
+            relations: ['tag', 'series'],
         });
     }
 

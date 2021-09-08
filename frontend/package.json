@@ -21,7 +21,8 @@
     },
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1",
-        "start": "webpack serve"
+        "start": "webpack serve",
+        "build": "webpack"
     },
     "dependencies": {
         "@reduxjs/toolkit": "^1.6.1",

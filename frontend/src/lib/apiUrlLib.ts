@@ -5,7 +5,7 @@ const getUrlWithQuery = ({ queryObject, defaultURL, queryNameArr }) => {
 
     for (const queryName of queryNameArr) {
         if (!isNullOfUndefined(queryObject[queryName])) {
-            if (URLArr.length === 1) {
+            if (URLArr && URLArr.length === 1) {
                 URLArr.push('?');
             } else {
                 URLArr.push('&');

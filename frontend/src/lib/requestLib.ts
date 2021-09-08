@@ -11,6 +11,7 @@ const BASE_URL = process.env.BASE_URL;
 
 export const requestApiWithBody = async ({ httpMethod, requestUrl, body, headers }) => {
     try {
+        console.log(requestUrl);
         const res = await axios[httpMethod](BASE_URL + requestUrl, body, { headers });
         return res;
     } catch (error) {
@@ -23,6 +24,7 @@ export const requestApiWithBody = async ({ httpMethod, requestUrl, body, headers
 export const requestApi = async ({ httpMethod, requestUrl, headers }) => {
     console.log(BASE_URL);
     try {
+        console.log(requestUrl);
         const res = await axios[httpMethod](
             BASE_URL + requestUrl,
             {

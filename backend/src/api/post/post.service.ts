@@ -7,11 +7,12 @@ import { throws } from 'assert';
 import { ViewsRepository } from '../../db/repository/views';
 import { ViewsService } from '../views/views.service';
 import { updateViews } from '../../interface/request/views';
+import { SeriesRepository } from '../../db/repository/series';
+import { Series } from '../../db/entity/series';
 export class PostServie {
-    constructor(private readonly postRepository: PostRepository) {}
+    constructor(private readonly postRepository: PostRepository, private readonly seriesRepository: SeriesRepository) {}
     private viewsRepository: ViewsRepository = new ViewsRepository();
     private viewsService: ViewsService = new ViewsService(this.viewsRepository);
-
     public async createAt() {
         const today = new Date();
 
@@ -22,12 +23,18 @@ export class PostServie {
         const day: string = year + '/' + month + '/' + date;
         return day;
     }
-
+    public async createSeries(seriesName: string) {
+        return await this.seriesRepository.createSeries(seriesName);
+    }
     public async createPost(request: CreatePostRequest, writer: string) {
         const customTag = await this.selectNameByMultiTag(request.tag);
         const searchName = await this.selectTitleByOneTag(request.title);
+
+        let series;
+        if (request.series) series = await this.selectNameBySeries(request.series);
         const views = await this.viewsService.createViews();
         let searchUrl = '';
+
         if (searchName) searchUrl = request.title + '-' + v4().substring(0, 8);
         else searchUrl = request.title;
         if (views)
@@ -40,10 +47,14 @@ export class PostServie {
                 request.mainContent,
                 searchUrl,
                 customTag,
-                views
+                views,
+                series
             );
     }
 
+    public async selectNameBySeries(seriesName: string) {
+        return await this.seriesRepository.getOneSeries(seriesName);
+    }
     public async getAllTag() {
         return await this.postRepository.selectAllByTag();
     }
@@ -68,7 +79,6 @@ export class PostServie {
             mainImageURL: request.mainImageURL,
             mainContent: request.mainContent,
         };
-        console.log(res);
         await this.postRepository.updatePost(res);
     }
 
@@ -138,5 +148,8 @@ export class PostServie {
     }
     public async getOneTag(tagName: string) {
         return await this.postRepository.getOneTag(tagName);
+    }
+    public async getOneSeries(seriesName: string) {
+        return await this.seriesRepository.getOneSeries(seriesName);
     }
 }
