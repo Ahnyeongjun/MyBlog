@@ -39,7 +39,6 @@ const Editor = (props: any) => {
                 try {
                     const res = (await axios.post(process.env.BASE_URL + '/upload/single', formData)).data;
                     url = process.env.S3_URL + res.image;
-                    //url = 'https://toinin1234.s3.ap-northeast-2.amazonaws.com/dc303730-b7ed-4e27-a22f-8ba172ec51a6.png';
                     setTimeout(() => imageChange(url), 1000);
                     console.log(url);
                 } catch (error) {

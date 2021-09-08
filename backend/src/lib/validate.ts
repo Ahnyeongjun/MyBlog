@@ -25,27 +25,32 @@ export const generateToken = async (payload: Payload) => {
     });
 };
 
-export const decodedToken = async (token: string) => {
+const decodedToken = async (token: string) => {
     let decoded;
     try {
         decoded = jwt.verify(token, process.env.JWT_SECRET as Secret);
+        if (!decoded) {
+            throw new Error('Error Message');
+        }
+
+        return decoded;
     } catch (e) {
         console.log(e);
     }
-    return decoded;
 };
+
 export const authMiddleware = async (ctx: Context, next: Next) => {
     const token: string = ctx.get('Authorization');
     if (!token) {
         ctx.status = 404;
-        ctx.json({ message: 'token required' });
+        ctx.body = { message: 'token required' };
     }
     try {
         const decoded = await decodedToken(token);
         ctx.request.body.decoded = decoded;
-        await next();
-    } catch (e) {
+    } catch (e: any) {
         ctx.status = 401;
-        ctx.json({ message: e.message });
+        ctx.body = { message: 'token required' };
     }
+    await next();
 };

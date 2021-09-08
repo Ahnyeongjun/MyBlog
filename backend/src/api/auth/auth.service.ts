@@ -6,7 +6,7 @@ export class AuthService {
     constructor(private readonly userRepository: UserRepository) {}
 
     public async createUser(request: CreateUserRequest) {
-        await this.userRepository.createUser(request.name, request.id, await cryptoPassword(request.password));
+        await this.userRepository.createByUser(request.name, request.id, await cryptoPassword(request.password));
     }
 
     public async findOneById(id: string) {

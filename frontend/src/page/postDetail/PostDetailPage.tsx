@@ -9,7 +9,7 @@ const date = new Date();
 const PostDetailPage = ({ match }) => {
     console.log(match.params);
     const { searchUrl } = match.params;
-
+    console.log(searchUrl);
     const dispatch = useDispatch();
     useMemo(() => {
         dispatch(getOnePost({ searchUrl: searchUrl }));

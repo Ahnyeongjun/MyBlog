@@ -1,60 +1,99 @@
 import { PostServie } from './post.service';
-import { PostRepository } from '../../db/repository';
+import { PostRepository, SeriesRepository, TagRepository, ViewsRepository } from '../../db/repository';
 import { Context, Next } from 'koa';
-
-import { CreatePostRequest, DuplicatedTagRequest, PagenationPostRequest, Payload, PostRequest, UpdatePostRequest } from '../../interface';
-import { decodedToken } from '../../lib';
-import { Tag } from '../../db/entity';
+import { CreatePostRequest, DuplicatedTagRequest, PostRequest, UpdatePostRequest } from '../../interface';
+import { Series, Tag } from '../../db/entity';
 
 export class PostController {
     private postRepository: PostRepository = new PostRepository();
-    private postService: PostServie = new PostServie(this.postRepository);
+    private seriesRepository: SeriesRepository = new SeriesRepository();
+    private tagRepositroy: TagRepository = new TagRepository();
+    private viewsRepository: ViewsRepository = new ViewsRepository();
+    private postService: PostServie = new PostServie(this.postRepository, this.seriesRepository, this.tagRepositroy, this.viewsRepository);
 
-    public createPost = async (ctx: Context) => {
+    //컨트롤러
+    public createByPost = async (ctx: Context) => {
         try {
             const decoded = ctx.request.body.decoded;
-            console.log(decoded);
-            const postData: CreatePostRequest = ctx.request.body;
             if (decoded) {
-                await this.postService.createPost(postData, decoded.name);
+                const postData: CreatePostRequest = ctx.request.body;
+                const series: Series = ctx.request.body.series;
+                await this.postService.createByPost(postData, decoded.name, series);
                 ctx.status = 201;
+                ctx.body = { success: true };
             } else ctx.status = 400;
         } catch (error) {
             console.log(error);
             ctx.status = 400;
+            ctx.body = { message: 'create post error' };
         }
     };
-
-    public updatePost = async (ctx: Context) => {
+    public updateByPost = async (ctx: Context) => {
         try {
             const userData: PostRequest = ctx.request.body;
             const decoded = ctx.request.body.decoded;
 
             if (decoded) {
-                await this.postService.updatePost(userData);
+                await this.postService.updateByPost(userData);
                 ctx.status = 201;
             } else ctx.status = 400;
         } catch (error) {
             console.log(error);
             ctx.status = 400;
+            ctx.body = { message: 'update post error' };
         }
     };
-    public getAllPost = async (ctx: Context) => {
+    public findAllByPost = async (ctx: Context) => {
         try {
             let { page, pageSize } = ctx.query;
             const numPage = Number(page) || 1;
             const numPageSize = Number(pageSize) || 6;
-            ctx.body = await this.postService.getAllPost(numPage, numPageSize);
+            ctx.body = await this.postService.findAllByPost(numPage, numPageSize);
             ctx.status = 201;
         } catch (error) {
             console.log(error);
             ctx.status = 400;
         }
     };
+    public findPostByAllTagName = async (ctx: Context) => {
+        const tag: string = ctx.params.id;
+        console.log(tag);
+        let { page, pageSize } = ctx.query;
+        const numPage = Number(page) || 1;
+        const numPageSize = Number(pageSize) || 6;
+        const post = await this.postService.findPostByAllTagName(tag, numPage, numPageSize);
+        if (post) {
+            ctx.body = { post: post };
+            ctx.status = 200;
+        } else {
+            ctx.status = 400;
+        }
+    };
+    public updateByViews = async (ctx: Context) => {
+        const searchUrl = ctx.params.id;
+        const post = ctx.request.body.post;
+        console.log(post);
+        if (post) {
+            const cookie = ctx.cookies.get(`isVisited-${searchUrl}`);
+            if (!cookie) {
+                ctx.cookies.set(`isVisited-${searchUrl}`, `${searchUrl}`, {
+                    // maxAge: 1000,
+                    // httpOnly: false,
+                    sameSite: 'lax',
+                    // sameSite: 'none',
+                    secure: false,
+                    // overwrite: true,
+                });
+                this.postService.updateByViews(post.views);
+            }
+        }
+        ctx.body = post;
+        ctx.status = 200;
+    };
 
-    public getAllTag = async (ctx: Context) => {
+    public findTagAllByTagName = async (ctx: Context) => {
         try {
-            ctx.body = { tag: await this.postService.getAllTag() };
+            ctx.body = { tag: await this.postService.findAllByTag() };
             ctx.status = 201;
         } catch (e) {
             console.log(e);
@@ -62,10 +101,48 @@ export class PostController {
         }
     };
 
-    public getOnePost = async (ctx: Context, next: Next) => {
+    public findPostOneBySeries = async (ctx: Context) => {
+        try {
+            const seriesName = ctx.params.seriesName;
+            const series = await this.postService.findOneBySeriesName(seriesName);
+
+            ctx.body = series;
+            ctx.status = 200;
+        } catch {
+            ctx.status = 400;
+        }
+    };
+    public findSeriesAllBySeries = async (ctx: Context) => {
+        try {
+            const series = await this.postService.findSeriesAllBySeries();
+
+            ctx.body = series;
+            ctx.status = 200;
+        } catch {
+            ctx.status = 400;
+        }
+    };
+    //미들웨어
+    public findTagOneByTagName = async (ctx: Context, next: Next) => {
+        const searchUrl = ctx.params.id;
+        const post = await this.postService.findOneByTagName(searchUrl);
+        if (post) {
+            ctx.request.body.post = post;
+            ctx.set({
+                'Access-Control-Allow-Credentials': 'true',
+                'Access-Control-Allow-Methods': 'POST, GET, PUT, DELETE, OPTIONS',
+                credentials: 'same-origin',
+            });
+            await next();
+            // ctx.status = 200;
+        } else {
+            ctx.status = 400;
+        }
+    };
+    public findOneByPostSearchUrl = async (ctx: Context, next: Next) => {
         const searchUrl = ctx.params.id;
         console.log(searchUrl);
-        const post = await this.postService.selectSearchUrlByPost(searchUrl);
+        const post = await this.postService.findOneByPostSearchUrl(searchUrl);
         if (post) {
             ctx.request.body.post = post;
             ctx.set({
@@ -80,118 +157,100 @@ export class PostController {
         }
     };
 
-    public updateViews = async (ctx: Context) => {
-        const searchUrl = ctx.params.id;
-        const post = ctx.request.body.post;
-        console.log(post);
-        if (post) {
-            const cookie = ctx.cookies.get(`isVisited-${searchUrl}`);
-            if (!cookie) {
-                ctx.cookies.set(`isVisited-${searchUrl}`, `${searchUrl}`, {
-                    // maxAge: 1000,
-                    // httpOnly: false,
-                    sameSite: 'none',
-                    // sameSite: 'none',
-                    secure: true,
-                    // overwrite: true,
-                });
-                this.postService.updateViews(post.views);
-            }
+    public checkByCreateRequest = async (ctx: Context, next: Next) => {
+        const postData: CreatePostRequest = ctx.request.body;
+        if (postData.content && postData.mainContent && postData.mainImageURL && postData.title) await next();
+        else {
+            ctx.status = 406;
+            ctx.body = { message: 'request create post error' };
         }
-        ctx.body = post;
-        ctx.status = 200;
     };
 
-    public ifCreateDuplicatedByTag = async (ctx: Context, next: Next) => {
+    public duplicatedByTag = async (ctx: Context, next: Next) => {
         try {
             const tagData: DuplicatedTagRequest = ctx.request.body;
-            const set = Array.from(new Set(tagData.tag));
-            for (const tag of set) {
-                const originTag = await this.postService.getOneByTag(tag);
-                await this.postService.ifCreateChoiceDuplicatedByTag(tag, originTag);
-            }
-            await next();
-        } catch (error) {
-            console.log(error);
-            ctx.status = 400;
-        }
-    };
-    public ifUpdateCountTag = async (ctx: Context, next: Next) => {
-        try {
-            const data: UpdatePostRequest = ctx.request.body;
-            const set = Array.from(new Set(data.tag));
 
-            if (set) {
-                const post = await this.postService.getOnePost(data.uid);
-                const promise = await post?.tag.map((e) => e.name);
-                if (promise) {
-                    const tagName = await Promise.all(promise);
-
-                    if (post?.tag != null) {
-                        const deadTag = tagName.filter((x) => !set.includes(x));
-
-                        if (deadTag && deadTag.length !== 0) {
-                            console.log('실행');
-                            for (const e of deadTag) {
-                                await this.postService.minusCountTag(e);
-                            }
-                        }
+            if (tagData) {
+                const set = Array.from(new Set(tagData.tagName));
+                for (const tagName of set) {
+                    const originTag = await this.postService.findOneByTagName(tagName);
+                    if (originTag) {
+                        await this.postService.updateByTag({ name: originTag.name, count: originTag.count + 1 });
+                    } else {
+                        await this.postService.createByTag(tagName);
                     }
-                    const setPromise = await set.map((e) => e);
-                    const setFinal = await Promise.all(setPromise);
-                    const addTag = setFinal.filter((x) => !tagName?.includes(x));
-                    const duplicatedTag = setFinal.filter((x) => tagName?.includes(x));
-
-                    const arrayTag: Tag[] = [];
-
-                    for (const tag of addTag) {
-                        const newTag = await this.postService.getOneByTag(tag);
-                        if (newTag)
-                            arrayTag.push(
-                                await this.postService.updateTag({
-                                    name: tag,
-                                    count: newTag.count + 1,
-                                })
-                            );
-                        else arrayTag.push(await this.postService.createTag(tag));
-                    }
-                    for (const tag of duplicatedTag) {
-                        const newtag = await this.postService.getOneByTag(tag);
-                        if (newtag) arrayTag.push(newtag);
-                    }
-                    ctx.request.body.tag = arrayTag;
                 }
             }
             await next();
+        } catch (e) {
+            console.log(e);
+            ctx.status = 400;
+            ctx.body = { message: 'tag error' };
+        }
+    };
+
+    public duplicatedBySeries = async (ctx: Context, next: Next) => {
+        try {
+            const seriesName: string = ctx.request.body.seriesName;
+            if (seriesName) {
+                const orginSeries = await this.postService.findOneBySeriesName(seriesName);
+                if (orginSeries) {
+                    ctx.request.body.series = orginSeries;
+                } else {
+                    ctx.request.body.series = await this.postService.createBySeries(seriesName);
+                }
+            }
+        } catch (error) {
+            ctx.status = 400;
+            ctx.body = { message: 'series error' };
+        }
+        await next();
+    };
+    public updateCountByTag = async (ctx: Context, next: Next) => {
+        try {
+            const data: UpdatePostRequest = ctx.request.body;
+            const set = Array.from(new Set(data.tagName));
+
+            const post = await this.postService.findOneByPostId(data.uid);
+
+            if (set && post && post.tag != null) {
+                const orginTagName = await Promise.all(post.tag.map((e) => e.name));
+
+                const deadTag = orginTagName.filter((x) => !set.includes(x));
+
+                for (const e of deadTag) {
+                    await this.postService.minusCountByTag(e);
+                }
+
+                const setFinal = await Promise.all(set.map((e) => e));
+                const duplicatedTag = setFinal.filter((x) => !orginTagName?.includes(x));
+                const addTag = setFinal.filter((x) => orginTagName?.includes(x));
+
+                const arrayTag: Tag[] = [];
+
+                for (const tag of duplicatedTag) {
+                    const newTag = await this.postService.findOneByTagName(tag);
+                    if (newTag)
+                        arrayTag.push(
+                            await this.postService.updateByTag({
+                                name: tag,
+                                count: newTag.count + 1,
+                            })
+                        );
+                    else arrayTag.push(await this.postService.createByTag(tag));
+                }
+                for (const tag of addTag) {
+                    const newtag = await this.postService.findOneByTagName(tag);
+                    if (newtag) arrayTag.push(newtag);
+                }
+                ctx.request.body.tag = arrayTag;
+            }
+
+            await next();
         } catch (error) {
             console.log(error);
             ctx.status = 400;
-        }
-    };
-    public getTagByAllPost = async (ctx: Context) => {
-        const tag: string = ctx.params.id;
-        console.log(tag);
-        let { page, pageSize } = ctx.query;
-        const numPage = Number(page) || 1;
-        const numPageSize = Number(pageSize) || 6;
-        const post = await this.postService.getTagByAllPost(tag, numPage, numPageSize);
-        if (post) {
-            ctx.body = { post: post };
-            ctx.status = 200;
-        } else {
-            ctx.status = 400;
-        }
-    };
-    public getOneTag = async (ctx: Context) => {
-        const { tagName } = ctx.request.body;
-        console.log('Xxsssss');
-        const tag = await this.postService.getOneTag(tagName);
-        console.log(tag);
-        if (tag) {
-            ctx.body = { tag: tag };
-            ctx.status = 200;
-        } else {
-            ctx.status = 400;
+            ctx.body = { message: 'update tag error' };
         }
     };
 }

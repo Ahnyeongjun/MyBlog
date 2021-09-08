@@ -31,7 +31,7 @@ const FeautredContainer = () => {
     const dispatch = useDispatch();
 
     useMemo(() => {
-        dispatch(getPagenationFeautredPostList({ page: 1, pageSize: 9, type: 'feautred' }));
+        dispatch(getPagenationFeautredPostList({ page: 1, pageSize: 6, type: 'feautred' }));
     }, []);
 
     const { FeautredPostList } = useTypedSelector(postListDateState);
@@ -44,7 +44,7 @@ const FeautredContainer = () => {
 
     const slider = [];
 
-    if (themeData == 'white')
+    if (themeData == 'white' && FeautredPostList)
         for (let i = 0; i < FeautredPostList.length; i += 1)
             slider.push(
                 <SwiperSlide key={`slide-${FeautredPostList[i].uid}`} onClick={() => onClick(FeautredPostList[i].searchUrl)}>
