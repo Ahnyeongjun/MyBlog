@@ -17,7 +17,16 @@ export const blog = (): Router => {
         postController.duplicatedBySeries,
         postController.createByPost
     );
+    router.post(
+        '/test',
+        authMiddleware,
+        postController.checkByCreateRequest,
+        postController.duplicatedBySeries,
+        postController.createByPost
+    );
     router.patch('/', authMiddleware, postController.updateCountByTag, postController.updateByPost);
+    router.patch('/test', authMiddleware, postController.updateByPost);
+
     // router.get('/post', postController.getAllPost);
     // router.get('/featured', postController.getAllPost);
     // router.get('/post/:id', postController.getOnePost, postController.updateViews);
@@ -25,12 +34,13 @@ export const blog = (): Router => {
     //
     // //tag 중심
     // router.get('/tag', postController.getAllTag);
-    // router.post('/tag/count', postController.getOneTag);
+    router.post('/tag/test/count', postController.testFindOneByTagName);
+    router.post('/tag/count', postController.findOneByTagName);
     //views 중심(조회수) <- getOnePost에 합침
     // router.post('/views/:searchUrl', postController.updateViews);
     //test api
-    router.get('/test', async (ctx: any) => {
-        ctx.body = 'blog';
-    });
+    // router.get('/test', async (ctx: any) => {
+    //     ctx.body = 'blog';
+    // });
     return router;
 };

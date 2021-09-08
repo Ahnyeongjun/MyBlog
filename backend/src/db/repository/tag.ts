@@ -47,7 +47,8 @@ export class TagRepository {
 
     public async findAllByTagName(tagName: string) {
         const tagRepository = (await connection).manager.getRepository(Tag);
-        return await tagRepository.findOne({
+        return await tagRepository.find({
+            relations: ['post'],
             where: { name: tagName },
         });
     }
