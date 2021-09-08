@@ -13,6 +13,7 @@ const PostDetailPage = ({ match }) => {
     const dispatch = useDispatch();
     useMemo(() => {
         dispatch(getOnePost({ searchUrl: searchUrl }));
+        document.title = `${searchUrl} | YoungJun`;
     }, []);
     const { postData } = useTypedSelector(postDateState);
 

@@ -32,6 +32,7 @@ const PostPage = () => {
 
     useMemo(async () => {
         window.addEventListener('scroll', updateScroll);
+        document.title = `Post | YoungJun`;
     }, []);
     const { themeData } = useTypedSelector(themeDataState);
     return (

@@ -9,7 +9,7 @@ import { useDispatch } from 'react-redux';
 import { useTypedSelector } from '../../module/store';
 import 'swiper/swiper.scss';
 import { themeDataState } from '../../features/theme/themeSlice';
-import { getPagenationFeautredPostList, postListDateState } from '../../features/postList/postListSlice';
+import { getPagenationFeautredPostList, getPagenationTrendingPostList, postListDateState } from '../../features/postList/postListSlice';
 
 SwiperCore.use([Pagination, Navigation]);
 
@@ -18,9 +18,11 @@ const FeautredContainer = () => {
     const [isExpend, setIsExpend] = useState(false);
 
     const upadateIsTrending = () => {
+        dispatch(getPagenationTrendingPostList({ page: 1, pageSize: 6, type: 'trending' }));
         setIsTrending(true);
     };
     const upadateIsFeautred = () => {
+        dispatch(getPagenationFeautredPostList({ page: 1, pageSize: 6, type: 'feautred' }));
         setIsTrending(false);
     };
 
@@ -47,15 +49,16 @@ const FeautredContainer = () => {
     if (themeData == 'white' && FeautredPostList)
         for (let i = 0; i < FeautredPostList.length; i += 1)
             slider.push(
-                <SwiperSlide key={`slide-${FeautredPostList[i].uid}`} onClick={() => onClick(FeautredPostList[i].searchUrl)}>
-                    <S.FeaturedItemWrapper>
-                        <S.FeautredImg src={FeautredPostList[i].mainImageURL} />
-                        <S.FeautredContentWrapper>
-                            <S.FeautredTitle>{FeautredPostList[i].title}</S.FeautredTitle>
-                            <S.FeautredContent>{FeautredPostList[i].mainContent}</S.FeautredContent>
-                        </S.FeautredContentWrapper>
-                    </S.FeaturedItemWrapper>
-                </SwiperSlide>
+                FeautredPostList[i].title
+                // <SwiperSlide key={`slide-${FeautredPostList[i].uid}`} onClick={() => onClick(FeautredPostList[i].searchUrl)}>
+                //     <S.FeaturedItemWrapper>
+                //         <S.FeautredImg src={FeautredPostList[i].mainImageURL} />
+                //         <S.FeautredContentWrapper>
+                //             <S.FeautredTitle>{FeautredPostList[i].title}</S.FeautredTitle>
+                //             <S.FeautredContent>{FeautredPostList[i].mainContent}</S.FeautredContent>
+                //         </S.FeautredContentWrapper>
+                //     </S.FeaturedItemWrapper>
+                // </SwiperSlide>
             );
     else
         for (let i = 0; i < FeautredPostList.length; i += 1) {
@@ -71,7 +74,7 @@ const FeautredContainer = () => {
                 </SwiperSlide>
             );
         }
-
+    console.log(slider);
     return (
         <>
             {themeData != 'white' ? (
@@ -130,7 +133,7 @@ const FeautredContainer = () => {
                                 navigation={true}
                                 className="mySwiper"
                             >
-                                {isTrending ? <div>개발 중</div> : slider}
+                                {slider}
                             </Swiper>
                         </S.FeaturedWrapper>
                     )}
@@ -191,7 +194,7 @@ const FeautredContainer = () => {
                                 navigation={true}
                                 className="mySwiper"
                             >
-                                {isTrending ? <div>개발 중</div> : slider}
+                                {slider}
                             </Swiper>
                         </S.FeaturedWrapper>
                     )}

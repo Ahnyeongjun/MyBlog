@@ -50,6 +50,13 @@ export const BLOG_URL = {
 
         return resultURL;
     },
+    trending: function (queryObject): string {
+        const defaultURL = '/blog/views';
+        const queryNameArr = ['page', 'pageSize'];
+        const resultURL = getUrlWithQuery({ queryObject, defaultURL, queryNameArr });
+
+        return resultURL;
+    },
 };
 
 export const TAG_URL = {

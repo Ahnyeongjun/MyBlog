@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useReducer, useState } from 'react';
+import React, { useCallback, useEffect, useMemo, useReducer, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { authLogin } from '../../features/auth/authSlice';
 import { User } from '../../features/auth/authType';
@@ -9,7 +9,9 @@ const LoginPage = () => {
     const [isSuccess, setIsSuccess] = useState(true);
     const [user, setUser] = useState({ id: '', password: '' });
     const { id, password } = user;
-
+    useMemo(() => {
+        document.title = `Login | YoungJun`;
+    }, []);
     const onChange = (e) => {
         const { name, value } = e.target;
 

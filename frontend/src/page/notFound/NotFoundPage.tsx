@@ -1,5 +1,5 @@
 import HeaderContainer from '../../container/header/HeaderContainer';
-import React from 'react';
+import React, { useMemo } from 'react';
 import { Link } from 'react-router-dom';
 import * as S from './styles';
 import { useAppDispatch, useTypedSelector } from '../../module/store';
@@ -18,7 +18,9 @@ const NotFoundPage = () => {
     if (localSettingTheme) {
         initTheme = localSettingTheme;
     }
-
+    useMemo(() => {
+        document.title = `NotFound | YoungJun`;
+    }, []);
     const theme = initTheme == 'white' ? 'white' : 'black';
 
     dispatch(toggleTheme({ themeType: theme }));

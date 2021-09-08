@@ -23,6 +23,7 @@ const TagSearchPage = ({ match }) => {
 
     useMemo(async () => {
         window.addEventListener('scroll', updateScroll);
+        document.title = `${tagName} | YoungJun`;
         dispatch(searchTag({ tagName: tagName }));
     }, []);
 

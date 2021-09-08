@@ -18,7 +18,7 @@ export type PostListInitialStateType = {
     total: number;
 };
 
-type PostListSaveType = 'main' | 'feautred' | 'searchTag';
+type PostListSaveType = 'main' | 'feautred' | 'searchTag' | 'trending';
 
 export type PageNationSearchPostListActionType = {
     page: number;

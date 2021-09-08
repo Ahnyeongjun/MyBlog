@@ -72,6 +72,7 @@ const sliceName = 'postList';
 
 const reducers = {
     getPagenationFeautredPostList: (state = initialState, action: PayloadAction<PageNationSearchPostListActionType>) => {},
+    getPagenationTrendingPostList: (state = initialState, action: PayloadAction<PageNationSearchPostListActionType>) => {},
     getPagenationMainPostList: (state = initialState, action: PayloadAction<PageNationSearchPostListActionType>) => {},
     searchTagOnPageList: (state = initialState, action: PayloadAction<SearchTagOnPostListActionType>) => {},
     successGetPagenationFeautredPostList: (state = initialState, action: PayloadAction<SuccessGetPostListActionType>) => {
@@ -93,6 +94,7 @@ const postListSlice = createSlice({
 const { actions, reducer } = postListSlice;
 export const {
     getPagenationFeautredPostList,
+    getPagenationTrendingPostList,
     getPagenationMainPostList,
     successGetPagenationFeautredPostList,
     successGetPagenationMainPostList,
