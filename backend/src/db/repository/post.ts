@@ -59,12 +59,23 @@ export class PostRepository {
             },
             take: pageSize,
             skip: (page - 1) * pageSize,
-            relations: ['tag'],
+            relations: ['tag', 'views'],
         });
         return {
             data: result,
             total: total,
         };
+    }
+    public async findPostAllByViews(page: number, pageSize: number) {
+        const postRepository = (await connection).manager.getRepository(Post);
+
+        return postRepository
+            .createQueryBuilder('post')
+            .leftJoinAndSelect('post.views', 'views')
+            .orderBy('views.viewsCount', 'DESC')
+            .take(pageSize)
+            .skip((page - 1) * pageSize)
+            .getMany();
     }
     public async findPostByAllTagName(tagName: string, page: number, pageSize: number) {
         const postRepository = (await connection).manager.getRepository(Post);

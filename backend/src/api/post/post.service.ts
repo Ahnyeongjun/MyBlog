@@ -57,7 +57,7 @@ export class PostServie {
         await this.postRepository.updateByPost(res);
     }
     public async findAllByPost(page: number, pageSize: number) {
-        return this.postRepository.findAllByPost(page, pageSize);
+        return await this.postRepository.findAllByPost(page, pageSize);
     }
     public async findOneByPostSearchUrl(searchUrl: string) {
         return await this.postRepository.findOneByPostSearchUrl(searchUrl);
@@ -67,6 +67,9 @@ export class PostServie {
     }
     public async findPostByAllTagName(tagName: string, page: number, pageSize: number) {
         return await this.postRepository.findPostByAllTagName(tagName, page, pageSize);
+    }
+    public async findPostAllByViews(page: number, pageSize: number) {
+        return await this.postRepository.findPostAllByViews(page, pageSize);
     }
     //tagRepository관련
     public async findOneByTagName(tagName: string) {

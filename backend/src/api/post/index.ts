@@ -31,6 +31,9 @@ export const blog = (): Router => {
     router.get('/series', postController.findSeriesAllBySeries);
     router.get('/series/:seriesName', postController.findPostOneBySeries);
 
+    //views 중심
+    router.get('/views', postController.findAllByViews);
+
     //test api
     router.get('/test', async (ctx: any) => {
         ctx.body = 'blog';

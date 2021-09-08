@@ -132,6 +132,19 @@ export class PostController {
             ctx.body = { message: 'find all by series error' };
         }
     };
+    public findAllByViews = async (ctx: Context) => {
+        try {
+            let { page, pageSize } = ctx.query;
+            const numPage = Number(page) || 1;
+            const numPageSize = Number(pageSize) * 2 || 6;
+            ctx.body = await this.postService.findPostAllByViews(numPage, numPageSize);
+            ctx.status = 200;
+        } catch (e) {
+            console.log(e);
+            ctx.status = 400;
+            ctx.body = { message: 'find all by series error' };
+        }
+    };
     //미들웨어
     public findTagOneByTagName = async (ctx: Context, next: Next) => {
         const searchUrl = ctx.params.id;
