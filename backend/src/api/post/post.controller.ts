@@ -101,9 +101,30 @@ export class PostController {
         }
     };
 
+    public findPostOneBySeries = async (ctx: Context) => {
+        try {
+            const seriesName = ctx.params.seriesName;
+            const series = await this.postService.findOneBySeriesName(seriesName);
+
+            ctx.body = series;
+            ctx.status = 200;
+        } catch {
+            ctx.status = 400;
+        }
+    };
+    public findSeriesAllBySeries = async (ctx: Context) => {
+        try {
+            const series = await this.postService.findSeriesAllBySeries();
+
+            ctx.body = series;
+            ctx.status = 200;
+        } catch {
+            ctx.status = 400;
+        }
+    };
+    //미들웨어
     public findTagOneByTagName = async (ctx: Context, next: Next) => {
         const searchUrl = ctx.params.id;
-        console.log(searchUrl);
         const post = await this.postService.findOneByTagName(searchUrl);
         if (post) {
             ctx.request.body.post = post;
@@ -118,7 +139,6 @@ export class PostController {
             ctx.status = 400;
         }
     };
-    //미들웨어
     public findOneByPostSearchUrl = async (ctx: Context, next: Next) => {
         const searchUrl = ctx.params.id;
         console.log(searchUrl);
@@ -173,7 +193,7 @@ export class PostController {
         try {
             const seriesName: string = ctx.request.body.seriesName;
             if (seriesName) {
-                const orginSeries = await this.postService.findoneBySeriesName(seriesName);
+                const orginSeries = await this.postService.findOneBySeriesName(seriesName);
                 if (orginSeries) {
                     ctx.request.body.series = orginSeries;
                 } else {

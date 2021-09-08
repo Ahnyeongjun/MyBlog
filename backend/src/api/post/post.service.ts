@@ -104,11 +104,14 @@ export class PostServie {
         return await this.viewsRepository.updateByViews(req);
     }
     //seriesRepository 관련
-    public async findoneBySeriesName(seriesName: string) {
+    public async findOneBySeriesName(seriesName: string) {
         return await this.seriesRepository.findoneBySeriesName(seriesName);
     }
     public async createBySeries(seriesName: string) {
         return await this.seriesRepository.createBySeries(seriesName);
+    }
+    public async findSeriesAllBySeries() {
+        return await this.seriesRepository.findSeriesAllBySeries();
     }
 
     //기타

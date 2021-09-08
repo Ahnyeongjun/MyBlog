@@ -23,13 +23,18 @@ export const blog = (): Router => {
     router.get('/post/tag/:id', postController.findPostByAllTagName);
     router.get('/post/:id', postController.findOneByPostSearchUrl, postController.updateByViews);
 
-    // //tag 중심
+    //tag 중심
     router.get('/tag', postController.findTagAllByTagName);
     router.post('/tag/count', postController.findTagOneByTagName);
+
+    //series 중심
+    router.get('/series', postController.findSeriesAllBySeries);
+    router.get('/series/:seriesName', postController.findPostOneBySeries);
 
     //test api
     router.get('/test', async (ctx: any) => {
         ctx.body = 'blog';
     });
+
     return router;
 };

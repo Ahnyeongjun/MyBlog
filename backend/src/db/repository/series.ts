@@ -7,10 +7,17 @@ export class SeriesRepository {
     public async findoneBySeriesName(seriesName: string) {
         const seriesRepository = (await connection).manager.getRepository(Series);
         const series = await seriesRepository.findOne({
+            relations: ['post'],
             where: { name: seriesName },
         });
         return series;
     }
+    public async findSeriesAllBySeries() {
+        const seriesRepository = (await connection).manager.getRepository(Series);
+        const series = await seriesRepository.find();
+        return series;
+    }
+
     public async createBySeries(seriesName: string) {
         const seriesRepository = (await connection).manager.getRepository(Series);
         const series = new Series();
