@@ -1,4 +1,4 @@
-export interface updateViews {
+export interface UpdateViews {
     viewsCount: number;
     uid: string;
 }

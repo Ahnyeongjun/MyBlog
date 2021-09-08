@@ -11,26 +11,28 @@ import db from './db';
 import fs from 'fs';
 import path from 'path';
 import https from 'https';
+//import serve from 'koa-static';
+//import send from 'koa-send';
+
 const app = new Koa();
 const router = new Router();
 
-router.use('', api.routes());
-const cors_options = {
-    origin: 'http://localhost:8080',
-    credentials: true,
-};
-app.use(helmet()).use(cors(cors_options)).use(bodyparser()).use(logger()).use(router.routes()).use(router.allowedMethods());
+router.use('/api', api.routes());
+
+app.use(bodyparser())
+    .use(logger())
+    .use(router.routes())
+    .use(router.allowedMethods())
+    .use(async (ctx, next) => {
+        try {
+            await next();
+        } catch (err: any) {
+            err.status = err.statusCode || err.status || 500;
+            ctx.body = err.message;
+            ctx.app.emit('error', err, ctx);
+        }
+    });
 
 const serverCallback = app.callback();
 const httpServer = http.createServer(serverCallback);
-// 현대모터스
-const options = {
-    key: fs.readFileSync('./private.pem'),
-    cert: fs.readFileSync('./public.pem'),
-};
-const httpsServer = https.createServer(options, serverCallback);
-
-db.then(
-    () => httpsServer.listen(process.env.SERVER_PORT || 5000, () => {})
-    // eslint-disable-next-line no-console
-).catch(console.error);
+db.then(() => httpServer.listen(process.env.SERVER_PORT || 5000, () => {})).catch(console.error);

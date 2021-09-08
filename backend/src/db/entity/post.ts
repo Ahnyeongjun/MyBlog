@@ -51,5 +51,5 @@ export class Post {
     mainContent!: string;
 
     @ManyToOne((type) => Series, (series) => series.post)
-    series!: Series;
+    series?: Series;
 }

@@ -1,12 +1,12 @@
 import { EntityRepository, getRepository, Repository } from 'typeorm';
 import { View } from 'typeorm/schema-builder/view/View';
 import connection from '..';
-import { updateViews } from '../../interface/request/views';
+import { UpdateViews } from '../../interface/request/views';
 import { Views } from '../entity';
 
 @EntityRepository(Views)
 export class ViewsRepository {
-    public async createView() {
+    public async createByView() {
         try {
             const views = new Views();
             views.viewsCount = 0;
@@ -17,11 +17,11 @@ export class ViewsRepository {
             console.log(e);
         }
     }
-    public async updataView(req: updateViews) {
+    public async updataByView(req: UpdateViews) {
         try {
             const viewsRepository = (await connection).manager.getRepository(Views);
 
-            const views = await this.getOneView(req.uid);
+            const views = await this.findOneByViewId(req.uid);
             if (views) {
                 return viewsRepository.save({ lock: { mode: 'PESSIMISTIC_READ' }, ...views, ...req });
             }
@@ -30,7 +30,7 @@ export class ViewsRepository {
         }
     }
 
-    public async getOneView(uid: string) {
+    public async findOneByViewId(uid: string) {
         try {
             const viewsRepository = (await connection).manager.getRepository(Views);
 

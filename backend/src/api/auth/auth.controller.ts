@@ -2,7 +2,7 @@ import { AuthService } from './auth.service';
 import { UserRepository } from '../../db/repository';
 import { Context, Next } from 'koa';
 import { CreateUserRequest, Payload } from '../../interface';
-import { generateToken, decodedToken } from '../../lib';
+import { generateToken } from '../../lib';
 
 export class AuthController {
     private userRepository: UserRepository = new UserRepository();
@@ -67,13 +67,12 @@ export class AuthController {
     };
 
     public check = async (ctx: Context) => {
-        const token: string = ctx.get('Authorization');
-        const a = await decodedToken(token);
-
-        if (a) {
-            ctx.status = 200;
-        } else {
-            ctx.status = 400;
+        try {
+            const decoded = ctx.request.body.decoded;
+            if (decoded) ctx.status = 200;
+            else ctx.status = 401;
+        } catch (e: any) {
+            console.log(e);
         }
     };
 }

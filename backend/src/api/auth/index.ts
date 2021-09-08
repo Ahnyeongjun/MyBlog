@@ -1,4 +1,5 @@
 import Router from '@koa/router';
+import { authMiddleware } from '../../lib';
 
 import { AuthController } from './auth.controller';
 
@@ -10,7 +11,7 @@ export const auth = (): Router => {
     // router.post('/register', authController.duplicatedById, authController.createUser);
     router.post('/first_register', authController.duplicatedById, authController.first_createUser);
     router.post('/login', authController.login);
-    router.get('/check', authController.check);
+    router.get('/check', authMiddleware, authController.check);
     router.get('/test', async (ctx: any) => {
         ctx.body = 'test';
     });

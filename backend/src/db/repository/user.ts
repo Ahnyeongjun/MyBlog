@@ -4,7 +4,7 @@ import { User } from '../entity';
 
 @EntityRepository(User)
 export class UserRepository {
-    public async createUser(name: string, id: string, password: string) {
+    public async createByUser(name: string, id: string, password: string) {
         try {
             const user = new User();
             user.name = name;
