@@ -25,7 +25,7 @@ export const blog = (): Router => {
 
     //tag 중심
     router.get('/tag', postController.findTagAllByTagName);
-    router.post('/tag/count', postController.findTagOneByTagName);
+    router.get('/tag/:tagName', postController.findTagOneByTagName);
 
     //series 중심
     router.get('/series', postController.findSeriesAllBySeries);

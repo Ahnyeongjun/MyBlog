@@ -11,7 +11,6 @@ export class UserRepository {
             user.id = id;
             user.password = password;
             await (await connection).manager.save(user);
-            // await getRepository(User).createQueryBuilder().insert().into(User).values({ name, id, password }).execute();
         } catch (e) {
             console.log(e);
         }
@@ -58,12 +57,11 @@ export class UserRepository {
 
     public async findOneByIdAndPassword(id: string, password: string) {
         try {
-            return getRepository(User)
-                .createQueryBuilder()
-                .where('user.id = :id')
-                .andWhere('user.password = :password')
-                .setParameters({ id: id, password: password })
-                .getOne();
+            const postRepository = (await connection).manager.getRepository(User);
+
+            return await postRepository.findOne({
+                where: { id: id, password: password },
+            });
         } catch (e) {
             console.log(e);
         }

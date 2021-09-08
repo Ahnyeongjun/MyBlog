@@ -146,19 +146,14 @@ export class PostController {
         }
     };
     //미들웨어
-    public findTagOneByTagName = async (ctx: Context, next: Next) => {
-        const searchUrl = ctx.params.id;
-        const post = await this.postService.findOneByTagName(searchUrl);
-        if (post) {
-            ctx.request.body.post = post;
-            ctx.set({
-                'Access-Control-Allow-Credentials': 'true',
-                'Access-Control-Allow-Methods': 'POST, GET, PUT, DELETE, OPTIONS',
-                credentials: 'same-origin',
-            });
-            await next();
-            // ctx.status = 200;
-        } else {
+    public findTagOneByTagName = async (ctx: Context) => {
+        try {
+            const tagName = ctx.params.tagName;
+            const tag = await this.postService.findOneByTagName(tagName);
+
+            ctx.body = tag;
+            ctx.status = 200;
+        } catch (e) {
             ctx.status = 400;
             ctx.body = { message: 'find tag One error' };
         }
