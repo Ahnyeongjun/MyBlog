@@ -53,6 +53,7 @@ export class PostController {
         } catch (error) {
             console.log(error);
             ctx.status = 400;
+            ctx.body = { message: 'find All post error' };
         }
     };
     public findPostByAllTagName = async (ctx: Context) => {
@@ -67,28 +68,34 @@ export class PostController {
             ctx.status = 200;
         } else {
             ctx.status = 400;
+            ctx.body = { message: 'find post All By TagName error' };
         }
     };
     public updateByViews = async (ctx: Context) => {
-        const searchUrl = ctx.params.id;
-        const post = ctx.request.body.post;
-        console.log(post);
-        if (post) {
-            const cookie = ctx.cookies.get(`isVisited-${searchUrl}`);
-            if (!cookie) {
-                ctx.cookies.set(`isVisited-${searchUrl}`, `${searchUrl}`, {
-                    // maxAge: 1000,
-                    // httpOnly: false,
-                    sameSite: 'lax',
-                    // sameSite: 'none',
-                    secure: false,
-                    // overwrite: true,
-                });
-                this.postService.updateByViews(post.views);
+        try {
+            const searchUrl = ctx.params.id;
+            const post = ctx.request.body.post;
+            console.log(post);
+            if (post) {
+                const cookie = ctx.cookies.get(`isVisited-${searchUrl}`);
+                if (!cookie) {
+                    ctx.cookies.set(`isVisited-${searchUrl}`, `${searchUrl}`, {
+                        // maxAge: 1000,
+                        // httpOnly: false,
+                        sameSite: 'lax',
+                        // sameSite: 'none',
+                        secure: false,
+                        // overwrite: true,
+                    });
+                    this.postService.updateByViews(post.views);
+                }
             }
+            ctx.body = post;
+            ctx.status = 200;
+        } catch (e) {
+            ctx.stats = 400;
+            ctx.body = { message: 'cookie error' };
         }
-        ctx.body = post;
-        ctx.status = 200;
     };
 
     public findTagAllByTagName = async (ctx: Context) => {
@@ -98,6 +105,7 @@ export class PostController {
         } catch (e) {
             console.log(e);
             ctx.status = 400;
+            ctx.body = { message: 'find Tag All By TagName error' };
         }
     };
 
@@ -110,6 +118,7 @@ export class PostController {
             ctx.status = 200;
         } catch {
             ctx.status = 400;
+            ctx.body = { message: 'find Tag Pme By TagName error' };
         }
     };
     public findSeriesAllBySeries = async (ctx: Context) => {
@@ -120,6 +129,7 @@ export class PostController {
             ctx.status = 200;
         } catch {
             ctx.status = 400;
+            ctx.body = { message: 'find all by series error' };
         }
     };
     //미들웨어
@@ -137,6 +147,7 @@ export class PostController {
             // ctx.status = 200;
         } else {
             ctx.status = 400;
+            ctx.body = { message: 'find tag One error' };
         }
     };
     public findOneByPostSearchUrl = async (ctx: Context, next: Next) => {
@@ -151,9 +162,9 @@ export class PostController {
                 credentials: 'same-origin',
             });
             await next();
-            // ctx.status = 200;
         } else {
             ctx.status = 400;
+            ctx.body = { message: 'find post All By SearchUrl  error' };
         }
     };
 
