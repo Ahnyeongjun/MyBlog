@@ -1,7 +1,8 @@
 import { v4 } from 'uuid';
-import { Series, Tag } from '../../db/entity';
+import { Series, Tag, Views } from '../../db/entity';
 import { PostRepository, SeriesRepository, TagRepository, ViewsRepository } from '../../db/repository';
 import { CreatePostRequest, PostRequest, updateTagRequest } from '../../interface';
+import { UpdateViews } from '../../interface/request/views';
 
 export class PostServie {
     constructor(
@@ -55,25 +56,33 @@ export class PostServie {
         console.log(res);
         await this.postRepository.updateByPost(res);
     }
-
+    public async findAllByPost(page: number, pageSize: number) {
+        return this.postRepository.findAllByPost(page, pageSize);
+    }
     public async findOneByPostSearchUrl(searchUrl: string) {
         return await this.postRepository.findOneByPostSearchUrl(searchUrl);
     }
     public async findOneByPostId(uid: string) {
         return await this.postRepository.findOneByPostId(uid);
     }
+    public async findPostByAllTagName(tagName: string, page: number, pageSize: number) {
+        return await this.postRepository.findPostByAllTagName(tagName, page, pageSize);
+    }
     //tagRepository관련
     public async findOneByTagName(tagName: string) {
-        return this.tagRepository.findOneByTagName(tagName);
+        return await this.tagRepository.findOneByTagName(tagName);
+    }
+    public async findAllByTag() {
+        return await this.tagRepository.findAllByTag();
     }
     public async createByTag(tagName: string) {
-        return this.tagRepository.createByTag(tagName);
+        return await this.tagRepository.createByTag(tagName);
     }
     public async updateByTag(tag: updateTagRequest) {
-        return this.tagRepository.updateByTag(tag);
+        return await this.tagRepository.updateByTag(tag);
     }
     public async deleteByTag(tagName: string) {
-        this.postRepository.deleteByTag(tagName);
+        await this.postRepository.deleteByTag(tagName);
     }
     public async minusCountByTag(tagName: string) {
         const tag = await this.findOneByTagName(tagName);
@@ -85,9 +94,14 @@ export class PostServie {
             }
         }
     }
+
     //viewRepository관련
     public async createByView() {
         return await this.viewsRepository.createByView();
+    }
+    public async updateByViews(views: Views) {
+        const req: UpdateViews = { uid: views.uid, viewsCount: views.viewsCount + 1 };
+        return await this.viewsRepository.updateByViews(req);
     }
     //seriesRepository 관련
     public async findoneBySeriesName(seriesName: string) {
@@ -101,11 +115,14 @@ export class PostServie {
     private async createdAt() {
         const today = new Date();
 
-        const year: number = await today.getFullYear(); // 년도
-        const month: number = (await today.getMonth()) + 1; // 월
-        const date: number = await today.getDate(); // 날짜
+        const year = today.getFullYear();
+        const month = ('0' + (today.getMonth() + 1)).slice(-2);
+        const date = ('0' + today.getDate()).slice(-2);
 
-        const day: string = year + '/' + month + '/' + date;
+        const hours = ('0' + today.getHours()).slice(-2);
+        const minutes = ('0' + today.getMinutes()).slice(-2);
+        const seconds = ('0' + today.getSeconds()).slice(-2);
+        const day: string = year + ':' + month + ':' + date + ':' + hours + ':' + minutes + ':' + seconds;
         return day;
     }
     private async changeAllByTagName(tagName: string[]) {

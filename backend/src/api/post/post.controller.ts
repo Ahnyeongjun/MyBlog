@@ -43,7 +43,100 @@ export class PostController {
             ctx.body = { message: 'update post error' };
         }
     };
+    public findAllByPost = async (ctx: Context) => {
+        try {
+            let { page, pageSize } = ctx.query;
+            const numPage = Number(page) || 1;
+            const numPageSize = Number(pageSize) || 6;
+            ctx.body = await this.postService.findAllByPost(numPage, numPageSize);
+            ctx.status = 201;
+        } catch (error) {
+            console.log(error);
+            ctx.status = 400;
+        }
+    };
+    public findPostByAllTagName = async (ctx: Context) => {
+        const tag: string = ctx.params.id;
+        console.log(tag);
+        let { page, pageSize } = ctx.query;
+        const numPage = Number(page) || 1;
+        const numPageSize = Number(pageSize) || 6;
+        const post = await this.postService.findPostByAllTagName(tag, numPage, numPageSize);
+        if (post) {
+            ctx.body = { post: post };
+            ctx.status = 200;
+        } else {
+            ctx.status = 400;
+        }
+    };
+    public updateByViews = async (ctx: Context) => {
+        const searchUrl = ctx.params.id;
+        const post = ctx.request.body.post;
+        console.log(post);
+        if (post) {
+            const cookie = ctx.cookies.get(`isVisited-${searchUrl}`);
+            if (!cookie) {
+                ctx.cookies.set(`isVisited-${searchUrl}`, `${searchUrl}`, {
+                    // maxAge: 1000,
+                    // httpOnly: false,
+                    sameSite: 'lax',
+                    // sameSite: 'none',
+                    secure: false,
+                    // overwrite: true,
+                });
+                this.postService.updateByViews(post.views);
+            }
+        }
+        ctx.body = post;
+        ctx.status = 200;
+    };
+
+    public findTagAllByTagName = async (ctx: Context) => {
+        try {
+            ctx.body = { tag: await this.postService.findAllByTag() };
+            ctx.status = 201;
+        } catch (e) {
+            console.log(e);
+            ctx.status = 400;
+        }
+    };
+
+    public findTagOneByTagName = async (ctx: Context, next: Next) => {
+        const searchUrl = ctx.params.id;
+        console.log(searchUrl);
+        const post = await this.postService.findOneByTagName(searchUrl);
+        if (post) {
+            ctx.request.body.post = post;
+            ctx.set({
+                'Access-Control-Allow-Credentials': 'true',
+                'Access-Control-Allow-Methods': 'POST, GET, PUT, DELETE, OPTIONS',
+                credentials: 'same-origin',
+            });
+            await next();
+            // ctx.status = 200;
+        } else {
+            ctx.status = 400;
+        }
+    };
     //미들웨어
+    public findOneByPostSearchUrl = async (ctx: Context, next: Next) => {
+        const searchUrl = ctx.params.id;
+        console.log(searchUrl);
+        const post = await this.postService.findOneByPostSearchUrl(searchUrl);
+        if (post) {
+            ctx.request.body.post = post;
+            ctx.set({
+                'Access-Control-Allow-Credentials': 'true',
+                'Access-Control-Allow-Methods': 'POST, GET, PUT, DELETE, OPTIONS',
+                credentials: 'same-origin',
+            });
+            await next();
+            // ctx.status = 200;
+        } else {
+            ctx.status = 400;
+        }
+    };
+
     public checkByCreateRequest = async (ctx: Context, next: Next) => {
         const postData: CreatePostRequest = ctx.request.body;
         if (postData.content && postData.mainContent && postData.mainImageURL && postData.title) await next();

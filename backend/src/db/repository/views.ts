@@ -17,6 +17,18 @@ export class ViewsRepository {
             console.log(e);
         }
     }
+    public async updateByViews(req: UpdateViews) {
+        try {
+            const viewsRepository = (await connection).manager.getRepository(Views);
+
+            const views = await this.findOneByViewId(req.uid);
+            if (views) {
+                return viewsRepository.save({ lock: { mode: 'PESSIMISTIC_READ' }, ...views, ...req });
+            }
+        } catch (e) {
+            console.log(e);
+        }
+    }
     public async updataByView(req: UpdateViews) {
         try {
             const viewsRepository = (await connection).manager.getRepository(Views);

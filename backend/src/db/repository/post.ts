@@ -51,4 +51,30 @@ export class PostRepository {
             ...req,
         });
     }
+    public async findAllByPost(page: number, pageSize: number) {
+        const postRepository = (await connection).manager.getRepository(Post);
+        const [result, total] = await postRepository.findAndCount({
+            order: {
+                createdAt: 'DESC',
+            },
+            take: pageSize,
+            skip: (page - 1) * pageSize,
+            relations: ['tag'],
+        });
+        return {
+            data: result,
+            total: total,
+        };
+    }
+    public async findPostByAllTagName(tagName: string, page: number, pageSize: number) {
+        const postRepository = (await connection).manager.getRepository(Post);
+
+        return postRepository
+            .createQueryBuilder('post')
+            .leftJoinAndSelect('post.tag', 'tag')
+            .where('tag.name = :name', { name: tagName })
+            .take(pageSize)
+            .skip((page - 1) * pageSize)
+            .getMany();
+    }
 }
