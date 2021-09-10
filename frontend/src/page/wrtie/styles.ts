@@ -86,6 +86,17 @@ export const LastSavePage = styled.div`
     min-height: 600px;
     max-width: 400px;
 `;
+export const Series = styled.input`
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: white;
+    height: 60px;
+    margin-bottom: 20px;
+    outline: none;
+    border: none;
+`;
+
 export const PostPreviewImageBtnWrapper = styled.div`
     margin-bottom: 10px;
     height: 200px;

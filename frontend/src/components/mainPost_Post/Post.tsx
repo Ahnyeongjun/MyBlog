@@ -38,7 +38,7 @@ const Post = (props: any) => {
                     {MainPostList &&
                         MainPostList.map((e) => (
                             <S.MainPostItemWrapper className="check" onClick={() => onClick(e.searchUrl)}>
-                                <S.MainPostImg src={e.mainImageURL} />
+                                {e.mainImageURL ? <S.MainPostImg src={e.mainImageURL} /> : null}
                                 <S.ContentWrapper>
                                     <S.FeautredTitleWrapper>
                                         <S.FeautredTitle>{e.title}</S.FeautredTitle>
@@ -65,7 +65,7 @@ const Post = (props: any) => {
                     {MainPostList &&
                         MainPostList.map((e) => (
                             <S.MainPostItemWrapper onClick={() => onClick(e.searchUrl)}>
-                                <S.MainPostImg src={e.mainImageURL} />
+                                {e.mainImageURL ? <S.MainPostImg src={e.mainImageURL} /> : null}
                                 <S.ContentWrapper>
                                     <S.FeautredTitleWrapper>
                                         <S.FeautredTitle>{e.title}</S.FeautredTitle>

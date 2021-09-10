@@ -35,6 +35,8 @@ export const requestApi = async ({ httpMethod, requestUrl, headers }) => {
         );
         return res;
     } catch (error) {
+        location.href = '/';
+
         throw error.response;
     }
 };

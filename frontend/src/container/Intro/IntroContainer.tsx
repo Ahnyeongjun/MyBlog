@@ -31,9 +31,9 @@ const IntroContainer = () => {
                         <S.Image src="https://cdn.pixabay.com/photo/2021/08/10/09/41/lesser-sand-plover-6535531_960_720.jpg" />
                     </S.MyImage>
                     <S.MyIntrouce>
-                        <S.MyName>강아지</S.MyName>
-                        <S.MyThink>왈왈왈왈왈왈왈왈왈왈왈왈왈왈왈왈</S.MyThink>
-                        <S.MyThink>왈왈왈왈왈왈왈왈왈왈왈왈왈왈왈왈</S.MyThink>
+                        <S.MyName>안영준</S.MyName>
+                        <S.MyThink>도움이 되기 위해서 열심히 공부중인 개발자입니다.</S.MyThink>
+                        <S.MyThink>자바와 자바스크립트를 기반으로 둔 개발자입니다.</S.MyThink>
                     </S.MyIntrouce>
                 </S.MyInformationWrapper>
             </S.IntroduceWrapper>

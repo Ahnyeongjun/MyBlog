@@ -49,23 +49,23 @@ const FeautredContainer = () => {
     if (themeData == 'white' && FeautredPostList)
         for (let i = 0; i < FeautredPostList.length; i += 1)
             slider.push(
-                FeautredPostList[i].title
-                // <SwiperSlide key={`slide-${FeautredPostList[i].uid}`} onClick={() => onClick(FeautredPostList[i].searchUrl)}>
-                //     <S.FeaturedItemWrapper>
-                //         <S.FeautredImg src={FeautredPostList[i].mainImageURL} />
-                //         <S.FeautredContentWrapper>
-                //             <S.FeautredTitle>{FeautredPostList[i].title}</S.FeautredTitle>
-                //             <S.FeautredContent>{FeautredPostList[i].mainContent}</S.FeautredContent>
-                //         </S.FeautredContentWrapper>
-                //     </S.FeaturedItemWrapper>
-                // </SwiperSlide>
+                <SwiperSlide key={`${i}`} onClick={() => onClick(FeautredPostList[i].searchUrl)}>
+                    <S.FeaturedItemWrapper>
+                        {FeautredPostList[i].mainImageURL ? <S.FeautredImg src={FeautredPostList[i].mainImageURL} /> : null}
+
+                        <S.FeautredContentWrapper>
+                            <S.FeautredTitle>{FeautredPostList[i].title}</S.FeautredTitle>
+                            <S.FeautredContent>{FeautredPostList[i].mainContent}</S.FeautredContent>
+                        </S.FeautredContentWrapper>
+                    </S.FeaturedItemWrapper>
+                </SwiperSlide>
             );
     else
         for (let i = 0; i < FeautredPostList.length; i += 1) {
             slider.push(
-                <SwiperSlide key={`slide-${FeautredPostList[i].uid}`} onClick={() => onClick(FeautredPostList[i].searchUrl)}>
+                <SwiperSlide key={`${i}`} onClick={() => onClick(FeautredPostList[i].searchUrl)}>
                     <S.FeaturedItemWrapper className="check">
-                        <S.FeautredImg src={FeautredPostList[i].mainImageURL} />
+                        {FeautredPostList[i].mainImageURL ? <S.FeautredImg src={FeautredPostList[i].mainImageURL} /> : null}
                         <S.FeautredContentWrapper>
                             <S.FeautredTitle>{FeautredPostList[i].title}</S.FeautredTitle>
                             <S.FeautredContent>{FeautredPostList[i].mainContent}</S.FeautredContent>

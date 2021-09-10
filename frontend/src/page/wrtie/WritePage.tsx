@@ -7,14 +7,14 @@ import Editor from '../../components/Editor/editor';
 import Title from '../../components/writePage_title/title';
 import Tag from '../../components/writePage_tag/Tag';
 import { checkIsLogin } from '../../utils/authUtils';
-import { editorState, updateMainContent, updateMainImageUrl, uploadPost } from '../../features/editor/editorSlice';
+import { editorState, updateMainContent, updateMainImageUrl, updateSeriesName, uploadPost } from '../../features/editor/editorSlice';
 import axios from 'axios';
 
 const WritePage = () => {
     const [scrollPosition, setScrollPosition] = useState(0);
     const [isLastSave, setIsLastSave] = useState(false);
     const { themeData } = useTypedSelector(themeDataState);
-    const { text, title, tag, mainContent, mainImageURL } = useTypedSelector(editorState);
+    const { text, title, tag, mainContent, mainImageURL, seriesName } = useTypedSelector(editorState);
     useEffect(() => {
         checkIsLogin();
     }, []);
@@ -47,7 +47,9 @@ const WritePage = () => {
     };
 
     const onSaveClick = () => {
-        dispatch(uploadPost({ title: title, tag: tag, text: text, mainContent: mainContent, mainImageURL: mainImageURL }));
+        dispatch(
+            uploadPost({ title: title, tag: tag, text: text, mainContent: mainContent, mainImageURL: mainImageURL, seriesName: seriesName })
+        );
     };
 
     const chooseFile = () => {
@@ -68,7 +70,10 @@ const WritePage = () => {
         const { value } = e.target;
         dispatch(updateMainContent({ mainContent: value }));
     };
-
+    const seriesNameOnchange = (e) => {
+        const { value } = e.target;
+        dispatch(updateSeriesName({ seriesName: value }));
+    };
     return (
         <>
             {themeData == 'white' ? (
@@ -100,6 +105,8 @@ const WritePage = () => {
                                 <S.PostPreviewContent onChange={mainContentOnChange} value={mainContent}>
                                     {text || '내용'}
                                 </S.PostPreviewContent>
+                                <S.PostPreviewTitle>시리즈 설정</S.PostPreviewTitle>
+                                <S.Series placeholder="시리즈에 추가하기" onChange={seriesNameOnchange} value={seriesName}></S.Series>
                                 <S.LastBtnWrapper>
                                     <S.Btn onClick={onIsLastSaveClick}>돌아가기</S.Btn>
                                     <S.Btn onClick={onSaveClick}>저장하기</S.Btn>

@@ -45,7 +45,8 @@ export const SecularOneFont = styled.div`
     font-size: 35px;
 `;
 export const MainPostItemWrapper = styled.div`
-    height: 600px;
+    min-height: 300px;
+    max-height: 600px;
     margin-top: 25px;
     display: flex;
     flex-direction: column;

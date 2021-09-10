@@ -63,7 +63,13 @@ export const TAG_URL = {
     tag: function (): string {
         return '/blog/tag';
     },
-    searchTagName: function (): string {
-        return '/blog/tag/count';
+    searchTagName: function (tagName: string): string {
+        return `/blog/tag/${tagName}`;
+    },
+};
+
+export const SERIES_URL = {
+    series: function (): string {
+        return '/blog/series';
     },
 };

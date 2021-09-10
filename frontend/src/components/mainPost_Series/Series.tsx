@@ -1,28 +1,40 @@
 import React, { useMemo, useState } from 'react';
-
+import { getAllSeries, seriesDateState } from '../../features/series/seriesSlice';
+import * as S from './style';
 import { useAppDispatch, useTypedSelector } from '../../module/store';
 const Series = () => {
     const dispatch = useAppDispatch();
 
-    // useMemo(() => {
-    //     dispatch(getPagenationPost({ page: 1, pageSize: 3, type: 'main' }));
-    // }, []);
+    useMemo(() => {
+        dispatch(getAllSeries());
+    }, []);
 
-    // const { postData } = useTypedSelector(postListDateState);
+    const { series } = useTypedSelector(seriesDateState);
+
+    console.log(series);
     return (
         <>
-            <div>개발중</div>
-            {/* {postData.map((e) => (
-                <S.MainPostItemWrapper>
-                    <S.MainPostImg src="https://cdn.pixabay.com/photo/2021/08/10/09/41/lesser-sand-plover-6535531_960_720.jpg" />
-                    <S.ContentWrapper>
-                        <S.FeautredTitleWrapper>
-                            <S.FeautredTitle>{e.title}</S.FeautredTitle>
-                        </S.FeautredTitleWrapper>
-                        <S.FeautredContent>{e.text}</S.FeautredContent>
-                    </S.ContentWrapper>
-                </S.MainPostItemWrapper>
-            ))} */}
+            <S.Series>
+                {series &&
+                    series.map((e) => (
+                        <S.SeriesItem>
+                            {e.post &&
+                                (e.post[0].mainImageURL ? (
+                                    <S.SeriesImage src={e.post[0].mainImageURL} />
+                                ) : (
+                                    <S.SeriesImage src="../../../public/favpng_information.svg" />
+                                ))}
+                            <S.SeriesTitle>{e.name}</S.SeriesTitle>
+                            {e.post ? (
+                                <S.SeriesContent>
+                                    {e.post.length}개의 포스트 - 마지막 생성 날짜: {e.post[0].createdAt}
+                                </S.SeriesContent>
+                            ) : (
+                                <S.SeriesContent>버그 버그 버그 버그</S.SeriesContent>
+                            )}
+                        </S.SeriesItem>
+                    ))}
+            </S.Series>
         </>
     );
 };
