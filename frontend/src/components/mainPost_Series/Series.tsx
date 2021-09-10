@@ -2,6 +2,7 @@ import React, { useMemo, useState } from 'react';
 import { getAllSeries, seriesDateState } from '../../features/series/seriesSlice';
 import * as S from './style';
 import { useAppDispatch, useTypedSelector } from '../../module/store';
+import { DefaultImage } from '../../asset';
 const Series = (props: any) => {
     const dispatch = useAppDispatch();
 
@@ -23,7 +24,7 @@ const Series = (props: any) => {
                                     (e.post[0].mainImageURL ? (
                                         <S.SeriesImage src={e.post[0].mainImageURL} />
                                     ) : (
-                                        <S.SeriesImage src="../../../public/favpng_information.svg" />
+                                        <S.SeriesImage src={DefaultImage} />
                                     ))}
                                 <S.SeriesTitle>{e.name}</S.SeriesTitle>
                                 {e.post ? (
@@ -45,7 +46,7 @@ const Series = (props: any) => {
                                     (e.post[0].mainImageURL ? (
                                         <S.SeriesImage src={e.post[0].mainImageURL} />
                                     ) : (
-                                        <S.SeriesImage src="../../../public/favpng_information.svg" />
+                                        <S.SeriesImage src={DefaultImage} />
                                     ))}
                                 <S.SeriesTitle>{e.name}</S.SeriesTitle>
                                 {e.post ? (
