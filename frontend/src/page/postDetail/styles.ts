@@ -6,6 +6,10 @@ export const Post = styled.div`
     flex-direction: column;
     width: 100vw;
     height: 100vh;
+    &.check {
+        background: black;
+        color: white;
+    }
 `;
 export const HeadWrapper = styled.head`
     width: 50vw;
@@ -54,6 +58,9 @@ export const PostWrapper = styled.div`
 export const TagItem = styled.div`
     height: auto;
     width: auto;
+    &.check {
+        color: black;
+    }
 `;
 export const TagItemWrapper = styled.div`
     text-align: center;

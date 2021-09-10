@@ -11,6 +11,7 @@ import ScrollControlBtn from '../scrollControlBtn/scrollControlBtn';
 import { useAppDispatch, useTypedSelector } from '../../module/store';
 import { themeDataState, toggleTheme } from '../../features/theme/themeSlice';
 import { setTheme } from '../../utils/setThemeUtils';
+import FooterContainer from '../footer/FooterContainer';
 
 const MainController = () => {
     //테마적용
@@ -52,9 +53,7 @@ const MainController = () => {
                             <MainPostContainer scrollPosition={scrollPosition} />
                             <NavContainer />
                         </S.Article>
-                        <S.Footer>
-                            <S.FooterFont>© 2021. AhnyoungJun all rights reserved.</S.FooterFont>
-                        </S.Footer>
+                        <FooterContainer />
                     </S.Main>
                     <ScrollControlBtn scrollPosition={scrollPosition} />
                 </>
@@ -68,9 +67,7 @@ const MainController = () => {
                             <MainPostContainer scrollPosition={scrollPosition} />
                             <NavContainer />
                         </S.Article>
-                        <S.Footer className="check">
-                            <S.FooterFont className="check">© 2021. AhnyoungJun all rights reserved.</S.FooterFont>
-                        </S.Footer>
+                        <FooterContainer />
                     </S.Main>
                     <ScrollControlBtn scrollPosition={scrollPosition} />
                 </>

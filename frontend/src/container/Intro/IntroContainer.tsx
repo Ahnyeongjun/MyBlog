@@ -4,22 +4,40 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/swiper.scss';
 import 'swiper/components/scrollbar/scrollbar.scss';
 import './styles.css';
-
 import SwiperCore, { Pagination, Autoplay, Controller } from 'swiper';
 
 SwiperCore.use([Autoplay, Pagination, Controller]);
 
-const slider = [];
-for (let i = 0; i < 5; i += 1)
-    slider.push(
-        <SwiperSlide key={`slide-${i}`}>
-            <img
-                src="https://cdn.pixabay.com/photo/2021/08/10/09/41/lesser-sand-plover-6535531_960_720.jpg"
-                style={{ listStyle: 'none', position: 'static', display: 'block', width: '500px', height: '300px' }}
-                alt={`Slide ${i}`}
-            />
-        </SwiperSlide>
-    );
+const slider = [
+    <SwiperSlide key={0}>
+        <img
+            src="../../../public/garbageImage2.jpg"
+            style={{ listStyle: 'none', position: 'static', display: 'block', width: '500px', height: '300px', objectFit: 'cover' }}
+            alt={`Slide ${1}`}
+        />
+    </SwiperSlide>,
+    <SwiperSlide key={2}>
+        <img
+            src="../../../public/garbageImage3.jpg"
+            style={{ listStyle: 'none', position: 'static', display: 'block', width: '500px', height: '300px', objectFit: 'cover' }}
+            alt={`Slide ${2}`}
+        />
+    </SwiperSlide>,
+    <SwiperSlide key={3}>
+        <img
+            src="../../../public/spring.svg"
+            style={{ listStyle: 'none', position: 'static', display: 'block', width: '500px', height: '300px', objectFit: 'cover' }}
+            alt={`Slide ${3}`}
+        />
+    </SwiperSlide>,
+    <SwiperSlide key={4}>
+        <img
+            src="../../../public/javascript.png"
+            style={{ listStyle: 'none', position: 'static', display: 'block', width: '500px', height: '300px', objectFit: 'cover' }}
+            alt={`Slide ${4}`}
+        />
+    </SwiperSlide>,
+];
 
 const IntroContainer = () => {
     return (
@@ -28,7 +46,7 @@ const IntroContainer = () => {
                 <S.Tit_intro>안녕하세요</S.Tit_intro>
                 <S.MyInformationWrapper>
                     <S.MyImage>
-                        <S.Image src="https://cdn.pixabay.com/photo/2021/08/10/09/41/lesser-sand-plover-6535531_960_720.jpg" />
+                        <S.Image src="/public/myImage.jpg" />
                     </S.MyImage>
                     <S.MyIntrouce>
                         <S.MyName>안영준</S.MyName>

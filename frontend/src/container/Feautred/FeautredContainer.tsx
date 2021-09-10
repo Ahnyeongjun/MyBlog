@@ -91,11 +91,11 @@ const FeautredContainer = () => {
                         </S.PageNationWrapper>
 
                         <S.PageNationBtnWrapper>
-                            {isExpend == true ? (
+                            {/* {isExpend == true ? (
                                 <S.PageNationBtn onClick={updateIsExpend}>{'-'}</S.PageNationBtn>
                             ) : (
                                 <S.PageNationBtn onClick={updateIsExpend}>{'+'}</S.PageNationBtn>
-                            )}
+                            )} */}
                         </S.PageNationBtnWrapper>
                     </S.PageWrapper>
                     {isExpend == true ? (
@@ -152,11 +152,11 @@ const FeautredContainer = () => {
                         </S.PageNationWrapper>
 
                         <S.PageNationBtnWrapper>
-                            {isExpend == true ? (
+                            {/* {isExpend == true ? (
                                 <S.PageNationBtn onClick={updateIsExpend}>{'-'}</S.PageNationBtn>
                             ) : (
                                 <S.PageNationBtn onClick={updateIsExpend}>{'+'}</S.PageNationBtn>
-                            )}
+                            )} */}
                         </S.PageNationBtnWrapper>
                     </S.PageWrapper>
                     {isExpend == true ? (

@@ -10,6 +10,7 @@ import NavContainer from '../../container/nav/NavContainer';
 import axios from 'axios';
 import { searchTag, tagDateState } from '../../features/tag/tagSlice';
 import { themeDataState, toggleTheme } from '../../features/theme/themeSlice';
+import FooterContainer from '../../container/footer/FooterContainer';
 
 const TagSearchPage = ({ match }) => {
     console.log(match.params);
@@ -51,6 +52,7 @@ const TagSearchPage = ({ match }) => {
                         <MainPostContainer scrollPosition={scrollPosition} tagName={tagName} tagTotal={oneTag.count} />
                         <NavContainer />
                     </S.Article>
+                    <FooterContainer />
                 </S.TagSearch>
             ) : (
                 <S.TagSearch className="check">
@@ -60,6 +62,7 @@ const TagSearchPage = ({ match }) => {
                         <MainPostContainer scrollPosition={scrollPosition} tagName={tagName} tagTotal={oneTag.count} />
                         <NavContainer />
                     </S.Article>
+                    <FooterContainer />
                 </S.TagSearch>
             )}
         </>

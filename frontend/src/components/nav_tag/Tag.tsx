@@ -21,7 +21,7 @@ const Tag = (props: any) => {
                                     location.href = `/tag/${e.name}`;
                                 }}
                             >
-                                <S.TagItem>{e.name}</S.TagItem>
+                                <S.TagItem className="check">{e.name}</S.TagItem>
                                 <S.TagCount> ({e.count})</S.TagCount>
                             </S.TagItemWrapper>
                         ))}

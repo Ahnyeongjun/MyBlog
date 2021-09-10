@@ -10,10 +10,17 @@ export const SeriesItem = styled.div`
     width: 45%;
     height: 300px;
     background: rgb(240, 240, 240);
+    @media only screen and (max-width: 1200px) {
+        width: 100%;
+        padding: 10% 10px;
+    }
+    &.check {
+        background: gray;
+    }
 `;
 export const SeriesImage = styled.img`
     height: 200px;
-    background: rgb(240, 240, 240);
+    background: transparent;
     width: 100%;
 `;
 export const SeriesTitle = styled.div`

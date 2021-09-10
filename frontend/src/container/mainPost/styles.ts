@@ -31,9 +31,9 @@ export const MainPostWrapper = styled.div`
     &.check {
         background: black;
     }
-    @media only screen and (max-width: 700px) {
+    @media only screen and (max-width: 900px) {
         width: 100%;
-        padding: 0;
+        padding: 10px;
     }
 `;
 export const PageNationWrapper = styled.div`
@@ -55,7 +55,7 @@ export const MainPostItemWrapper = styled.div`
         color: white;
         background: grey;
         :hover {
-            animation: ${BoxShaodwWhite} 0s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+            animation: ${BoxShaodwWhite} 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
         }
     }
     :hover {

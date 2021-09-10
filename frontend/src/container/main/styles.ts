@@ -20,7 +20,7 @@ export const Main = styled.div`
         color: white;
         background: black;
     }
-    @media only screen and (max-width: 1200px) {
+    @media only screen and (max-width: 1300px) {
         grid-template-rows: 60px auto 10px auto auto 60px 60px;
         grid-template-columns: 1fr 6fr 1fr;
         /* grid-template-areas:
@@ -52,25 +52,3 @@ export const Article = styled.article`
         background: black;
     }
 `;
-
-export const Footer = styled.footer`
-    grid-area: footer;
-    text-align: center;
-    background: rgb(240, 240, 240);
-    &.check {
-        background: grey;
-        color: white;
-    }
-`;
-
-export const FooterFont = styled.a`
-    padding-top: 20px;
-    color: black;
-    display: block;
-    font-size: 15px;
-    &.check {
-        color: white;
-    }
-`;
-
-////////

@@ -6,14 +6,14 @@ export const MyInformationWrapper = styled.div`
 `;
 
 export const MyImage = styled.div`
-    width: 72px;
-    height: 72px;
+    width: 80px;
+    height: 80px;
     margin: 12px;
 `;
 
 export const MyIntrouce = styled.section`
     width: auto;
-    height: 72px;
+    height: 80px;
 `;
 
 export const Tit_intro = styled.h2`
@@ -32,11 +32,11 @@ export const Intro = styled.div`
     padding: 40px 16vw;
     display: flex;
     align-items: center;
-    @media only screen and (max-width: 1500px) {
-        padding: 40px 10vw;
+    @media only screen and (max-width: 1600px) {
+        padding: 40px 8vw;
     }
     @media only screen and (max-width: 800px) {
-        /* width: 84vw; */
+        padding: 40px 4vw;
     }
 `;
 export const IntroduceWrapper = styled.div`
@@ -48,17 +48,16 @@ export const IntroduceWrapper = styled.div`
         margin-left: 20px;
     }
     @media screen and (max-width: 800px) {
-        display: flex;
         align-items: center;
     }
-    @media only screen and (max-width: 1200px) {
+    @media only screen and (max-width: 1300px) {
         width: 100%;
     }
 `;
 
 export const Image = styled.img`
-    width: 72px;
-    height: 72px;
+    width: 80px;
+    height: 80px;
     object-fit: cover;
     border-radius: 100%;
 `;
@@ -71,13 +70,13 @@ export const MyName = styled.span`
 export const MyThink = styled.p`
     width: auto;
     color: white;
-    font-size: 15px;
+    font-size: 1rem;
     margin-top: 10px;
 `;
 
 export const SwiperWrapper = styled.div`
     width: 55%;
-    @media only screen and (max-width: 1200px) {
+    @media only screen and (max-width: 1300px) {
         display: none;
     }
 `;

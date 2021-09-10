@@ -16,6 +16,12 @@ export const TagSearch = styled.div`
         color: white;
         background: black;
     }
+    @media only screen and (max-width: 1500px) {
+        grid-template-columns: 0.5fr 4fr 0.5fr;
+    }
+    @media only screen and (max-width: 800px) {
+        grid-template-columns: 5px 4fr 5px;
+    }
 `;
 export const Article = styled.article`
     grid-area: article;

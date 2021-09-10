@@ -11,7 +11,7 @@ export const NavWrapper = styled.div`
     &.check {
         background: black;
     }
-    @media only screen and (max-width: 700px) {
+    @media only screen and (max-width: 900px) {
         display: none;
         padding: 0;
         margin: 0;

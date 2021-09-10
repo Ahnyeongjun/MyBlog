@@ -28,15 +28,15 @@ const Accordion = (props: any) => {
                     <S.ItemWrapper>
                         <S.HeaderWrapper>
                             <S.Header onClick={handleButtonClick} className="check">
-                                아코디언
+                                미완성(sample)
                             </S.Header>
                         </S.HeaderWrapper>
                         <S.ParentsContentsWrapper ref={parentRef}>
                             <S.ChildContentsWrapper ref={childRef}>
-                                <S.ContentWrapper>
+                                <S.ContentWrapper className="check">
                                     <S.Img src="https://cdn.pixabay.com/photo/2021/08/10/09/41/lesser-sand-plover-6535531_960_720.jpg" />
                                     <S.Content>
-                                        왈왈왈왈왈왈왈왈왈왈왈왈왈왈왈왈 왈왈왈왈왈왈왈왈왈왈왈왈왈왈왈왈 왈왈왈왈왈왈왈왈왈왈왈왈왈왈왈왈
+                                        페이지를 아직 만들지 않았습니다. 페이지를 아직 만들지 않았습니다. 페이지를 아직 만들지 않았습니다.
                                     </S.Content>
                                 </S.ContentWrapper>
                             </S.ChildContentsWrapper>
@@ -47,14 +47,14 @@ const Accordion = (props: any) => {
                 <S.AccordionWrapper>
                     <S.ItemWrapper>
                         <S.HeaderWrapper>
-                            <S.Header onClick={handleButtonClick}>아코디언</S.Header>
+                            <S.Header onClick={handleButtonClick}>미완성(sample)</S.Header>
                         </S.HeaderWrapper>
                         <S.ParentsContentsWrapper ref={parentRef}>
                             <S.ChildContentsWrapper ref={childRef}>
                                 <S.ContentWrapper>
                                     <S.Img src="https://cdn.pixabay.com/photo/2021/08/10/09/41/lesser-sand-plover-6535531_960_720.jpg" />
                                     <S.Content>
-                                        왈왈왈왈왈왈왈왈왈왈왈왈왈왈왈왈 왈왈왈왈왈왈왈왈왈왈왈왈왈왈왈왈 왈왈왈왈왈왈왈왈왈왈왈왈왈왈왈왈
+                                        페이지를 아직 만들지 않았습니다. 페이지를 아직 만들지 않았습니다. 페이지를 아직 만들지 않았습니다.
                                     </S.Content>
                                 </S.ContentWrapper>
                             </S.ChildContentsWrapper>

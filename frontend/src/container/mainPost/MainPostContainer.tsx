@@ -29,7 +29,7 @@ const MainPostContainer = (props: any) => {
                                     Series
                                 </S.PageFont>
                             </S.PageNationWrapper>
-                            {isPost ? <Post check={true} scrollPosition={props.scrollPosition} /> : <Series />}
+                            {isPost ? <Post check={true} scrollPosition={props.scrollPosition} /> : <Series check={true} />}
                         </>
                     )}
                 </S.MainPostWrapper>

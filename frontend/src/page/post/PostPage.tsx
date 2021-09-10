@@ -9,6 +9,7 @@ import axios from 'axios';
 import { setTheme } from '../../utils/setThemeUtils';
 import { useAppDispatch, useTypedSelector } from '../../module/store';
 import { themeDataState, toggleTheme } from '../../features/theme/themeSlice';
+import FooterContainer from '../../container/footer/FooterContainer';
 
 const PostPage = () => {
     const [scrollPosition, setScrollPosition] = useState(0);
@@ -45,6 +46,7 @@ const PostPage = () => {
                         <MainPostContainer scrollPosition={scrollPosition} />
                         <NavContainer />
                     </S.Article>
+                    <FooterContainer />
                 </S.TagSearch>
             ) : (
                 <S.TagSearch className="check">
@@ -54,6 +56,7 @@ const PostPage = () => {
                         <MainPostContainer scrollPosition={scrollPosition} />
                         <NavContainer />
                     </S.Article>
+                    <FooterContainer />
                 </S.TagSearch>
             )}
         </>

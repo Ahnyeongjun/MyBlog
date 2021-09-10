@@ -43,7 +43,7 @@ export const FeaturedItemWrapper = styled.div`
         background: grey;
         color: white;
         :hover {
-            animation: ${BoxShaodwWhite} 0s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+            animation: ${BoxShaodwWhite} 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
         }
     }
     :hover {
@@ -96,7 +96,6 @@ export const Featured = styled.div`
     flex-direction: column;
     padding: 40px 2vw;
 `;
-
 
 export const PageFont = styled.a<{ isTrending: boolean }>`
     text-align: center;
