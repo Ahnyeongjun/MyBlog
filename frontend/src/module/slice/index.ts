@@ -5,8 +5,9 @@ import authReducer from '../../features/auth/authSlice';
 import tagReducer from '../../features/tag/tagSlice';
 import postReducer from '../../features/post/postSlice';
 import postListReducer from '../../features/postList/postListSlice';
+import seriesReducer from '../../features/series/seriesSlice';
 const rootReducer = combineReducers({
-    // scroll: scrollReducer,
+    series: seriesReducer,
     theme: themeReducer,
     editor: editorReducer,
     auth: authReducer,

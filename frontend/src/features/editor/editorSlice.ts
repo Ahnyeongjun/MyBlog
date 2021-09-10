@@ -6,6 +6,7 @@ import {
     editorSliceInitialStateType,
     mainContentActionType,
     mainImageURLActionType,
+    serriesNameActionType,
     tagActioinType,
     titleActionType,
     upLoadActionType,
@@ -17,6 +18,7 @@ const initialState: editorSliceInitialStateType = {
     tag: [],
     mainContent: '',
     mainImageURL: '',
+    seriesName: '',
 };
 const sliceName = 'editor';
 
@@ -32,6 +34,9 @@ const reducers = {
     },
     updateMainContent: (state = initialState, action: PayloadAction<mainContentActionType>) => {
         state.mainContent = action.payload.mainContent;
+    },
+    updateSeriesName: (state = initialState, action: PayloadAction<serriesNameActionType>) => {
+        state.seriesName = action.payload.seriesName;
     },
     successPostPagenationPost: (state = initialState) => {
         state.tag = [];
@@ -56,8 +61,17 @@ const editorSlice = createSlice({
 });
 
 const { actions, reducer } = editorSlice;
-export const { updateMainContent, updateMainImageUrl, uploadPost, updateText, updateTitle, pushTag, removeTag, successPostPagenationPost } =
-    actions;
+export const {
+    updateMainContent,
+    updateMainImageUrl,
+    uploadPost,
+    updateText,
+    updateTitle,
+    pushTag,
+    removeTag,
+    successPostPagenationPost,
+    updateSeriesName,
+} = actions;
 export const editorState = (state: StoreType) => state.editor;
 
 export default reducer;

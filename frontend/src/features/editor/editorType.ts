@@ -4,6 +4,7 @@ export type editorSliceInitialStateType = {
     tag: string[];
     mainImageURL: string;
     mainContent: string;
+    seriesName: string;
 };
 
 export type upLoadActionType = {
@@ -12,6 +13,7 @@ export type upLoadActionType = {
     tag: string[];
     mainImageURL: string;
     mainContent: string;
+    seriesName: string;
 };
 
 export type editorActionType = {
@@ -30,4 +32,7 @@ export type mainContentActionType = {
 };
 export type tagActioinType = {
     tag: string;
+};
+export type serriesNameActionType = {
+    seriesName: string;
 };

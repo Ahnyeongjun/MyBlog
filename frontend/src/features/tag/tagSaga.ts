@@ -28,15 +28,14 @@ function* searchTagNameSaga(action: PayloadAction<searchTagNameType>) {
     try {
         const tagName = action.payload.tagName;
 
-        const httpMethod = methodType.POST;
-        const requestUrl = TAG_URL.searchTagName();
+        const httpMethod = methodType.GET;
+        const requestUrl = TAG_URL.searchTagName(tagName);
         const headers = '';
-        const body = { tagName: tagName };
-        const res = yield call(requestApiWithBody, { httpMethod, requestUrl, body, headers });
+        const res = yield call(requestApi, { httpMethod, requestUrl, headers });
 
         if ('data' in res) {
             const newResDataObj = { ...res.data };
-            yield put(searchTagSuccess({ tag: { name: newResDataObj.tag.name, count: newResDataObj.tag.count } }));
+            yield put(searchTagSuccess({ tag: { name: newResDataObj.name, count: newResDataObj.count } }));
         } else {
             throw new Error(`request ${requestUrl}, but network error`);
         }
