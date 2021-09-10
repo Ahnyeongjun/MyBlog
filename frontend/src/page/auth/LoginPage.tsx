@@ -36,7 +36,13 @@ const LoginPage = () => {
                     <S.TopContent>Sign in</S.TopContent>
                     <S.InputWrapper>
                         <S.Login_Id placeholder="아이드를 입력하세요" onChange={onChange} value={id} name="id" />
-                        <S.Login_password placeholder="비밀번호를 입력하세요" onChange={onChange} value={password} name="password" />
+                        <S.Login_password
+                            placeholder="비밀번호를 입력하세요"
+                            onChange={onChange}
+                            value={password}
+                            name="password"
+                            type="password"
+                        />
                         <S.Login_Btn onClick={onClickLogin}>로그인</S.Login_Btn>
                     </S.InputWrapper>
                 </S.LoginWrapper>

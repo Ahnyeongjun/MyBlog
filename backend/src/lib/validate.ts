@@ -15,7 +15,7 @@ export const generateToken = async (payload: Payload) => {
             payload,
             process.env.JWT_SECRET as Secret,
             {
-                expiresIn: '7d',
+                expiresIn: '1h',
             },
             (error, token) => {
                 if (error) reject(error);

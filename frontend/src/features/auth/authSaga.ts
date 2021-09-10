@@ -18,6 +18,7 @@ function* authLoginSaga(action: PayloadAction<AuthLoginPayloadActionType>) {
         if ('data' in res) {
             const newResDataObj = { ...res.data };
             yield put(authLoginSuccess(newResDataObj));
+            location.href = '/';
         } else {
             throw new Error(`request ${requestUrl}, but network error`);
         }
