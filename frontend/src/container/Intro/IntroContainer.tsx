@@ -4,6 +4,7 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/swiper.scss';
 import 'swiper/components/scrollbar/scrollbar.scss';
 import './styles.css';
+import { Spring, JavaScript, MyImage, Garabageimage2, Coffee } from '../../asset';
 import SwiperCore, { Pagination, Autoplay, Controller } from 'swiper';
 
 SwiperCore.use([Autoplay, Pagination, Controller]);
@@ -11,28 +12,28 @@ SwiperCore.use([Autoplay, Pagination, Controller]);
 const slider = [
     <SwiperSlide key={0}>
         <img
-            src="../../../public/garbageImage2.jpg"
+            src={Garabageimage2}
             style={{ listStyle: 'none', position: 'static', display: 'block', width: '500px', height: '300px', objectFit: 'cover' }}
             alt={`Slide ${1}`}
         />
     </SwiperSlide>,
     <SwiperSlide key={2}>
         <img
-            src="../../../public/garbageImage3.jpg"
+            src={Coffee}
             style={{ listStyle: 'none', position: 'static', display: 'block', width: '500px', height: '300px', objectFit: 'cover' }}
             alt={`Slide ${2}`}
         />
     </SwiperSlide>,
     <SwiperSlide key={3}>
         <img
-            src="../../../public/spring.svg"
+            src={Spring}
             style={{ listStyle: 'none', position: 'static', display: 'block', width: '500px', height: '300px', objectFit: 'cover' }}
             alt={`Slide ${3}`}
         />
     </SwiperSlide>,
     <SwiperSlide key={4}>
         <img
-            src="../../../public/javascript.png"
+            src={JavaScript}
             style={{ listStyle: 'none', position: 'static', display: 'block', width: '500px', height: '300px', objectFit: 'cover' }}
             alt={`Slide ${4}`}
         />
@@ -46,7 +47,7 @@ const IntroContainer = () => {
                 <S.Tit_intro>안녕하세요</S.Tit_intro>
                 <S.MyInformationWrapper>
                     <S.MyImage>
-                        <S.Image src="/public/myImage.jpg" />
+                        <S.Image src={MyImage} />
                     </S.MyImage>
                     <S.MyIntrouce>
                         <S.MyName>안영준</S.MyName>

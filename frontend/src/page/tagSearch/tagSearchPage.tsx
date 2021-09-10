@@ -42,6 +42,8 @@ const TagSearchPage = ({ match }) => {
     dispatch(toggleTheme({ themeType: theme }));
     const { themeData } = useTypedSelector(themeDataState);
 
+    if (!oneTag) location.href = '/';
+
     return (
         <>
             {themeData == 'white' ? (

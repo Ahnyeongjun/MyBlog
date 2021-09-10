@@ -27,6 +27,10 @@ module.exports = () => {
                     ],
                 },
                 {
+                    test: /\.(jpg|png|jpeg|bmp|gif|svg|ico)?$/,
+                    loader: 'file-loader',
+                },
+                {
                     test: /\.s[ac]ss$/i,
                     use: ['style-loader', 'css-loader', 'sass-loader'],
                 },
@@ -34,10 +38,7 @@ module.exports = () => {
                     test: /\.(tsx|ts)?$/,
                     loader: 'ts-loader',
                 },
-                {
-                    test: /\.(jpg|png|jpeg|bmp|gif|svg)?$/,
-                    loader: 'file-loader',
-                },
+
                 {
                     test: /\.(js)$/,
                     exclude: /(node_modules)/,
