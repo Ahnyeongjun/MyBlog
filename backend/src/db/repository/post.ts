@@ -16,6 +16,7 @@ export class PostRepository {
         if (req.tag) post.tag = req.tag;
         if (req.series) post.series = req.series;
         if (!req.mainImageURL) post.mainImageURL = '';
+        else post.mainImageURL = req.mainImageURL;
         post.mainContent = req.mainContent;
         post.searchUrl = req.searchUrl;
         post.views = req.views;

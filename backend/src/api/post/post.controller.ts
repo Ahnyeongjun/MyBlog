@@ -79,24 +79,21 @@ export class PostController {
         try {
             const searchUrl = ctx.params.id;
             const post = ctx.request.body.post;
-            console.log(post);
-            if (post) {
-                const cookie = ctx.cookies.get(`isVisited-${searchUrl}`);
-                if (!cookie) {
-                    ctx.cookies.set(`isVisited-${searchUrl}`, `${searchUrl}`, {
-                        // maxAge: 1000,
-                        // httpOnly: false,
-                        sameSite: 'lax',
-                        // sameSite: 'none',
-                        secure: false,
-                        // overwrite: true,
-                    });
-                    this.postService.updateByViews(post.views);
-                }
+            const cookie = ctx.cookies.get(`isVisited-${searchUrl}`);
+            if (cookie) {
+                ctx.cookies.set(`isVisited - ${escape(searchUrl)}`, escape(searchUrl), {
+                    // maxAge: 1000,
+                    httpOnly: true,
+                    sameSite: 'strict',
+                    secure: false,
+                });
+                this.postService.updateByViews(post.views);
             }
+
             ctx.body = post;
             ctx.status = 200;
         } catch (e) {
+            console.log(e);
             ctx.stats = 400;
             ctx.body = { message: 'cookie error' };
         }
@@ -165,15 +162,9 @@ export class PostController {
     };
     public findOneByPostSearchUrl = async (ctx: Context, next: Next) => {
         const searchUrl = ctx.params.id;
-        console.log(searchUrl);
         const post = await this.postService.findOneByPostSearchUrl(searchUrl);
         if (post) {
             ctx.request.body.post = post;
-            ctx.set({
-                'Access-Control-Allow-Credentials': 'true',
-                'Access-Control-Allow-Methods': 'POST, GET, PUT, DELETE, OPTIONS',
-                credentials: 'same-origin',
-            });
             await next();
         } else {
             ctx.status = 400;
