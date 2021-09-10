@@ -14,7 +14,7 @@ export interface CreatePost {
     createdAt: string;
     content: string;
     title: string;
-    mainImageURL: string;
+    mainImageURL?: string;
     mainContent: string;
     searchUrl: string;
     views: Views;

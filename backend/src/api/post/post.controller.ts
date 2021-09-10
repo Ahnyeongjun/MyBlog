@@ -2,7 +2,7 @@ import { PostServie } from './post.service';
 import { PostRepository, SeriesRepository, TagRepository, ViewsRepository } from '../../db/repository';
 import { Context, Next } from 'koa';
 import { CreatePostRequest, DuplicatedTagRequest, PostRequest, UpdatePostRequest } from '../../interface';
-import { Series, Tag } from '../../db/entity';
+import { Post, Series, Tag } from '../../db/entity';
 
 export class PostController {
     private postRepository: PostRepository = new PostRepository();
@@ -18,7 +18,11 @@ export class PostController {
             if (decoded) {
                 const postData: CreatePostRequest = ctx.request.body;
                 const series: Series = ctx.request.body.series;
-                await this.postService.createByPost(postData, decoded.name, series);
+                const post = await this.postService.createByPost(postData, decoded.name, series);
+                //if (series && post) {
+                //const arrayPost = [...series.post, post];
+                //  await this.postService.updateBySeries(series, arrayPost);
+                //}
                 ctx.status = 201;
                 ctx.body = { success: true };
             } else ctx.status = 400;
@@ -125,7 +129,7 @@ export class PostController {
         try {
             const series = await this.postService.findSeriesAllBySeries();
 
-            ctx.body = series;
+            ctx.body = { series: series };
             ctx.status = 200;
         } catch {
             ctx.status = 400;
@@ -179,7 +183,7 @@ export class PostController {
 
     public checkByCreateRequest = async (ctx: Context, next: Next) => {
         const postData: CreatePostRequest = ctx.request.body;
-        if (postData.content && postData.mainContent && postData.mainImageURL && postData.title) await next();
+        if (postData.content && postData.mainContent && postData.title) await next();
         else {
             ctx.status = 406;
             ctx.body = { message: 'request create post error' };

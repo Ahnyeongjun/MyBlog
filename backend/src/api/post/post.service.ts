@@ -1,5 +1,5 @@
 import { v4 } from 'uuid';
-import { Series, Tag, Views } from '../../db/entity';
+import { Post, Series, Tag, Views } from '../../db/entity';
 import { PostRepository, SeriesRepository, TagRepository, ViewsRepository } from '../../db/repository';
 import { CreatePostRequest, PostRequest, updateTagRequest } from '../../interface';
 import { UpdateViews } from '../../interface/request/views';
@@ -24,7 +24,7 @@ export class PostServie {
         if (alreadySearchUrl) searchUrl = request.title + '-' + v4().substring(0, 8);
         else searchUrl = request.title;
         if (views)
-            await this.postRepository.createByPost({
+            return await this.postRepository.createByPost({
                 writer: writer,
                 createdAt: await this.createdAt(),
                 content: request.content,
@@ -36,6 +36,7 @@ export class PostServie {
                 views: views,
                 series: series,
             });
+        return undefined;
     }
     public async updateByPost(request: PostRequest) {
         let searchUrl = undefined;
@@ -116,7 +117,9 @@ export class PostServie {
     public async findSeriesAllBySeries() {
         return await this.seriesRepository.findSeriesAllBySeries();
     }
-
+    public async updateBySeries(series: Series, post: Post[]) {
+        return await this.seriesRepository.updateBySeries(series, post);
+    }
     //기타
     private async createdAt() {
         const today = new Date();

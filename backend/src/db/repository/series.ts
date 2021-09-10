@@ -1,6 +1,7 @@
+import { relative } from 'path/posix';
 import { EntityRepository, getRepository, Repository } from 'typeorm';
 import connection from '..';
-import { Series } from '../entity';
+import { Post, Series } from '../entity';
 
 @EntityRepository(Series)
 export class SeriesRepository {
@@ -14,7 +15,7 @@ export class SeriesRepository {
     }
     public async findSeriesAllBySeries() {
         const seriesRepository = (await connection).manager.getRepository(Series);
-        const series = await seriesRepository.find();
+        const series = await seriesRepository.find({ relations: ['post'] });
         return series;
     }
 
@@ -24,5 +25,14 @@ export class SeriesRepository {
         series.name = seriesName;
 
         return await seriesRepository.save(series);
+    }
+    public async updateBySeries(series: Series, post: Post[]) {
+        const seriesRepository = (await connection).manager.getRepository(Series);
+        const newSeries = new Series();
+        newSeries.post = post;
+        return await seriesRepository.save({
+            ...series,
+            ...newSeries,
+        });
     }
 }
