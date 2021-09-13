@@ -103,3 +103,11 @@ export const Menu_Item = styled.div`
     padding: 10px 0;
     border-bottom: solid 1px gray;
 `;
+
+export const Category_a = styled.a`
+    color: white;
+    text-decoration: none;
+    :hover {
+        color: gray;
+    }
+`;

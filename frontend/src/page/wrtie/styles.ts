@@ -58,6 +58,9 @@ export const Btn = styled.button`
             background: white;
         }
     }
+    @media only screen and (max-width: 600px) {
+        margin: 30px 0px;
+    }
 `;
 
 export const LastSavePageWrapper = styled.div`

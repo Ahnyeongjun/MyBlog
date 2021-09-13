@@ -21,11 +21,12 @@ const initialState: PostListInitialStateType = {
         {
             uid: '',
             tag: [],
-            title: 'S',
-            mainImageURL: '',
-            mainContent: '',
+            title: 'SssssssssssssssssssssssssssssssssSssssssssssssssssssssssssssssssss',
+            mainImageURL: 'https://cdn.pixabay.com/photo/2021/07/21/07/09/cygnet-6482420_960_720.jpg',
+            mainContent:
+                'SssssssssssssssssssssssssssssssssSssssssssssssssssssssssssssssssssSssssssssssssssssssssssssssssssssSssssssssssssssssssssssssssssssssSssssssssssssssssssssssssssssssssSssssssssssssssssssssssssssssssss',
             searchUrl: '',
-            createdAt: '',
+            createdAt: 'sssssssss',
         },
         {
             uid: '',
@@ -34,7 +35,7 @@ const initialState: PostListInitialStateType = {
             mainImageURL: '',
             mainContent: '',
             searchUrl: '',
-            createdAt: '',
+            createdAt: 'sssssssss',
         },
     ],
     FeautredPostList: [
@@ -51,10 +52,10 @@ const initialState: PostListInitialStateType = {
             uid: '',
             tag: [],
             title: 'SssssssssssssssssssssssssssssssssSssssssssssssssssssssssssssssssss',
-            mainImageURL: '',
+            mainImageURL: 'https://cdn.pixabay.com/photo/2021/07/21/07/09/cygnet-6482420_960_720.jpg',
             mainContent: 'SssssssssssssssssssssssssssssssssSssssssssssssssssssssssssssssssssSssssssssssssssssssssssssssssssss',
             searchUrl: '',
-            createdAt: '',
+            createdAt: 'sssssssss',
         },
         {
             uid: '',
@@ -63,7 +64,7 @@ const initialState: PostListInitialStateType = {
             mainImageURL: '',
             mainContent: '',
             searchUrl: '',
-            createdAt: '',
+            createdAt: 'sssssssss',
         },
     ],
     total: 0,

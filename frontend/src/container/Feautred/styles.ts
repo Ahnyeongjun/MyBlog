@@ -33,9 +33,12 @@ export const FeaturedItemWrapper = styled.div`
 export const FeautredContentWrapper = styled.div`
     display: flex;
     flex-direction: column;
-    height: 40%;
+    height: 50%;
     padding: 5%;
     text-align: left;
+    @media only screen and (max-width: 600px) {
+        max-height: 60%;
+    }
 `;
 
 export const PageWrapper = styled.div`
@@ -54,18 +57,32 @@ export const PageNationWrapper = styled.div`
 
 export const FeautredImg = styled.img`
     width: calc(100% + 1px);
-    height: 60%;
+    height: 50%;
+    @media only screen and (max-width: 600px) {
+        min-height: 40%;
+        max-height: 50%;
+    }
 `;
 export const FeautredTitle = styled.div`
     overflow: hidden;
     text-overflow: ellipsis;
-    height: calc(25% - 10px);
+    max-height: calc(40% - 10px);
     margin-top: 10px;
     font-size: 1.6rem;
+    @media only screen and (max-width: 600px) {
+        margin-top: 5px;
+        max-height: calc(35% - 10px);
+        white-space: normal;
+        display: -webkit-box;
+        word-break: break-word;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        font-size: 1.3rem;
+    }
 `;
 export const FeautredContent = styled.div`
     position: relative;
-    height: calc(69% - 10px);
+    height: calc(50% - 10px);
     width: 100%;
     margin-top: 10px;
     font-size: 1.1rem;
@@ -76,8 +93,14 @@ export const FeautredContent = styled.div`
     text-overflow: ellipsis;
     display: -webkit-box;
 
-    -webkit-line-clamp: 5;
+    -webkit-line-clamp: 4;
     -webkit-box-orient: vertical;
+`;
+export const FeautreCreatedAt = styled.div`
+    height: calc(10%-20px);
+    padding: 10px 0;
+    width: 100%;
+    text-align: right;
 `;
 export const Featured = styled.div`
     grid-area: featured;
@@ -97,7 +120,10 @@ export const Featured = styled.div`
         width: 1000px;
     }
     @media only screen and (max-width: 1200px) {
-        width: calc(100% - 4vw);
+        width: 90vw;
+    }
+    @media only screen and (max-width: 800px) {
+        width: 96vw;
     }
 `;
 

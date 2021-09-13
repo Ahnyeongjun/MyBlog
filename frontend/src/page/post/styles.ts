@@ -20,7 +20,7 @@ export const TagSearch = styled.div`
         grid-template-columns: 0.5fr 4fr 0.5fr;
     }
     @media only screen and (max-width: 800px) {
-        grid-template-columns: 5px 4fr 5px;
+        grid-template-columns: 0 4fr 0;
     }
 `;
 export const Article = styled.article`
@@ -29,5 +29,19 @@ export const Article = styled.article`
     background: white;
     &.check {
         background: black;
+    }
+    padding: 0 2vw;
+    width: 1600px;
+    @media only screen and (max-width: 1920px) {
+        width: 1200px;
+    }
+    @media only screen and (max-width: 1440px) {
+        width: 1000px;
+    }
+    @media only screen and (max-width: 1200px) {
+        width: 90vw;
+    }
+    @media only screen and (max-width: 800px) {
+        width: 96vw;
     }
 `;

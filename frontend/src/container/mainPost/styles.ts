@@ -1,38 +1,59 @@
 import styled from 'styled-components';
 import { BoxShaodw, HoverPage, BoxShaodwWhite } from '../../animation';
 
-export const FeautredTitle = styled.a`
+export const FeautredTitle = styled.div`
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
     margin-top: 10px;
+    margin-bottom: 30px;
     grid-area: title;
-    font-size: 2.5rem;
-    height: auto;
-    text-align: center;
+    font-size: 2.2rem;
+
     display: block;
+    width: 100%;
+    @media only screen and (max-width: 600px) {
+        max-height: 80px;
+        white-space: normal;
+        display: -webkit-box;
+        word-break: break-word;
+        -webkit-line-clamp: 3;
+        -webkit-box-orient: vertical;
+        font-size: 1.5rem;
+        margin-bottom: 20px;
+    }
 `;
-export const FeautredTitleWrapper = styled.div`
-    display: flex;
-    justify-content: space-between;
-    height: 50px;
-    align-items: center;
-    margin-bottom: 2rem;
-`;
+
 export const FeautredContent = styled.div`
     margin-top: 10px;
-    height: 100px;
-    font-size: 16px;
+    max-height: 100px;
+    font-size: 1.3rem;
     grid-area: content;
+
+    word-break: break-word;
+    overflow: hidden;
+    word-wrap: break-word;
+    white-space: normal;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+
+    -webkit-line-clamp: 5;
+    -webkit-box-orient: vertical;
+
+    @media only screen and (max-width: 600px) {
+        font-size: 1rem;
+    }
 `;
 export const MainPostWrapper = styled.div`
     display: flex;
     flex-direction: column;
     width: 65%;
-    padding-left: 2vw;
     background: white;
     &.check {
         background: black;
     }
     @media only screen and (max-width: 900px) {
-        width: 100%;
+        width: calc(100% - 20px);
         padding: 10px;
     }
 `;
@@ -45,8 +66,8 @@ export const SecularOneFont = styled.div`
     font-size: 35px;
 `;
 export const MainPostItemWrapper = styled.div`
-    min-height: 300px;
-    max-height: 600px;
+    min-height: 200px;
+    max-height: 650px;
     margin-top: 25px;
     display: flex;
     flex-direction: column;
@@ -65,12 +86,14 @@ export const MainPostItemWrapper = styled.div`
     }
 `;
 export const ContentWrapper = styled.div`
-    height: 250px;
+    max-height: 280px;
+    width: calc(100% - 50px);
     padding: 10px 25px;
 `;
 export const MainPostImg = styled.img`
     width: 100%;
-    height: 300px;
+    min-height: 200px;
+    max-height: 250px;
 `;
 export const PageFont = styled.a<{ isPost: boolean }>`
     display: block;
@@ -102,7 +125,8 @@ export const Nav = styled.nav`
 
 export const TagList = styled.div`
     width: 100%;
-
+    min-height: 0px;
+    max-height: 100px;
     display: flex;
 `;
 
@@ -118,7 +142,11 @@ export const TagItem = styled.a`
     }
 `;
 
-export const createdAt = styled.a`
+export const createdAt = styled.div`
+    padding: 20px 0 28px 0;
+    text-align: right;
     font-size: 1rem;
+    height: 30px;
     color: black;
+    width: 100%;
 `;

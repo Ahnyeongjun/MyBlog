@@ -56,6 +56,7 @@ const FeautredContainer = () => {
                         <S.FeautredContentWrapper>
                             <S.FeautredTitle>{FeautredPostList[i].title}</S.FeautredTitle>
                             <S.FeautredContent>{FeautredPostList[i].mainContent}</S.FeautredContent>
+                            <S.FeautreCreatedAt>만든 날짜: {FeautredPostList[i].createdAt}</S.FeautreCreatedAt>
                         </S.FeautredContentWrapper>
                     </S.FeaturedItemWrapper>
                 </SwiperSlide>
@@ -69,6 +70,7 @@ const FeautredContainer = () => {
                         <S.FeautredContentWrapper>
                             <S.FeautredTitle>{FeautredPostList[i].title}</S.FeautredTitle>
                             <S.FeautredContent>{FeautredPostList[i].mainContent}</S.FeautredContent>
+                            <S.FeautreCreatedAt>{FeautredPostList[i].createdAt}</S.FeautreCreatedAt>
                         </S.FeautredContentWrapper>
                     </S.FeaturedItemWrapper>
                 </SwiperSlide>

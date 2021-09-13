@@ -36,10 +36,8 @@ export const Main = styled.div`
       ". . "
       "footer footer "; */
     }
+
     @media only screen and (max-width: 800px) {
-        grid-template-columns: 0.5fr 8fr 0.5fr;
-    }
-    @media only screen and (max-width: 500px) {
         grid-template-columns: 0fr 1fr 0fr;
     }
     @media only screen and (prefers-color-scheme: light) {
@@ -55,7 +53,21 @@ export const Article = styled.article`
     grid-area: article;
     display: flex;
     background: white;
+    padding: 40px 2vw;
     &.check {
         background: black;
+    }
+    width: 1600px;
+    @media only screen and (max-width: 1920px) {
+        width: 1200px;
+    }
+    @media only screen and (max-width: 1440px) {
+        width: 1000px;
+    }
+    @media only screen and (max-width: 1200px) {
+        width: 90vw;
+    }
+    @media only screen and (max-width: 800px) {
+        width: 96vw;
     }
 `;

@@ -40,9 +40,7 @@ const Post = (props: any) => {
                             <S.MainPostItemWrapper className="check" onClick={() => onClick(e.searchUrl)}>
                                 {e.mainImageURL ? <S.MainPostImg src={e.mainImageURL} /> : null}
                                 <S.ContentWrapper>
-                                    <S.FeautredTitleWrapper>
-                                        <S.FeautredTitle>{e.title}</S.FeautredTitle>
-                                    </S.FeautredTitleWrapper>
+                                    <S.FeautredTitle>{e.title}</S.FeautredTitle>
                                     <S.FeautredContent>{e.mainContent}</S.FeautredContent>
                                     <S.TagList>
                                         {e.tag &&
@@ -56,6 +54,7 @@ const Post = (props: any) => {
                                                 </S.TagItem>
                                             ))}
                                     </S.TagList>
+                                    <S.createdAt>{e.createdAt}</S.createdAt>
                                 </S.ContentWrapper>
                             </S.MainPostItemWrapper>
                         ))}
@@ -67,10 +66,7 @@ const Post = (props: any) => {
                             <S.MainPostItemWrapper onClick={() => onClick(e.searchUrl)}>
                                 {e.mainImageURL ? <S.MainPostImg src={e.mainImageURL} /> : null}
                                 <S.ContentWrapper>
-                                    <S.FeautredTitleWrapper>
-                                        <S.FeautredTitle>{e.title}</S.FeautredTitle>
-                                        <S.createdAt>{e.createdAt}</S.createdAt>
-                                    </S.FeautredTitleWrapper>
+                                    <S.FeautredTitle>{e.title}</S.FeautredTitle>
                                     <S.FeautredContent>{e.mainContent}</S.FeautredContent>
                                     <S.TagList>
                                         {e.tag &&
@@ -84,6 +80,7 @@ const Post = (props: any) => {
                                                 </S.TagItem>
                                             ))}
                                     </S.TagList>
+                                    <S.createdAt>작성 날짜: {e.createdAt}</S.createdAt>
                                 </S.ContentWrapper>
                             </S.MainPostItemWrapper>
                         ))}
