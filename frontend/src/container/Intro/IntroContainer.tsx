@@ -6,6 +6,7 @@ import 'swiper/components/scrollbar/scrollbar.scss';
 import './styles.css';
 import { Spring, JavaScript, MyImage, Garabageimage2, Coffee } from '../../asset';
 import SwiperCore, { Pagination, Autoplay, Controller } from 'swiper';
+import MyInformation from '../../components/myInforMation/MyInformation';
 
 SwiperCore.use([Autoplay, Pagination, Controller]);
 
@@ -45,16 +46,7 @@ const IntroContainer = () => {
         <S.Intro>
             <S.IntroduceWrapper>
                 <S.Tit_intro>안녕하세요</S.Tit_intro>
-                <S.MyInformationWrapper>
-                    <S.MyImage>
-                        <S.Image src={MyImage} />
-                    </S.MyImage>
-                    <S.MyIntrouce>
-                        <S.MyName>안영준</S.MyName>
-                        <S.MyThink>세상에 도움이 되기 위해서 열심히 공부중인 개발자입니다.</S.MyThink>
-                        <S.MyThink>자바와 자바스크립트를 기반으로 둔 개발자입니다.</S.MyThink>
-                    </S.MyIntrouce>
-                </S.MyInformationWrapper>
+                <MyInformation check={true} />
             </S.IntroduceWrapper>
 
             <S.SwiperWrapper>

@@ -4,6 +4,7 @@ export const Footer = styled.footer`
     grid-area: footer;
     text-align: center;
     background: rgb(240, 240, 240);
+    height: 50px;
     &.check {
         background: grey;
         color: white;

@@ -5,7 +5,8 @@ import { getOnePost, postDateState } from '../../features/post/postSlice';
 import { useTypedSelector } from '../../module/store';
 import * as S from './styles';
 import { themeDataState, toggleTheme } from '../../features/theme/themeSlice';
-
+import FooterContainer from '../../container/footer/FooterContainer';
+import MyInformation from '../../components/myInforMation/MyInformation';
 const date = new Date();
 const PostDetailPage = ({ match }) => {
     console.log(match.params);
@@ -35,57 +36,69 @@ const PostDetailPage = ({ match }) => {
     return (
         <>
             {themeData == 'white' ? (
-                <S.Post>
-                    <HeaderContainer scrollPosition={0} />
-                    <S.HeadWrapper>
-                        <S.Title>{postData.title}</S.Title>
-                        <S.infoWrapper>
-                            <S.Writer>{postData.writer}</S.Writer>-<S.createdAt>{postData.createdAt}</S.createdAt>
-                        </S.infoWrapper>
-                        <S.TagWRapper>
-                            {postData.tag
-                                ? postData.tag.map((e) => (
-                                      <S.TagItemWrapper
-                                          onClick={() => {
-                                              location.href = `/tag/${e.name}`;
-                                          }}
-                                      >
-                                          <S.TagItem>{e.name}</S.TagItem>
-                                      </S.TagItemWrapper>
-                                  ))
-                                : null}
-                        </S.TagWRapper>
-                    </S.HeadWrapper>
-                    <S.PostWrapper>
-                        <S.PostBody dangerouslySetInnerHTML={{ __html: postData.content }}></S.PostBody>
-                    </S.PostWrapper>
-                </S.Post>
+                <>
+                    <S.Post>
+                        <HeaderContainer scrollPosition={0} />
+                        <S.HeadWrapper>
+                            <S.Title>{postData.title}</S.Title>
+                            <S.infoWrapper>
+                                <S.Writer>{postData.writer}</S.Writer>-<S.createdAt>{postData.createdAt}</S.createdAt>
+                            </S.infoWrapper>
+                            <S.TagWRapper>
+                                {postData.tag
+                                    ? postData.tag.map((e) => (
+                                          <S.TagItemWrapper
+                                              onClick={() => {
+                                                  location.href = `/tag/${e.name}`;
+                                              }}
+                                          >
+                                              <S.TagItem>{e.name}</S.TagItem>
+                                          </S.TagItemWrapper>
+                                      ))
+                                    : null}
+                            </S.TagWRapper>
+                        </S.HeadWrapper>
+                        <S.PostWrapper>
+                            <S.PostBody dangerouslySetInnerHTML={{ __html: postData.content }}></S.PostBody>
+                        </S.PostWrapper>
+                    </S.Post>
+                    <S.MyInformationWrapper>
+                        <MyInformation />
+                    </S.MyInformationWrapper>{' '}
+                    <FooterContainer />
+                </>
             ) : (
-                <S.Post className="check">
-                    <HeaderContainer scrollPosition={0} />
-                    <S.HeadWrapper>
-                        <S.Title>{postData.title}</S.Title>
-                        <S.infoWrapper>
-                            <S.Writer>{postData.writer}</S.Writer>-<S.createdAt>{postData.createdAt}</S.createdAt>
-                        </S.infoWrapper>
-                        <S.TagWRapper>
-                            {postData.tag
-                                ? postData.tag.map((e) => (
-                                      <S.TagItemWrapper
-                                          onClick={() => {
-                                              location.href = `/tag/${e.name}`;
-                                          }}
-                                      >
-                                          <S.TagItem className="check">{e.name}</S.TagItem>
-                                      </S.TagItemWrapper>
-                                  ))
-                                : null}
-                        </S.TagWRapper>
-                    </S.HeadWrapper>
-                    <S.PostWrapper>
-                        <S.PostBody dangerouslySetInnerHTML={{ __html: postData.content }}></S.PostBody>
-                    </S.PostWrapper>
-                </S.Post>
+                <>
+                    <S.Post className="check">
+                        <HeaderContainer scrollPosition={0} />
+                        <S.HeadWrapper>
+                            <S.Title>{postData.title}</S.Title>
+                            <S.infoWrapper>
+                                <S.Writer>{postData.writer}</S.Writer>-<S.createdAt>{postData.createdAt}</S.createdAt>
+                            </S.infoWrapper>
+                            <S.TagWRapper>
+                                {postData.tag
+                                    ? postData.tag.map((e) => (
+                                          <S.TagItemWrapper
+                                              onClick={() => {
+                                                  location.href = `/tag/${e.name}`;
+                                              }}
+                                          >
+                                              <S.TagItem className="check">{e.name}</S.TagItem>
+                                          </S.TagItemWrapper>
+                                      ))
+                                    : null}
+                            </S.TagWRapper>
+                        </S.HeadWrapper>
+                        <S.PostWrapper>
+                            <S.PostBody dangerouslySetInnerHTML={{ __html: postData.content }}></S.PostBody>
+                        </S.PostWrapper>
+                        <S.MyInformationWrapper className="check">
+                            <MyInformation check={true} />
+                        </S.MyInformationWrapper>
+                    </S.Post>
+                    <FooterContainer />
+                </>
             )}{' '}
         </>
     );

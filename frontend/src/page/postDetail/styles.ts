@@ -5,24 +5,42 @@ export const Post = styled.div`
     display: flex;
     flex-direction: column;
     width: 100vw;
-    height: 100vh;
+    min-height: 120vh;
     &.check {
         background: black;
         color: white;
     }
 `;
 export const HeadWrapper = styled.head`
-    width: 50vw;
+    width: 45vw;
     margin: 0 auto;
     min-height: 25vh;
     display: flex;
     flex-direction: column;
     margin-bottom: 50px;
+    @media only screen and (max-width: 1024px) {
+        width: 65vw;
+    }
+    @media only screen and (max-width: 768px) {
+        width: 80vw;
+    }
+    @media only screen and (max-width: 600px) {
+        width: 90vw;
+    }
 `;
 export const Title = styled.div`
     margin-top: 8vh;
     font-size: 4rem;
     font-weight: 800;
+    @media only screen and (max-width: 1500px) {
+        font-size: 3rem;
+    }
+    @media only screen and (max-width: 1024px) {
+        font-size: 2.5rem;
+    }
+    @media only screen and (max-width: 600px) {
+        font-size: 1.8rem;
+    }
 `;
 export const infoWrapper = styled.div`
     display: flex;
@@ -49,10 +67,19 @@ export const TagWRapper = styled.div`
 export const PostWrapper = styled.div`
     height: auto;
     min-height: calc(62vh - 60px);
-    width: 50vw;
+    width: 45vw;
     margin: 0 auto;
     display: flex;
     flex-direction: column;
+    @media only screen and (max-width: 1024px) {
+        width: 65vw;
+    }
+    @media only screen and (max-width: 768px) {
+        width: 80vw;
+    }
+    @media only screen and (max-width: 600px) {
+        width: 90vw;
+    }
 `;
 
 export const TagItem = styled.div`
@@ -75,12 +102,48 @@ export const TagItemWrapper = styled.div`
     align-items: center;
     margin-right: 0.75rem;
     cursor: pointer;
+    @media only screen and (max-width: 768px) {
+        height: 1.5rem;
+        padding: 0 0.5rem;
+        font-size: 12px;
+    }
 `;
-
+export const MyInformationWrapper = styled.div`
+    display: flex;
+    align-items: center;
+    width: 45vw;
+    background: transparent;
+    margin: 0 auto;
+    padding: 25px 0;
+    @media only screen and (max-width: 1024px) {
+        width: 65vw;
+    }
+    @media only screen and (max-width: 768px) {
+        width: 80vw;
+    }
+    @media only screen and (max-width: 600px) {
+        width: 90vw;
+    }
+    color: black;
+    &.check {
+        color: white;
+    }
+`;
 export const PostBody = styled.div`
-    img {
+    img,
+    p {
         object-fit: cover;
-
-        width: 50vw;
+        word-wrap: break-word;
+        width: 45vw;
+        font-size: 1.2rem;
+        @media only screen and (max-width: 1024px) {
+            width: 65vw;
+        }
+        @media only screen and (max-width: 768px) {
+            width: 80vw;
+        }
+        @media only screen and (max-width: 600px) {
+            width: 90vw;
+        }
     }
 `;

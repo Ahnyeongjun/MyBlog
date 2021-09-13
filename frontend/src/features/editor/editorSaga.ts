@@ -12,7 +12,7 @@ function* editorPostSaga(action: PayloadAction<editorSliceInitialStateType>) {
         const httpMethod = methodType.POST;
         const requestUrl = BLOG_URL.blog();
         console.log(action.payload);
-        const body = { content: text, title, tag, mainContent: mainContent, mainImageURL: mainImageURL, seriesName: seriesName };
+        const body = { content: text, title, tagName: tag, mainContent: mainContent, mainImageURL: mainImageURL, seriesName: seriesName };
         const headers = {
             Authorization: localStorage.getItem('accessToken'),
         };

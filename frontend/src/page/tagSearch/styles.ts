@@ -15,6 +15,9 @@ export const TagSearch = styled.div`
         background: black;
         color: white;
     }
+    @media only screen and (max-width: 1300px) {
+        grid-template-rows: 60px auto 20px auto 60px 50px;
+    }
     @media only screen and (max-width: 800px) {
         grid-template-columns: 0 4fr 0;
     }

@@ -124,6 +124,7 @@ export const Nav = styled.nav`
 `;
 
 export const TagList = styled.div`
+    margin-top: 20px;
     width: 100%;
     min-height: 0px;
     max-height: 100px;
