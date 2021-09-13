@@ -6,9 +6,20 @@ export const MyInformationWrapper = styled.div`
 `;
 
 export const MyImage = styled.div`
-    width: 80px;
-    height: 80px;
+    padding-top: 1rem;
+    width: 7rem;
+    height: 7rem;
     margin: 12px;
+    @media screen and (max-width: 1920px) {
+        padding-top: 0;
+        width: 80px;
+        height: 80px;
+        margin: 12px;
+    }
+    @media screen and (max-width: 550px) {
+        width: 3.5rem;
+        height: 3.5rem;
+    }
 `;
 
 export const MyIntrouce = styled.section`
@@ -18,11 +29,14 @@ export const MyIntrouce = styled.section`
 
 export const Tit_intro = styled.h2`
     color: white;
-    font-size: 80px;
+    font-size: 6rem;
     margin: 10px;
     margin-bottom: 20px;
+    @media screen and (max-width: 1920px) {
+        font-size: 80px;
+    }
     @media screen and (max-width: 550px) {
-        font-size: 70px;
+        font-size: 3.5rem;
     }
 `;
 export const Intro = styled.div`
@@ -38,6 +52,10 @@ export const Intro = styled.div`
     @media only screen and (max-width: 800px) {
         padding: 40px 4vw;
     }
+    @media only screen and (max-width: 600px) {
+        width: 96vw;
+        padding: 2vw;
+    }
 `;
 export const IntroduceWrapper = styled.div`
     height: auto;
@@ -52,26 +70,48 @@ export const IntroduceWrapper = styled.div`
     }
     @media only screen and (max-width: 1300px) {
         width: 100%;
+        margin: 10px;
     }
 `;
 
 export const Image = styled.img`
-    width: 80px;
-    height: 80px;
+    width: 7rem;
+    height: 7rem;
     object-fit: cover;
     border-radius: 100%;
+    @media screen and (max-width: 1920px) {
+        font-size: 25px;
+        width: 80px;
+        height: 80px;
+    }
+    @media screen and (max-width: 550px) {
+        width: 3.5rem;
+        height: 3.5rem;
+    }
 `;
 
 export const MyName = styled.span`
     color: white;
-    font-size: 25px;
+    font-size: 3rem;
+    margin-bottom: 0.5rem;
+    @media screen and (max-width: 1920px) {
+        font-size: 25px;
+    }
 `;
 
 export const MyThink = styled.p`
     width: auto;
     color: white;
-    font-size: 1rem;
+    font-size: 1.5rem;
     margin-top: 10px;
+    @media screen and (max-width: 1920px) {
+        font-size: 1rem;
+    }
+    @media screen and (max-width: 500px) {
+        :nth-child(2) {
+            display: none;
+        }
+    }
 `;
 
 export const SwiperWrapper = styled.div`

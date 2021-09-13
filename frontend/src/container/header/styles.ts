@@ -27,6 +27,10 @@ export const Blog_Link = styled.a`
     :link {
         text-decoration: none;
     }
+    @media only screen and (max-width: 800px) {
+        font-size: 1rem;
+        padding-left: 20px;
+    }
 `;
 
 export const Blog_Category = styled.ul`

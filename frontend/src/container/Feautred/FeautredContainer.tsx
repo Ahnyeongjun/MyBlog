@@ -105,7 +105,7 @@ const FeautredContainer = () => {
                             <Swiper
                                 breakpoints={{
                                     100: {
-                                        spaceBetween: 10,
+                                        spaceBetween: 0,
                                         slidesPerView: 1,
                                         slidesPerGroup: 1,
                                     },
@@ -124,8 +124,13 @@ const FeautredContainer = () => {
                                         slidesPerView: 3,
                                         slidesPerGroup: 3,
                                     },
+                                    1920: {
+                                        spaceBetween: 40,
+                                        slidesPerView: 3,
+                                        slidesPerGroup: 3,
+                                    },
                                 }}
-                                spaceBetween={40}
+                                spaceBetween={70}
                                 slidesPerView={3}
                                 slidesPerGroup={3}
                                 loop={true}

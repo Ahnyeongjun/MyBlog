@@ -50,9 +50,9 @@ const initialState: PostListInitialStateType = {
         {
             uid: '',
             tag: [],
-            title: 'S',
+            title: 'SssssssssssssssssssssssssssssssssSssssssssssssssssssssssssssssssss',
             mainImageURL: '',
-            mainContent: '',
+            mainContent: 'SssssssssssssssssssssssssssssssssSssssssssssssssssssssssssssssssssSssssssssssssssssssssssssssssssss',
             searchUrl: '',
             createdAt: '',
         },

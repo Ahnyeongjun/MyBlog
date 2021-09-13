@@ -17,6 +17,9 @@ export const SeriesItem = styled.div`
     &.check {
         background: gray;
     }
+    @media only screen and (max-width: 600px) {
+        margin-right: 0;
+    }
 `;
 export const SeriesImage = styled.img`
     height: 200px;

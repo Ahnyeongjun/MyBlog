@@ -59,7 +59,7 @@ const HeaderContainer = (props: any) => {
 
                         <Toggle />
                     </S.Blog_Category>
-                    <HamburgerMenu scrollPosition={props.scrollPosition} />
+                    <HamburgerMenu scrollPosition={props.scrollPosition} isLogin={isLogin} />
                 </S.Header>
             ) : (
                 <S.Header scroll={props.scrollPosition}>
@@ -87,7 +87,7 @@ const HeaderContainer = (props: any) => {
 
                         <Toggle />
                     </S.Blog_Category>
-                    <HamburgerMenu scrollPosition={props.scrollPosition} />
+                    <HamburgerMenu scrollPosition={props.scrollPosition} isLogin={isLogin} />
                 </S.Header>
             )}
         </>

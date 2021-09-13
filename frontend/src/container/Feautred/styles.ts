@@ -1,32 +1,10 @@
 import styled from 'styled-components';
 import { BoxShaodw, HoverPage, BoxShaodwWhite } from '../../animation';
 export const FeaturedWrapper = styled.div`
-    width: 1200px;
+    width: 100%;
     margin-top: 20px;
     display: flex;
     justify-content: space-between;
-
-    @media only screen and (max-width: 1500px) {
-        width: 950px;
-    }
-    @media screen and (max-width: 1300px) {
-        width: 800px;
-    }
-    @media only screen and (max-width: 1000px) {
-        width: 700px;
-    }
-    @media only screen and (max-width: 900px) {
-        width: 650px;
-    }
-    @media only screen and (max-width: 800px) {
-        width: 600px;
-    }
-    @media only screen and (max-width: 700px) {
-        width: 550px;
-    }
-    @media only screen and (max-width: 650px) {
-        width: 100%;
-    }
 `;
 
 export const FeaturedItemWrapper = styled.div`
@@ -34,7 +12,7 @@ export const FeaturedItemWrapper = styled.div`
     color: black;
     display: flex;
     flex-direction: column;
-    width: 840px;
+    width: 100%;
     box-shadow: lavender 1px 1px;
     transform: translateZ(0px);
     height: 350px;
@@ -75,26 +53,52 @@ export const PageNationWrapper = styled.div`
 `;
 
 export const FeautredImg = styled.img`
-    grid-area: image;
     width: calc(100% + 1px);
     height: 60%;
 `;
 export const FeautredTitle = styled.div`
+    overflow: hidden;
+    text-overflow: ellipsis;
+    height: calc(25% - 10px);
     margin-top: 10px;
-    grid-area: title;
-    font-size: 1.5rem;
+    font-size: 1.6rem;
 `;
 export const FeautredContent = styled.div`
+    position: relative;
+    height: calc(69% - 10px);
+    width: 100%;
     margin-top: 10px;
-    font-size: 1rem;
-    grid-area: content;
+    font-size: 1.1rem;
+    word-break: break-word;
+    overflow: hidden;
+    word-wrap: break-word;
+    white-space: normal;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+
+    -webkit-line-clamp: 5;
+    -webkit-box-orient: vertical;
 `;
 export const Featured = styled.div`
     grid-area: featured;
     font-size: 35px;
     display: flex;
     flex-direction: column;
+    background: white;
+    &.check {
+        background: black;
+    }
     padding: 40px 2vw;
+    width: 1600px;
+    @media only screen and (max-width: 1920px) {
+        width: 1200px;
+    }
+    @media only screen and (max-width: 1440px) {
+        width: 1000px;
+    }
+    @media only screen and (max-width: 1200px) {
+        width: calc(100% - 4vw);
+    }
 `;
 
 export const PageFont = styled.a<{ isTrending: boolean }>`

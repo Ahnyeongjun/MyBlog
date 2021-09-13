@@ -13,12 +13,16 @@ export const Main = styled.div`
         '. . . '
         'footer footer footer';
     grid-template-rows: 60px 700px 20px 500px auto 60px 50px;
-    grid-template-columns: 1fr 4fr 1fr;
+    width: 100vw;
+    grid-template-columns: 1fr 3fr 1fr;
     min-height: 100vh;
 
     &.check {
         color: white;
         background: black;
+    }
+    @media only screen and (max-width: 1920px) {
+        grid-template-columns: 1fr 4fr 1fr;
     }
     @media only screen and (max-width: 1300px) {
         grid-template-rows: 60px auto 10px auto auto 60px 60px;
@@ -34,6 +38,9 @@ export const Main = styled.div`
     }
     @media only screen and (max-width: 800px) {
         grid-template-columns: 0.5fr 8fr 0.5fr;
+    }
+    @media only screen and (max-width: 500px) {
+        grid-template-columns: 0fr 1fr 0fr;
     }
     @media only screen and (prefers-color-scheme: light) {
     }
