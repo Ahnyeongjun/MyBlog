@@ -31,7 +31,7 @@ const initialState: PostListInitialStateType = {
         {
             uid: '',
             tag: [],
-            title: 'S',
+            title: 'S안녕안녕첫번째',
             mainImageURL: '',
             mainContent: '',
             searchUrl: '',
@@ -42,9 +42,9 @@ const initialState: PostListInitialStateType = {
         {
             uid: '',
             tag: [],
-            title: 'S',
-            mainImageURL: '',
-            mainContent: '',
+            title: 'S안녕안녕첫번째S안녕안녕첫번째',
+            mainImageURL: 'https://cdn.pixabay.com/photo/2021/07/21/07/09/cygnet-6482420_960_720.jpg',
+            mainContent: 'S안녕안녕첫번째',
             searchUrl: '',
             createdAt: '',
         },

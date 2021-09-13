@@ -8,8 +8,8 @@ export const FeautredTitle = styled.div`
     margin-top: 10px;
     margin-bottom: 30px;
     grid-area: title;
-    font-size: 2.2rem;
-
+    font-size: 2rem;
+    font-weight: 800;
     display: block;
     width: 100%;
     @media only screen and (max-width: 600px) {
@@ -93,7 +93,7 @@ export const ContentWrapper = styled.div`
 export const MainPostImg = styled.img`
     width: 100%;
     min-height: 200px;
-    max-height: 250px;
+    max-height: 240px;
 `;
 export const PageFont = styled.a<{ isPost: boolean }>`
     display: block;
@@ -144,8 +144,9 @@ export const TagItem = styled.a`
 
 export const createdAt = styled.div`
     padding: 20px 0 28px 0;
-    text-align: right;
-    font-size: 1rem;
+
+    font-size: 12px;
+
     height: 30px;
     color: black;
     width: 100%;

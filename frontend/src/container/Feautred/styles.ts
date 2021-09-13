@@ -33,8 +33,8 @@ export const FeaturedItemWrapper = styled.div`
 export const FeautredContentWrapper = styled.div`
     display: flex;
     flex-direction: column;
-    height: 50%;
-    padding: 5%;
+    height: 170px;
+    padding: 20px;
     text-align: left;
     @media only screen and (max-width: 600px) {
         max-height: 60%;
@@ -57,7 +57,7 @@ export const PageNationWrapper = styled.div`
 
 export const FeautredImg = styled.img`
     width: calc(100% + 1px);
-    height: 50%;
+    height: 170px;
     @media only screen and (max-width: 600px) {
         min-height: 40%;
         max-height: 50%;
@@ -66,41 +66,40 @@ export const FeautredImg = styled.img`
 export const FeautredTitle = styled.div`
     overflow: hidden;
     text-overflow: ellipsis;
-    max-height: calc(40% - 10px);
-    margin-top: 10px;
-    font-size: 1.6rem;
+    padding-bottom: 5px;
+    max-height: 20px;
+    white-space: nowrap;
+    font-size: 1.2rem;
+    font-weight: 800;
     @media only screen and (max-width: 600px) {
-        margin-top: 5px;
-        max-height: calc(35% - 10px);
+        max-height: 3.9rem;
+        line-height: 1.3rem;
         white-space: normal;
         display: -webkit-box;
         word-break: break-word;
         -webkit-line-clamp: 2;
         -webkit-box-orient: vertical;
-        font-size: 1.3rem;
     }
 `;
 export const FeautredContent = styled.div`
     position: relative;
-    height: calc(50% - 10px);
     width: 100%;
     margin-top: 10px;
-    font-size: 1.1rem;
+    font-size: 1rem;
+    line-height: 1.1rem;
+    max-height: 4.4rem;
     word-break: break-word;
     overflow: hidden;
-    word-wrap: break-word;
-    white-space: normal;
     text-overflow: ellipsis;
     display: -webkit-box;
-
     -webkit-line-clamp: 4;
     -webkit-box-orient: vertical;
 `;
 export const FeautreCreatedAt = styled.div`
     height: calc(10%-20px);
+    font-size: 12px;
     padding: 10px 0;
     width: 100%;
-    text-align: right;
 `;
 export const Featured = styled.div`
     grid-area: featured;
