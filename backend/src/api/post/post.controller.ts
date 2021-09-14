@@ -79,13 +79,16 @@ export class PostController {
         try {
             const searchUrl = ctx.params.id;
             const post = ctx.request.body.post;
-            const cookie = ctx.cookies.get(`isVisited-${searchUrl}`);
-            if (cookie) {
+            const cookie = ctx.cookies.get(`isVisited - ${escape(searchUrl)}`);
+            console.log(cookie);
+            if (!cookie) {
+                console.log('쿠키셋');
                 ctx.cookies.set(`isVisited - ${escape(searchUrl)}`, escape(searchUrl), {
                     // maxAge: 1000,
                     httpOnly: true,
                     sameSite: 'strict',
                     secure: false,
+                    domain: 'youngjun.site',
                 });
                 this.postService.updateByViews(post.views);
             }

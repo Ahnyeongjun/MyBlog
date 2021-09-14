@@ -11,30 +11,23 @@ import db from './db';
 import fs from 'fs';
 import path from 'path';
 import https from 'https';
-//import serve from 'koa-static';
-//import send from 'koa-send';
+import serve from 'koa-static';
+import send from 'koa-send';
 
 const app = new Koa();
 const router = new Router();
 
 router.use('/api', api.routes());
-const koaOptions = {
-    origin: 'http://localhost:8080',
-    credentials: true,
-};
-app.use(bodyparser())
-    .use(cors(koaOptions))
 
+app.use(bodyparser())
     .use(logger())
     .use(router.routes())
     .use(router.allowedMethods())
-    .use(async (ctx, next) => {
-        try {
-            await next();
-        } catch (err: any) {
-            err.status = err.statusCode || err.status || 500;
-            ctx.body = err.message;
-            ctx.app.emit('error', err, ctx);
+    .use(serve(path.resolve(__dirname, '../dist/')))
+    .use(async (ctx) => {
+        if ((ctx.status === 404 || ctx.status === 403) && ctx.path.indexOf('/api') !== 0)
+            await send(ctx, 'index.html', { root: path.resolve(__dirname, '../dist/') });
+        else {
         }
     });
 
