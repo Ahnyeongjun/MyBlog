@@ -5,7 +5,8 @@ export const Post = styled.div`
     display: flex;
     flex-direction: column;
     width: 100vw;
-    min-height: 120vh;
+    min-height: 100vh;
+    //min-height:120vh;
     &.check {
         background: black;
         color: white;

@@ -37,9 +37,13 @@ function* searchTagNameSaga(action: PayloadAction<searchTagNameType>) {
             const newResDataObj = { ...res.data };
             yield put(searchTagSuccess({ tag: { name: newResDataObj.name, count: newResDataObj.count } }));
         } else {
+            location.href = '/';
+            alert('존재 하지 않는 tag입니다.');
             throw new Error(`request ${requestUrl}, but network error`);
         }
     } catch (error) {
+        location.href = '/';
+        alert('존재 하지 않는 tag입니다.');
         console.log(error);
     }
 }

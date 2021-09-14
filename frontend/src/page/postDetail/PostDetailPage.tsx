@@ -62,10 +62,11 @@ const PostDetailPage = ({ match }) => {
                             <S.PostBody dangerouslySetInnerHTML={{ __html: postData.content }}></S.PostBody>
                         </S.PostWrapper>
                     </S.Post>
-                    <S.MyInformationWrapper>
+                    {/*<S.MyInformationWrapper>
                         <MyInformation />
-                    </S.MyInformationWrapper>{' '}
+                    </S.MyInformationWrapper>
                     <FooterContainer />
+                    */}
                 </>
             ) : (
                 <>
@@ -93,9 +94,10 @@ const PostDetailPage = ({ match }) => {
                         <S.PostWrapper>
                             <S.PostBody dangerouslySetInnerHTML={{ __html: postData.content }}></S.PostBody>
                         </S.PostWrapper>
-                        <S.MyInformationWrapper className="check">
-                            <MyInformation check={true} />
-                        </S.MyInformationWrapper>
+
+                        {/*  <S.MyInformationWrapper className="check"> 
+             <MyInformation check={true} />
+                        </S.MyInformationWrapper>*/}
                     </S.Post>
                     <FooterContainer />
                 </>

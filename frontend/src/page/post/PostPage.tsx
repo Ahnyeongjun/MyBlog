@@ -1,5 +1,4 @@
 import React, { useMemo, useState } from 'react';
-import TagNameContainer from '../../container/tagName/TagNameContainer';
 import HeaderContainer from '../../container/header/HeaderContainer';
 
 import * as S from './styles';
@@ -10,6 +9,7 @@ import { setTheme } from '../../utils/setThemeUtils';
 import { useAppDispatch, useTypedSelector } from '../../module/store';
 import { themeDataState, toggleTheme } from '../../features/theme/themeSlice';
 import FooterContainer from '../../container/footer/FooterContainer';
+import PostNameIntro from '../../components/PostNameIntro/PostNameIntro';
 
 const PostPage = () => {
     const [scrollPosition, setScrollPosition] = useState(0);
@@ -39,25 +39,25 @@ const PostPage = () => {
     return (
         <>
             {themeData == 'white' ? (
-                <S.TagSearch>
+                <S.PostPage>
                     <HeaderContainer scrollPosition={scrollPosition} />
-                    <TagNameContainer tagName={'Post'} />
+                    <PostNameIntro />
                     <S.Article>
                         <MainPostContainer scrollPosition={scrollPosition} />
                         <NavContainer />
                     </S.Article>
                     <FooterContainer />
-                </S.TagSearch>
+                </S.PostPage>
             ) : (
-                <S.TagSearch className="check">
+                <S.PostPage className="check">
                     <HeaderContainer scrollPosition={scrollPosition} />
-                    <TagNameContainer tagName={'Post'} />
+                    <PostNameIntro />
                     <S.Article className="check">
                         <MainPostContainer scrollPosition={scrollPosition} />
                         <NavContainer />
                     </S.Article>
                     <FooterContainer />
-                </S.TagSearch>
+                </S.PostPage>
             )}
         </>
     );

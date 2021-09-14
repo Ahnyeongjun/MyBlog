@@ -1,25 +1,12 @@
 import styled, { keyframes } from 'styled-components';
 
 export const TagSearch = styled.div`
-    display: grid;
-    grid-template-areas:
-        'header header header '
-        'tagName tagName tagName'
-        '. . .'
-        '. article .'
-        '. . . '
-        'footer footer footer';
-    grid-template-rows: 60px 400px 20px auto 60px 50px;
-    grid-template-columns: 1fr 4fr 1fr;
+    display: flex;
+    height: auto;
+    flex-direction: column;
     &.check {
         background: black;
         color: white;
-    }
-    @media only screen and (max-width: 1300px) {
-        grid-template-rows: 60px auto 20px auto 60px 50px;
-    }
-    @media only screen and (max-width: 800px) {
-        grid-template-columns: 0 4fr 0;
     }
 `;
 export const Article = styled.article`
@@ -29,7 +16,7 @@ export const Article = styled.article`
     &.check {
         background: black;
     }
-    padding: 0 2vw;
+    margin: 0 auto;
     width: 1600px;
     @media only screen and (max-width: 1920px) {
         width: 1200px;

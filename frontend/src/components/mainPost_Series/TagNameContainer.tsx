@@ -6,9 +6,11 @@ const TagNameContainer = (props: any) => {
         <S.TagNameWrapper>
             <S.MyInformationWrapper>
                 <S.TagTitle>{props.tagName}</S.TagTitle>
-                <S.TaggNameWrapper>
-                    <S.TagName>{props.tagTotal}</S.TagName>
-                </S.TaggNameWrapper>
+                {props.tagTotal && (
+                    <S.TaggNameWrapper>
+                        <S.TagName>{props.tagTotal}</S.TagName>
+                    </S.TaggNameWrapper>
+                )}
             </S.MyInformationWrapper>
         </S.TagNameWrapper>
     );

@@ -72,4 +72,7 @@ export const SERIES_URL = {
     series: function (): string {
         return '/blog/series';
     },
+    searchSeriesName: function (seriesName: string): string {
+        return `/blog/series/${seriesName}`;
+    },
 };

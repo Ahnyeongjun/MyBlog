@@ -10,22 +10,23 @@ import axios from 'axios';
 import { searchTag, tagDateState } from '../../features/tag/tagSlice';
 import { themeDataState, toggleTheme } from '../../features/theme/themeSlice';
 import FooterContainer from '../../container/footer/FooterContainer';
-import PostNameIntro from '../../components/PostNameIntro/PostNameIntro';
+import { getAllSeriesList, seriesDateState } from '../../features/series/seriesSlice';
+import SeriesListContainer from '../../container/SeriesList/SeriesListContainer';
+import NameIntro from '../../components/NameIntro/NameIntro';
 
-const TagSearchPage = ({ match }) => {
+const seriesSearchPage = ({ match }) => {
     console.log(match.params);
-    const { tagName } = match.params;
+    const { seriesName } = match.params;
     const dispatch = useAppDispatch();
     const [scrollPosition, setScrollPosition] = useState(0);
     const updateScroll = () => {
         setScrollPosition(window.scrollY || document.body.scrollTop);
     };
-    const { oneTag } = useTypedSelector(tagDateState);
 
     useMemo(async () => {
         window.addEventListener('scroll', updateScroll);
-        document.title = `${tagName} | YoungJun`;
-        dispatch(searchTag({ tagName: tagName }));
+        document.title = `${seriesName} | YoungJun`;
+        dispatch(getAllSeriesList({ seriesName: seriesName }));
     }, []);
 
     const isBrowserDarkMode = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
@@ -47,25 +48,19 @@ const TagSearchPage = ({ match }) => {
             {themeData == 'white' ? (
                 <S.TagSearch>
                     <HeaderContainer scrollPosition={scrollPosition} />
-                    <PostNameIntro tagName={'Tag/' + oneTag.name} tagTotal={'#' + oneTag.count + '개의 게시물'} />
-                    <S.Article>
-                        <MainPostContainer scrollPosition={scrollPosition} tagName={tagName} tagTotal={oneTag.count} />
-                        <NavContainer />
-                    </S.Article>
+                    <NameIntro tagName={'Series/' + seriesName} />
+                    <SeriesListContainer />
                     <FooterContainer />
                 </S.TagSearch>
             ) : (
                 <S.TagSearch className="check">
                     <HeaderContainer scrollPosition={scrollPosition} />
-                    <PostNameIntro tagName={'Tag/' + oneTag.name} tagTotal={'#' + oneTag.count + '개의 게시물'} />
-                    <S.Article className="check">
-                        <MainPostContainer scrollPosition={scrollPosition} tagName={tagName} tagTotal={oneTag.count} />
-                        <NavContainer />
-                    </S.Article>
+                    <NameIntro tagName={'Series/' + seriesName} />
+                    <SeriesListContainer />
                     <FooterContainer />
                 </S.TagSearch>
             )}
         </>
     );
 };
-export default TagSearchPage;
+export default seriesSearchPage;
