@@ -3,6 +3,7 @@ import { PostRepository, SeriesRepository, TagRepository, ViewsRepository } from
 import { Context, Next } from 'koa';
 import { CreatePostRequest, DuplicatedTagRequest, PostRequest, UpdatePostRequest } from '../../interface';
 import { Post, Series, Tag } from '../../db/entity';
+import { Console } from 'console';
 
 export class PostController {
     private postRepository: PostRepository = new PostRepository();
@@ -177,8 +178,11 @@ export class PostController {
 
     public checkByCreateRequest = async (ctx: Context, next: Next) => {
         const postData: CreatePostRequest = ctx.request.body;
-        if (postData.content && postData.mainContent && postData.title) await next();
-        else {
+        if (postData.content && postData.mainContent && postData.title) {
+            console.log(postData.title);
+            postData.title = postData.title.replace(/\s/g, '-');
+            await next();
+        } else {
             ctx.status = 406;
             ctx.body = { message: 'request create post error' };
         }
