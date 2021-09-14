@@ -17,8 +17,9 @@ export class PostServie {
         if (request.tagName) {
             customTag = await this.changeAllByTagName(request.tagName);
         }
-        const regularTitle = request.title.replace(/\s/g, '-');
+        const reg = /[\{\}\[\]\/?.,;:|\)*~`!^\-_+<>@\#$%&\\\=\(\'\"]/gi;
 
+        const regularTitle = request.title.replace(reg, '').replace(/\s/g, '-');
         const alreadySearchUrl = await this.findOneByPostSearchUrl(regularTitle);
         const views = await this.createByView();
         //searchUrl 이름 결정
