@@ -20,7 +20,11 @@ const SeriesListContainer = () => {
 
     for (let i = 0; i < seriesList.length; i++) {
         array.push(
-            <S.PostItemWpapper>
+            <S.PostItemWpapper
+                onClick={() => {
+                    location.href = `/post/${seriesList[i].searchUrl}`;
+                }}
+            >
                 <S.PostTitle>
                     {i + 1}. {seriesList[i].title}
                 </S.PostTitle>
@@ -36,22 +40,12 @@ const SeriesListContainer = () => {
     }
     return (
         <S.Series>
-            {themeData != 'white' ? (
-                <>
-                    {/* {seriesList &&
-                        seriesList.map((e) => (
-                            <S.MainPostItemWrapper className="check" onClick={() => onClick(e.searchUrl)}>
-                                {e.mainImageURL ? <S.MainPostImg src={e.mainImageURL} /> : null}
-                                <S.ContentWrapper>
-                                    <S.FeautredTitle>{e.title}</S.FeautredTitle>
-                                    <S.FeautredContent>{e.mainContent}</S.FeautredContent>
-                                    <S.createdAt>{e.createdAt}</S.createdAt>
-                                </S.ContentWrapper>
-                            </S.MainPostItemWrapper>
-                        ))} */}
-                </>
-            ) : (
+            {themeData == 'white' ? (
                 <S.PostList>
+                    <>{array}</>
+                </S.PostList>
+            ) : (
+                <S.PostList className="check">
                     <>{array}</>
                 </S.PostList>
             )}
