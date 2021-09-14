@@ -2,7 +2,7 @@ import { v4 } from 'uuid';
 import { Post, Series, Tag, Views } from '../../db/entity';
 import { PostRepository, SeriesRepository, TagRepository, ViewsRepository } from '../../db/repository';
 import { CreatePostRequest, PostRequest, updateTagRequest } from '../../interface';
-import { UpdateViews } from '../../interface/request/views';
+import { UpdateViews } from '../../interface/type/views';
 
 export class PostServie {
     constructor(

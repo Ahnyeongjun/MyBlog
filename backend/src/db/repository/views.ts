@@ -1,7 +1,7 @@
 import { EntityRepository, getRepository, Repository } from 'typeorm';
 import { View } from 'typeorm/schema-builder/view/View';
 import connection from '..';
-import { UpdateViews } from '../../interface/request/views';
+import { UpdateViews } from '../../interface/type/views';
 import { Views } from '../entity';
 
 @EntityRepository(Views)
