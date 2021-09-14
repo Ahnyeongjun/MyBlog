@@ -1,3 +1,4 @@
+import { BoxShaodw, BoxShaodwWhite } from '../../animation';
 import styled from 'styled-components';
 
 export const Series = styled.div`
@@ -19,6 +20,18 @@ export const SeriesItem = styled.div`
     }
     @media only screen and (max-width: 600px) {
         margin-right: 0;
+    }
+    &.check {
+        color: white;
+        background: grey;
+        :hover {
+            animation: ${BoxShaodwWhite} 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+        }
+    }
+    :hover {
+        cursor: pointer;
+        animation: ${BoxShaodw} 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+        /* box-shadow: lavender 1px 3px; */
     }
 `;
 export const SeriesImage = styled.img`
