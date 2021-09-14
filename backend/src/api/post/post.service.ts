@@ -17,12 +17,14 @@ export class PostServie {
         if (request.tagName) {
             customTag = await this.changeAllByTagName(request.tagName);
         }
-        const alreadySearchUrl = await this.findOneByPostSearchUrl(request.title);
+        const regularTitle = request.title.replace(/\s/g, '-');
+
+        const alreadySearchUrl = await this.findOneByPostSearchUrl(regularTitle);
         const views = await this.createByView();
         //searchUrl 이름 결정
         let searchUrl = '';
-        if (alreadySearchUrl) searchUrl = request.title + '-' + v4().substring(0, 8);
-        else searchUrl = request.title;
+        if (alreadySearchUrl) searchUrl = regularTitle + '-' + v4().substring(0, 8);
+        else searchUrl = regularTitle;
         if (views)
             return await this.postRepository.createByPost({
                 writer: writer,
