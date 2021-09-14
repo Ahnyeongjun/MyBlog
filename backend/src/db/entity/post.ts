@@ -27,7 +27,7 @@ export class Post {
     @Column()
     createdAt!: string;
 
-    @Column()
+    @Column({ type: 'longtext' })
     content!: string;
 
     @Column()
