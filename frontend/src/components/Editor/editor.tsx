@@ -52,8 +52,9 @@ const Editor = (props: any) => {
         () => ({
             toolbar: {
                 container: [
-                    [{ font: ['serif', 'monospace', 'sansserif'] }],
+                    [{ font: [] }],
                     [{ size: ['small', false, 'large', 'huge'] }],
+                    [{ header: [1, 2, 3, 4, false] }],
                     ['bold', 'italic', 'underline', 'strike', 'blockquote'],
                     [{ color: [] }],
 

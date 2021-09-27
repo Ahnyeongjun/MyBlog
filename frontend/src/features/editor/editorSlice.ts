@@ -26,6 +26,7 @@ const reducers = {
     updateText: (state = initialState, action: PayloadAction<editorActionType>) => {
         state.text = action.payload.text;
     },
+
     updateTitle: (state = initialState, action: PayloadAction<titleActionType>) => {
         state.title = action.payload.title;
     },

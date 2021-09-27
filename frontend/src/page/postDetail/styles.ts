@@ -147,4 +147,60 @@ export const PostBody = styled.div`
             width: 90vw;
         }
     }
+    blockquote {
+        border-left: 4px solid #ccc;
+        padding-top: 5px;
+        padding-bottom: 5px;
+        padding-left: 16px;
+    }
+    h1 {
+        font-size: 3rem;
+    }
+    h2 {
+        font-size: 2.5rem;
+    }
+    h3 {
+        font-size: 2rem;
+    }
+    h4 {
+        font-size: 1.5rem;
+    }
+    strong {
+        font-weight: bold;
+    }
+    em {
+        font-style: italic;
+    }
+    ol li {
+        counter-increment: list-0;
+    }
+    ol ul {
+        padding-left: 1.5em;
+    }
+    li:not(.ql-direction-rtl)::before {
+        margin-left: -1.5em;
+        margin-right: 0.3em;
+        text-align: right;
+    }
+    ol li:not(.ql-direction-rtl),
+    ul li:not(.ql-direction-rtl) {
+        padding-left: 1.5em;
+    }
+    ol ul {
+        padding-left: 1.5rem;
+    }
+    ol li:before {
+        content: counter(list-0, decimal) '. ';
+    }
+    ul li:before {
+        content: '\\2022';
+    }
+    li:not(.ql-direction-rtl),
+    ul li:not(.ql-direction-rtl) {
+        padding-left: 1.5em;
+    }
+    li::before {
+        white-space: nowrap;
+        width: 1.2em;
+    }
 `;
