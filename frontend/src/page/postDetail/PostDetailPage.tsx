@@ -6,7 +6,8 @@ import { useTypedSelector } from '../../module/store';
 import * as S from './styles';
 import { themeDataState, toggleTheme } from '../../features/theme/themeSlice';
 import FooterContainer from '../../container/footer/FooterContainer';
-import MyInformation from '../../components/myInforMation/MyInformation';
+import './style.css';
+import 'react-quill/dist/quill.snow.css';
 const date = new Date();
 const PostDetailPage = ({ match }) => {
     console.log(match.params);
