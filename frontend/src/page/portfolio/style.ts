@@ -27,8 +27,11 @@ export const widthWrapper = styled.div`
 `;
 export const ItemWrapper = styled.div`
     height: 70px;
-    margin-top: 120px;
+    padding-top: 100px;
     display: flex;
+    @media only screen and (max-height: 1000px) {
+        padding-top: 90px;
+    }
 `;
 export const BtnWrapper = styled.div`
     display: flex;
@@ -102,12 +105,20 @@ export const heightContent = styled.div`
     height: 80%;
     width: 100%;
     writing-mode: vertical-rl;
+    text-orientation: mixed;
     font-family: NotoSans_KR !important;
     font-size: 20px;
     color: rgb(201, 156, 245);
+    @media only screen and (max-height: 1000px) {
+        font-size: 18px;
+        height: 90%;
+    }
 `;
 export const heightBox = styled.div`
     height: 20%;
     width: 100%;
     background: rgb(201, 156, 245);
+    @media only screen and (max-height: 1000px) {
+        height: 10%;
+    }
 `;
