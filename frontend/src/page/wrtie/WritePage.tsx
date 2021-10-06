@@ -61,7 +61,7 @@ const WritePage = () => {
         const formData = new FormData();
         formData.append('image', img);
 
-        const res = (await axios.post(process.env.BASE_URL + '/upload/single', formData)).data;
+        const res: any = (await axios.post(process.env.BASE_URL + '/upload/single', formData)).data;
         const url = process.env.S3_URL + res.image;
         setTimeout(() => dispatch(updateMainImageUrl({ mainImageURL: url })), 1000);
     };

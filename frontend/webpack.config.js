@@ -62,7 +62,6 @@ module.exports = () => {
             }),
         ],
         devServer: {
-            inline: true,
             hot: true,
             historyApiFallback: true,
         },

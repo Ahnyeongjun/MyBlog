@@ -147,6 +147,17 @@ export const PostBody = styled.div`
             width: 90vw;
         }
     }
+    span,
+    p,
+    li,
+    ul,
+    a {
+        line-height: 2rem;
+    }
+    a {
+        overflow: hidden;
+        word-break: break-all;
+    }
     blockquote {
         border-left: 4px solid #ccc;
         padding-top: 5px;
