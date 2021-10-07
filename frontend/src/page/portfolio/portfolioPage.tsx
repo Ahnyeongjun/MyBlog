@@ -7,7 +7,7 @@ const portfolioPage = () => {
             <S.Header></S.Header>
             <S.Intro>
                 <S.widthWrapper>
-                    <S.widthContent>자바와 자바스크립트를 기반으로 둔 개발자입니다.</S.widthContent> <S.widthBox></S.widthBox>
+                    <S.widthContent>자바와 자바스크립트를 기반으로 둔 개발자입니다.</S.widthContent>
                 </S.widthWrapper>
                 <S.ItemWrapper>
                     <S.decorate />
@@ -24,7 +24,6 @@ const portfolioPage = () => {
 
                 <S.heightWrapper>
                     <S.heightContent>세상에 도움이 되기 위해서 열심히 공부중인 개발자입니다.</S.heightContent>
-                    <S.heightBox> </S.heightBox>
                 </S.heightWrapper>
                 <S.SvgBox>
                     <svg width="100%" height="100%" viewBox="0 0 507 507" fill="none" xmlns="http://www.w3.org/2000/svg">
