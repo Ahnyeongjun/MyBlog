@@ -1,208 +1,102 @@
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 
-export const Intro = styled.div`
-    height: calc(100vh - 70px);
-    min-height: 830px; //900px 70은 header
+export const Header = styled.div`
+    height: 70px;
+    background: #2c2c2c;
+`;
+export const portfolio = styled.div`
+    height: 200vh;
     width: 1300px;
     margin: 0 auto;
     background: white;
     @media only screen and (max-width: 1400px) {
         width: 100vw;
     }
-    @media only screen and (max-width: 500px) {
-        height: calc(60vh - 70px);
-        min-height: 600px;
-    }
 `;
-export const Header = styled.div`
-    height: 70px;
-    background: #2c2c2c;
-`;
-export const SvgBox = styled.div`
-    height: 500px;
-    width: 500px;
-    bottom: 105px;
-    right: calc(0.5 * (100vw - 1200px));
-    position: absolute;
-    @media only screen and (max-height: 900px) {
-        top: 310px;
-    }
-    @media only screen and (max-width: 1400px) {
-        width: 400px;
-        height: 400px;
-        top: calc(50vh - 100px);
-        left: calc(50vw - 200px);
-    }
-    @media only screen and (max-width: 900px) {
-        width: 50vw;
-        height: 50vw;
-        top: 300px;
-        left: calc(50vw - 25vw);
-    }
-    @media only screen and (max-width: 500px) {
-        top: 250px;
-    }
-`;
-export const widthWrapper = styled.div`
-    bottom: 60px;
-    height: 5px;
-    margin-left: 5px;
-    right: calc(0.5 * (100vw - 1300px));
-    background: rgb(201, 156, 245);
-    position: absolute;
-    width: 1300px;
+export const About = styled.div`
     display: flex;
-    @media only screen and (max-height: 900px) {
-        top: 850px;
-    }
-    @media only screen and (max-width: 1400px) {
-        width: 80vw;
-        left: 10vw;
-    }
-    @media only screen and (max-width: 500px) {
-        top: 500px;
-    }
+    flex-direction: column;
+    height: 70vh;
+`;
+export const topWrapper = styled.div`
+    display: flex;
+    width: 1100px;
+    margin: 0 auto;
+    margin-top: 10vh;
+`;
+export const BoldKoreanFont = styled.div`
+    font-size: 75px;
+    height: 90px;
+
+    font-family: NotoSansKRFont_Bold !important;
+`;
+export const MiddleWrapper = styled.div`
+    display: flex;
+    width: 1100px;
+    margin: 0 auto;
+    margin-top: 3vh;
+`;
+export const leftWrapper = styled.div`
+    width: 600px;
+    display: flex;
+    flex-direction: column;
+`;
+export const rightWrapper = styled.div`
+    display: flex;
+    flex-direction: column;
+    width: 420px;
+`;
+export const ItemWrapper2 = styled.div`
+    display: flex;
+    height: 100px;
+    flex-direction: column;
+    margin-bottom: 3vh;
 `;
 export const ItemWrapper = styled.div`
-    height: 70px;
-    padding-top: 100px;
     display: flex;
-    @media only screen and (max-height: 1000px) {
-        padding-top: 90px;
-    }
-    @media only screen and (max-width: 1400px) {
-        width: 80vw;
-        margin-left: 10vw;
-        padding-top: 70px;
-    }
-    @media only screen and (max-width: 500px) {
-        padding-top: 50px;
-    }
+    height: 40px;
+    margin-bottom: 3vh;
 `;
-export const BtnWrapper = styled.div`
-    display: flex;
-    margin-left: 400px;
-    justify-content: space-between;
-    @media only screen and (max-width: 1400px) {
-        margin-left: 7vw;
-        margin-right: 1vw;
-        width: 20vw;
-        margin-top: calc(70px - 4vw);
-    }
-`;
-export const Btn = styled.div`
-    margin: 0 12px;
-    margin-top: 10px;
+export const Image = styled.div`
+    background: black;
+    height: 36px;
+    width: 36px;
+    margin: 2px;
     border-radius: 50%;
-    width: 60px;
-    height: 60px;
-    @media only screen and (max-width: 1400px) {
-        width: 4vw;
-        height: 4vw;
-        margin: 0 0.5vw;
-    }
-    &.one {
-        background: #f5c29c;
-    }
-    &.two {
-        background: #bef59c;
-    }
-    &.three {
-        background: #ee9cf5;
-    }
-    &.four {
-        background: #c99cf5;
-    }
+    margin: 0 15px;
 `;
-export const NotoSansBoldFont = styled.div`
-    margin-top: 120px;
-    color: #2c2828;
-    font-family: NotoSans_Bold !important;
-    font-size: 200px;
-    @media only screen and (max-width: 1400px) {
-        display: none;
-    }
+export const content = styled.div`
+    font-size: 30px;
+    color: #727272;
+    width: calc(100% - 40px);
+`;
+export const content2 = styled.div`
+    margin-bottom: 2vh;
+    font-size: 30px;
+
+    color: #727272;
+    height: 40px;
+    width: 100%;
 `;
 export const NotoSansThinFont = styled.div`
-    color: #2c2828;
-    margin-left: 450px;
+    height: 50px;
+    margin-left: 10px;
+    margin-top: 40px;
+    font-size: 40px;
     font-family: NotoSans_Thin !important;
-    font-size: 150px;
-    @media only screen and (max-width: 1400px) {
-        display: none;
-    }
 `;
-export const heightWrapper = styled.div`
-    position: absolute;
-    height: 65vh;
-    width: 5px;
-    bottom: 65px;
-    right: calc(0.5 * (100vw - 1300px));
+export const BottomLine = styled.div`
+    margin-top: 10vh;
+    width: 1300px;
+    height: 5px;
     background: rgb(201, 156, 245);
-    @media only screen and (max-height: 900px) {
-        top: 260px;
-        height: 590px;
-    }
-    @media only screen and (max-width: 1400px) {
-        left: 90vw;
-    }
-
-    @media only screen and (max-width: 500px) {
-        height: 300px;
-        top: 200px;
-    }
 `;
-
-export const decorate = styled.div`
-    width: 240px;
-    height: 100%;
-    background: rgb(201, 156, 245);
-    @media only screen and (max-width: 1400px) {
-        width: 10vw;
-    }
+export const BottomWrapper = styled.div`
+    display: flex;
+    flex-direction: row-reverse;
 `;
-export const decorate2 = styled.div`
-    margin-left: 180px;
-    width: 150px;
-    height: 100%;
-    background: rgb(201, 156, 245);
-    @media only screen and (max-width: 1400px) {
-        width: 24vw;
-        margin-left: 18vw;
-    }
-`;
-
-export const widthContent = styled.div`
-    font-family: NotoSans_KR !important;
-    font-size: 1.1rem;
-    width: auto;
-    line-height: 10px;
+export const BottomContent = styled.div`
+    margin-top: 1vh;
     color: rgb(201, 156, 245);
-    padding-right: 20px;
-    background: white;
-    @media only screen and (max-width: 900px) {
-        font-size: 12px;
-    }
-    @media only screen and (max-width: 500px) {
-        font-size: 8px;
-    }
-`;
-export const heightContent = styled.div`
-    height: auto;
-    width: 100%;
-    writing-mode: vertical-rl;
-    text-orientation: mixed;
-    font-family: NotoSans_KR !important;
-    font-size: 1.1rem;
-    color: rgb(201, 156, 245);
-    white-space: nowrap;
-    background: white;
-    padding-bottom: 20px;
-    @media only screen and (max-width: 900px) {
-        font-size: 12px;
-    }
-    @media only screen and (max-width: 500px) {
-        font-size: 8px;
-        padding-bottom: 10px;
-    }
+    font-size: 40px;
 `;

@@ -1,5 +1,13 @@
 import styled, { createGlobalStyle } from 'styled-components';
-import { NotoSansKRFont_Regular, NotoSansKRFont_Thin, SecularOneFont, NotoSans, NotoSans_Bold, NotoSans_Thin } from './fonts';
+import {
+    NotoSansKRFont_Regular,
+    NotoSansKRFont_Thin,
+    SecularOneFont,
+    NotoSans,
+    NotoSans_Bold,
+    NotoSans_Thin,
+    NotoSansKRFont_Bold,
+} from './fonts';
 export const GlobalStyle = createGlobalStyle`
     @font-face {
         font-family: NotoSansKR_Thin;
@@ -8,6 +16,10 @@ export const GlobalStyle = createGlobalStyle`
     @font-face {
         font-family: NotoSansKR;
         src: url(${NotoSansKRFont_Regular});
+    }
+    @font-face {
+        font-family: NotoSansKRFont_Bold;
+        src: url(${NotoSansKRFont_Bold});
     }
     @font-face {
         font-family: NotoSans;
