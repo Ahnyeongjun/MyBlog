@@ -91,6 +91,19 @@ export const BottomLine = styled.div`
     height: 5px;
     background: rgb(201, 156, 245);
 `;
+export const skillWrapper = styled.div`
+    width: 1300px;
+    margin: 0 auto;
+    height: 40vh;
+    display: flex;
+    justify-content: space-between;
+`;
+export const skillItem = styled.div`
+    width: 130px;
+    height: 240px;
+    background: black;
+`;
+
 export const BottomWrapper = styled.div`
     display: flex;
     flex-direction: row-reverse;

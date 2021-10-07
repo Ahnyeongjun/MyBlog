@@ -42,6 +42,12 @@ const portfolioPage = () => {
                         </S.ItemWrapper2>
                     </S.rightWrapper>
                 </S.MiddleWrapper>
+                <S.skillWrapper>
+                    <S.skillItem />
+                    <S.skillItem />
+                    <S.skillItem />
+                    <S.skillItem />
+                </S.skillWrapper>
                 <S.BottomLine></S.BottomLine>
                 <S.BottomWrapper>
                     <S.BottomContent>Profile</S.BottomContent>
