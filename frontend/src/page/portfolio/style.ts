@@ -48,7 +48,7 @@ export const SkillContentWrapper = styled.div`
 `;
 export const SkillProgressWrapper = styled.div`
     height: 40px;
-    background: gray;
+    background: #e9e9e9;
     margin: 5px 0;
     width: 100%;
 `;
