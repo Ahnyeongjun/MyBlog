@@ -1,17 +1,10 @@
 import React, { useEffect, useMemo, useState } from 'react';
-import {
-    docker_portfolio,
-    javascript_portfolio,
-    java_portfolio,
-    nodejs_portfolio,
-    react_portfolio,
-    springboot_portfolio,
-    typescript_portfolio,
-} from '../../asset/portfolio';
+import Skill from './skill/skill';
 import About from './about/about';
 import Intro from './intro/intro';
 import * as S from './style';
 import './style.css';
+import { portfolio_logo_portfolio, portfolio_screen_portfolio, upgrade_log_portfolio, weleper_logo_portfolio } from '../../asset/portfolio';
 const portfolioPage = () => {
     return (
         <S.portfolio>
@@ -19,87 +12,86 @@ const portfolioPage = () => {
             <S.autoMargin>
                 <Intro></Intro>
                 <About></About>
-                <S.Skill>
-                    <S.SkillWrapper>
-                        <S.skillItem>
-                            <S.SkillImage src={typescript_portfolio} />
-                            <S.SkillContentWrapper>
-                                <S.SkillContent> TypeScript - 90%</S.SkillContent>
-                            </S.SkillContentWrapper>
-                            <S.SkillProgressWrapper>
-                                <S.SkillProgress width={'90%'} background={'#3B96D4'} />
-                            </S.SkillProgressWrapper>
-                        </S.skillItem>
-                        <S.skillItem>
-                            <S.SkillImage src={docker_portfolio} />
-                            <S.SkillContentWrapper>
-                                <S.SkillContent> docker - 90%</S.SkillContent>
-                            </S.SkillContentWrapper>
-                            <S.SkillProgressWrapper>
-                                <S.SkillProgress width={'90%'} background={'#D0E9CF'} />
-                            </S.SkillProgressWrapper>
-                        </S.skillItem>
-                        <S.skillItem>
-                            <S.SkillImage src={java_portfolio} />
-                            <S.SkillContentWrapper>
-                                <S.SkillContent> java - 90%</S.SkillContent>
-                            </S.SkillContentWrapper>
-                            <S.SkillProgressWrapper>
-                                <S.SkillProgress width={'90%'} background={'#EBD7BA'} />
-                            </S.SkillProgressWrapper>
-                        </S.skillItem>
-                        <S.skillItem>
-                            <S.SkillImage src={javascript_portfolio} />
-                            <S.SkillContentWrapper>
-                                <S.SkillContent> javaScript - 90%</S.SkillContent>
-                            </S.SkillContentWrapper>
-                            <S.SkillProgressWrapper>
-                                <S.SkillProgress width={'90%'} background={'#F4E45C'} />
-                            </S.SkillProgressWrapper>
-                        </S.skillItem>
-                    </S.SkillWrapper>
-                    <S.SkillWrapper>
-                        <S.skillItem>
-                            <S.SkillImage src={react_portfolio} />
-                            <S.SkillContentWrapper>
-                                <S.SkillContent> react - 90%</S.SkillContent>
-                            </S.SkillContentWrapper>
-                            <S.SkillProgressWrapper>
-                                <S.SkillProgress width={'90%'} background={'#FFC898'} />
-                            </S.SkillProgressWrapper>
-                        </S.skillItem>
-                        <S.skillItem>
-                            <S.SkillImage src={springboot_portfolio} />
-                            <S.SkillContentWrapper>
-                                <S.SkillContent> react - 90%</S.SkillContent>
-                            </S.SkillContentWrapper>
-                            <S.SkillProgressWrapper>
-                                <S.SkillProgress width={'90%'} background={'#FFDAC7'} />
-                            </S.SkillProgressWrapper>
-                        </S.skillItem>
-                        <S.skillItem>
-                            <S.SkillImage src={nodejs_portfolio} />
-                            <S.SkillContentWrapper>
-                                <S.SkillContent> nodejs - 90%</S.SkillContent>
-                            </S.SkillContentWrapper>
-                            <S.SkillProgressWrapper>
-                                <S.SkillProgress width={'90%'} background={'#FFDEFA'} />
-                            </S.SkillProgressWrapper>
-                        </S.skillItem>
-                        <S.skillItem>
-                            <S.SkillImage />
-                            <S.SkillContentWrapper>
-                                <S.SkillContent> TypeScript - 90%</S.SkillContent>
-                            </S.SkillContentWrapper>
-                            <S.SkillProgressWrapper>
-                                <S.SkillProgress width={'90%'} background={'#F4E45C'} />
-                            </S.SkillProgressWrapper>
-                        </S.skillItem>
-                    </S.SkillWrapper>
-                    <S.BottomWrapper>
-                        <S.BottomContent>2021. Skill</S.BottomContent>
-                    </S.BottomWrapper>
-                </S.Skill>
+                <Skill></Skill>
+                <S.Project>
+                    <S.projectContent>배포중인 프로젝트</S.projectContent>
+                    <S.projectWrapper>
+                        <S.projectItemWrapper>
+                            <S.backVer background={'#55C696'}> </S.backVer>
+                            <S.frontVer background={'#55C696'}></S.frontVer>
+                        </S.projectItemWrapper>
+                        <S.projectItemWrapper>
+                            <S.backVer background={'#55C696'}> </S.backVer>
+                            <S.frontVer background={'#55C6C6'}></S.frontVer>
+                        </S.projectItemWrapper>{' '}
+                        <S.projectItemWrapper>
+                            <S.backVer background={'#55C696'}> </S.backVer>
+                            <S.frontVer background={'#5589C6'}></S.frontVer>
+                        </S.projectItemWrapper>
+                    </S.projectWrapper>
+                    <S.projectContent>미배포 프로젝트</S.projectContent>
+
+                    <S.projectWrapper>
+                        <S.projectItemWrapper>
+                            <S.backVer background={'#55C696'}> </S.backVer>
+                            <S.frontVer background={'#5567C6'}>
+                                <S.projectImg src={portfolio_logo_portfolio} />
+                            </S.frontVer>
+                        </S.projectItemWrapper>
+                        <S.projectItemWrapper>
+                            <S.backVer background={'#55C696'}> </S.backVer>
+                            <S.frontVer background={'#7955C6'}>
+                                <S.projectImg src={upgrade_log_portfolio} />
+                            </S.frontVer>
+                        </S.projectItemWrapper>{' '}
+                        <S.projectItemWrapper>
+                            <S.backVer background={'#55C696'}> </S.backVer>
+                            <S.frontVer background={'#C655C1'}>
+                                <S.projectImg src={portfolio_logo_portfolio} />
+                            </S.frontVer>
+                        </S.projectItemWrapper>
+                    </S.projectWrapper>
+                    <S.projectWrapper>
+                        <S.projectItemWrapper>
+                            <S.backVer background={'#55C696'}> </S.backVer>
+                            <S.frontVer background={'#C65592'}>
+                                <S.projectImg src={portfolio_logo_portfolio} />
+                            </S.frontVer>
+                        </S.projectItemWrapper>
+                        <S.projectItemWrapper>
+                            <S.backVer background={'#55C696'}> </S.backVer>
+                            <S.frontVer background={'#C67755'}>
+                                <S.projectImg src={portfolio_logo_portfolio} />
+                            </S.frontVer>
+                        </S.projectItemWrapper>{' '}
+                        <S.projectItemWrapper>
+                            <S.backVer background={'#55C696'}> </S.backVer>
+                            <S.frontVer background={'#C65555'}>
+                                <S.projectImg src={portfolio_logo_portfolio} />
+                            </S.frontVer>
+                        </S.projectItemWrapper>
+                    </S.projectWrapper>
+                    <S.projectWrapper>
+                        <S.projectItemWrapper>
+                            <S.backVer background={'#55C696'}> </S.backVer>
+                            <S.frontVer background={'#C69255'}>
+                                <S.projectImg src={portfolio_logo_portfolio} />
+                            </S.frontVer>
+                        </S.projectItemWrapper>{' '}
+                        <S.projectItemWrapper>
+                            <S.backVer background={'#55C696'}> </S.backVer>
+                            <S.frontVer background={'#C6BB55'}>
+                                <S.projectImg src={weleper_logo_portfolio} />
+                            </S.frontVer>
+                        </S.projectItemWrapper>{' '}
+                        <S.projectItemWrapper>
+                            <S.backVer background={'#55C696'}> </S.backVer>
+                            <S.frontVer background={'#A9C655'}>
+                                <S.projectImg src={upgrade_log_portfolio} />
+                            </S.frontVer>
+                        </S.projectItemWrapper>
+                    </S.projectWrapper>
+                </S.Project>
             </S.autoMargin>
         </S.portfolio>
     );

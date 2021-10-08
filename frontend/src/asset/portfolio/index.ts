@@ -5,3 +5,7 @@ export { default as springboot_portfolio } from './springboot.svg';
 export { default as nodejs_portfolio } from './nodejs.svg';
 export { default as java_portfolio } from './java.svg';
 export { default as docker_portfolio } from './docker.svg';
+export { default as portfolio_logo_portfolio } from './portfolio_logo.svg';
+export { default as weleper_logo_portfolio } from './welper.svg';
+export { default as portfolio_screen_portfolio } from './portfolio_screen_notebook.svg';
+export { default as upgrade_log_portfolio } from './upgrade.svg';
