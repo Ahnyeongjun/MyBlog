@@ -11,11 +11,18 @@ export const AboutWrapper = styled.div`
     flex-direction: column;
     height: 100vh;
     margin: auto 0;
+    @media only screen and (max-width: 1200px) {
+        width: 100vw;
+    }
 `;
 export const topWrapper = styled.div`
     display: flex;
     width: 1100px;
     margin: 0 auto;
+    @media only screen and (max-width: 1200px) {
+        width: 100vw;
+        margin: 0;
+    }
 `;
 export const BoldKoreanFont = styled.div`
     font-size: 75px;
@@ -28,6 +35,11 @@ export const MiddleWrapper = styled.div`
     width: 1100px;
     margin: 0 auto;
     margin-top: 5vh;
+    @media only screen and (max-width: 1200px) {
+        width: 100vw;
+        margin: 0;
+        margin-top: 5vh;
+    }
 `;
 export const leftWrapper = styled.div`
     width: 600px;
@@ -89,7 +101,7 @@ export const BottomWrapper = styled.div`
     display: flex;
     background: rgb(201, 156, 245);
     height: 5px;
-    width: 1300px;
+    width: 100vw;
     flex-direction: row-reverse;
 `;
 export const BottomContent = styled.div`
