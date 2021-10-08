@@ -2,114 +2,86 @@ import styled, { keyframes } from 'styled-components';
 
 export const Header = styled.div`
     height: 70px;
+    width: 100vw;
+    z-index: 100;
+    top: 0;
+
+    position: sticky;
     background: #2c2c2c;
 `;
 export const portfolio = styled.div`
-    height: 200vh;
-    width: 1300px;
-    margin: 0 auto;
+    height: 300vh;
+
     background: white;
     @media only screen and (max-width: 1400px) {
         width: 100vw;
     }
 `;
-export const About = styled.div`
-    display: flex;
-    flex-direction: column;
-    height: 70vh;
-`;
-export const topWrapper = styled.div`
-    display: flex;
-    width: 1100px;
-    margin: 0 auto;
-    margin-top: 10vh;
-`;
-export const BoldKoreanFont = styled.div`
-    font-size: 75px;
-    height: 90px;
-
-    font-family: NotoSansKRFont_Bold !important;
-`;
-export const MiddleWrapper = styled.div`
-    display: flex;
-    width: 1100px;
-    margin: 0 auto;
-    margin-top: 3vh;
-`;
-export const leftWrapper = styled.div`
-    width: 600px;
-    display: flex;
-    flex-direction: column;
-`;
-export const rightWrapper = styled.div`
-    display: flex;
-    flex-direction: column;
-    width: 420px;
-`;
-export const ItemWrapper2 = styled.div`
-    display: flex;
-    height: 100px;
-    flex-direction: column;
-    margin-bottom: 3vh;
-`;
-export const ItemWrapper = styled.div`
-    display: flex;
-    height: 40px;
-    margin-bottom: 3vh;
-`;
-export const Image = styled.div`
-    background: black;
-    height: 36px;
-    width: 36px;
-    margin: 2px;
-    border-radius: 50%;
-    margin: 0 15px;
-`;
-export const content = styled.div`
-    font-size: 30px;
-    color: #727272;
-    width: calc(100% - 40px);
-`;
-export const content2 = styled.div`
-    margin-bottom: 2vh;
-    font-size: 30px;
-
-    color: #727272;
-    height: 40px;
-    width: 100%;
-`;
-export const NotoSansThinFont = styled.div`
-    height: 50px;
-    margin-left: 10px;
-    margin-top: 40px;
-    font-size: 40px;
-    font-family: NotoSans_Thin !important;
-`;
-export const BottomLine = styled.div`
-    margin-top: 10vh;
-    width: 1300px;
-    height: 5px;
-    background: rgb(201, 156, 245);
-`;
-export const skillWrapper = styled.div`
+export const autoMargin = styled.div`
     width: 1300px;
     margin: 0 auto;
-    height: 40vh;
+`;
+export const Skill = styled.div`
     display: flex;
-    justify-content: space-between;
+    flex-direction: column;
+    height: 90vh;
+    width: 1300px;
+    margin: auto auto;
+    margin-top: 10vh;
 `;
 export const skillItem = styled.div`
     width: 130px;
     height: 240px;
+    background: white;
+    display: flex;
+    flex-direction: column;
+`;
+export const SkillImage = styled.img`
+    width: 130px;
+    height: 130px;
     background: black;
 `;
-
+export const SkillContentWrapper = styled.div`
+    height: 50px;
+    display: flex;
+    align-items: center;
+`;
+export const SkillProgressWrapper = styled.div`
+    height: 40px;
+    background: gray;
+    margin: 5px 0;
+    width: 100%;
+`;
+export const SkillProgress = styled.div<{ background: string; width: string }>`
+    width: ${(props) => props.width};
+    height: 100%;
+    background: ${(props) => props.background};
+`;
+export const SkillContent = styled.div`
+    text-align: center;
+    width: 100%;
+    font-family: NotoSans_Thin !important;
+    height: 20px;
+    font-size: 16px;
+`;
+export const SkillWrapper = styled.div`
+    width: 1300px;
+    margin-top: 10vh;
+    height: 30vh;
+    display: flex;
+    justify-content: space-evenly;
+`;
 export const BottomWrapper = styled.div`
     display: flex;
+    background: rgb(201, 156, 245);
+    height: 5px;
+    width: 1300px;
+    margin-top: calc(10vh - 5px);
     flex-direction: row-reverse;
 `;
 export const BottomContent = styled.div`
-    margin-top: 1vh;
+    background: white;
     color: rgb(201, 156, 245);
-    font-size: 40px;
+    font-size: 30px;
+    padding: 0 20px;
 `;

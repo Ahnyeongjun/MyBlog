@@ -10,6 +10,7 @@ export const Header = styled.header<{ scroll: number }>`
     background: ${(props) => (props.scroll < 20 ? '#1c1b37' : 'black')};
     justify-content: space-between;
     z-index: 100;
+
     &.check {
         border: ${(props) => (props.scroll < 20 ? null : 'solid white 1px')};
     }
