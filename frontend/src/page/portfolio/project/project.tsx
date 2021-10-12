@@ -1,6 +1,8 @@
 import * as S from './style';
 import React from 'react';
 import {
+    blog_logo_portfolio,
+    portfolio_camera_logo_portfolio,
     portfolio_logo_portfolio,
     portfolio_screen_portfolio,
     upgrade_log_portfolio,
@@ -13,15 +15,18 @@ const project = () => {
             <S.projectWrapper>
                 <S.projectItemWrapper>
                     <S.backVer background={'#55C696'}> </S.backVer>
-                    <S.frontVer background={'#55C696'}></S.frontVer>
+                    <S.frontVer background={'#55C696'}>
+                        <S.projectImg src={blog_logo_portfolio} />
+                    </S.frontVer>
                 </S.projectItemWrapper>
                 <S.projectItemWrapper>
                     <S.backVer background={'#55C696'}> </S.backVer>
-                    <S.frontVer background={'#55C6C6'}></S.frontVer>
+                    <S.frontVer background={'#55C6C6'}>
+                        <S.projectImg src={portfolio_camera_logo_portfolio} />
+                    </S.frontVer>
                 </S.projectItemWrapper>{' '}
                 <S.projectItemWrapper>
-                    <S.backVer background={'#55C696'}> </S.backVer>
-                    <S.frontVer background={'#5589C6'}></S.frontVer>
+                    <S.frontVer background={'transparent'}> </S.frontVer>
                 </S.projectItemWrapper>
             </S.projectWrapper>
             <S.projectContent>미배포 프로젝트</S.projectContent>

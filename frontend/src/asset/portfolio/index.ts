@@ -9,3 +9,5 @@ export { default as portfolio_logo_portfolio } from './portfolio_logo.svg';
 export { default as weleper_logo_portfolio } from './welper.svg';
 export { default as portfolio_screen_portfolio } from './portfolio_screen_notebook.svg';
 export { default as upgrade_log_portfolio } from './upgrade.svg';
+export { default as portfolio_camera_logo_portfolio } from './portfolio_camera_logo.svg';
+export { default as blog_logo_portfolio } from './blog_logo.svg';
