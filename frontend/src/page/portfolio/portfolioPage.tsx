@@ -3,6 +3,7 @@ import Skill from './skill/skill';
 import About from './about/about';
 import Intro from './intro/intro';
 import Project from './project/project';
+import Footer from './footer/footer';
 import * as S from './style';
 
 const portfolioPage = () => {
@@ -15,6 +16,7 @@ const portfolioPage = () => {
                 <Skill></Skill>
                 <Project></Project>
             </S.autoMargin>
+            <Footer></Footer>
         </S.portfolio>
     );
 };
