@@ -1,6 +1,5 @@
 import React, { useEffect, useMemo, useState } from 'react';
 import * as S from './style';
-import '../style.css';
 const intro = () => {
     return (
         <S.Intro id="intro">
