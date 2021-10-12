@@ -50,7 +50,7 @@ export const projectImg = styled.img`
 `;
 export const projectContent = styled.div`
     padding: 4vh 2vw;
-    color: rgb(114, 114, 114);
+    color: #3a3a3a;
     font-size: 40px;
     height: 40px;
     padding-bottom: 0;

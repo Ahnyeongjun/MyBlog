@@ -21,13 +21,17 @@ export const About = styled.div`
             transform: rotateY(180deg);
         }
     }
+    @media only screen and (max-width: 1300px) {
+        width: 80vw;
+        left: 10vw;
+    }
 `;
 export const AboutWrapper = styled.div`
     display: flex;
     flex-direction: column;
     height: 100vh;
     margin: auto 0;
-    @media only screen and (max-width: 1200px) {
+    @media only screen and (max-width: 1300px) {
         width: 100vw;
     }
 `;
@@ -36,25 +40,27 @@ export const topWrapper = styled.div`
     display: flex;
     width: 500px;
     margin: auto 50px;
-    @media only screen and (max-width: 1200px) {
-        width: 100vw;
-        margin: 0;
+    @media only screen and (max-width: 1300px) {
+        width: 35vw;
+        margin: 0 50px;
     }
 `;
 export const BoldKoreanFont = styled.div`
     font-size: 75px;
     height: 90px;
-
+    width: 210px;
     font-family: NotoSansKRFont_Bold !important;
+    @media only screen and (max-width: 1300px) {
+        font-size: 65px;
+    }
 `;
 export const MiddleWrapper = styled.div`
     display: flex;
     width: 500px;
     margin: auto 50px;
-    @media only screen and (max-width: 1200px) {
-        width: 100vw;
-        margin: 0;
-        margin-top: 5vh;
+    @media only screen and (max-width: 1300px) {
+        width: 30vw;
+        margin: auto 20px;
     }
 `;
 export const leftWrapper = styled.div`
@@ -62,6 +68,9 @@ export const leftWrapper = styled.div`
     display: flex;
     flex-direction: column;
     margin: auto;
+    @media only screen and (max-width: 1300px) {
+        width: 35vw;
+    }
 `;
 export const rightWrapper = styled.div`
     display: flex;
@@ -87,11 +96,18 @@ export const Image = styled.div`
     margin: 2px;
     border-radius: 50%;
     margin: 0 15px;
+    @media only screen and (max-width: 1300px) {
+        height: 30px;
+        width: 30px;
+    }
 `;
 export const content = styled.div`
     font-size: 25px;
     color: #727272;
     width: calc(100% - 40px);
+    @media only screen and (max-width: 1300px) {
+        font-size: 19px;
+    }
 `;
 export const content2 = styled.div`
     margin-bottom: 2vh;
@@ -103,10 +119,16 @@ export const content2 = styled.div`
 `;
 export const NotoSansThinFont = styled.div`
     height: 50px;
+    width: 250px;
     margin-left: 10px;
     margin-top: 40px;
     font-size: 40px;
     font-family: NotoSans_Thin !important;
+    @media only screen and (max-width: 1300px) {
+        font-size: 30px;
+        width: 230px;
+        margin-left: 0;
+    }
 `;
 export const BottomLine = styled.div`
     margin-top: 10vh;
