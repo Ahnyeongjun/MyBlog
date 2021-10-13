@@ -4,19 +4,20 @@ import About from './about/about';
 import Intro from './intro/intro';
 import Project from './project/project';
 import Footer from './footer/footer';
+import Header from './header/HeaderContainer';
 import * as S from './style';
 
 const portfolioPage = () => {
     return (
         <S.portfolio>
-            <S.Header></S.Header>
+            <Header />
             <S.autoMargin>
-                <Intro></Intro>
-                <About></About>
-                <Skill></Skill>
-                <Project></Project>
+                <Intro />
+                <About />
+                <Skill />
+                <Project />
             </S.autoMargin>
-            <Footer></Footer>
+            <Footer />
         </S.portfolio>
     );
 };
