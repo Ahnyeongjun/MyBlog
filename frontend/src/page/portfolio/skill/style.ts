@@ -4,11 +4,15 @@ export const Skill = styled.div`
     display: flex;
     flex-direction: column;
     height: 100vh;
+    min-height: 1000px;
+
     width: 1300px;
     margin: auto auto;
-    margin-top: 10vh;
+    padding-top: 100px;
     @media only screen and (max-width: 1300px) {
         width: 100vw;
+    }
+    @media only screen and (max-width: 1100px) {
         margin: 0;
     }
 `;
@@ -18,10 +22,9 @@ export const skillItem = styled.div`
 
     display: flex;
     flex-direction: column;
+
     @media only screen and (max-width: 1100px) {
-        padding: 0 20vw;
-    }
-    @media only screen and (max-width: 900px) {
+        height: 220px;
         padding: 0 15vw;
     }
     @media only screen and (max-width: 650px) {
@@ -70,6 +73,10 @@ export const SkillContent = styled.div`
     height: 20px;
     font-size: 16px;
 `;
+export const BigSkillWraper = styled.div`
+    height: auto;
+    margin: auto;
+`;
 export const SkillWrapper = styled.div`
     width: 1300px;
     margin-top: 10vh;
@@ -83,6 +90,7 @@ export const SkillWrapper = styled.div`
         height: auto;
         flex-wrap: wrap;
         justify-content: center;
+
         margin-top: 5vh;
         &:nth-child(2) {
             margin: 0;
@@ -90,6 +98,7 @@ export const SkillWrapper = styled.div`
     }
 `;
 export const BottomWrapper = styled.div`
+    margin-top: 20vh;
     display: flex;
     background: rgb(201, 156, 245);
     height: 5px;
@@ -97,6 +106,10 @@ export const BottomWrapper = styled.div`
     flex-direction: row-reverse;
     @media only screen and (max-width: 1300px) {
         width: 100vw;
+        margin-top: 20vh;
+    }
+    @media only screen and (max-width: 1100px) {
+        margin: 0;
     }
 `;
 export const BottomContent = styled.div`

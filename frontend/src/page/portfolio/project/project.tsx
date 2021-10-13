@@ -12,6 +12,7 @@ const project = () => {
     return (
         <S.Project>
             <S.projectContent>배포중인 프로젝트</S.projectContent>
+
             <S.projectWrapper>
                 <S.projectItemWrapper>
                     <S.backVer background={'#55C696'}> </S.backVer>

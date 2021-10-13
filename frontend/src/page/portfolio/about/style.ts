@@ -15,7 +15,6 @@ export const About = styled.div`
     align-items: center;
     width: 1200px;
     margin: auto auto;
-
     :hover {
         ${inner} {
             transform: rotateY(180deg);
@@ -30,6 +29,8 @@ export const AboutWrapper = styled.div`
     display: flex;
     flex-direction: column;
     height: 100vh;
+    min-height: 900px;
+    
     margin: auto 0;
     @media only screen and (max-width: 1300px) {
         width: 100vw;
