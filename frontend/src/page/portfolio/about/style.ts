@@ -71,7 +71,7 @@ export const MiddleWrapper = styled.div`
         margin: auto 20px;
     }
 `;
-export const leftWrapper = styled.div`
+export const middleWrapper = styled.div`
     width: 600px;
     display: flex;
     flex-direction: column;
@@ -83,12 +83,7 @@ export const leftWrapper = styled.div`
         width: auto;
     }
 `;
-export const rightWrapper = styled.div`
-    display: flex;
-    flex-direction: column;
-    width: 600px;
-    margin: auto;
-`;
+
 export const ItemWrapper2 = styled.div`
     display: flex;
     height: 100px;
@@ -137,6 +132,16 @@ export const content2 = styled.div`
     color: #727272;
     height: 40px;
     width: 100%;
+    @media only screen and (max-width: 1300px) {
+        font-size: 19px;
+    }
+    @media only screen and (max-width: 500px) {
+        margin: auto;
+        width: auto;
+    }
+    @media only screen and (max-width: 400px) {
+        font-size: 16px;
+    }
 `;
 export const NotoSansThinFont = styled.div`
     height: 50px;
@@ -154,12 +159,6 @@ export const NotoSansThinFont = styled.div`
         margin-top: 0;
     }
 `;
-export const BottomLine = styled.div`
-    margin-top: 10vh;
-    width: 1300px;
-    height: 5px;
-    background: rgb(201, 156, 245);
-`;
 
 export const BottomWrapper = styled.div`
     display: flex;
@@ -167,13 +166,20 @@ export const BottomWrapper = styled.div`
     height: 5px;
     width: 1300px;
     flex-direction: row-reverse;
+    @media only screen and (max-width: 1300px) {
+        width: 100vw;
+    }
 `;
 export const BottomContent = styled.div`
     background: white;
     color: rgb(201, 156, 245);
     font-size: 30px;
     padding: 0 20px;
+    @media only screen and (max-width: 1300px) {
+        font-size: 20px;
+    }
 `;
+
 export const BackCard = styled.div`
     width: 100%;
     height: 100%;
