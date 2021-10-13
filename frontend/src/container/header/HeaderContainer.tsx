@@ -54,7 +54,7 @@ const HeaderContainer = (props: any) => {
                             <>
                                 <S.Category_item onClick={incompleteOnClick}>ReSume</S.Category_item>
                                 <S.Category_item>
-                                    <S.Category_a href="/post"> Post</S.Category_a>
+                                    <S.Category_a href="/portfolio"> Portfolio</S.Category_a>
                                 </S.Category_item>
                             </>
                         )}
@@ -82,8 +82,10 @@ const HeaderContainer = (props: any) => {
                             </>
                         ) : (
                             <>
-                                <S.Category_item onClick={incompleteOnClick}>ReSume</S.Category_item>{' '}
-                                <S.Category_item onClick={incompleteOnClick}>Portfolio</S.Category_item>
+                                <S.Category_item onClick={incompleteOnClick}>ReSume</S.Category_item>
+                                <S.Category_item>
+                                    <S.Category_a href="/portfolio"> Portfolio</S.Category_a>
+                                </S.Category_item>
                             </>
                         )}
 
