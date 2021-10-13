@@ -14,19 +14,31 @@ const HamburgerMenu = (props: any) => {
         });
     };
     const onClickforAbout = () => {
-        window.scrollTo({
-            top: 900,
-        });
+        window.innerWidth > 500
+            ? window.scrollTo({
+                  top: 900,
+              })
+            : window.scrollTo({
+                  top: 600,
+              });
     };
     const onClickforSkill = () => {
-        window.scrollTo({
-            top: 1900,
-        });
+        window.innerWidth > 500
+            ? window.scrollTo({
+                  top: 1800,
+              })
+            : window.scrollTo({
+                  top: 1500,
+              });
     };
     const onClickforProject = () => {
-        window.scrollTo({
-            top: 3100,
-        });
+        window.innerWidth > 500
+            ? window.scrollTo({
+                  top: 3000,
+              })
+            : window.scrollTo({
+                  top: 2700,
+              });
     };
     return (
         <>

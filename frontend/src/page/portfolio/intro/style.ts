@@ -2,11 +2,11 @@ import styled, { keyframes } from 'styled-components';
 
 export const Intro = styled.div`
     height: calc(100vh - 60px);
-    min-height: 830px; //900px 60은 header
+    min-height: 840px; //900px 60은 header
 
     @media only screen and (max-width: 500px) {
         height: calc(60vh - 60px);
-        min-height: 600px;
+        min-height: 540px;
     }
 `;
 
