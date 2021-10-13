@@ -11,3 +11,4 @@ export { default as portfolio_screen_portfolio } from './portfolio_screen_notebo
 export { default as upgrade_log_portfolio } from './upgrade.svg';
 export { default as portfolio_camera_logo_portfolio } from './portfolio_camera_logo.svg';
 export { default as blog_logo_portfolio } from './blog_logo.svg';
+export { default as kotlin_portfolio } from './kotlin.svg';

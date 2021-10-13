@@ -4,6 +4,7 @@ import {
     docker_portfolio,
     javascript_portfolio,
     java_portfolio,
+    kotlin_portfolio,
     nodejs_portfolio,
     react_portfolio,
     springboot_portfolio,
@@ -13,6 +14,9 @@ const skill = () => {
     return (
         <S.Skill>
             <S.BigSkillWraper>
+                <S.ProjectContentWrapper>
+                    <S.projectContent>I can do</S.projectContent>
+                </S.ProjectContentWrapper>
                 <S.SkillWrapper>
                     <S.skillItem>
                         <S.SkillImage src={typescript_portfolio} />
@@ -80,12 +84,12 @@ const skill = () => {
                         </S.SkillProgressWrapper>
                     </S.skillItem>
                     <S.skillItem>
-                        <S.SkillImage />
+                        <S.SkillImage src={kotlin_portfolio} />
                         <S.SkillContentWrapper>
-                            <S.SkillContent> TypeScript - 90%</S.SkillContent>
+                            <S.SkillContent> Kotlin - 90%</S.SkillContent>
                         </S.SkillContentWrapper>
                         <S.SkillProgressWrapper>
-                            <S.SkillProgress width={'90%'} background={'#F4E45C'} />
+                            <S.SkillProgress width={'90%'} background={'#CEC7FA'} />
                         </S.SkillProgressWrapper>
                     </S.skillItem>
                 </S.SkillWrapper>

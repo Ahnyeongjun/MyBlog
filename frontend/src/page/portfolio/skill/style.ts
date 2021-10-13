@@ -4,7 +4,7 @@ export const Skill = styled.div`
     display: flex;
     flex-direction: column;
     height: 100vh;
-    min-height: 1000px;
+    min-height: 1100px;
 
     width: 1300px;
     margin: auto auto;
@@ -23,7 +23,7 @@ export const skillItem = styled.div`
     display: flex;
     flex-direction: column;
 
-    @media only screen and (max-width: 1100px) {
+    @media only screen and (max-width: 800px) {
         height: 220px;
         padding: 0 15vw;
     }
@@ -48,7 +48,7 @@ export const SkillContentWrapper = styled.div`
     height: 50px;
     display: flex;
     align-items: center;
-    @media only screen and (max-width: 1100px) {
+    @media only screen and (max-width: 800px) {
         height: 30px;
     }
 `;
@@ -57,7 +57,7 @@ export const SkillProgressWrapper = styled.div`
     background: #e9e9e9;
     margin: 5px 0;
     width: 100%;
-    @media only screen and (max-width: 1100px) {
+    @media only screen and (max-width: 800px) {
         height: 20px;
     }
 `;
@@ -76,25 +76,28 @@ export const SkillContent = styled.div`
 export const BigSkillWraper = styled.div`
     height: auto;
     margin: auto;
+    border-right: 2px rgb(201, 156, 245) solid;
+
+    border-left: 2px rgb(201, 156, 245) solid;
+    @media only screen and (max-width: 1300px) {
+        border: none;
+    }
 `;
 export const SkillWrapper = styled.div`
     width: 1300px;
-    margin-top: 10vh;
+    margin-top: 5vh;
     height: 30vh;
     display: flex;
     justify-content: space-evenly;
     @media only screen and (max-width: 1300px) {
         width: 100vw;
     }
-    @media only screen and (max-width: 1100px) {
+    @media only screen and (max-width: 800px) {
         height: auto;
         flex-wrap: wrap;
         justify-content: center;
 
-        margin-top: 5vh;
-        &:nth-child(2) {
-            margin: 0;
-        }
+        margin: 0;
     }
 `;
 export const BottomWrapper = styled.div`
@@ -106,10 +109,9 @@ export const BottomWrapper = styled.div`
     flex-direction: row-reverse;
     @media only screen and (max-width: 1300px) {
         width: 100vw;
-        margin-top: 20vh;
     }
-    @media only screen and (max-width: 1100px) {
-        margin: 0;
+    @media only screen and (max-width: 800px) {
+        margin-top: 5vh;
     }
 `;
 export const BottomContent = styled.div`
@@ -120,4 +122,22 @@ export const BottomContent = styled.div`
     @media only screen and (max-width: 1300px) {
         font-size: 20px;
     }
+`;
+export const ProjectContentWrapper = styled.div`
+    color: #3a3a3a;
+    font-size: 70px;
+    height: 40px;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 10vh;
+    @media only screen and (max-width: 750px) {
+        font-size: 60px;
+        margin: auto;
+    }
+`;
+export const projectContent = styled.a`
+    text-align: center;
+    color: #3a3a3a;
+    font-family: NotoSans_Bold !important;
 `;

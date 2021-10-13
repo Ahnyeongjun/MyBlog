@@ -11,7 +11,9 @@ import {
 const project = () => {
     return (
         <S.Project>
-            <S.projectContent>배포중인 프로젝트</S.projectContent>
+            <S.ProjectContentWrapper>
+                <S.projectContent>Project (Running)</S.projectContent>
+            </S.ProjectContentWrapper>
 
             <S.projectWrapper>
                 <S.projectItemWrapper>
@@ -26,11 +28,13 @@ const project = () => {
                         <S.projectImg src={portfolio_camera_logo_portfolio} />
                     </S.frontVer>
                 </S.projectItemWrapper>{' '}
-                <S.projectItemWrapper>
+                {/* <S.projectItemWrapper>
                     <S.frontVer background={'transparent'}> </S.frontVer>
-                </S.projectItemWrapper>
+                </S.projectItemWrapper> */}
             </S.projectWrapper>
-            <S.projectContent>미배포 프로젝트</S.projectContent>
+            <S.ProjectContentWrapper>
+                <S.projectContent>Project (NON Running)</S.projectContent>
+            </S.ProjectContentWrapper>
 
             <S.projectWrapper>
                 <S.projectItemWrapper>
