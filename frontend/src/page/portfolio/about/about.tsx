@@ -10,26 +10,25 @@ const about = () => {
                             <S.BoldKoreanFont>안영준</S.BoldKoreanFont>
                             <S.NotoSansThinFont>Ahn-Young-Jun</S.NotoSansThinFont>
                         </S.topWrapper>
-                        <S.MiddleWrapper>
-                            <S.leftWrapper>
-                                <S.ItemWrapper>
-                                    <S.Image></S.Image>
-                                    <S.content>https://github.com/Ahnyeongjun</S.content>
-                                </S.ItemWrapper>
-                                <S.ItemWrapper>
-                                    <S.Image></S.Image>
-                                    <S.content>010. 7670 . 3833</S.content>
-                                </S.ItemWrapper>
-                                <S.ItemWrapper>
-                                    <S.Image></S.Image>
-                                    <S.content>anh479512@gmail.com</S.content>
-                                </S.ItemWrapper>
-                                <S.ItemWrapper>
-                                    <S.Image></S.Image>
-                                    <S.content>https://youngjun.site</S.content>
-                                </S.ItemWrapper>
-                            </S.leftWrapper>
-                        </S.MiddleWrapper>
+
+                        <S.leftWrapper>
+                            <S.ItemWrapper>
+                                <S.Image></S.Image>
+                                <S.content>https://github.com/Ahnyeongjun</S.content>
+                            </S.ItemWrapper>
+                            <S.ItemWrapper>
+                                <S.Image></S.Image>
+                                <S.content>010. 7670 . 3833</S.content>
+                            </S.ItemWrapper>
+                            <S.ItemWrapper>
+                                <S.Image></S.Image>
+                                <S.content>anh479512@gmail.com</S.content>
+                            </S.ItemWrapper>
+                            <S.ItemWrapper>
+                                <S.Image></S.Image>
+                                <S.content>https://youngjun.site</S.content>
+                            </S.ItemWrapper>
+                        </S.leftWrapper>
                     </S.FrontCard>
                     <S.BackCard>
                         <S.topWrapper>

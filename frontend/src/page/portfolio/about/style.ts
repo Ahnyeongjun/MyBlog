@@ -44,6 +44,11 @@ export const topWrapper = styled.div`
         width: 35vw;
         margin: 0 50px;
     }
+    @media only screen and (max-width: 1100px) {
+        margin: auto;
+        flex-direction: column;
+        width: auto;
+    }
 `;
 export const BoldKoreanFont = styled.div`
     font-size: 75px;
@@ -52,6 +57,9 @@ export const BoldKoreanFont = styled.div`
     font-family: NotoSansKRFont_Bold !important;
     @media only screen and (max-width: 1300px) {
         font-size: 65px;
+    }
+    @media only screen and (max-width: 1100px) {
+        padding-top: 50px;
     }
 `;
 export const MiddleWrapper = styled.div`
@@ -70,6 +78,9 @@ export const leftWrapper = styled.div`
     margin: auto;
     @media only screen and (max-width: 1300px) {
         width: 35vw;
+    }
+    @media only screen and (max-width: 1100px) {
+        width: auto;
     }
 `;
 export const rightWrapper = styled.div`
@@ -100,6 +111,9 @@ export const Image = styled.div`
         height: 30px;
         width: 30px;
     }
+    @media only screen and (max-width: 500px) {
+        display: none;
+    }
 `;
 export const content = styled.div`
     font-size: 25px;
@@ -107,6 +121,13 @@ export const content = styled.div`
     width: calc(100% - 40px);
     @media only screen and (max-width: 1300px) {
         font-size: 19px;
+    }
+    @media only screen and (max-width: 500px) {
+        margin: auto;
+        width: auto;
+    }
+    @media only screen and (max-width: 400px) {
+        font-size: 16px;
     }
 `;
 export const content2 = styled.div`
@@ -128,6 +149,9 @@ export const NotoSansThinFont = styled.div`
         font-size: 30px;
         width: 230px;
         margin-left: 0;
+    }
+    @media only screen and (max-width: 1100px) {
+        margin-top: 0;
     }
 `;
 export const BottomLine = styled.div`
@@ -159,6 +183,9 @@ export const BackCard = styled.div`
 
     backface-visibility: hidden;
     transform: rotateY(180deg);
+    @media only screen and (max-width: 1100px) {
+        flex-direction: column;
+    }
 `;
 
 export const FrontCard = styled.div`
@@ -170,4 +197,7 @@ export const FrontCard = styled.div`
     height: 100%;
     -webkit-backface-visibility: hidden;
     backface-visibility: hidden;
+    @media only screen and (max-width: 1100px) {
+        flex-direction: column;
+    }
 `;

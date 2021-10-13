@@ -28,10 +28,13 @@ export const SvgBox = styled.div`
     @media only screen and (max-width: 900px) {
         width: 50vw;
         height: 50vw;
-        top: 300px;
+        top: 360px;
         left: calc(50vw - 25vw);
     }
     @media only screen and (max-width: 500px) {
+        top: 220px;
+    }
+    @media only screen and (max-width: 400px) {
         top: 250px;
     }
 `;
