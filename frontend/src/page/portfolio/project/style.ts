@@ -28,12 +28,16 @@ export const proejctItem = styled.div`
     flex-direction: column;
 `;
 export const backVer = styled.div<{ background: string }>`
-    width: 350px;
+    width: 400px;
     background: ${(props) => props.background};
-    height: 300px;
+    height: 350px;
     display: flex;
+    flex-direction: column;
     align-items: center;
     text-align: center;
+    @media only screen and (max-width: 1200px) {
+        width: 350px;
+    }
     @media only screen and (max-width: 750px) {
         width: 300px;
     }
@@ -48,11 +52,17 @@ export const backVer = styled.div<{ background: string }>`
         width: 150px;
     }
 `;
+export const ProjectTitle = styled.div`
+    padding: 14% 0 0;
+    font-size:30px;
+    font-family: NotoSansKRFont_Bold !important;
+    color:white;
+`
 export const frontVer = styled.div<{ background: string }>`
-    width: 350px;
+    width: 400px;
     position: absolute;
     background: ${(props) => props.background};
-    height: 300px;
+    height: 350px;
     display: flex;
     align-items: center;
     text-align: center;
@@ -61,6 +71,9 @@ export const frontVer = styled.div<{ background: string }>`
         img {
             display: none;
         }
+    }
+    @media only screen and (max-width: 1200px) {
+        width: 350px;
     }
     @media only screen and (max-width: 750px) {
         width: 300px;
@@ -82,6 +95,10 @@ export const projectItemWrapper = styled.div`
     flex-basis: 350px;
     align-items: center;
     flex-direction: column;
+    &:hover{
+        cursor: pointer;
+    }
+    
     @media only screen and (max-width: 750px) {
         flex-basis: 300px;
     }
@@ -109,19 +126,21 @@ export const projectImg = styled.img`
         height: 150px;
     }
 `;
-//export const projectContent = styled.div`
-//    padding: 4vh 2vw;
-//    color: #3a3a3a;
-//    font-size: 40px;
-//    height: 40px;
-//    padding-bottom: 0;
-//    &:nth-child(1) {
-//        padding-top: 15vh;
-//    }
-//    @media only screen and (max-width: 750px) {
-//        font-size: 30px;
-//    }
-//`;
+export const projectScreenImg = styled.img`
+    object-fit: contain;
+    margin: auto;
+    margin-top: 0;
+    width: 240px;
+    height: auto;
+    @media only screen and (max-width: 520px) {
+        width: 200px;
+    }
+    @media only screen and (max-width: 420px) {
+        width: 150px;
+     
+    }
+`;
+
 export const ProjectContentWrapper = styled.div`
     color: #3a3a3a;
     font-size: 40px;
@@ -143,5 +162,19 @@ export const projectContent = styled.a`
     color: #3a3a3a;
     font-family: NotoSans_Bold !important;
 `;
-
-export const projectTitle = styled.div``;
+export const ProjectTagWrapper = styled.div`
+    padding: 5% 0;
+    display:flex;
+    justify-content:center;
+`;
+export const ProjectTag = styled.div`
+    padding: 1px 3px;
+    margin: 0 5px;
+    color:white;
+    min-width: 100px;
+    text-align: center;
+    line-height: 30px;
+    border-radius:50px;
+    border: solid white 1px;
+    font-size: 16px;
+`;

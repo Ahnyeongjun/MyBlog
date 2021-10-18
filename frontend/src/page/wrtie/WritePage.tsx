@@ -21,6 +21,7 @@ const WritePage = () => {
     useMemo(() => {
         document.title = `Write | YoungJun`;
     }, []);
+
     const updateScroll = () => {
         setScrollPosition(window.scrollY || document.body.scrollTop);
     };
