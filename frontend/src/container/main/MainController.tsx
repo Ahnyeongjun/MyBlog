@@ -10,7 +10,6 @@ import ScrollControlBtn from '../scrollControlBtn/scrollControlBtn';
 
 import { useAppDispatch, useTypedSelector } from '../../module/store';
 import { themeDataState, toggleTheme } from '../../features/theme/themeSlice';
-import { setTheme } from '../../utils/setThemeUtils';
 import FooterContainer from '../footer/FooterContainer';
 
 const MainController = () => {

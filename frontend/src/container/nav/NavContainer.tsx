@@ -1,4 +1,4 @@
-import React, { useCallback, useRef, useState } from 'react';
+import React from 'react';
 import { themeDataState } from '../../features/theme/themeSlice';
 import { useTypedSelector } from '../../module/store';
 import Accordion from '../../components/accordion/Accordion';

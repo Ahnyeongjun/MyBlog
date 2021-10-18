@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from 'react';
+import React, { useMemo } from 'react';
 import { getAllSeries, seriesDateState } from '../../features/series/seriesSlice';
 import * as S from './style';
 import { useAppDispatch, useTypedSelector } from '../../module/store';

@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { BoxShaodw, HoverPage, BoxShaodwWhite } from '../../animation';
+import { BoxShaodw, BoxShaodwWhite } from '../../animation';
 export const Series = styled.div`
     display: flex;
     flex-direction: column;

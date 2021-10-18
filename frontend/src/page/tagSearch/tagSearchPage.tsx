@@ -1,5 +1,4 @@
-import React, { useCallback, useEffect, useMemo, useReducer, useState } from 'react';
-import { useDispatch } from 'react-redux';
+import React, { useMemo, useState } from 'react';
 import HeaderContainer from '../../container/header/HeaderContainer';
 
 import { useAppDispatch, useTypedSelector } from '../../module/store';

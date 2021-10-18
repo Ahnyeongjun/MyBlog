@@ -1,5 +1,4 @@
-import styled, { keyframes } from 'styled-components';
-import { Route, Link } from 'react-router-dom';
+import styled from 'styled-components';
 export const Main = styled.div`
     display: grid;
     /* height: 100vh; */

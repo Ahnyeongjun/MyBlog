@@ -4,8 +4,6 @@ import HeaderContainer from '../../container/header/HeaderContainer';
 import * as S from './styles';
 import MainPostContainer from '../../container/mainPost/MainPostContainer';
 import NavContainer from '../../container/nav/NavContainer';
-import axios from 'axios';
-import { setTheme } from '../../utils/setThemeUtils';
 import { useAppDispatch, useTypedSelector } from '../../module/store';
 import { themeDataState, toggleTheme } from '../../features/theme/themeSlice';
 import FooterContainer from '../../container/footer/FooterContainer';

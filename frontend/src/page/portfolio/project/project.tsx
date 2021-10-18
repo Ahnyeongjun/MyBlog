@@ -4,7 +4,6 @@ import {
     blog_logo_portfolio,
     portfolio_camera_logo_portfolio,
     portfolio_logo_portfolio,
-    portfolio_screen_portfolio,
     upgrade_log_portfolio,
     weleper_logo_portfolio,
 } from '../../../asset/portfolio';

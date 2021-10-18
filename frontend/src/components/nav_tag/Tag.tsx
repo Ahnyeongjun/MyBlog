@@ -1,4 +1,4 @@
-import React, { useCallback, useMemo, useRef, useState } from 'react';
+import React, { useMemo } from 'react';
 import { getTag, tagDateState } from '../../features/tag/tagSlice';
 import { useAppDispatch, useTypedSelector } from '../../module/store';
 import * as S from './styles';

@@ -1,6 +1,6 @@
 import axios from 'axios';
 import React from 'react';
-import { useRef, useState, useMemo } from 'react';
+import { useRef, useMemo } from 'react';
 
 import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
@@ -37,7 +37,7 @@ const Editor = (props: any) => {
                 formData.append('image', file[0]);
 
                 try {
-                    const res = (await axios.post(process.env.BASE_URL + '/upload/single', formData)).data;
+                    const res: any = (await axios.post(process.env.BASE_URL + '/upload/single', formData)).data;
                     url = process.env.S3_URL + res.image;
                     setTimeout(() => imageChange(url), 1000);
                     console.log(url);

@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import { Bounse, HoverPage } from '../../animation';
 import { RedBounse } from '../../animation';
 
 export const Tag = styled.ul`

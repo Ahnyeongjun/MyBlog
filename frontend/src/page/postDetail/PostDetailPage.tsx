@@ -1,5 +1,5 @@
 import HeaderContainer from '../../container/header/HeaderContainer';
-import React, { useEffect, useMemo, useReducer, useState } from 'react';
+import React, { useMemo } from 'react';
 import { useDispatch } from 'react-redux';
 import { getOnePost, postDateState } from '../../features/post/postSlice';
 import { useTypedSelector } from '../../module/store';

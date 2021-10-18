@@ -1,8 +1,8 @@
 import { PayloadAction } from '@reduxjs/toolkit';
-import { all, call, fork, put, takeEvery, takeLatest } from '@redux-saga/core/effects';
-import { methodType, requestApi, requestApiWithBody } from '../../lib/requestLib';
-import { BLOG_URL, TAG_URL } from '../../lib/apiUrlLib';
-import { getTagType, searchTagNameType, successOneTagType } from './tagType';
+import { all, call, fork, put, takeLatest } from '@redux-saga/core/effects';
+import { methodType, requestApi } from '../../lib/requestLib';
+import { TAG_URL } from '../../lib/apiUrlLib';
+import { getTagType, searchTagNameType } from './tagType';
 import { getTag, getTagSuccess, searchTag, searchTagSuccess } from './tagSlice';
 
 function* getTagSaga(action: PayloadAction<getTagType>) {

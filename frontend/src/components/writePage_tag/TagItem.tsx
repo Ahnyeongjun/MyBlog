@@ -1,6 +1,4 @@
-import React, { useCallback, useEffect, useRef, useState } from 'react';
-import { removeTag } from '../../features/editor/editorSlice';
-import { useAppDispatch } from '../../module/store';
+import React from 'react';
 
 import * as S from './styles';
 

@@ -1,5 +1,5 @@
 import * as S from './styles';
-import React, { useCallback, useMemo, useRef, useState } from 'react';
+import React from 'react';
 import { MyImage } from '../../asset';
 
 const MyInformation = (props: any) => {

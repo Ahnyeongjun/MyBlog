@@ -1,5 +1,5 @@
 import HeaderContainer from '../../container/header/HeaderContainer';
-import React, { useEffect, useMemo, useReducer, useState } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import * as S from './styles';
 import { themeDataState, toggleTheme } from '../../features/theme/themeSlice';
 import { useAppDispatch, useTypedSelector } from '../../module/store';

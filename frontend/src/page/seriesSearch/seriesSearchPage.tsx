@@ -1,13 +1,7 @@
-import React, { useCallback, useEffect, useMemo, useReducer, useState } from 'react';
-import { useDispatch } from 'react-redux';
+import React, { useMemo, useState } from 'react';
 import HeaderContainer from '../../container/header/HeaderContainer';
-
 import { useAppDispatch, useTypedSelector } from '../../module/store';
 import * as S from './styles';
-import MainPostContainer from '../../container/mainPost/MainPostContainer';
-import NavContainer from '../../container/nav/NavContainer';
-import axios from 'axios';
-import { searchTag, tagDateState } from '../../features/tag/tagSlice';
 import { themeDataState, toggleTheme } from '../../features/theme/themeSlice';
 import FooterContainer from '../../container/footer/FooterContainer';
 import { getAllSeriesList, seriesDateState } from '../../features/series/seriesSlice';

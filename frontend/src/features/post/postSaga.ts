@@ -1,7 +1,7 @@
 import { PayloadAction } from '@reduxjs/toolkit';
-import { all, call, fork, put, takeEvery, takeLatest } from '@redux-saga/core/effects';
+import { all, call, fork, put, takeLatest } from '@redux-saga/core/effects';
 import { methodType, requestApi } from '../../lib/requestLib';
-import { ACCOUNT_URL, BLOG_URL } from '../../lib/apiUrlLib';
+import { BLOG_URL } from '../../lib/apiUrlLib';
 import { searchUrlBlogType } from './postType';
 import { getOnePost, successGetPost } from './postSlice';
 function* getOnePostSaga(action: PayloadAction<searchUrlBlogType>) {

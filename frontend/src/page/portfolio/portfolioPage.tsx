@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useState } from 'react';
+import React from 'react';
 import Skill from './skill/skill';
 import About from './about/about';
 import Intro from './intro/intro';

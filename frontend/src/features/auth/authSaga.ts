@@ -1,6 +1,6 @@
 import { PayloadAction } from '@reduxjs/toolkit';
-import { all, call, fork, put, takeEvery, takeLatest } from '@redux-saga/core/effects';
-import { AuthLoginPayloadActionType, AuthLoginSuccessPayloadActionType, loginData } from './authType';
+import { all, call, fork, put, takeLatest } from '@redux-saga/core/effects';
+import { AuthLoginPayloadActionType } from './authType';
 import { methodType, requestApiWithBody } from '../../lib/requestLib';
 import { ACCOUNT_URL } from '../../lib/apiUrlLib';
 import { authLogin, authLoginFailure, authLoginSuccess } from './authSlice';

@@ -1,4 +1,4 @@
-import styled, { keyframes } from 'styled-components';
+import styled from 'styled-components';
 
 export const Intro = styled.div`
     height: calc(100vh - 60px);

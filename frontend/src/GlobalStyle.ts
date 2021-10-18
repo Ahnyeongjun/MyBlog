@@ -1,8 +1,7 @@
-import styled, { createGlobalStyle } from 'styled-components';
+import { createGlobalStyle } from 'styled-components';
 import {
     NotoSansKRFont_Regular,
     NotoSansKRFont_Thin,
-    SecularOneFont,
     NotoSans,
     NotoSans_Bold,
     NotoSans_Thin,

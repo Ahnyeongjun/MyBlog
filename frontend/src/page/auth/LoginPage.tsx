@@ -1,8 +1,7 @@
-import React, { useCallback, useEffect, useMemo, useReducer, useState } from 'react';
+import React, { useMemo, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { authLogin } from '../../features/auth/authSlice';
-import { User } from '../../features/auth/authType';
-import { useAppDispatch, useTypedSelector } from '../../module/store';
+
 import * as S from './styles';
 
 const LoginPage = () => {

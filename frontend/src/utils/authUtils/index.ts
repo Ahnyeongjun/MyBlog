@@ -1,8 +1,3 @@
-import axios from 'axios';
-import { ACCOUNT_URL } from 'lib/apiUrlLib';
-import { methodType, requestApiWithBody } from 'lib/requestLib';
-//import { call } from 'redux-saga/effects';
-
 export const checkIsLogin = async () => {
     try {
         const accessToken = localStorage.getItem('accessToken');

@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useRef, useState } from 'react';
+import React, { useCallback, useRef } from 'react';
 import { themeDataState } from '../../features/theme/themeSlice';
 import { editorState, updateTitle } from '../../features/editor/editorSlice';
 import { useAppDispatch, useTypedSelector } from '../../module/store';

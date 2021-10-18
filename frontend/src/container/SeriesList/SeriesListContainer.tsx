@@ -1,8 +1,7 @@
-import React, { useEffect, useMemo, useState } from 'react';
+import React from 'react';
 import { useAppDispatch, useTypedSelector } from '../../module/store';
 import * as S from './styles';
-import { getPagenationMainPostList, postListDateState, searchTagOnPageList } from '../../features/postList/postListSlice';
-import { getAllSeriesList, seriesDateState } from '../../features/series/seriesSlice';
+import { seriesDateState } from '../../features/series/seriesSlice';
 import { themeDataState } from '../../features/theme/themeSlice';
 import { DefaultImage } from '../../asset';
 

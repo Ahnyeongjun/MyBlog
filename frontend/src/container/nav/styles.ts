@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import { BoxShaodw, HoverPage } from '../../animation';
 
 export const NavWrapper = styled.div`
     display: flex;

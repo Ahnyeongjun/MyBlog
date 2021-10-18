@@ -4,7 +4,7 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/swiper.scss';
 import 'swiper/components/scrollbar/scrollbar.scss';
 import './styles.css';
-import { Spring, JavaScript, MyImage, Garabageimage2, Coffee } from '../../asset';
+import { Spring, JavaScript, Garabageimage2, Coffee } from '../../asset';
 import SwiperCore, { Pagination, Autoplay, Controller } from 'swiper';
 import MyInformation from '../../components/myInforMation/MyInformation';
 

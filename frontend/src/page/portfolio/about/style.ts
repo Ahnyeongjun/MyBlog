@@ -1,4 +1,4 @@
-import styled, { keyframes } from 'styled-components';
+import styled from 'styled-components';
 export const inner = styled.div`
     position: relative;
     width: 100%;

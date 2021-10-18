@@ -1,6 +1,6 @@
 import { PayloadAction } from '@reduxjs/toolkit';
-import { all, call, fork, put, takeEvery, takeLatest } from '@redux-saga/core/effects';
-import { methodType, requestApi, requestApiWithBody } from '../../lib/requestLib';
+import { all, call, fork, put, takeLatest } from '@redux-saga/core/effects';
+import { methodType, requestApi } from '../../lib/requestLib';
 import { SERIES_URL } from '../../lib/apiUrlLib';
 import { getAllSeries, getAllSeriesList, successGetAllSeries, successGetAllSeriesList } from './seriesSlice';
 import { seriesNameType } from './seriesType';

@@ -1,5 +1,5 @@
 import { slideTop, slideDown } from '../../animation';
-import styled, { keyframes } from 'styled-components';
+import styled from 'styled-components';
 
 export const WriteWrapper = styled.div`
     display: grid;

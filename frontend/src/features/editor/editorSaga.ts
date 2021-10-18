@@ -1,7 +1,7 @@
 import { PayloadAction } from '@reduxjs/toolkit';
-import { all, call, fork, put, takeEvery, takeLatest } from '@redux-saga/core/effects';
+import { all, call, fork, put, takeLatest } from '@redux-saga/core/effects';
 import { editorSliceInitialStateType } from './editorType';
-import { methodType, requestApi, requestApiWithBody } from '../../lib/requestLib';
+import { methodType, requestApiWithBody } from '../../lib/requestLib';
 import { BLOG_URL } from '../../lib/apiUrlLib';
 import { successPostPagenationPost, uploadPost } from './editorSlice';
 function* editorPostSaga(action: PayloadAction<editorSliceInitialStateType>) {
