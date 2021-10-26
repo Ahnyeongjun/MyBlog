@@ -25,10 +25,10 @@ export const skillItem = styled.div`
 
     @media only screen and (max-width: 800px) {
         height: 220px;
-        padding: 0 15vw;
+        padding: 0 13vw;
     }
     @media only screen and (max-width: 650px) {
-        padding: 0 10vw;
+        padding: 0 8vw;
     }
     @media only screen and (max-width: 450px) {
         padding: 0 5vw;
@@ -77,20 +77,20 @@ export const BigSkillWraper = styled.div`
     height: auto;
     margin: auto;
     border-right: 2px rgb(201, 156, 245) solid;
-
+    width: calc(100% - 6px);
     border-left: 2px rgb(201, 156, 245) solid;
     @media only screen and (max-width: 1300px) {
         border: none;
     }
 `;
 export const SkillWrapper = styled.div`
-    width: 1300px;
+    width: 1296px;
     margin-top: 5vh;
     height: 30vh;
     display: flex;
     justify-content: space-evenly;
     @media only screen and (max-width: 1300px) {
-        width: 100vw;
+        width: calc(100vw - 4px);
     }
     @media only screen and (max-width: 800px) {
         height: auto;

@@ -7,6 +7,8 @@ import {
     portfolio_camera_screen_portfolio,
     portfolio_sticky_logo_portfolio,
     portfolio_sticky_screen_portfolio,
+    streaming_logo_portfolio,
+    streaming_screen_portfolio,
     upgrade_log_portfolio,
     upgrade_screen_portfolio,
     weleper_logo_portfolio,
@@ -42,6 +44,19 @@ const project = () => {
                     </S.backVer>
                     <S.frontVer background={'#55C6C6'}>
                         <S.projectImg src={portfolio_camera_logo_portfolio} />
+                    </S.frontVer>
+                </S.projectItemWrapper>
+                <S.projectItemWrapper>
+                    <S.backVer background={'#4D75B3'}>
+                        <S.ProjectTitle>Streaming_2021</S.ProjectTitle>
+                        <S.ProjectTagWrapper>
+                            <S.ProjectTag> 토이 프로젝트 </S.ProjectTag>
+                            <S.ProjectTag> HLS, Socket </S.ProjectTag>
+                        </S.ProjectTagWrapper>
+                        <S.projectScreenImg src={streaming_screen_portfolio} />
+                    </S.backVer>
+                    <S.frontVer background={'#5582c6'}>
+                        <S.projectImg src={streaming_logo_portfolio} />
                     </S.frontVer>
                 </S.projectItemWrapper>
             </S.projectWrapper>

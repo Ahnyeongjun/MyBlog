@@ -98,7 +98,9 @@ export const projectItemWrapper = styled.div`
     &:hover{
         cursor: pointer;
     }
-    
+    @media only screen and (max-width: 1200px) {
+        flex-basis: 330px;
+    }
     @media only screen and (max-width: 750px) {
         flex-basis: 300px;
     }
