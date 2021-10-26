@@ -6,6 +6,7 @@ import NotFoundPage from './page/notFound/NotFoundPage';
 import PostDetailPage from './page/postDetail/PostDetailPage';
 import TagSearchPage from './page/tagSearch/tagSearchPage';
 import WritePage from './page/wrtie/WritePage';
+import portfolioPage from './page/portfolio/portfolioPage';
 import PostPage from './page/post/postPage';
 import seriesSearchPage from './page/seriesSearch/seriesSearchPage';
 const Routing = () => {
@@ -17,6 +18,8 @@ const Routing = () => {
             <Route exact path="/tag/:tagName" component={TagSearchPage} />
             <Route exact path="/post/:searchUrl" component={PostDetailPage} />
             <Route exact path="/post" component={PostPage} />
+            <Route exact path="/portfolio" component={portfolioPage} />
+
             <Route exact path="/series/:seriesName" component={seriesSearchPage} />
             <Route component={NotFoundPage} />
         </Switch>
