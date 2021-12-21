@@ -20,7 +20,6 @@ const reducers = {
         state.loginError = null;
     },
     authLoginSuccess: (state, action: PayloadAction<AuthLoginSuccessPayloadActionType>) => {
-        console.log(action.payload);
         state.loginLoading = false;
         state.loginData = action.payload;
         state.loginError = null;

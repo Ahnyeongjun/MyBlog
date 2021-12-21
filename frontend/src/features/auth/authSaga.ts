@@ -6,12 +6,10 @@ import { ACCOUNT_URL } from '../../lib/apiUrlLib';
 import { authLogin, authLoginFailure, authLoginSuccess } from './authSlice';
 function* authLoginSaga(action: PayloadAction<AuthLoginPayloadActionType>) {
     try {
-        console.log(action.payload);
 
         const { id, password } = action.payload.user;
         const httpMethod = methodType.POST;
         const requestUrl = ACCOUNT_URL.login();
-        console.log(requestUrl);
         const body = { id, password };
         const headers = '';
         const res = yield call(requestApiWithBody, { httpMethod, requestUrl, body, headers });

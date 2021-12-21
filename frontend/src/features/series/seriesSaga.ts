@@ -13,7 +13,6 @@ function* getAllSeriesSaga() {
         const res = yield call(requestApi, { httpMethod, requestUrl, headers });
         if ('data' in res) {
             const newResDataObj = { ...res.data };
-            console.log(newResDataObj);
             yield put(successGetAllSeries({ series: newResDataObj.series }));
         } else {
             throw new Error(`request ${requestUrl}, but network error`);
@@ -33,7 +32,6 @@ function* getAllSeriesListSaga(action: PayloadAction<seriesNameType>) {
         const res = yield call(requestApi, { httpMethod, requestUrl, headers });
         if ('data' in res) {
             const newResDataObj = { ...res.data };
-            console.log(newResDataObj);
             yield put(successGetAllSeriesList({ seriesList: newResDataObj.post }));
         } else {
             throw new Error(`request ${requestUrl}, but network error`);

@@ -11,8 +11,6 @@ const Series = (props: any) => {
     }, []);
 
     const { series } = useTypedSelector(seriesDateState);
-
-    console.log(series);
     return (
         <>
             {props.check ? (

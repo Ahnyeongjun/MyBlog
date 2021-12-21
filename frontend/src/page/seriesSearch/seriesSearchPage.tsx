@@ -9,8 +9,6 @@ import SeriesListContainer from '../../container/SeriesList/SeriesListContainer'
 import NameIntro from '../../components/NameIntro/NameIntro';
 
 const seriesSearchPage = ({ match }) => {
-    console.log(match.params);
-    const { seriesName } = match.params;
     const dispatch = useAppDispatch();
     const [scrollPosition, setScrollPosition] = useState(0);
     const updateScroll = () => {

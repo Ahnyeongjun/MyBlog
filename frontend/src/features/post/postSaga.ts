@@ -6,7 +6,6 @@ import { searchUrlBlogType } from './postType';
 import { getOnePost, successGetPost } from './postSlice';
 function* getOnePostSaga(action: PayloadAction<searchUrlBlogType>) {
     try {
-        console.log(action.payload);
 
         const searchUrl = action.payload.searchUrl;
         const httpMethod = methodType.GET;

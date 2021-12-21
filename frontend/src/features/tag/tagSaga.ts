@@ -7,7 +7,6 @@ import { getTag, getTagSuccess, searchTag, searchTagSuccess } from './tagSlice';
 
 function* getTagSaga(action: PayloadAction<getTagType>) {
     try {
-        console.log(action.payload);
 
         const httpMethod = methodType.GET;
         const requestUrl = TAG_URL.tag();
@@ -15,7 +14,6 @@ function* getTagSaga(action: PayloadAction<getTagType>) {
         const res = yield call(requestApi, { httpMethod, requestUrl, headers });
         if ('data' in res) {
             const newResDataObj = { ...res.data };
-            console.log(newResDataObj);
             yield put(getTagSuccess({ tag: newResDataObj.tag }));
         } else {
             throw new Error(`request ${requestUrl}, but network error`);

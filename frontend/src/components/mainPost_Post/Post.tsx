@@ -19,7 +19,6 @@ const Post = (props: any) => {
     });
 
     useMemo(() => {
-        console.log(props.tagName);
         if (props.tagName) {
             dispatch(searchTagOnPageList({ page: page, pageSize: 8, tagName: props.tagName, type: 'searchTag', total: props.tagTotal }));
         } else {

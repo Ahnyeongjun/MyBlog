@@ -37,7 +37,6 @@ const FeautredContainer = () => {
     }, []);
 
     const { FeautredPostList } = useTypedSelector(postListDateState);
-    console.log(FeautredPostList);
     const { themeData } = useTypedSelector(themeDataState);
 
     const onClick = (searchUrl: string) => {
@@ -76,7 +75,6 @@ const FeautredContainer = () => {
                 </SwiperSlide>
             );
         }
-    console.log(slider);
     return (
         <>
             {themeData != 'white' ? (

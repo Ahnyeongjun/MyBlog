@@ -14,7 +14,6 @@ import {
 
 function* getPagenationMainPostListSaga(action: PayloadAction<PageNationSearchPostListActionType>) {
     try {
-        console.log(action.payload);
 
         const { page, pageSize, type } = action.payload;
         const httpMethod = methodType.GET;
@@ -40,7 +39,6 @@ function* getPagenationMainPostListSaga(action: PayloadAction<PageNationSearchPo
 }
 function* getPagenationFeaturedPostListSaga(action: PayloadAction<PageNationSearchPostListActionType>) {
     try {
-        console.log(action.payload);
 
         const { page, pageSize, type } = action.payload;
         const httpMethod = methodType.GET;
@@ -66,7 +64,6 @@ function* getPagenationFeaturedPostListSaga(action: PayloadAction<PageNationSear
 }
 function* getPagenationTrendingPostListSaga(action: PayloadAction<PageNationSearchPostListActionType>) {
     try {
-        console.log(action.payload);
 
         const { page, pageSize, type } = action.payload;
         const httpMethod = methodType.GET;
@@ -92,7 +89,6 @@ function* getPagenationTrendingPostListSaga(action: PayloadAction<PageNationSear
 }
 function* searchTagOnPageListSaga(action: PayloadAction<SearchTagOnPostListActionType>) {
     try {
-        console.log(action.payload);
 
         const { page, pageSize, type, tagName, total } = action.payload;
         const httpMethod = methodType.GET;

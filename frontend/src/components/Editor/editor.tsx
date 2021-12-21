@@ -40,7 +40,6 @@ const Editor = (props: any) => {
                     const res: any = (await axios.post(process.env.BASE_URL + '/upload/single', formData)).data;
                     url = process.env.S3_URL + res.image;
                     setTimeout(() => imageChange(url), 1000);
-                    console.log(url);
                 } catch (error) {
                     console.log(error);
                 }

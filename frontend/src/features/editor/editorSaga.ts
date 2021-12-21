@@ -6,12 +6,10 @@ import { BLOG_URL } from '../../lib/apiUrlLib';
 import { successPostPagenationPost, uploadPost } from './editorSlice';
 function* editorPostSaga(action: PayloadAction<editorSliceInitialStateType>) {
     try {
-        console.log(action.payload);
 
         const { text, title, tag, mainContent, mainImageURL, seriesName } = action.payload;
         const httpMethod = methodType.POST;
         const requestUrl = BLOG_URL.blog();
-        console.log(action.payload);
         const body = { content: text, title, tagName: tag, mainContent: mainContent, mainImageURL: mainImageURL, seriesName: seriesName };
         const headers = {
             Authorization: localStorage.getItem('accessToken'),

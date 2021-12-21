@@ -17,15 +17,12 @@ const sliceName = 'post';
 const reducers = {
     getOnePost: (state = initialState, action: PayloadAction<searchUrlBlogType>) => {},
     successGetPost: (state = initialState, action: PayloadAction<postType>) => {
-        console.log(action.payload);
         state.postData.uid = action.payload.uid;
         state.postData.content = action.payload.content;
         state.postData.createdAt = action.payload.createdAt;
         state.postData.writer = action.payload.writer;
         state.postData.title = action.payload.title;
         state.postData.tag = action.payload.tag;
-
-        console.log(state.postData);
     },
 };
 
