@@ -40,6 +40,7 @@ const WritePage = () => {
     const theme = initTheme == 'white' ? 'white' : 'black';
 
     dispatch(toggleTheme({ themeType: theme }));
+    console.log(themeData);
 
     const onIsLastSaveClick = () => {
         dispatch(updateMainContent({ mainContent: text }));
