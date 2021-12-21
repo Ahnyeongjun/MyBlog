@@ -28,11 +28,14 @@ export const Title = styled.h2`
     }
 `;
 export const PostNameIntro = styled.div`
-    min-height: 300px;
     background: linear-gradient(90deg, rgba(28, 27, 55, 1) 33%, rgba(35, 168, 184, 1) 84%, rgba(0, 212, 255, 1) 100%);
-    min-height: 40vh;
+    min-height: 300px;
+    height: 40vh;
     display: flex;
     align-items: center;
+    &.check{
+        background: linear-gradient(90deg,#161616 33%, #2d2d2d 84%, gray 100%)
+    }
 `;
 export const TagName = styled.span`
     display: table;

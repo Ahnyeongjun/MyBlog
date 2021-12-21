@@ -5,7 +5,7 @@ export const TagSearch = styled.div`
     flex-direction: column;
 
     &.check {
-        background: black;
+        background-color: #161616;
         color: white;
     }
     @media only screen and (max-width: 1300px) {
@@ -20,7 +20,7 @@ export const Article = styled.article`
     display: flex;
     background: white;
     &.check {
-        background: black;
+        background-color: #161616;
     }
     padding: 0 2vw;
     width: 1600px;

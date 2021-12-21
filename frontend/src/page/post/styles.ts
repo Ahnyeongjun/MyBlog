@@ -1,19 +1,22 @@
 import styled from 'styled-components';
 
 export const PostPage = styled.div`
+    padding-bottom: 100px;
     display: flex;
     height: auto;
+    min-height: 100vh;
     &.check {
         color: white;
-        background: black;
+        background-color: #161616;
     }
     flex-direction: column;
 `;
 export const Article = styled.article`
     display: flex;
+    min-height: calc(60vh);
     background: white;
     &.check {
-        background: black;
+        background-color: #161616;
     }
     margin: 0 auto;
     width: 1600px;

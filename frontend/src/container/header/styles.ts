@@ -7,11 +7,12 @@ export const Header = styled.header<{ scroll: number }>`
     position: sticky;
     top: 0;
     display: flex;
-    background: ${(props) => (props.scroll < 20 ? '#1c1b37' : 'black')};
+    background: ${(props) => (props.scroll < 20 ? '#1c1b37' : '#2d2d2d')};
     justify-content: space-between;
     z-index: 100;
 
     &.check {
+        background: #2d2d2d;
         border: ${(props) => (props.scroll < 20 ? null : 'solid white 1px')};
     }
     @media only screen and (max-width: 800px) {

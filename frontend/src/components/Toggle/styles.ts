@@ -25,7 +25,7 @@ export const ToggleItem = styled.div`
   &.check {
     background-color: grey;
     ::before {
-      background-color: black;
+      background-color: #161616;
       transform: translateX(30px);
     }
   }

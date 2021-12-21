@@ -108,7 +108,7 @@ export const Featured = styled.div`
     flex-direction: column;
     background: white;
     &.check {
-        background: black;
+        background-color: #161616;
     }
     padding: 40px 2vw;
     width: 1600px;

@@ -8,7 +8,7 @@ export const NavWrapper = styled.div`
     margin-top: 100px;
     margin-left: 5%;
     &.check {
-        background: black;
+        background-color: #161616;
     }
     @media only screen and (max-width: 900px) {
         display: none;

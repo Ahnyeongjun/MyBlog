@@ -4,7 +4,7 @@ export const Title = styled.div`
     min-height: 100%;
     width: 100%;
     &.check {
-        background: black;
+        background-color: #161616;
         color: white;
     }
 `;
@@ -25,7 +25,7 @@ export const Input = styled.textarea`
     font-size: 3rem;
     font-weight: 1000;
     &.check {
-        background: black;
+        background-color: #161616;
         color: white;
     }
 `;

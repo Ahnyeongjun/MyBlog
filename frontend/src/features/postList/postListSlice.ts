@@ -12,7 +12,7 @@ const initialState: PostListInitialStateType = {
         {
             uid: '',
             tag: [],
-            title: 'S',
+            title: 'RTSP-용어정리',
             mainImageURL: '',
             mainContent: '',
             searchUrl: '',
@@ -51,7 +51,7 @@ const initialState: PostListInitialStateType = {
         {
             uid: '',
             tag: [],
-            title: 'SssssssssssssssssssssssssssssssssSssssssssssssssssssssssssssssssss',
+            title: ',Node-RTSP-recoder 에러(rtsp, ffmpeg)',
             mainImageURL: 'https://cdn.pixabay.com/photo/2021/07/21/07/09/cygnet-6482420_960_720.jpg',
             mainContent: 'SssssssssssssssssssssssssssssssssSssssssssssssssssssssssssssssssssSssssssssssssssssssssssssssssssss',
             searchUrl: '',
@@ -72,10 +72,10 @@ const initialState: PostListInitialStateType = {
 const sliceName = 'postList';
 
 const reducers = {
-    getPagenationFeautredPostList: (state = initialState, action: PayloadAction<PageNationSearchPostListActionType>) => {},
-    getPagenationTrendingPostList: (state = initialState, action: PayloadAction<PageNationSearchPostListActionType>) => {},
-    getPagenationMainPostList: (state = initialState, action: PayloadAction<PageNationSearchPostListActionType>) => {},
-    searchTagOnPageList: (state = initialState, action: PayloadAction<SearchTagOnPostListActionType>) => {},
+    getPagenationFeautredPostList: (state = initialState, action: PayloadAction<PageNationSearchPostListActionType>) => { },
+    getPagenationTrendingPostList: (state = initialState, action: PayloadAction<PageNationSearchPostListActionType>) => { },
+    getPagenationMainPostList: (state = initialState, action: PayloadAction<PageNationSearchPostListActionType>) => { },
+    searchTagOnPageList: (state = initialState, action: PayloadAction<SearchTagOnPostListActionType>) => { },
     successGetPagenationFeautredPostList: (state = initialState, action: PayloadAction<SuccessGetPostListActionType>) => {
         state.FeautredPostList = action.payload.postListData;
     },

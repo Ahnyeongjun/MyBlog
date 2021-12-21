@@ -9,6 +9,7 @@ export const FeautredTitle = styled.div`
     margin-bottom: 30px;
     grid-area: title;
     font-size: 2rem;
+    line-height:3rem;
     font-weight: 800;
     display: block;
     width: 100%;
@@ -20,6 +21,7 @@ export const FeautredTitle = styled.div`
         -webkit-line-clamp: 3;
         -webkit-box-orient: vertical;
         font-size: 1.5rem;
+        line-height:2.5rem;
         margin-bottom: 20px;
     }
 `;
@@ -50,7 +52,7 @@ export const MainPostWrapper = styled.div`
     width: 65%;
     background: white;
     &.check {
-        background: black;
+        background: #161616;
     }
     @media only screen and (max-width: 900px) {
         width: calc(100% - 20px);

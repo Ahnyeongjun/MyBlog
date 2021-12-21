@@ -10,7 +10,7 @@ export const Tag = styled.ul`
     flex-wrap: wrap;
     font-size: 1rem;
     &.check {
-        background: black;
+        background-color: #161616;
         color: white;
     }
 `;
@@ -50,7 +50,7 @@ export const TagInput = styled.input`
         animation: ${RedBounse} 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
     }
     &.check {
-        background: black;
+        background-color: #161616;
         color: white;
     }
 `;

@@ -5,9 +5,10 @@ export const Post = styled.div`
     flex-direction: column;
     width: 100vw;
     min-height: 100vh;
+    padding-bottom: 100px;
     //min-height:120vh;
     &.check {
-        background: black;
+        background-color: #161616;
         color: white;
     }
 `;
@@ -31,15 +32,19 @@ export const HeadWrapper = styled.head`
 export const Title = styled.div`
     margin-top: 8vh;
     font-size: 4rem;
+    line-height:6rem;
     font-weight: 800;
     @media only screen and (max-width: 1500px) {
         font-size: 3rem;
+        line-height:4rem;
     }
     @media only screen and (max-width: 1024px) {
         font-size: 2.5rem;
+        line-height:3.5rem;
     }
     @media only screen and (max-width: 600px) {
         font-size: 1.8rem;
+        line-height:2.8rem;
     }
 `;
 export const infoWrapper = styled.div`
@@ -152,28 +157,38 @@ export const PostBody = styled.div`
     ul,
     a {
         line-height: 2rem;
+        font-size:1.2rem;
     }
     a {
         overflow: hidden;
         word-break: break-all;
     }
     blockquote {
+        padding: 10px;
+        margin: 2rem 0;
+        font-size:1.2rem;
         border-left: 4px solid #ccc;
-        padding-top: 5px;
-        padding-bottom: 5px;
         padding-left: 16px;
     }
     h1 {
         font-size: 3rem;
+        line-height:4rem;
     }
     h2 {
         font-size: 2.5rem;
+        line-height: 3.5rem;
     }
     h3 {
         font-size: 2rem;
+        line-height:3rem;
     }
     h4 {
         font-size: 1.5rem;
+        line-height: 2.5rem;
+    }
+    pre{
+        font-size:1rem;
+        line-height:1.6rem;
     }
     strong {
         font-weight: bold;

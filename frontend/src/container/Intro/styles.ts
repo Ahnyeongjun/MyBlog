@@ -19,6 +19,9 @@ export const Intro = styled.div`
     padding: 40px 16vw;
     display: flex;
     align-items: center;
+    &.check{
+        background: linear-gradient(90deg,#161616 33%, #2d2d2d 84%, gray 100%)
+    }
     @media only screen and (max-width: 1600px) {
         padding: 40px 8vw;
     }

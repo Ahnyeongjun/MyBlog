@@ -30,6 +30,9 @@ export const NameWrapper = styled.div`
     min-height: 40vh;
     display: flex;
     align-items: center;
+    &.check{
+        background: linear-gradient(90deg,#161616 33%, #2d2d2d 84%, gray 100%)
+    }
 `;
 
 export const TagName = styled.span`

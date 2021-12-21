@@ -18,7 +18,7 @@ export const Main = styled.div`
 
     &.check {
         color: white;
-        background: black;
+        background-color: #161616;
     }
     @media only screen and (max-width: 1920px) {
         grid-template-columns: 1fr 4fr 1fr;
@@ -54,7 +54,7 @@ export const Article = styled.article`
     background: white;
     padding: 40px 2vw;
     &.check {
-        background: black;
+        background-color: #161616;
     }
     width: 1600px;
     @media only screen and (max-width: 1920px) {

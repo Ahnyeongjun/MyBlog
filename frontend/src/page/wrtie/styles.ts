@@ -8,7 +8,7 @@ export const WriteWrapper = styled.div`
     min-height: 100vh;
     background: white;
     &.check {
-        background: black;
+        background-color: #161616;
         color: white;
     }
 `;
@@ -52,7 +52,7 @@ export const Btn = styled.button`
     }
     &.check {
         color: white;
-        background: black;
+        background-color: #161616;
         :hover {
             color: black;
             background: white;

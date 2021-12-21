@@ -5,7 +5,7 @@ export const TagSearch = styled.div`
     height: auto;
     flex-direction: column;
     &.check {
-        background: black;
+        background-color: #161616;
         color: white;
     }
 `;
@@ -14,7 +14,7 @@ export const Article = styled.article`
     display: flex;
     background: white;
     &.check {
-        background: black;
+        background-color: #161616;
     }
     margin: 0 auto;
     width: 1600px;
