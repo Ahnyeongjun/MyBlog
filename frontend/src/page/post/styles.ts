@@ -1,7 +1,6 @@
 import styled from 'styled-components';
 
 export const PostPage = styled.div`
-    padding-bottom: 100px;
     display: flex;
     height: auto;
     min-height: 100vh;

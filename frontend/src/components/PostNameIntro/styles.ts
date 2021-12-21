@@ -33,6 +33,8 @@ export const PostNameIntro = styled.div`
     height: 40vh;
     display: flex;
     align-items: center;
+    margin-bottom: 100px;
+
     &.check{
         background: linear-gradient(90deg,#161616 33%, #2d2d2d 84%, gray 100%)
     }

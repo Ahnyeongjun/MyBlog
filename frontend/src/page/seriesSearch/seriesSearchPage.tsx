@@ -14,7 +14,7 @@ const seriesSearchPage = ({ match }) => {
     const updateScroll = () => {
         setScrollPosition(window.scrollY || document.body.scrollTop);
     };
-
+    const { seriesName } = match.params;
     useMemo(async () => {
         window.addEventListener('scroll', updateScroll);
         document.title = `${seriesName} | YoungJun`;

@@ -3,8 +3,9 @@ import { themeDataState } from '../../features/theme/themeSlice';
 import { useTypedSelector } from '../../module/store';
 import * as S from './styles';
 
-const { themeData } = useTypedSelector(themeDataState);
 const PostNameIntro = (props: any) => {
+    const { themeData } = useTypedSelector(themeDataState);
+
     return (
         <>
             {themeData != 'dark' ? (

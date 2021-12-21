@@ -7,8 +7,8 @@ import './styles.css';
 import { Spring, JavaScript, Garabageimage2, Coffee } from '../../asset';
 import SwiperCore, { Pagination, Autoplay, Controller } from 'swiper';
 import MyInformation from '../../components/myInforMation/MyInformation';
-import { useTypedSelector } from 'src/module/store';
-import { themeDataState } from 'src/features/theme/themeSlice';
+import { useTypedSelector } from '../../module/store';
+import { themeDataState } from '../../features/theme/themeSlice';
 
 SwiperCore.use([Autoplay, Pagination, Controller]);
 
@@ -42,9 +42,10 @@ const slider = [
         />
     </SwiperSlide>,
 ];
-const { themeData } = useTypedSelector(themeDataState);
 
 const IntroContainer = () => {
+    const { themeData } = useTypedSelector(themeDataState);
+
     return (
         <>
             {themeData != 'dark' ? (
