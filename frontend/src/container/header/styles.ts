@@ -2,7 +2,6 @@ import styled from 'styled-components';
 
 export const Header = styled.header<{ scroll: number }>`
     grid-area: header;
-    //sticky 헤더 고정
     height: 60px;
     position: sticky;
     top: 0;
@@ -13,7 +12,6 @@ export const Header = styled.header<{ scroll: number }>`
 
     &.check {
         background: #2d2d2d;
-        border: ${(props) => (props.scroll < 20 ? null : 'solid white 1px')};
     }
     @media only screen and (max-width: 800px) {
         width: 100vw;

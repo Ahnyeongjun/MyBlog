@@ -87,7 +87,7 @@ const PostDetailPage = ({ match }) => {
                             </S.TagWRapper>
                         </S.HeadWrapper>
                         <S.PostWrapper>
-                            <S.PostBody dangerouslySetInnerHTML={{ __html: postData.content }}></S.PostBody>
+                            <S.PostBody className="check" dangerouslySetInnerHTML={{ __html: postData.content }}></S.PostBody>
                         </S.PostWrapper>
                     </S.Post>
                     <FooterContainer />

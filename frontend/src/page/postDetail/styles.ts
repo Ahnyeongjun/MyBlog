@@ -135,6 +135,11 @@ export const MyInformationWrapper = styled.div`
     }
 `;
 export const PostBody = styled.div`
+    &.check{
+        a{
+            color:white;
+        }
+    }
     img,
     p {
         object-fit: cover;
@@ -162,6 +167,11 @@ export const PostBody = styled.div`
     a {
         overflow: hidden;
         word-break: break-all;
+        text-decoration: none;
+        :hover{
+            text-decoration:underline;
+        }
+        
     }
     blockquote {
         padding: 10px;

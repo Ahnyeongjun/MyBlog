@@ -8,7 +8,7 @@ const NameIntro = (props: any) => {
 
     return (
         <>
-            {themeData != 'dark' ? (
+            {themeData == 'white' ? (
                 <S.NameWrapper>
                     <S.MyInformationWrapper>
                         <S.TagTitle>{props.tagName}</S.TagTitle>

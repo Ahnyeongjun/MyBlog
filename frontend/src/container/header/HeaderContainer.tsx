@@ -32,7 +32,7 @@ const HeaderContainer = (props: any) => {
 
     return (
         <>
-            {themeData == 'dark' ? (
+            {themeData != 'white' ? (
                 //다크모드
                 <S.Header className="check" scroll={props.scrollPosition}>
                     <S.Blog_Link href="/">HappyGuy's BLOG</S.Blog_Link>

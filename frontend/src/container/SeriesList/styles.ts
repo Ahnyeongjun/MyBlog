@@ -11,7 +11,7 @@ export const PostItemWpapper = styled.div`
     padding: 20px;
     &.check {
         color: white;
-        background: grey;
+        background-color: gray;
         :hover {
             animation: ${BoxShaodwWhite} 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
         }

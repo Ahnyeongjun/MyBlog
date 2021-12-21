@@ -48,7 +48,7 @@ const IntroContainer = () => {
 
     return (
         <>
-            {themeData != 'dark' ? (
+            {themeData == 'white' ? (
                 <S.Intro>
                     <S.IntroduceWrapper>
                         <S.Tit_intro>안녕하세요</S.Tit_intro>
@@ -75,7 +75,7 @@ const IntroContainer = () => {
                     </S.SwiperWrapper>
                 </S.Intro>
             ) : (
-                <S.Intro className="dark">
+                <S.Intro className="check">
                     <S.IntroduceWrapper>
                         <S.Tit_intro>안녕하세요</S.Tit_intro>
                         <MyInformation check={true} />

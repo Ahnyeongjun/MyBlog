@@ -27,7 +27,7 @@ export const BtnItemWrapper = styled.div<{ scroll: number; color: string }>`
   height: 50px;
   align-items: center;
   cursor: pointer;
-  background: ${(props) => (props.scroll < 20 ? "rgba(28,27,55,1)" : "black")};
+  background: ${(props) => (props.scroll < 20 ? "rgba(28,27,55,1)" : "#2d2d2d")};
   color: ${(props) => props.color};
   &.check {
     border: solid white 1px;

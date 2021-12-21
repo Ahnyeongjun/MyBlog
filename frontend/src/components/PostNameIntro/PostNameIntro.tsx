@@ -8,7 +8,7 @@ const PostNameIntro = (props: any) => {
 
     return (
         <>
-            {themeData != 'dark' ? (
+            {themeData == 'white' ? (
                 <S.PostNameIntro>
                     <S.MyInformationWrapper>
                         <S.Title>{props.tagName ? props.tagName : 'Post'}</S.Title>

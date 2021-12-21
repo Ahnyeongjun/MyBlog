@@ -17,6 +17,7 @@ export const Article = styled.article`
         background-color: #161616;
     }
     margin: 0 auto;
+    margin-bottom: 100px;
     width: 1600px;
     @media only screen and (max-width: 1920px) {
         width: 1200px;
