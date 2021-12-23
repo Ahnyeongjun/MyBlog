@@ -6,7 +6,6 @@ import Tag from '../../components/nav_tag/Tag';
 import * as S from './styles';
 const NavContainer = () => {
     const { themeData } = useTypedSelector(themeDataState);
-    console.log(themeData);
     return (
         <>
             {themeData != 'white' ? (

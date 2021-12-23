@@ -27,7 +27,6 @@ function* getPagenationMainPostListSaga(action: PayloadAction<PageNationSearchPo
 
         if ('data' in res) {
             const newResDataObj = { ...res.data };
-            console.log(type);
 
             yield put(successGetPagenationMainPostList({ postListData: newResDataObj.data, total: newResDataObj.total, type: type }));
         } else {
@@ -52,7 +51,6 @@ function* getPagenationFeaturedPostListSaga(action: PayloadAction<PageNationSear
 
         if ('data' in res) {
             const newResDataObj = { ...res.data };
-            console.log(type);
 
             yield put(successGetPagenationFeautredPostList({ postListData: newResDataObj.data, total: newResDataObj.total, type: type }));
         } else {
@@ -77,7 +75,6 @@ function* getPagenationTrendingPostListSaga(action: PayloadAction<PageNationSear
 
         if ('data' in res) {
             const newResDataObj = { ...res.data };
-            console.log(type);
 
             yield put(successGetPagenationFeautredPostList({ postListData: newResDataObj.data, total: newResDataObj.total, type: type }));
         } else {

@@ -12,7 +12,6 @@ import FooterContainer from '../../container/footer/FooterContainer';
 import PostNameIntro from '../../components/PostNameIntro/PostNameIntro';
 
 const TagSearchPage = ({ match }) => {
-    console.log(match.params);
     const { tagName } = match.params;
     const dispatch = useAppDispatch();
     const [scrollPosition, setScrollPosition] = useState(0);
