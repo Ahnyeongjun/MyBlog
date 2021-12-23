@@ -3,6 +3,7 @@ import Router from '@koa/router';
 import { ImageController } from './image.controller';
 const router: Router = new Router();
 import multer from '@koa/multer';
+import { authMiddleware } from '../../lib';
 
 export const image = (): Router => {
     //post 중심

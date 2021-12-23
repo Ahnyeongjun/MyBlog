@@ -37,7 +37,10 @@ const Editor = (props: any) => {
                 formData.append('image', file[0]);
 
                 try {
-                    const res: any = (await axios.post(process.env.BASE_URL + '/upload/single', formData)).data;
+                    const headers = {
+                        Authorization: localStorage.getItem('accessToken'),
+                    };
+                    const res: any = (await axios.post(process.env.BASE_URL + '/upload/single', formData, { headers })).data;
                     url = process.env.S3_URL + res.image;
                     setTimeout(() => imageChange(url), 1000);
                 } catch (error) {
