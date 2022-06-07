@@ -12,7 +12,7 @@ const Editor = (props: any) => {
     const QuillRef = useRef<ReactQuill>();
     const { text, title } = useTypedSelector(editorState);
     const dispatch = useAppDispatch();
-    const imageChange = (url: string) => {
+    const imageChange = (url: any) => {
         const range = QuillRef.current?.getEditor().getSelection()?.index;
         if (range !== null && range !== undefined) {
             let quill = QuillRef.current?.getEditor();
@@ -22,6 +22,12 @@ const Editor = (props: any) => {
             quill?.clipboard.dangerouslyPasteHTML(range, ` <img src=${url} alt="이미지 태그가 삽입됩니다." style="overfit: cover;" /> `);
         }
     };
+    const toBase64 = file => new Promise((resolve, reject) => {
+        const reader = new FileReader();
+        reader.readAsDataURL(file);
+        reader.onload = () => resolve(reader.result);
+        reader.onerror = error => reject(error);
+    });
     const imageHandler = () => {
         const input = document.createElement('input');
         const formData = new FormData();
@@ -32,21 +38,24 @@ const Editor = (props: any) => {
         input.click();
 
         input.onchange = async () => {
-            const file = input.files;
-            if (file !== null) {
-                formData.append('image', file[0]);
+            const file =await toBase64(input.files[0]);
+            setTimeout(() => imageChange(file), 1000);
+     
+            // S3 저장
+            // if (file !== null) {
+            //     formData.append('image', file[0]);
 
-                try {
-                    const headers = {
-                        Authorization: localStorage.getItem('accessToken'),
-                    };
-                    const res: any = (await axios.post(process.env.BASE_URL + '/upload/single', formData, { headers })).data;
-                    url = process.env.S3_URL + res.image;
-                    setTimeout(() => imageChange(url), 1000);
-                } catch (error) {
-                    console.log(error);
-                }
-            }
+            //     try {
+            //         const headers = {
+            //             Authorization: localStorage.getItem('accessToken'),
+            //         };
+            //         // const res: any = (await axios.post(process.env.BASE_URL + '/upload/single', formData, { headers })).data;
+            //         // url = process.env.S3_URL + res.image;
+            //         setTimeout(() => imageChange(url), 1000);
+            //     } catch (error) {
+            //         console.log(error);
+            //     }
+            // }
         };
     };
 
