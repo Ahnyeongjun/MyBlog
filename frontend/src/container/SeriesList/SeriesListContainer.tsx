@@ -17,7 +17,7 @@ const SeriesListContainer = () => {
 
     const array = [];
 
-    for (let i = 0; i < seriesList.length; i++) {
+    for (let i = 0; i < seriesList?.length; i++) {
         array.push(
             <S.PostItemWpapper
                 onClick={() => {

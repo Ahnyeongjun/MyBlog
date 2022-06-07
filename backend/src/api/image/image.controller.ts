@@ -11,7 +11,7 @@ export class ImageController {
             const file = ctx.request.file;
 
             const index = file.originalname.lastIndexOf('.');
-            const fileType = file.originalname.substring(index, file.originalname.length).toLocaleLowerCase();
+            const fileType = file.originalname.substring(index, file.originalname?.length).toLocaleLowerCase();
             params.Key = v4() + fileType;
             params.Body = file.buffer;
 

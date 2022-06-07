@@ -46,7 +46,7 @@ const FeautredContainer = () => {
     const slider = [];
 
     if (themeData == 'white' && FeautredPostList)
-        for (let i = 0; i < FeautredPostList.length; i += 1)
+        for (let i = 0; i < FeautredPostList?.length; i += 1)
             slider.push(
                 <SwiperSlide key={`${i}`} onClick={() => onClick(FeautredPostList[i].searchUrl)}>
                     <S.FeaturedItemWrapper>
@@ -61,7 +61,7 @@ const FeautredContainer = () => {
                 </SwiperSlide>
             );
     else
-        for (let i = 0; i < FeautredPostList.length; i += 1) {
+        for (let i = 0; i < FeautredPostList?.length; i += 1) {
             slider.push(
                 <SwiperSlide key={`${i}`} onClick={() => onClick(FeautredPostList[i].searchUrl)}>
                     <S.FeaturedItemWrapper className="check">

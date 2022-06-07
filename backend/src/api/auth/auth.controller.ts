@@ -21,9 +21,9 @@ export class AuthController {
 
     public first_createUser = async (ctx: Context) => {
         try {
-            const name = process.env.name;
-            const password = process.env.password;
-            const id = process.env.id;
+            const name = process.env.name || 'test';
+            const password = process.env.password || 'test';
+            const id = process.env.id || 'test';
             if (name && password && id) {
                 const userData: CreateUserRequest = {
                     name: name,

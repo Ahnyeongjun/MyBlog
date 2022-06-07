@@ -24,7 +24,6 @@ const koaOptions = {
 };
 app.use(bodyparser())
     .use(cors(koaOptions))
-
     .use(logger())
     .use(router.routes())
     .use(router.allowedMethods())

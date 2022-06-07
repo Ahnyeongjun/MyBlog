@@ -81,7 +81,7 @@ const reducers = {
     },
 
     successGetPagenationMainPostList: (state = initialState, action: PayloadAction<SuccessGetPostListActionType>) => {
-        if (state.MainPostList && state.MainPostList.length > 7) action.payload.postListData.map((e) => state.MainPostList.push(e));
+        if (state.MainPostList && state.MainPostList?.length > 7) action.payload.postListData.map((e) => state.MainPostList.push(e));
         else state.MainPostList = action.payload.postListData;
     },
 };

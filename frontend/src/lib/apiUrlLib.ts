@@ -5,7 +5,7 @@ const getUrlWithQuery = ({ queryObject, defaultURL, queryNameArr }) => {
 
     for (const queryName of queryNameArr) {
         if (!isNullOfUndefined(queryObject[queryName])) {
-            if (URLArr && URLArr.length === 1) {
+            if (URLArr && URLArr?.length === 1) {
                 URLArr.push('?');
             } else {
                 URLArr.push('&');
@@ -21,7 +21,7 @@ const getUrlWithQuery = ({ queryObject, defaultURL, queryNameArr }) => {
 };
 export const ACCOUNT_URL = {
     checkToken: function (): string {
-        return `/auth/token`;
+        return `/auth/check`;
     },
     login: function (): string {
         return `/auth/login`;

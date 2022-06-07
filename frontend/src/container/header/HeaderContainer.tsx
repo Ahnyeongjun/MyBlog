@@ -6,7 +6,7 @@ import Toggle from '../../components/Toggle/Toggle';
 
 import { useTypedSelector } from '../../module/store';
 import { themeDataState } from '../../features/theme/themeSlice';
-import { logout } from '../../utils/authUtils';
+import { checkIsLogin, logout } from '../../utils/authUtils';
 
 const HeaderContainer = (props: any) => {
     const { themeData } = useTypedSelector(themeDataState);
@@ -14,8 +14,12 @@ const HeaderContainer = (props: any) => {
     const [isLogin, setIsLogin] = useState(false);
 
     useEffect(() => {
-        if (localStorage.getItem('accessToken')) {
-            setIsLogin(true);
+        async function checkToken() {
+            setIsLogin(await checkIsLogin());
+        }
+        const token = localStorage.getItem('accessToken');
+        if (token) {
+            checkToken();
         } else {
             setIsLogin(false);
         }
