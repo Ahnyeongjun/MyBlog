@@ -47,6 +47,7 @@ const PostDetailPage = ({ match }) => {
                                 {postData.tag
                                     ? postData.tag.map((e) => (
                                           <S.TagItemWrapper
+                                              key = {e.name}
                                               onClick={() => {
                                                   location.href = `/tag/${e.name}`;
                                               }}
@@ -76,6 +77,7 @@ const PostDetailPage = ({ match }) => {
                                 {postData.tag
                                     ? postData.tag.map((e) => (
                                           <S.TagItemWrapper
+                                              key = {e.name}
                                               onClick={() => {
                                                   location.href = `/tag/${e.name}`;
                                               }}

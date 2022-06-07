@@ -36,7 +36,7 @@ const Post = (props: any) => {
                 <>
                     {MainPostList &&
                         MainPostList.map((e) => (
-                            <S.MainPostItemWrapper className="check" onClick={() => onClick(e.searchUrl)}>
+                            <S.MainPostItemWrapper key={e.searchUrl} className="check" onClick={() => onClick(e.searchUrl)}>
                                 {e.mainImageURL ? <S.MainPostImg src={e.mainImageURL} /> : null}
                                 <S.ContentWrapper>
                                     <S.FeautredTitle>{e.title}</S.FeautredTitle>
@@ -45,6 +45,7 @@ const Post = (props: any) => {
                                         {e.tag &&
                                             e.tag.map((e) => (
                                                 <S.TagItem
+                                                    key= {e.name}
                                                     onClick={() => {
                                                         location.href = `/tag/${e.name}`;
                                                     }}
@@ -61,8 +62,8 @@ const Post = (props: any) => {
             ) : (
                 <>
                     {MainPostList &&
-                        MainPostList.map((e) => (
-                            <S.MainPostItemWrapper onClick={() => onClick(e.searchUrl)}>
+                        MainPostList.map((e) => (                          
+                            <S.MainPostItemWrapper key={e.searchUrl} onClick={() => onClick(e.searchUrl)}>
                                 {e.mainImageURL ? <S.MainPostImg src={e.mainImageURL} /> : null}
                                 <S.ContentWrapper>
                                     <S.FeautredTitle>{e.title}</S.FeautredTitle>
@@ -71,6 +72,7 @@ const Post = (props: any) => {
                                         {e.tag &&
                                             e.tag.map((e) => (
                                                 <S.TagItem
+                                                    key= {e.name}
                                                     onClick={() => {
                                                         location.href = `/tag/${e.name}`;
                                                     }}

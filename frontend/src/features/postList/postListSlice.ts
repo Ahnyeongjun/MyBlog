@@ -9,63 +9,63 @@ import {
 
 const initialState: PostListInitialStateType = {
     MainPostList: [
-        {
-            uid: '',
-            tag: [],
-            title: 'RTSP-용어정리',
-            mainImageURL: '',
-            mainContent: '',
-            searchUrl: '',
-            createdAt: '',
-        },
-        {
-            uid: '',
-            tag: [],
-            title: 'SssssssssssssssssssssssssssssssssSssssssssssssssssssssssssssssssss',
-            mainImageURL: 'https://cdn.pixabay.com/photo/2021/07/21/07/09/cygnet-6482420_960_720.jpg',
-            mainContent:
-                'SssssssssssssssssssssssssssssssssSssssssssssssssssssssssssssssssssSssssssssssssssssssssssssssssssssSssssssssssssssssssssssssssssssssSssssssssssssssssssssssssssssssssSssssssssssssssssssssssssssssssss',
-            searchUrl: '',
-            createdAt: 'sssssssss',
-        },
-        {
-            uid: '',
-            tag: [],
-            title: 'S안녕안녕첫번째',
-            mainImageURL: '',
-            mainContent: '',
-            searchUrl: '',
-            createdAt: 'sssssssss',
-        },
+        // {
+        //     uid: '',
+        //     tag: [],
+        //     title: 'RTSP-용어정리',
+        //     mainImageURL: '',
+        //     mainContent: '',
+        //     searchUrl: '',
+        //     createdAt: '',
+        // },
+        // {
+        //     uid: '',
+        //     tag: [],
+        //     title: 'SssssssssssssssssssssssssssssssssSssssssssssssssssssssssssssssssss',
+        //     mainImageURL: 'https://cdn.pixabay.com/photo/2021/07/21/07/09/cygnet-6482420_960_720.jpg',
+        //     mainContent:
+        //         'SssssssssssssssssssssssssssssssssSssssssssssssssssssssssssssssssssSssssssssssssssssssssssssssssssssSssssssssssssssssssssssssssssssssSssssssssssssssssssssssssssssssssSssssssssssssssssssssssssssssssss',
+        //     searchUrl: '',
+        //     createdAt: 'sssssssss',
+        // },
+        // {
+        //     uid: '',
+        //     tag: [],
+        //     title: 'S안녕안녕첫번째',
+        //     mainImageURL: '',
+        //     mainContent: '',
+        //     searchUrl: '',
+        //     createdAt: 'sssssssss',
+        // },
     ],
     FeautredPostList: [
-        {
-            uid: '',
-            tag: [],
-            title: 'S안녕안녕첫번째S안녕안녕첫번째',
-            mainImageURL: 'https://cdn.pixabay.com/photo/2021/07/21/07/09/cygnet-6482420_960_720.jpg',
-            mainContent: 'S안녕안녕첫번째',
-            searchUrl: '',
-            createdAt: '',
-        },
-        {
-            uid: '',
-            tag: [],
-            title: ',Node-RTSP-recoder 에러(rtsp, ffmpeg)',
-            mainImageURL: 'https://cdn.pixabay.com/photo/2021/07/21/07/09/cygnet-6482420_960_720.jpg',
-            mainContent: 'SssssssssssssssssssssssssssssssssSssssssssssssssssssssssssssssssssSssssssssssssssssssssssssssssssss',
-            searchUrl: '',
-            createdAt: 'sssssssss',
-        },
-        {
-            uid: '',
-            tag: [],
-            title: 'S',
-            mainImageURL: '',
-            mainContent: '',
-            searchUrl: '',
-            createdAt: 'sssssssss',
-        },
+        // {
+        //     uid: '',
+        //     tag: [],
+        //     title: 'S안녕안녕첫번째S안녕안녕첫번째',
+        //     mainImageURL: 'https://cdn.pixabay.com/photo/2021/07/21/07/09/cygnet-6482420_960_720.jpg',
+        //     mainContent: 'S안녕안녕첫번째',
+        //     searchUrl: '',
+        //     createdAt: '',
+        // },
+        // {
+        //     uid: '',
+        //     tag: [],
+        //     title: ',Node-RTSP-recoder 에러(rtsp, ffmpeg)',
+        //     mainImageURL: 'https://cdn.pixabay.com/photo/2021/07/21/07/09/cygnet-6482420_960_720.jpg',
+        //     mainContent: 'SssssssssssssssssssssssssssssssssSssssssssssssssssssssssssssssssssSssssssssssssssssssssssssssssssss',
+        //     searchUrl: '',
+        //     createdAt: 'sssssssss',
+        // },
+        // {
+        //     uid: '',
+        //     tag: [],
+        //     title: 'S',
+        //     mainImageURL: '',
+        //     mainContent: '',
+        //     searchUrl: '',
+        //     createdAt: 'sssssssss',
+        // },
     ],
     total: 0,
 };
@@ -81,7 +81,7 @@ const reducers = {
     },
 
     successGetPagenationMainPostList: (state = initialState, action: PayloadAction<SuccessGetPostListActionType>) => {
-        if (state.MainPostList && state.MainPostList?.length > 7) action.payload.postListData.map((e) => state.MainPostList.push(e));
+        if (state.MainPostList && state.MainPostList?.length > 7) action.payload.postListData.forEach((e) => state.MainPostList.push(e));
         else state.MainPostList = action.payload.postListData;
     },
 };

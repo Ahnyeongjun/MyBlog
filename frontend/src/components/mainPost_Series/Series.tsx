@@ -18,6 +18,7 @@ const Series = (props: any) => {
                     {series
                         ? series.map((e) => (
                               <S.SeriesItem
+                                  key = {e.name}
                                   className="check"
                                   onClick={() => {
                                       location.href = `/series/${e.name}`;
@@ -46,6 +47,7 @@ const Series = (props: any) => {
                     {series &&
                         series.map((e) => (
                             <S.SeriesItem
+                                key = {e.name}
                                 onClick={() => {
                                     location.href = `/series/${e.name}`;
                                 }}

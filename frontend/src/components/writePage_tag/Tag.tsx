@@ -40,7 +40,7 @@ const Tag = (props: any) => {
             {themeData == 'white' ? (
                 <S.Tag>
                     {tag.map((e) => (
-                        <TagItem onClick={() => onClick(e)} tag={e} />
+                        <TagItem  key={e} onClick={() => onClick(e)} tag={e} />
                     ))}
                     {invalid ? (
                         <S.TagInput placeholder="태그를 입력해주세요" onChange={onChange} value={oneTag} onKeyPress={onKeyPress} />
@@ -57,8 +57,8 @@ const Tag = (props: any) => {
             ) : (
                 <S.Tag className="check">
                     {tag.map((e) => (
-                        <TagItem onClick={() => onClick(e)} tag={e} />
-                    ))}
+                        <TagItem  key={e} onClick={() => onClick(e)} tag={e} />
+                        ))}
                     {invalid ? (
                         <S.TagInput
                             placeholder="태그를 입력해주세요"

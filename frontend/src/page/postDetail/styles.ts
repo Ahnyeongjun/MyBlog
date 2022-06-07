@@ -12,7 +12,7 @@ export const Post = styled.div`
         color: white;
     }
 `;
-export const HeadWrapper = styled.head`
+export const HeadWrapper = styled.header`
     width: 45vw;
     margin: 0 auto;
     min-height: 25vh;

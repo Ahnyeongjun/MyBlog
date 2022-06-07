@@ -17,6 +17,7 @@ const Tag = (props: any) => {
                     {tag &&
                         tag.map((e) => (
                             <S.TagItemWrapper
+                                key = {e.name}
                                 onClick={() => {
                                     location.href = `/tag/${e.name}`;
                                 }}
@@ -29,8 +30,9 @@ const Tag = (props: any) => {
             ) : (
                 <S.TagWrapper>
                     {tag &&
-                        tag.map((e) => (
+                        tag.map((e) => ( 
                             <S.TagItemWrapper
+                                key = {e.name}
                                 onClick={() => {
                                     location.href = `/tag/${e.name}`;
                                 }}
