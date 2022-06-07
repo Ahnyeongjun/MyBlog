@@ -63,7 +63,6 @@ export class PostController {
     };
     public findPostByAllTagName = async (ctx: Context) => {
         const tag: string = ctx.params.id;
-        console.log(tag);
         let { page, pageSize } = ctx.query;
         const numPage = Number(page) || 1;
         const numPageSize = Number(pageSize) || 6;
@@ -81,7 +80,6 @@ export class PostController {
             const searchUrl = ctx.params.id;
             const post = ctx.request.body.post;
             const cookie = ctx.cookies.get(`isVisited - ${escape(searchUrl)}`);
-            console.log(cookie);
             if (!cookie) {
                 console.log('쿠키셋');
                 ctx.cookies.set(`isVisited - ${escape(searchUrl)}`, escape(searchUrl), {
@@ -179,7 +177,6 @@ export class PostController {
     public checkByCreateRequest = async (ctx: Context, next: Next) => {
         const postData: CreatePostRequest = ctx.request.body;
         if (postData.content && postData.mainContent && postData.title) {
-            console.log(postData.title);
             postData.title = postData.title.replace(/\s/g, '-');
             await next();
         } else {

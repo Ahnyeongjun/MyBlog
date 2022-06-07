@@ -57,7 +57,6 @@ export class PostServie {
             mainImageURL: request.mainImageURL,
             mainContent: request.mainContent,
         };
-        console.log(res);
         await this.postRepository.updateByPost(res);
     }
     public async findAllByPost(page: number, pageSize: number) {
@@ -146,7 +145,6 @@ export class PostServie {
 
             if (tag) saveTag.push(tag);
         }
-        console.log(saveTag);
         return saveTag;
     }
 }

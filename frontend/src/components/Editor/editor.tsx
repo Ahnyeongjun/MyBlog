@@ -4,6 +4,7 @@ import { useRef, useMemo } from 'react';
 
 import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
+import { toBase64 } from '../../utils/stringUtils';
 import { editorState, updateText } from '../../features/editor/editorSlice';
 import { useAppDispatch, useTypedSelector } from '../../module/store';
 import './style.css';
@@ -22,12 +23,7 @@ const Editor = (props: any) => {
             quill?.clipboard.dangerouslyPasteHTML(range, ` <img src=${url} alt="이미지 태그가 삽입됩니다." style="overfit: cover;" /> `);
         }
     };
-    const toBase64 = file => new Promise((resolve, reject) => {
-        const reader = new FileReader();
-        reader.readAsDataURL(file);
-        reader.onload = () => resolve(reader.result);
-        reader.onerror = error => reject(error);
-    });
+
     const imageHandler = () => {
         const input = document.createElement('input');
         const formData = new FormData();
@@ -38,8 +34,8 @@ const Editor = (props: any) => {
         input.click();
 
         input.onchange = async () => {
-            const file =await toBase64(input.files[0]);
-            setTimeout(() => imageChange(file), 1000);
+            const file = await toBase64(input.files[0]);
+            if(typeof(file) == "string")  setTimeout(() => imageChange(file), 1000);
      
             // S3 저장
             // if (file !== null) {

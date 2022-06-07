@@ -9,6 +9,7 @@ import Tag from '../../components/writePage_tag/Tag';
 import { checkIsLogin } from '../../utils/authUtils';
 import { editorState, updateMainContent, updateMainImageUrl, updateSeriesName, uploadPost } from '../../features/editor/editorSlice';
 import axios from 'axios';
+import { toBase64 } from '../../utils/stringUtils';
 
 const WritePage = () => {
     const [scrollPosition, setScrollPosition] = useState(0);
@@ -57,16 +58,17 @@ const WritePage = () => {
     };
 
     const inputOnChange = async (e) => {
-        const img = e.target.files[0];
-        const formData = new FormData();
-        formData.append('image', img);
+        //const img = e.target.files[0];
+        const file = await toBase64(e.target.files[0]);
+        if(typeof(file) == "string") setTimeout(() => dispatch(updateMainImageUrl({ mainImageURL: file })), 1000);        // const formData = new FormData();
+        // formData.append('image', img);
 
-        const headers = {
-            Authorization: localStorage.getItem('accessToken'),
-        };
-        const res: any = (await axios.post(process.env.BASE_URL + '/upload/single', formData, { headers })).data;
-        const url = process.env.S3_URL + res.image;
-        setTimeout(() => dispatch(updateMainImageUrl({ mainImageURL: url })), 1000);
+        // const headers = {
+        //     Authorization: localStorage.getItem('accessToken'),
+        // };
+        // const res: any = (await axios.post(process.env.BASE_URL + '/upload/single', formData, { headers })).data;
+        // const url = process.env.S3_URL + res.image;
+        // setTimeout(() => dispatch(updateMainImageUrl({ mainImageURL: url })), 1000);
     };
 
     const mainContentOnChange = (e) => {

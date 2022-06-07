@@ -5,7 +5,6 @@ import { ACCOUNT_URL } from "../../lib/apiUrlLib";
 export const checkIsLogin = async () => {
     try {
         const accessToken = encodeURI(localStorage.getItem('accessToken'));
-        console.log(accessToken);
         // if (accessToken) {
         //     const httpMethod = methodType.POST;
         //     const requestUrl = ACCOUNT_URL.checkToken();
