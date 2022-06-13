@@ -7,6 +7,7 @@ import PostDetailPage from './page/postDetail/PostDetailPage';
 import TagSearchPage from './page/tagSearch/tagSearchPage';
 import WritePage from './page/wrtie/WritePage';
 import PostPage from './page/post/postPage';
+import ResumePdfPage from './page/resume/ResumePage';
 import seriesSearchPage from './page/seriesSearch/seriesSearchPage';
 const Routing = () => {
     return (
@@ -17,7 +18,7 @@ const Routing = () => {
             <Route exact path="/tag/:tagName" component={TagSearchPage} />
             <Route exact path="/post/:searchUrl" component={PostDetailPage} />
             <Route exact path="/post" component={PostPage} />
-
+            <Route exact path="/resume" component={ResumePdfPage} />
             <Route exact path="/series/:seriesName" component={seriesSearchPage} />
             <Route component={NotFoundPage} />
         </Switch>

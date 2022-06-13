@@ -5,3 +5,4 @@ export { default as Coffee } from './garbageImage3.jpg';
 export { default as JavaScript } from './javascript.png';
 export { default as MyImage } from './myImage.svg';
 export { default as DefaultImage } from './favpng_information.svg';
+export { default as resumePdf } from './resume.pdf'; 
