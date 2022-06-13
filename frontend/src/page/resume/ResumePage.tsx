@@ -6,7 +6,7 @@ import * as S from './styles';
 const pastPortfolioPage = () => {
     return (
         <>
-            <S.pastWrapper>      .
+            <S.pastWrapper>
                 <HeaderContainer/>
                 <ResumePdf />
             </S.pastWrapper>
