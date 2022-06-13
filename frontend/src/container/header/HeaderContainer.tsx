@@ -56,8 +56,9 @@ const HeaderContainer = (props: any) => {
                             </>
                         ) : (
                             <>
-                                <S.Category_item onClick={incompleteOnClick}>ReSume</S.Category_item>
                                 <S.Category_item>
+                                    <S.Category_a href="/resume"> Resume</S.Category_a>
+                                </S.Category_item>                                <S.Category_item>
                                     <S.Category_a href="https://portfolio.youngjun.site/"> Portfolio</S.Category_a>
                                 </S.Category_item>
                             </>
@@ -86,7 +87,9 @@ const HeaderContainer = (props: any) => {
                             </>
                         ) : (
                             <>
-                                <S.Category_item onClick={incompleteOnClick}>ReSume</S.Category_item>
+                                <S.Category_item>
+                                    <S.Category_a href="/resume"> Resume</S.Category_a>
+                                </S.Category_item>    
                                 <S.Category_item>
                                     <S.Category_a href="https://portfolio.youngjun.site/"> Portfolio</S.Category_a>
                                 </S.Category_item>
